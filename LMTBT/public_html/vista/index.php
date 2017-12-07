@@ -101,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.php"><h1>TochoWEB <span>Tuxtla</span></h1> </a>
+                            <a class="navbar-brand" href="index.php"><h1>LMTB <span>Tuxtla</span></h1> </a>
                         </div><br>
                         <!--/.navbar-header-->
 
@@ -182,19 +182,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="callbacks1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
                                     <h3>LA LIGA DE LOS VERDADEROS JUGADORES</h3>
-                                    <p>Lorem ipsum dolor sit amet</p>
                                 </div>
                             </li>
                             <li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
                                     <h3>CONVIERTETE EN EL MEJOR JUGADOR DEL TORNEO</h3>
-                                    <p>Lorem ipsum dolor sit amet</p>
                                 </div>
                             </li>
                             <li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
                                     <h3>SIGUE HASTA LA VICTORIA</h3>
-                                    <p>Lorem ipsum dolor sit amet</p>
                                 </div>
                             </li>
                         </ul>
@@ -372,173 +369,17 @@ $(document).ready(function () {
                             </div>
                         </div>
                         <!--//about-->
-                        <!--/players-->
-                        <div class="players">
-                            <h3 class="tittle">Nuestros Jugadores</h3>
-                            <ul id="flexiselDemo3">
-                                <li>
-                                    <div class="biseller-column">
-                                        <a class="lightbox" href="#one">
-                                            <img src="images/s1.jpg" alt=""/>
-                                        </a>
-                                        <div class="lightbox-target" id="one">
-                                            <img src="images/s1.jpg" alt=""/>
-                                            <a class="lightbox-close" href="#"> </a>
-
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="biseller-column">
-                                        <a class="lightbox" href="#two">
-                                            <img src="images/s3.jpg" alt=""/>
-                                        </a>
-                                        <div class="lightbox-target" id="two">
-                                            <img src="images/s3.jpg" alt=""/>
-                                            <a class="lightbox-close" href="#"> </a>
-
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="biseller-column">
-                                        <a class="lightbox" href="#four">
-                                            <img src="images/s2.jpg" alt=""/>
-                                        </a>
-                                        <div class="lightbox-target" id="four">
-                                            <img src="images/s2.jpg" alt=""/>
-                                            <a class="lightbox-close" href="#"> </a>
-
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="biseller-column">
-                                        <a class="lightbox" href="#five">
-                                            <img src="images/s1.jpg" alt=""/>
-                                        </a>
-                                        <div class="lightbox-target" id="five">
-                                            <img src="images/s1.jpg" alt=""/>
-                                            <a class="lightbox-close" href="#"> </a>
-
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="biseller-column">
-                                        <a class="lightbox" href="#six">
-                                            <img src="images/s2.jpg" alt=""/>
-                                        </a>
-                                        <div class="lightbox-target" id="six">
-                                            <img src="images/s2.jpg" alt=""/>
-                                            <a class="lightbox-close" href="#"> </a>
-
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="biseller-column">
-                                        <a class="lightbox" href="#seven">
-                                            <img src="images/s1.jpg" alt=""/>
-                                        </a>
-                                        <div class="lightbox-target" id="seven">
-                                            <img src="images/s1.jpg" alt=""/>
-                                            <a class="lightbox-close" href="#"> </a>
-
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="biseller-column">
-                                        <a class="lightbox" href="#eight">
-                                            <img src="images/s4.jpg" alt=""/>
-                                        </a>
-                                        <div class="lightbox-target" id="eight">
-                                            <img src="images/s4.jpg" alt=""/>
-                                            <a class="lightbox-close" href="#"> </a>
-
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--//players-->
-                        <script type="text/javascript">
-                            $(window).load(function () {
-                                $("#flexiselDemo3").flexisel({
-                                    visibleItems: 3,
-                                    animationSpeed: 1000,
-                                    autoPlay: true,
-                                    autoPlaySpeed: 3000,
-                                    pauseOnHover: true,
-                                    enableResponsiveBreakpoints: true,
-                                    responsiveBreakpoints: {
-                                        portrait: {
-                                            changePoint: 480,
-                                            visibleItems: 3
-                                        },
-                                        landscape: {
-                                            changePoint: 640,
-                                            visibleItems: 3
-                                        },
-                                        tablet: {
-                                            changePoint: 768,
-                                            visibleItems: 3
-                                        }
-                                    }
-                                });
-
-                            });
-                        </script>
-                        <script type="text/javascript" src="../controlador/JS_PLANTILLA_jquery.flexisel.js"></script>
-                        <!--//players-->
                         <!--/video-->
                         <div class="video">
                             <h3 class="tittle">Ultimo Video</h3>
-                            <iframe src="https://player.vimeo.com/video/75045253?color=ff9933&title=0&byline=0&portrait=0"></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/dsYQjgz3Z3E" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                         </div>
                         <!--//video-->
                         <div class="banner-slider">
                             <h3 class="tittle">Nuestras Noticias</h3>
                             <div class="callbacks_container">
                                 <ul class="rslides" id="slider3" style="height: 471px;overflow: auto">
-                                    <li>
-                                        <div class="blog-img">
-                                            <img src="images/2pp.jpg" class="img-responsive" alt="" />
-                                        </div>
-                                        <div class="blog-info">
-                                            <a class="news" href="#"> Halcones gana el torneo 2017</a>
-                                            <p>Despues de mucho esfuerzo y una gran jordana: lo consiguieron. </p>
-                                            <div class="bog_post_info infoPost">
-                                                <span class="datePost"><a href="#" class="post_date">Sep 30, 2017</a></span>
-                                                <span class="commentPost"><a class="icon-comment-1" title="Comments - 2" href="#"><i class="glyphicon glyphicon-comment"></i>2</a></span>
-                                                <span class="likePost"><i class="glyphicon glyphicon-heart"></i><a class="icon-heart" title="Likes - 4" href="#">4</a></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="blog-img">
-                                            <img src="images/4.jpg" class="img-responsive" alt="" />
-                                        </div>
-                                        <div class="blog-info">
-                                            <a class="news" href="#"> Se retira el jugador que hizo campeon a "Los Tigres"</a>
-                                            <p>Despues de 3 campeonatos,39 partidos y una lesion, Martin dejara de jugar. </p>
-                                            <div class="bog_post_info infoPost">
-                                                <span class="datePost"><a href="#" class="post_date">Sep 30, 2017</a></span>
-                                                <span class="commentPost"><a class="icon-comment-1" title="Comments - 2" href="#"><i class="glyphicon glyphicon-comment"></i>2</a></span>
-                                                <span class="likePost"><i class="glyphicon glyphicon-heart"></i><a class="icon-heart" title="Likes - 4" href="#">4</a></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </li>                                    
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -578,41 +419,9 @@ $(document).ready(function () {
                         </div>                         
                         <!--Apartado para listar los torneos activos-->
                         <div class="modern">
-                            <h4 class="side">Nuevos Jugadores</h4>
+                            <h4 class="side">Cumpleañeros</h4>
                             <div id="example1">
                                 <div id="owl-demo" class="owl-carousel text-center">
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p2.jpeg" alt=""/>
-                                    </div>
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p1.jpeg" alt=""/>
-                                    </div>
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p2.jpeg" alt=""/>
-                                    </div>
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p1.jpeg" alt=""/>
-                                    </div>
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p2.jpeg" alt=""/>
-                                    </div>
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p1.jpeg" alt=""/>
-                                    </div>
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p2.jpeg" alt=""/>
-                                    </div>
-                                    <div class="item">
-
-                                        <img class="img-responsive lot" src="images/p1.jpeg" alt=""/>
-                                    </div>
                                 </div>
                             </div>
                             <!-- requried-jsfiles-for owl -->
@@ -645,285 +454,7 @@ $(document).ready(function () {
                             </script>
                             <!-- //requried-jsfiles-for owl -->
                         </div>
-                        <!--//accordation_menu-->
-                        <div class="list_vertical">
-                            <section class="accordation_menu">
-                                <div>
-                                    <input id="label-1" name="lida" type="radio" checked="">
-                                    <label for="label-1" id="item1"><i class="ferme"> </i>Noticias Populares<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
-                                    <div class="content" id="a1">
-                                        <div class="scrollbar" id="style-2">
-                                            <div class="force-overflow">
-                                                <div class="popular-post-grids">
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f1.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html"> Jaime anota 5 puntos y gana el campeonato</a>
-                                                            <p>08 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f2.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html"> Francisco se desmalla en medio partido</a>
-                                                            <p>08 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>2 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f3.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html">Julian se hace presente en semifinal femenil</a>
-                                                            <p>07 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f4.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html">Ser o no ser: el dilema del jugador mas solicitado</a>
-                                                            <p>09 Nov<a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>1 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <input id="label-2" name="lida" type="radio">
-                                    <label for="label-2" id="item2"><i class="icon-leaf" id="i2"></i>Noticias Recientes<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
-                                    <div class="content" id="a2">
-                                        <div class="scrollbar" id="style-2">
-                                            <div class="force-overflow">
-                                                <div class="popular-post-grids">
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f4.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html"> Jaime anota 5 puntos y gana el campeonato</a>
-                                                            <p>08 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f3.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html"> Francisco se desmalla en medio partido</a>
-                                                            <p>08 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>2 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f1.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html">Julian se hace presente en semifinal femenil</a>
-                                                            <p>08 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div class="popular-post-grid">
-                                                        <div class="post-img">
-                                                            <a href="single.html"><img src="images/f2.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-text">
-                                                            <a class="pp-title" href="single.html">Ser o no ser: el dilema del jugador mas solicitado</a>
-                                                            <p>O9 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>1 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <input id="label-3" name="lida" type="radio">
-                                    <label for="label-3" id="item3"><i class="icon-trophy" id="i3"></i>Comentarios<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
-                                    <div class="content" id="a3">
-                                        <div class="scrollbar" id="style-2">
-                                            <div class="force-overflow">
-                                                <div class="response">
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/RC_IF_ICONS_1.png" alt="">
-                                                            </a>
-                                                            <h5><a href="#">Charlie</a></h5>
-                                                        </div>
-                                                        <div class="media-body response-text-right">
-                                                            <p>Esta super interesante el torneo, nunca antes me habia interesado por algun deporte pero ahora ya me es importante seguir los partidos. Gracias por esta pagina! Saludos XD.</p>
-                                                            <ul>
-                                                                <li>Noviembre 08, 2017</li>
-                                                                <li><a href="single.html">Reply</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/RC_IF_ICONS_1.png" alt="">
-                                                            </a>
-                                                            <h5><a href="#">User</a></h5>
-                                                        </div>
-                                                        <div class="media-body response-text-right">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available,
-                                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <ul>
-                                                                <li>MARCH 26, 2015</li>
-                                                                <li><a href="single.html">Reply</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/RC_IF_ICONS_1.png" alt="">
-                                                            </a>
-                                                            <h5><a href="#">User</a></h5>
-                                                        </div>
-                                                        <div class="media-body response-text-right">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available,
-                                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <ul>
-                                                                <li>MAY 25, 2015</li>
-                                                                <li><a href="single.html">Reply</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/RC_IF_ICONS_1.png" alt="">
-                                                            </a>
-                                                            <h5><a href="#">User</a></h5>
-                                                        </div>
-                                                        <div class="media-body response-text-right">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available,
-                                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <ul>
-                                                                <li>FEB 13, 2015</li>
-                                                                <li><a href="single.html">Reply</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/RC_IF_ICONS_1.png" alt="">
-                                                            </a>
-                                                            <h5><a href="#">User</a></h5>
-                                                        </div>
-                                                        <div class="media-body response-text-right">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available,
-                                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <ul>
-                                                                <li>JAN 28, 2015</li>
-                                                                <li><a href="single.html">Reply</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/RC_IF_ICONS_1.png" alt="">
-                                                            </a>
-                                                            <h5><a href="#">User</a></h5>
-                                                        </div>
-                                                        <div class="media-body response-text-right">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available,
-                                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <ul>
-                                                                <li>APR 18, 2015</li>
-                                                                <li><a href="single.html">Reply</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/RC_IF_ICONS_1.png" alt="">
-                                                            </a>
-                                                            <h5><a href="#">User</a></h5>
-                                                        </div>
-                                                        <div class="media-body response-text-right">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available,
-                                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <ul>
-                                                                <li>DEC 25, 2014</li>
-                                                                <li><a href="single.html">Reply</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="clearfix"> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <!--Esta es la seccion para felicitar a los cumpleañeros-->
-                                    <input id="label-4" name="lida" type="radio">
-                                    <label for="label-4" id="item4"><i class="icon-trophy" id="i4"></i>Cumpleañeros<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
-                                    <div class="content" id="a4">
-                                        <div class="scrollbar" id="style-2">
-                                            <div class="force-overflow">
-                                                <div class="response">
-                                                    <div class="media response-info">
-                                                        <div class="media-left response-text-left">
-                                                            <a href="#">
-                                                                <img class="media-object" src="img/CUMPLE_ICON.png" alt="" style="max-width: 50px; max-height: 50px" >
-                                                            </a> 
-                                                        </div>
-                                                        <div id="Div_Felicitaciones" class="media-body response-text-left"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <!--//accordation_menu-->
-                        <!--/top-news-->
-                        <div class="top-news">
-                            <h4 class="side">Top PARTIDOS</h4>
-                            <div class="top-inner">
-                                <div class="top-text">
-                                            <!-- <a href="single.html"><img src="images/side.jpg" class="img-responsive" alt=""/></a> -->
-                                    <h5 class="top"><a href="single.html">El partido del mes: Aguilas vs Halcones/a></h5>
-                                    <p>01 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-                                </div>
-                                <div class="top-text two">
-                                       <!-- <a href="single.html"><img src="images/side2.jpg" class="img-responsive" alt=""/></a> -->
-                                    <h5 class="top"><a href="single.html">Clasico de clasico: IDS vs BIOMEDICA</a></h5>
-                                    <p>12 Nov <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!--//top-news-->
+                       
                         <div class="connect">
                             <h4 class="side">PERMANECE CONECTADO</h4>
                             <ul class="stay">
@@ -937,21 +468,6 @@ $(document).ready(function () {
                     </div>
                     <!--//soccer-right-part-->
                     <div class="clearfix"> </div>
-                </div>
-                <div class="time-bg">
-                    <h4>IDS <span>Vs </span> BIOMEDICA</h4>
-                    <p id="demo"></p>
-
-                    <script>
-                        var myVar = setInterval(function () {
-                            myTimer()
-                        }, 1000);
-
-                        function myTimer() {
-                            var d = new Date();
-                            document.getElementById("demo").innerHTML = d.toLocaleTimeString();
-                        }
-                    </script>
                 </div>
             </div>
             <!--//soccer-inner-->
