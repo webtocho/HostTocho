@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Editar un equipo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_EQUIPOS_EDICION.js"></script>
+    </head>
+    <body>
+        <h2>EDITAR AL EQUIPO: </h2>
+        <div id="contenido">
+            <form enctype="multipart/form-data">
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" name="nombre" id="nombre">
+                
+                <br><br>
+                
+                <label for="logotipo">Cambiar la imagen del logotipo:</label><br>
+                <input type="file" accept="image/*" name="logotipo" id="logotipo">
+                
+                <br><br>
+                
+                <label for="coach">Coach:</label><br>
+                <input type="text" name="coach" id="coach" disabled>
+                <br>
+                <label>Transferir propiedad a otro coach:</label><br>
+                <input type="text" id="busqueda_coach" placeholder="Coloque el apellido paterno" onkeyup="buscarCoaches()">
+                <select id="seleccion_coach" onchange="elegirCoach()">
+                    <option value="" selected="selected">No seleccionado.</option>
+                </select>
+                <br><br>
+                <!--<input type="submit" value="Crear ahora" name="submit">-->
+            </form>
+            <button onclick="editarEquipo()">Guardar cambios.</button>
+        </div>
+        <br>
+    </body>
+</html>

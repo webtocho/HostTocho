@@ -1,0 +1,1 @@
+<html><head>   <script>window.location.href = "vista/index.php";</script></head><body>  </body></html>

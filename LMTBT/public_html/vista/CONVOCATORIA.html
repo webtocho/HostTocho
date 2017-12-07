@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Convocatorias</title>
+  <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/style_convocatoria.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGIN.js"></script>
+  <script type="text/javascript" src="../controlador/JS_REGISTRO_CONVOCATORIA.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript"></script>
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>  
+  <script>
+    $(function () {
+      $("#fecha_cierre_convocatoria").datepicker();
+    });
+    $(function () {
+      $("#fecha_inicio_torneo").datepicker();
+    });
+    $(function () {
+      $("#fecha_fin_torneo").datepicker();
+    });
+  </script>
+</head>
+<body id="body">
+<center> 
+  <div class="form">
+  <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Convocatoria</h1>
+     <form id="formlg">
+         <input name="nombre" id="nombre_torneo" type="text" placeholder="Nombre del torneo" class="validate">
+         <input name="fecha_cierre" type="text" id="fecha_cierre_convocatoria" placeholder="Fecha de cierre de la Convocatoria">
+         <input name="fecha_inicio" type="text" id="fecha_inicio_torneo" placeholder="Fecha de inicio del Torneo" />
+         <input name="fecha_fin" type="text" id="fecha_fin_torneo" placeholder="Fecha de finalizacion del Torneo"/>
+          <select  name="categoria" id="categoria">
+            <option value="">selecciona la Categoria</option>
+            <option value="VARONIL">VARONIL</option>
+            <option value="FEMENIL">FEMENIL</option>
+            <option value="MIXTO">MIXTO</option>
+            <option value="HEAVY">HEAVY</option>
+            <option value="RABBIT">RABBIT</option>
+            <option value="MAS DE 40">MAS DE 40</option>
+          </select>
+          <!-- aqui pones el nombre de tu php -->         
+            <input name="imagen" size="30" type="file" id="imagen"/>                        
+            <center><input type ="submit" value="Guardar" id="btn-submitdos"></center>
+    </form>
+  </div>
+</center>
+</body>
+</html>

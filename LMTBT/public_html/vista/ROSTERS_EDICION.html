@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Editar roster</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_ROSTERS_EDICION.js"></script>
+    </head>
+    <body>
+        <div id="contenido">
+            <h2 id="titulo">Editar roster de: <a id="nombre_equipo">Cargando...</a></h2>
+            
+            <b>Categoría: </b><a id="categoria">Cargando...</a>
+            
+            <br><br>
+            
+            Buscar jugadores:
+            <input type="text" id="busqueda_jugador" placeholder="Coloque el apellido paterno" onkeyup="buscarJugadores()" disabled/>
+            <br>
+            <select id="seleccion_jugador" disabled>
+                <option value="-1" selected="selected">Sin resultados</option>
+            </select>
+            <button onclick="agregarJugador()">Agregar jugador</button>
+            
+            <br>
+            
+            <br>
+            <strong>Miembros:</strong>
+            <table id="miembros" style="width: 100%;">
+                <tr>
+                  <th>No.</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Opciones</th>
+                </tr>
+            </table>
+            
+            <br><br>
+            
+            <button onclick="guardar()">Guardar cambios</button>
+        </div>
+        <br>
+    </body>
+</html>

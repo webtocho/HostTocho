@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Detalles del roster</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_ROSTERS_DETALLES.js"></script>
+    </head>
+    <body>
+        <div id="contenido">
+            <h2 id="titulo">Detalles del roster</h2>
+            
+            <b>Categoría: </b><a id="categoria">Cargando...</a>
+            <br>
+            <b>Equipo: </b><a id="nombre_equipo">Cargando...</a>
+            <br><br>
+            
+            <table id="miembros" style="width: 100%;">
+                <tr>
+                  <th>No.</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                </tr>
+            </table>
+            
+            <br><br>
+            
+            <button onclick="eliminar()">Eliminar</button>
+            <button onclick="irAPaginaDeEdicion()">Editar</button>
+        </div>
+        <br>
+    </body>
+</html>

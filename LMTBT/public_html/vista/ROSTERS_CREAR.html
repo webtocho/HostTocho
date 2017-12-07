@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Crear roster</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="HE_ROSTERS.css" rel='stylesheet' type='text/css' />
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_ROSTERS_CREAR.js"></script>
+    </head>
+    <body>
+        <div id="contenido">
+            <h2 id="titulo">Crear roster para: </h2>
+            
+            Categoría:
+            <select id="seleccion_categoria" onchange="elegirCategoria()">
+                <option value="-1" selected="selected">No seleccionado.</option>
+            </select>
+            
+            <br><br>
+            
+            Buscar jugadores:
+            <input type="text" id="busqueda_jugador" placeholder="Coloque el apellido paterno" onkeyup="buscarJugadores()" disabled/>
+            <br>
+            <select id="seleccion_jugador" disabled>
+                <option value="-1" selected="selected">Sin resultados</option>
+            </select>
+            <button onclick="agregarJugador()">Agregar jugador</button>
+            
+            <br>
+            
+            <p><small>Si el jugador no aparece en su búsqueda, no corresponde a la categoría seleccionada,
+                      no tiene una una cuenta, o no ha entrado su cuenta para llenar su información.
+                      Si no tiene una cuenta, se la puede crear a través de <a target="_blank" href="REGISTRAR_JUGADOR.html">este enlace</a>.</small></p>
+            <br>
+            <table id="miembros" style="width: 100%;">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Opciones</th>
+                </tr>
+            </table>
+            
+            <br><br>
+            
+            <button onclick="crear()">Guardar roster</button>
+        </div>
+        <br>
+    </body>
+</html>

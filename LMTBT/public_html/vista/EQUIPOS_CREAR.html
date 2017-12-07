@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Crear un equipo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/style_equipos_crear.css" />
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_EQUIPOS_CREAR.js"></script>
+    </head>
+    <body id="body">
+        <center>
+             
+            <div class="form" id="contenido">
+            <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Crear un equipo</h1>
+            <form enctype="multipart/form-data">
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre del Equipo">
+                <input type="file" accept="image/*" name="logotipo" id="logotipo" placeholder="Elija la imagen de su logotipo">
+                <!-- Controles usados por el administrador para elegir coach -->
+                <input type="text" id="busqueda_coach" placeholder="Coloque el apellido paterno" onkeyup="buscarCoaches()">
+                <select id="seleccion_coach" onchange="elegirCoach()">
+                    <option value="" selected="selected">No seleccionado.</option>
+                </select>
+                <!-- Control usador sólo por el coach -->
+                <input type="text" name="coach" id="coach" placeholder="Nombre Coach">
+                <!--<input type="submit" value="Crear ahora" name="submit">-->
+            </form>
+             <button onclick="crearEquipo()" id="btn-submitdos">Crear ahora</button>
+            </div>
+        </center>
+    </body>
+
+</html>

@@ -1,0 +1,92 @@
+        #body{
+            width: 99%;
+            height: 100%;
+            clear: both;
+            margin: auto;
+            background-color: #fff;
+            /*background-image: url(img/RC_IF_TEAM_BG.jpg);
+            background-size: cover;*/
+        }
+        #contenido{
+            width: 550px;
+            height: 100%;
+            border-radius: 10px;
+            padding: 23px;
+            margin-top: 40px;
+            box-shadow: 5px 5px 15px #333;
+        }
+        #detalles{
+            width: 90%;
+            height: 100%;
+            float: left;
+            background-color: transparent;
+            margin-left: 16px;
+            padding: 7px;
+            border-left: 1px solid #d9d9d9;
+            border-right: 1px solid #d9d9d9;
+        }
+        #detalles-acercade{
+            width: 100%;
+            height: 100%;
+            float: left;
+            background-color: transparent;
+        }
+        #getnombre{
+            width: 90%;
+            height: auto;
+            background-color: #fff;
+            color: #ffffff;
+            padding: 1px;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            color: #333;
+            text-align: center;
+        }
+        #getcoach{
+            width: 90%;
+            height: auto;
+            background-color: #fff;
+            color: #ffffff;
+            padding: 1px;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            color: #333;
+            text-align: center;
+        }
+        #logotipo{
+            width: auto;
+            height: auto;
+            -webkit-box-shadow: 0 10px 10px -6px black;
+            -moz-box-shadow: 0 10px 10px -6px black;
+             box-shadow: 0 10px 10px -6px black;
+        }
+        #btn_crear_roster, #btn_edit_equipo, #btn_eliminar_equipo{
+            background-color: transparent;
+            border: 1px solid darkorange;
+            border-radius: 3px;
+            background-color: #fff;
+            color: darkorange;
+            margin-top: 30px;
+            padding: 3px;
+        }
+        
+        ul{
+            list-style: none;
+        }
+        li{
+            width: 90%;
+            background-color: #fff;
+            float: left;
+            border: 1px solid #d9d9d9;
+            border-radius: 5px;
+        }
+        
+        @media(max-width:550px){
+            #contenido{
+                width: 95%;
+                height: 100%;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                box-shadow: none;
+            }
+        }

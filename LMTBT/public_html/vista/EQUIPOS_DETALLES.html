@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Detalles de un equipo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/style_equipos_detalles.css" />
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_EQUIPOS_DETALLES.js"></script>
+    </head>
+    <body id="body">
+    <center>
+        <div id="contenido">
+            <h2 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Detalles del equipo: </h2>
+            <br>
+            <div id="detalles">
+            <img id="logotipo">
+            <div id="detalles-acercade">
+                <h4 id="getnombre"><b>Nombre: </b> <a id="nombre">Cargando...</a></h4>
+                <h4 id="getcoach"><b>Coach: </b> <a id="coach">Cargando...</a></h4>
+            </div>
+            </div>
+            <br>
+            <b>Rosters: </b>
+            <ul id="lista_rosters">
+                <li><i>&lt;Ninguno&gt;</i></li>
+            </ul>
+            <br>
+            <button onclick="irAPaginaDeCrearRoster()" id="btn_crear_roster">Crear roster</button>
+            <button onclick="irAPaginaDeEdicion()" id="btn_edit_equipo">Editar equipo</button>
+            <button onclick="EliminarEquipo()" id="btn_eliminar_equipo">Eliminar equipos</button>
+        </div>
+    </center>
+    <br>
+    </body>
+</html>

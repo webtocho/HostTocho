@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+  <title>Registro de Jugador</title>
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/materialize.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../controlador/JS_LIBRERIAS_materialize.min.js"></script>
+  <script type="text/javascript" src="../controlador/JS_VALIDAR_ACCESO_USUARIO.js"></script>
+  <script type="text/javascript" src="../controlador/JS_MOSTRAR_ROLES_JUEGO.js"></script>
+  <script type="text/javascript" src="../controlador/JS_MOSTRAR_CEDULA.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+
+<center><h3>Roles de Juego </h3></center>
+    <div class="row"  style="padding:  0cm   5cm 0cm 5cm;">
+    <label><h5>Seleccione una convocatoria:</h5></label>         
+     <select  class='browser-default' id='lista_convocatorias_inactivas' onchange="lista_convocatorias_inactivas()"></select>
+
+
+    </div>
+    <div class="row" style="padding:0cm   2cm 0cm 2cm;">
+         <h3 id = "nombre_torneo" ></h3>
+         <br>
+        <table class="striped" style="background: orange;">
+          <thead>
+            <tr>          
+                <th><center>TORNEO</center></th>
+                <th><center>CATEGORIA</center></th>
+                <th><center>GOLES EQUIPO 1</center></th>
+                <th><center>EQUIPO 1</center></th>
+                <th><center>VS</center></th>
+                <th><center>EQUIPO 2</center></th>
+                <th><center>GOLES EQUIPO 2</center></th>
+                <th><center>EQUIPO GANADOR</center></th>
+                <th><center>CEDULAS DEL ROL</center></th>
+            </tr>
+          </thead>
+          <tbody id="roles_juegos_convocatoria_seleccionada">
+            <!-- trabajo de ajax -->
+          </tbody>
+        </table>
+      </div>
+
+
+  </body>
+  </html>

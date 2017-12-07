@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Modificar cuenta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_CUENTAS_EDICION.js"></script>
+    </head>
+    <body>
+        <h2>Modificar datos de la cuenta</h2>
+        <div id="contenido">
+            <form enctype="multipart/form-data" id="formulario">
+                <label for="apellido_paterno">Apellido paterno:</label><br>
+                <input type="text" name="apellido_paterno" id="apellido_paterno" oninput="aplicar_cambio(this);">
+                
+                <br>
+                
+                <label for="apellido_materno">Apellido materno:</label><br>
+                <input type="text" name="apellido_materno" id="apellido_materno" oninput="aplicar_cambio(this);">
+                
+                <br>
+                
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" name="nombre" id="nombre" oninput="aplicar_cambio(this);">
+                
+                <br><br>
+                
+                <label for="correo">Correo electrónico:</label><br>
+                <input type="text" name="correo" id="correo" oninput="aplicar_cambio(this);">
+                
+                <br><br>
+                
+                <label for="contrasena">Contraseña:</label><br>
+                <input type="password" name="contrasena" id="contrasena" placeholder="*****" oninput="aplicar_cambio_contrasena();"><br>
+                <label for="contrasena_confirmacion">Confirmar contraseña:</label><br>
+                <input type="password" name="contrasena_confirmacion" id="contrasena_confirmacion" placeholder="*****" oninput="aplicar_cambio_contrasena();">
+                
+                <div id="datos_jugador">
+                    <br>
+                    <label for="foto">Cambiar foto de perfil:</label><br>
+                    <input type="file" accept="image/*" name="foto" id="foto">
+                    
+                    <br><br>
+                    
+                    <label for="nacimiento">Fecha de nacimiento:</label><br>
+                    <input type="date" min="1960-01-01" max="2009-12-31" name="nacimiento" id="nacimiento" onchange="aplicar_cambio(this);">
+                    
+                    <br><br>
+                    
+                    <label for="telefono">Número de teléfono:</label><br>
+                    <input type="tel" name="telefono" id="telefono" oninput="aplicar_cambio(this);">
+                    
+                    <br><br>
+                    
+                    <label for="sangre">Tipo de sangre:</label><br>
+                    <select name="sangre" id="sangre" onchange="aplicar_cambio(this);">
+                        <option value="">¿?</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    
+                    <br><br>
+                    
+                    <b>Enlaces/links de redes sociales:</b><br>
+                    <label for="facebook">Facebook:</label>
+                    <input type="text" name="facebook" id="facebook" oninput="aplicar_cambio(this);"><br>
+                    <label for="twitter">Twitter:</label>
+                    <input type="text" name="twitter" id="twitter" oninput="aplicar_cambio(this);"><br>
+                    <label for="instagram">Instagram:</label>
+                    <input type="text" name="instagram" id="instagram" oninput="aplicar_cambio(this);"><br>
+                </div>
+                
+                <br><br>
+            </form>
+            <button onclick="reiniciarDatos()">Restablecer información</button>
+            <button onclick="editarUsuario()">Guardar cambios</button>
+        </div>
+        <br>
+    </body>
+</html>

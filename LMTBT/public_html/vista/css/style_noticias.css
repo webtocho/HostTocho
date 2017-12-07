@@ -1,0 +1,56 @@
+            #body{
+                width: 99%;
+                height: 100%;
+                clear: both;
+                margin: auto;
+                background-color: #fff;
+                /*background-image: url(img/RC_IF_TEAM_BG.jpg);
+                background-size: cover;*/
+            }
+            #contenido{
+                width: 500px;
+                height: 100%;
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                margin-top: 40px;
+                box-shadow: 5px 5px 15px #333;
+            }
+            #inputEmail,#d-noticia,#imagen{
+                width: 90%;
+                height: 28px;
+                margin: 2%;
+                border-bottom: 1px solid darkorange;
+                border-top: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                margin-top: 20px;
+            }
+            #d-noticia{
+                width: 90%;
+                height: 100px;
+                margin: 2%;
+                border: 1px solid darkorange;
+                margin-top: 20px;
+            }
+        #btn-submitdos{
+            background-color: transparent;
+            border: 1px solid darkorange;
+            border-radius: 3px;
+            background-color: #fff;
+            color: darkorange;
+            margin-top: 30px;
+            padding: 3px;
+        }
+            #cargando{
+                width: 100%;
+            }
+            
+            @media(max-width:550px){
+                #contenido{
+                    width: 90%;
+                    height: 100%;
+                    margin-top: 20px;
+                    margin-bottom: 30px;
+                }
+            }

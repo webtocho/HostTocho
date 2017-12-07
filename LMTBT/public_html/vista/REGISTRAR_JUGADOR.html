@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+  <title>Registro de Jugador</title>
+  <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/style_registrar_jugador.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../controlador/JS_VALIDAR_ACCESO_USUARIO.js"></script>
+  <script type="text/javascript" src="../controlador/JS_REGISTRO_JUGADOR.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+
+<center>
+    <div class="contenido">
+      <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Editar un equipo</h1>
+      <form>          
+            <input id="nombre" type="text" placeholder="Nombre">
+            <input id="apellido_paterno" type="text" placeholder="Apellido Paterno">
+            <input id="apellido_materno" type="text" placeholder="Apellido Materno">
+            Sexo:
+            <select id="sexo">
+              <option value=""></option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+            <input id="password" type="password" placeholder="Password">
+            <input id="email" type="email" placeholder="Correo">
+            <div class="input-field col s6" id = "acceso_select_registrar_jugador"></div>
+            <div class="input-field col s6" id="boton_registrar_jugador"></div>
+          </div>
+            <!-- Cuando el administrador registra un jugador es necesario registrarlo a nombre de un coach, para eso en este div se crea un select donde se listan los coach -->
+      </form>
+    </div>
+</center>
+  </body>
+  </html>

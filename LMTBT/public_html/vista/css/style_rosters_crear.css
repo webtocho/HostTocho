@@ -1,0 +1,89 @@
+	    body{
+	        /*font-family: 'Roboto', sans-serif;*/
+	        font-family: 'Noto Sans', sans-serif;
+	    }
+	    #body{
+	        width: 99%;
+	        height: 100%;
+	        clear: both;
+	        margin: auto;
+	        background-image: url(images/4.jpg);
+	        background-size: cover;
+	    }
+	    .form{
+	        width: 700px;
+	        height: 500px;
+	        background-color: #fff;
+	        border-radius: 10px;
+	        padding: 3px;
+	        margin-top: 40px;
+	        box-shadow: 5px 5px 15px #333;
+	    }
+	    #seleccion_categoria,#busqueda_jugador,#seleccion_jugador{
+	        width: 90%;
+	        height: 28px;
+	        margin: 2%;
+	        border-bottom: 1px solid darkorange;
+	        border-top: 0px;
+	        border-left: 0px;
+	        border-right: 0px;
+	        margin-top: 20px;
+	    }
+	    #btn-submitdos{
+	        background-color: transparent;
+	        border: 1px solid darkorange;
+	        border-radius: 3px;
+	        background-color: #fff;
+	        color: darkorange;
+	        margin-top: 30px;
+	        padding: 3px;
+	    }
+            table{
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
+                th,tr,td{
+                    border: 1px solid #333;
+                    padding: 2px;
+                    text-align: center;
+                    font-size: 12px;
+                }
+	    @media(max-width:550px){
+	        .form{
+	            width: 90%;
+	            height: 100%;
+	            margin-top: 20px;
+	            margin-bottom: 30px;
+                    padding: 10px;
+	        }
+                table{
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
+                th,tr,td{
+                    border: 1px solid #333;
+                    padding: 2px;
+                    text-align: center;
+                    font-size: 12px;
+                }
+	    }
+            
+            @media(max-width:850px){
+                .form{
+	            width: 90%;
+	            height: 100%;
+	            margin-top: 20px;
+	            margin-bottom: 30px;
+                    padding: 10px;
+	        }
+                table{
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
+                th,tr,td{
+                    border: 1px solid #333;
+                    padding: 2px;
+                    text-align: center;
+                    font-size: 12px;
+                }
+	    }

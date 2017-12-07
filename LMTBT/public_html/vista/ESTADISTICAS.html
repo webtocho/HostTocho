@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Estadisticas
+	</title>
+	<meta charset="utf-8">
+	<link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
+		<script type="text/javascript" src="../controlador/JS_ESTADISTICAS.js"></script>
+</head>
+<body>
+	<div>
+            <center><h1>Estadisticas de Torneos</h1></center><br> 
+            <center>
+                <button onclick="CargarConvocatorias(1)" class="btn btn-warning">En curso</button>
+		<button onclick="CargarConvocatorias(2)" class="btn btn-info">Terminados</button>
+		<button onclick="CargarConvocatorias(3)" class="btn btn-success">Todos</button>
+            </center><br>
+            <select id="Select_Torneos" class="form-control" onchange="CargarEstadisticas(this.value)">
+		<option>Cargando...</option>
+            </select><br>
+            <div id="Div_Estadisticas" ></div>
+	</div>
+	
+
+	
+	<script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap-3.1.1.min.js"></script>
+</body>
+
+</html>
