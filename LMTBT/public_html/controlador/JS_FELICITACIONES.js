@@ -1,17 +1,43 @@
+var totalDivs;
 function felicitaciones(){
 	$.ajax({
         url: "../controlador/SRV_FELICITACIONES_OBTENER.php",
         success: function (info) {
      		if(info==1){
-                    //hoy no hay cumpleañeros
+                    $('#owl-demo').empty();
+                    $('#owl-demo').append("<p>Hoy no hay cumpleañeros</p>");
      		}else{
-                    $('#Div_Felicitaciones').empty();
-                    $('#Div_Felicitaciones').append(info);
-     		}
-            
+                    $('#owl-demo').empty();
+                    $('#owl-demo').append(info);
+                    $(function () {
+                                $("#owl-demo").owlCarousel({
+                                    items: 1,
+                                    lazyLoad: true,
+                                    autoPlay: false,
+                                    navigation: true,
+                                    navigationText: true,
+                                    pagination: false,
+                                    responsiveBreakpoints: {
+                                        portrait: {
+                                            changePoint: 480,
+                                            visibleItems: 2
+                                        },
+                                        landscape: {
+                                            changePoint: 640,
+                                            visibleItems: 2
+                                        },
+                                        tablet: {
+                                            changePoint: 768,
+                                            visibleItems: 3
+                                        }
+                                    }
+                                });
+                            });
+            }  
         },
         error: function (jqXHR, textStatus) {
-            console.log("Error en el Servidor");
+           alert("Error del servidor. Cumpleaños");
         }
     });
 }
+

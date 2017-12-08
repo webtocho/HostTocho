@@ -418,42 +418,18 @@ $(document).ready(function () {
                         <div id="apartado_torneos_activos">
                         </div>                         
                         <!--Apartado para listar los torneos activos-->
+
+                        <!--Apartado Cumpleaños:inicia -->
                         <div class="modern">
                             <h4 class="side">Cumpleañeros</h4>
+                            <br>
                             <div id="example1">
-                                <div id="owl-demo" class="owl-carousel text-center">
-                                </div>
+                                <div id="owl-demo" class="owl-carousel text-center"></div>
                             </div>
-                            <!-- requried-jsfiles-for owl -->
-                            <script src="../controlador/JS_PLANTILLA_owl.carousel.js"></script>
-                            <script>
-                            $(document).ready(function () {
-                                $("#owl-demo").owlCarousel({
-                                    items: 1,
-                                    lazyLoad: true,
-                                    autoPlay: false,
-                                    navigation: true,
-                                    navigationText: true,
-                                    pagination: false,
-                                    responsiveBreakpoints: {
-                                        portrait: {
-                                            changePoint: 480,
-                                            visibleItems: 2
-                                        },
-                                        landscape: {
-                                            changePoint: 640,
-                                            visibleItems: 2
-                                        },
-                                        tablet: {
-                                            changePoint: 768,
-                                            visibleItems: 3
-                                        }
-                                    }
-                                });
-                            });
-                            </script>
-                            <!-- //requried-jsfiles-for owl -->
+                            <script src="../controlador/JS_PLANTILLA_owl.carousel.js"></script> 
                         </div>
+                        <br>
+                        <!--Apartado Cumpleaños:termina -->
                        
                         <div class="connect">
                             <h4 class="side">PERMANECE CONECTADO</h4>
