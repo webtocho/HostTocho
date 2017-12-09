@@ -7,7 +7,7 @@ $db = new SRV_CONEXION();
 
 switch ($_POST['tipo']) {
 	case "login":
-		$consulta = $db->getConnection()->prepare("SELECT ID_USUARIO, CORREO, tipos_de_usuario.NOMBRE FROM usuarios INNER JOIN tipos_de_usuario ON usuarios.TIPO_USUARIO = tipos_de_usuario.ID_TIPO_USUARIO WHERE CORREO = ?  AND PASSWORD = ?");
+		$consulta = $db->getConnection()->prepare("SELECT ID_USUARIO, CORREO, TIPO_USUARIO FROM usuarios WHERE CORREO = ?  AND PASSWORD = ?");
 		$consulta->bind_param("ss", $_POST['e_mail'], $_POST['password']);
 		if ($consulta->execute()) {
 			$res = $consulta->get_result();
@@ -15,7 +15,7 @@ switch ($_POST['tipo']) {
 			if ($info['ID_USUARIO']) {
 				$_SESSION['ID_USUARIO'] = $info['ID_USUARIO'];
 				$_SESSION['CORREO'] = $info['CORREO'];
-				$_SESSION['TIPO_USUARIO'] = $info['NOMBRE'];
+				$_SESSION['TIPO_USUARIO'] = $info['TIPO_USUARIO'];
 				echo "ok";
 			} else {
 				echo "Tus datos son inválidos";

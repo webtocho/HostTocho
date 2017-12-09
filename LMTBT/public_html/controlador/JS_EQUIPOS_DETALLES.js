@@ -101,7 +101,7 @@ function irAPaginaDeDetallesDeRoster(id_roster){
 function EliminarEquipo() {
     if (confirm('¿Estas seguro de eliminar este equipo?')) {
         $.ajax({
-            url: "../controlador/SRV_CONSULTAS.php",
+            url: "../controlador/SRV_EQUIPOS_ELIMINACION.php",
             data: {"tipo": "eliminar_equipo",
                 id_equipo: id_equipo
             },

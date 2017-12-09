@@ -161,12 +161,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                <li>
                                    <a href='REGISTRO_COACH.html'>Registrar coach</a>
                                </li>
-                               <li id ="acceso_edicion_equipos"></li>
+                               <li>
+				<a href='EQUIPOS_EDICION.html'>Edicion equipos</a>>
+			</li>
                                <li>
                                    <a href='ROLES_JUEGO.html'>Roles de juego</a>
                                </li>                               
-                               <li id = "acceso_registrar_jugador"></li>
-                                <li id = "acceso_convocatoria"></li>
+			<li>
+				<a href='REGISTRAR_JUGADOR.html'>Registrar Jugador</a>
+			</li>
+			<li>
+				<a href='CONVOCATORIA.html'>Convocatoria</a>
+			</li>
                                 <li id = "acceso_torneo_coach"></li>
                                 <li id = "acceso_crear_noticias"></li>
                                  <li id = "acceso_asignacion_horarios"></li>
