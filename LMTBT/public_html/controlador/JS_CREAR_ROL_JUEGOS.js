@@ -21,6 +21,7 @@ function Get_Teams(id_convocatoria){
         },
         error: function (jqXHR, textStatus) {
             equipos = null;
+            alert("Ha ocurrido un error al conectarse con el servidor.\nIntentelo de nuevo mas tarde.")
         }       
     });
 }
@@ -29,10 +30,10 @@ function CREAR_ROL_JUEGOS(id_convocatoria){//es funcion es la que se debe llamar
     setTimeout(function(){Made_Round_Teams(id_convocatoria);},1000);
 }
 function Made_Round_Teams(id_convocatoria){
-   if(equipos!==null){
+   if(equipos!=null){
        var auxT=equipos.length;
        var impar=auxT%2;
-       if(impar!==0){
+       if(impar!=0){
         equipos.push(0);// si el numero de equipos es impar aqui se agrega un equipo extra (cero) que es el BAY
         ++auxT;
        }
@@ -68,23 +69,23 @@ function Made_Round_Teams(id_convocatoria){
 
 function Insert_Round(locales,visita,tam,id_convocatoria){
     if(equipos!=null){
-    var jsonLocal = JSON.stringify(locales);
-    var jsonVisita = JSON.stringify(visita);
-    $.ajax({
-        url: "../controlador/SRV_INSERTAR_ROL_JUEGOS.php",
-        data: {convocatoria:id_convocatoria,
-               local:jsonLocal,
-               visitante:jsonVisita,
-               tam:tam },
-        type: "POST",
-        cache: false,
-        success: function (resultado){            
-            modificar_torneo_rol_generado(id_convocatoria);
-            modificar_torneo_activo(id_convocatoria);
-        },
-        error: function (jqXHR, textStatus) {
-            alert("No se pudo crear el rol de juego");
-        }       
+        var jsonLocal = JSON.stringify(locales);
+        var jsonVisita = JSON.stringify(visita);
+        $.ajax({
+            url: "../controlador/SRV_INSERTAR_ROL_JUEGOS.php",
+            data: {convocatoria:id_convocatoria,
+                   local:jsonLocal,
+                   visitante:jsonVisita,
+                   tam:tam },
+            type: "POST",
+            cache: false,
+            success: function (resultado){            
+                modificar_torneo_rol_generado(id_convocatoria);
+                modificar_torneo_activo(id_convocatoria);
+            },
+            error: function (jqXHR, textStatus) {
+                alert("Ha ocurrido un error al guardar la informacion. Intentelo de nuevo mas tarde.");
+            }       
     });
 }
 }

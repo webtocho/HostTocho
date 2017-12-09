@@ -1,7 +1,6 @@
-
-function CargarEstadisticas(id_convocatoria){
+function CargarTablaPosiciones(id_convocatoria){
 	$.ajax({
-		url:"../controlador/SRV_OBTENER_ESTADISTICAS.php",
+		url:"../controlador/SRV_OBTENER_TABLA_POSICIONES.php",
 		data: {convocatoria :id_convocatoria },
         type: "POST",
         dataType: 'text',
@@ -12,6 +11,13 @@ function CargarEstadisticas(id_convocatoria){
             else  { 
                 $('#Div_Estadisticas').empty();
                 $('#Div_Estadisticas').append(resultado);
+                $(function () {
+    				$('#horizontalTab').easyResponsiveTabs({
+        				type: 'default', //Types: default, vertical, accordion
+       					width: 'auto', //auto or any width like 600px
+        				fit: true   // 100% fit in a container
+    				});
+				});
             }
         }
 	});
@@ -20,7 +26,7 @@ function CargarEstadisticas(id_convocatoria){
 
 function CargarConvocatorias(estado){
 	$.ajax({
-	url: "../controlador/SRV_OBTENER_CONVOCATORIAS_ESTADISTICAS.php",
+	url: "../controlador/SRV_OBTENER_CONVOCATORIAS_TABLA_POSICIONES.php",
 	data: {tipo : estado },
         type: "POST",
         dataType: 'text',
@@ -39,7 +45,7 @@ function CargarConvocatorias(estado){
 
 function ActualizarEstadisticas(id_convocatoria){
 	$.ajax({
-		 url: "../controlador/SRV_ACTUALIZAR_ESTADISTICAS.php",
+		 url: "../controlador/SRV_ACTUALIZAR_TABLA_CONVOCATORIAS.php",
 		 data: {convocatoria :id_convocatoria },
          type: "POST",
          dataType: 'text',
