@@ -20,7 +20,7 @@ function iniciarSesion(){
     }
 
     $.ajax({
-        url: "../controlador/SRV_CONSULTAS.php",
+        url: "../controlador/SRV_CONSULTA_LOGIN_LOGOUT.php",
         data: {tipo : "login",
                     e_mail : e_mail,
                     password : password
