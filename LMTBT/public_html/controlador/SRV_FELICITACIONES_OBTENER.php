@@ -1,17 +1,28 @@
 <?php
-	$conn = new mysqli("localhost","id3551892_team","tochoweb", "id3551892_tochoweb");
-
-	$query = "SELECT NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO FROM usuarios WHERE DATE_FORMAT(FECHA_NACIMIENTO, '%m%d') = DATE_FORMAT(CURDATE(),'%m%d');";//query para obtener cumpleañeros por dia
+    require 'SRV_CONEXION.php';
+    $db = new SRV_CONEXION();
+    $conn = $db->getConnection();    
+	$query = "SELECT NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,FOTO_PERFIL FROM usuarios WHERE DATE_FORMAT(FECHA_NACIMIENTO, '%m%d') = DATE_FORMAT(CURDATE(),'%m%d');";//query para obtener cumpleañeros por dia
 	$result = $conn->query($query);
 
 	if($result){
-                if(mysqli_num_rows($result)<=0) echo "<p>Hoy no hay cumpleañeros</p>";
+        if(mysqli_num_rows($result)<=0) echo "<div class='item'><a>Hoy no hay cumpleañeros</a></div>";
 		else{
-                    echo "<p>En este día tan especial no hará falta un delicioso pastel para desearte un feliz cumpleaños. ¡Muchas felicidades!</p><br>";
-                    while($row = mysqli_fetch_array($result)){
-			echo "<p><img class='media-left response-text-left' src='img/RC_IF_ICONS_1.png' alt='' style='max-width: 20px; max-height: 20px'> ".$row['NOMBRE']." ".$row['APELLIDO_PATERNO']." ".$row['APELLIDO_MATERNO']."</p><br>";
-                    }
+            $inicia=0;
+            while($row = mysqli_fetch_array($result)){
+                echo "<div class='item'>"; $inicia=1;
+                $foto = base64_encode($row['FOTO_PERFIL']);
+                if($foto==null){
+                    echo "<img class='img-responsive lot' src='img/RF_OF_ICONS_1.png' alt='' />";
+                }else{
+                    echo "<img class='img-responsive lot' src='data:image/png;base64,".$foto."' alt=''/>";
                 }
+                echo "<a>".$row['NOMBRE']." ".$row['APELLIDO_PATERNO']." ".$row['APELLIDO_MATERNO']."</a>";
+                echo "</div>";
+                }
+        }
 	}else echo 1;
+    //media-left response-text-left
+    //style='max-width: 40px; max-height: 40px'
 	$conn->close();
 ?>
