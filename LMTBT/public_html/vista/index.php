@@ -27,7 +27,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
        <script type="text/javascript" src="../controlador/JS_CREAR_ROL_JUEGOS.js"></script>
        <script type='text/javascript' src='../controlador/JS_TORNEOS_ACTIVOS.js'></script>
        <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>
-       
 	   
 	<script type='text/javascript' src='../controlador/JS_SESION_INICIAR_CERRAR.js'></script>
 	
