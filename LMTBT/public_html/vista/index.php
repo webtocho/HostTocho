@@ -26,6 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
        <script type="text/javascript" src="../controlador/JS_REGISTRO_NOTICIAS.js"></script>
        <script type="text/javascript" src="../controlador/JS_CREAR_ROL_JUEGOS.js"></script>
        <script type='text/javascript' src='../controlador/JS_TORNEOS_ACTIVOS.js'></script>
+       <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>
        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <!--/script-->
@@ -235,7 +236,6 @@ $(function () {
                                     <ul class="resp-tabs-list">
                                         <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>PROXIMO PARTIDO</span></li>
                                         <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>HORARIO DE ENTRENAMIENTO</span></li>
-                                        <li class="resp-tab-item grid3" aria-controls="tab_item-1" role="tab"><span>TABLA DE LA LIGA</span></li>
                                     </ul>
                                     <div class="resp-tabs-container">
                                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
@@ -307,53 +307,7 @@ $(function () {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
-                                            <div class="facts">
-                                                <div class="tab_list">
-                                                    <table>
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Team</th>
-                                                                <th>W</th>
-                                                                <th>D</th>
-                                                                <th>L</th>
-                                                                <th>Point</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1.Juventus</td>
-                                                                <td>1</td>
-                                                                <td>3</td>
-                                                                <td>5</td>
-                                                                <td>9</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3. Atlanta</td>
-                                                                <td>0</td>
-                                                                <td>1</td>
-                                                                <td>4</td>
-                                                                <td>6</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3. Juventus</td>
-                                                                <td>7</td>
-                                                                <td>6</td>
-                                                                <td>4</td>
-                                                                <td>7</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4. Pro Soccer</td>
-                                                                <td>12</td>
-                                                                <td>7</td>
-                                                                <td>9</td>
-                                                                <td>20</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <script src="../controlador/JS_PLANTILLA_easyResponsiveTabs.js" type="text/javascript"></script>
                                         <script type="text/javascript">
 $(document).ready(function () {
@@ -369,9 +323,26 @@ $(document).ready(function () {
                             </div>
                         </div>
                         <!--//about-->
+                        <div class="about">
+                            <br><h3 class="tittle">Tabla de Posiciones</h3>
+                            <div class="facts">
+                                <a><h3>Estado del Torneo</h3></a>
+                                <center>
+                                    <button onclick="CargarConvocatorias(1)">En curso</button>
+                                    <button onclick="CargarConvocatorias(2)">Terminados</button>
+                                    <button onclick="CargarConvocatorias(3)">Todos</button>
+                                </center>
+                                <select id="Select_Torneos" class="form-control" onchange="CargarTablaPosiciones(this.value)">
+                                    <option>Click en el Estado del Torneo</option>
+                                </select><br>
+                                <div>
+                                    <table id="Div_Estadisticas" class="table"></table>
+                                </div>
+                            </div>
+                        </div>
                         <!--/video-->
                         <div class="video">
-                            <h3 class="tittle">Ultimo Video</h3>
+                            <br><h3 class="tittle">Ultimo Video</h3>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/dsYQjgz3Z3E" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                         </div>
                         <!--//video-->
