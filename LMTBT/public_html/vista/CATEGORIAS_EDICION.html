@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Editar Categorias</title>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+          
+        <script src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
+        <script type="text/javascript" src="../controlador/JS_CATEGORIAS_EDICION.js"></script>
+        
+    </head>
+    <body> 
+    <div id="alertaSucces" ></div>    
+    
+    <center><h1>CATEGORIAS</h1> </center>
+        <br/><br/>
+        <div class="container" >
+            <div class="table-responsive">
+                <table id="tabla_categorias"  class="table table-condensed">
+                   
+                </table> 
+            </div>
+        </div>
+           
+        <br/><br/>
+       
+        
+        <div class="container">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregar_modal" >Agregar Nuevo</button>                 
+        </div>
+        
+         <!--VENTANA MODAL AGREGAR -->
+        <div id="agregar_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+             <center>
+                   <div class="modal-content">
+                       <div class="modal-header">
+                            <label for="usr">Nombre de la Categoria:</label>
+                       </div>
+                       <div class="modal-body">
+                       <input type="text" class="form-control"  id="nombreCategoria">
+                       </div>
+                       <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"  onclick="agregarCategoria()">Agregar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                      </div>
+                    </div>  
+           </center>
+        </div>
+      </div>
+         
+         
+        <!--VENTANA MODAL ELIMINAR -->
+        <div id="eliminar_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+             <center>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>¿SEGURO QUE DESEA ELIMINAR LA CATEGORIA?</h3> 
+                        </div>
+                        <div class="modal-body">
+                           <h3 id="categoriaNombre">CATEGORIA</h3>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"  onclick="eliminarCategoria()">SI</button>
+                           <button type="button" class="btn btn-primary" data-dismiss="modal">NO</button>      
+                       </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                    
+            </center>
+        </div>
+      </div>
+
+        
+    </body>
+</html>

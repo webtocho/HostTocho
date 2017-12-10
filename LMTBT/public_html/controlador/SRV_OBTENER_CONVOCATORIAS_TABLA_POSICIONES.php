@@ -1,12 +1,10 @@
 <?php
 //AGREGAR EN EL METODO CREACION DE ROL DE JUEGOS UN APARTADO PARA QUE INSERTE LOS EQUIPOS INSCRITOS EN UNA CONVOCATORIA A LA TABLA 
 //ESTADISTICAS, PARA PODER HACER SOLAMENTE ACTUALIZACIONES
-
-    $conn = new mysqli("localhost","id3551892_team","tochoweb", "id3551892_tochoweb");
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require 'SRV_CONEXION.php';
+    $db = new SRV_CONEXION();
+    $conn = $db->getConnection();
+    
     $tipo = $_POST['tipo'];
     $query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria";
    

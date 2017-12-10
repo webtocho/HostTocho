@@ -1,4 +1,3 @@
-var totalDivs;
 function felicitaciones(){
 	$.ajax({
         url: "../controlador/SRV_FELICITACIONES_OBTENER.php",

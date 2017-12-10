@@ -17,7 +17,7 @@ $(document).ready(function(){
 });
 function iniciar_cerrar_session() {    
             $.ajax({
-                        url: "../controlador/SRV_CONSULTAS.php",
+                        url: "../controlador/SRV_LOGIN_LOGOUT.php",
                         data: {"tipo": "iniciar_cerrar_session"},
                         type: "POST",
                         datatype: "text",

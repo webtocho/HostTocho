@@ -17,7 +17,7 @@
                 }else{
                     echo "<img class='img-responsive lot' src='data:image/png;base64,".$foto."' alt=''/>";
                 }
-                echo "<a>".$row['NOMBRE']." ".$row['APELLIDO_PATERNO']." ".$row['APELLIDO_MATERNO']."</a>";
+                echo "<br><a>".$row['NOMBRE']." ".$row['APELLIDO_PATERNO']." ".$row['APELLIDO_MATERNO']."</a>";
                 echo "</div>";
                 }
         }
