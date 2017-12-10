@@ -1,22 +1,18 @@
 <?php
-    /* Devuelve la información de un usuario que tenga iniciada su sesión, en un JSON. 
-       Si la sesión no está iniciada, los atributos del JSON serán nulos.
-       Los atributos son: "id" y "tipo". */
-
+    /* Complemento de comprobarSesion en JS_FUNCIONES.js */
+    
     session_start();
     if (isset($_SESSION["ID_USUARIO"]) && isset($_SESSION["TIPO_USUARIO"])) {
-        $infoUsuario = [
-            "id" => $_SESSION["ID_USUARIO"],
-            "tipo" => $_SESSION["TIPO_USUARIO"]
-        ];
+        //Recuperamos el parámetro arreglo 'tipos' de POST, y hacemos que todos sus elementos sean mayúsculas.
+        $tipos = array_map('strtoupper', json_decode($POST["tipos"]));
         
-        echo json_encode($infoUsuario);
+        //Si el tipo del usuario logueado está en el arreglo 'tipos', el usuario es del tipo correcto.
+        if (in_array($_SESSION["TIPO_USUARIO"], $tipos)){
+            return "si";
+        } else {
+            return "no";
+        }
     } else {
-        $infoUsuario = [
-            "id" => NULL,
-            "tipo" => NULL
-        ];
-        
-        echo json_encode($infoUsuario);
+        return "null";
     }
 ?>

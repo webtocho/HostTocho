@@ -45,7 +45,7 @@ switch ($_POST['tipo']) {
 		$sql = sprintf("SELECT ID_USUARIO, CORREO, tipos_de_usuario.NOMBRE FROM usuarios INNER JOIN tipos_de_usuario ON usuarios.TIPO_USUARIO = tipos_de_usuario.ID_TIPO_USUARIO WHERE CORREO = '%s'  AND PASSWORD = '%s' ", $_POST['e_mail'], $_POST['password']);
 		$db->setQuery($sql);
 		$info = $db->GetRow();
-
+                
 		if ($info['ID_USUARIO']) {
 			$_SESSION['ID_USUARIO'] = $info['ID_USUARIO'];
 			$_SESSION['CORREO'] = $info['CORREO'];
