@@ -1,5 +1,5 @@
-
-function RegistrarCoach(){
+$(document).on('submit','#myForm',function(event){    
+    event.preventDefault();
     var correo = document.getElementById("Correo").value;
     var password = document.getElementById("Password").value;
     var nombre = document.getElementById("nombre").value;
@@ -7,26 +7,14 @@ function RegistrarCoach(){
     var apellido_materno = document.getElementById("ApellidoMaterno").value;
 
     if(correo.trim().length>0 && password.trim().length>0 && nombre.trim().length>0 && apellido_paterno.trim().length>0 && apellido_materno.trim().length>0){
-
         $.ajax({
-            url: "../controlador/SRV_CONSULTAS.php",
-            data: {tipo:"crear_coach",
+            url: "../controlador/SRV_REGISTRO_COACH.php",
+            data: {
             correo: correo,
-            password:password,
-            tipo_usuario:"COACH",
-            estado:"DESCONECTADO",
+            password:password,            
             nombre:nombre,
             apellido_paterno:apellido_paterno,
-            apellido_materno:apellido_materno,
-            /* No necesitan mandar esto. ATTE Javier
-            fecha_nacimiento:"",
-            sexo:"",
-            tipo_sangre:"",
-            telefono:"",
-            foto_perfil:"",
-            facebook:"",
-            instagram:"",
-            twiter:"" */
+            apellido_materno:apellido_materno,            
             },
         type: "POST",
         datatype: "text",
@@ -46,17 +34,13 @@ function RegistrarCoach(){
 
         }
     });
-
-
     }else{
         var mensaje = "Por favor Complete lo siguiente:";
-        if(correo.trim().length>0) mensaje+="\nCorreo electronico";
-        if(password.trim().length>0) mensaje+="\nContraseña";
-        if(nombre.trim().length>0) mensaje+="\nNombre";
-        if(apellido_paterno.trim().length>0) mensaje+="\nApellido Paterno";
-        if(apellido_materno.trim().length>0) mensaje+="\nApellido Materno";
-
-        alert(mensaje);
+        if(correo.trim().length==0) mensaje+="\nCorreo electronico";
+        if(password.trim().length==0) mensaje+="\nContraseña";
+        if(nombre.trim().length==0) mensaje+="\nNombre";
+        if(apellido_paterno.trim().length==0) mensaje+="\nApellido Paterno";
+        if(apellido_materno.trim().length==0) mensaje+="\nApellido Materno";
+        //alert(mensaje);
     }
-
-}
+});

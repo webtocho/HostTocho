@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set('America/Mexico_City');
 
-    define('SQL_HOST', "localhost");
+define('SQL_HOST', "localhost");
 define('SQL_DATABASE', "id3551892_tochoweb");
 define('SQL_USER', "id3551892_team");
 define('SQL_PASSWORD', "tochoweb");
@@ -76,26 +76,7 @@ define('SQL_PASSWORD', "tochoweb");
             }
             session_destroy();
             echo "ok";
-            break;
-        case "crear_coach":
-            //Crea un nuevo usuario de tipo choach.
-            //Falta comprobar que no se creen cuentas con apellidos ni correos repetidos.
-            $conexion = $db->getConnection();
-            $consulta = $conexion->prepare('INSERT INTO usuarios(ID_USUARIO, CORREO, PASSWORD, TIPO_USUARIO, ESTADO, NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, FECHA_NACIMIENTO, SEXO, TIPO_SANGRE, TELEFONO, FOTO_PERFIL, FACEBOOK, INSTAGRAM, TWITTER, ID_REGISTRADOR) VALUES (0, ?, ?, ?, ?, ?, ?, ?, null, null, null, null, null, null, null, null, null)');
-            $consulta->bind_param("sssssss",$_POST['correo'], $_POST['password'], $_POST['tipo_usuario'], $_POST['estado'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno']);
-            if($consulta->execute()){
-                echo "ok";
-            } else {
-                echo $consulta->error;
-            }
-            
-            $consulta->close();
-            /* CÓDIGO VIEJO
-            $sql = sprintf("INSERT INTO usuarios(CORREO, PASSWORD, TIPO_USUARIO, ESTADO, NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, FECHA_NACIMIENTO, SEXO, TIPO_SANGRE, TELEFONO, FOTO_PERFIL, FACEBOOK, INSTAGRAM, TWITTER) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", $_POST['correo'], $_POST['password'], $_POST['tipo_usuario'], $_POST['estado'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno'], $_POST['fecha_nacimiento'], $_POST['sexo'], $_POST['tipo_sangre'], $_POST['telefono'], $_POST['foto_perfil'], $_POST['facebook'], $_POST['instagram'], $_POST['twiter']);
-            $db->setQuery($sql);
-            $db->ExecuteQuery();
-            echo "ok";*/
-            break;
+            break;      
         case "get_info_cuenta":
             /**
              * Permite obtener la información de una cuenta.

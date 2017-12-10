@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
         <title>Registro de coach</title>
@@ -7,24 +7,20 @@
             <link type="text/css" rel="stylesheet" href="css/style_registro_coach.css" />
 		<script src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
 		<script  src="../controlador/JS_REGISTRO_COACH.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript">
-    		var WEB_ROOT = "http://" + document.location.hostname + "/Web_Tocho";
-
-    </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     </head>
     <body id="body">
 		<center>
 			<div class="form">
 			<h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Registrar Coach</h1>
 			<form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
-			<input placeholder="Correo" type="email" name="Correo" id="Correo">
-			<input placeholder="Contraseña" type="password" name="Pass" id="Password"> 
-			<input placeholder="Nombre" type="text" name="nombre" id="nombre">
-			<input placeholder="Apellido Paterno" type="text" name="ApellidoPaterno" id="ApellidoPaterno">
-			<input placeholder="Apellido Materno" type="text" name="ApellidoMaterno" id="ApellidoMaterno">
-			<center><input type="button" value="Registrar" onClick="RegistrarCoach();" id="btn-submitdos"></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
-			</form>
+                        <input type="email" placeholder="Correo" name="Correo" id="Correo" required>
+                        <input placeholder="Contraseña" type="password" name="Pass" id="Password" pattern=".{7,}" title="7 o mas caracteres" required>
+                        <input placeholder="Nombre" type="text" name="nombre" id="nombre" required>
+                        <input placeholder="Apellido Paterno" type="text" name="ApellidoPaterno" id="ApellidoPaterno" required>
+                        <input placeholder="Apellido Materno" type="text" name="ApellidoMaterno" id="ApellidoMaterno" required>
+			<center><input type="submit" value="Registrar" id="btn-submitdos"></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
+                        </form>
 			</div>
 		</center>
     </body>
