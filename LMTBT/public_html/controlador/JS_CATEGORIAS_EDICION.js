@@ -44,21 +44,15 @@ function eliminarCategoria(){
                
             }
         });   
-        cerrarVentanaEliminar();
+      
 }
-function ventanaEliminar(id){
+
+function setIdCategoria(id, nombre){
+    
     idCategoria =id;
-    $('#eliminarCategoria').modal(); 
-}
-function cerrarVentanaEliminar(){
-     $('#eliminarCategoria').modal('hide');
-}
-function ventanaAgregar(){
-     $('#agregarCategoria').modal();  
-}
-function cerrarVentanaAgregar(){
-     $('#agregarCategoria').modal('hide');
-       $('#nombreCategoria').val("");
+    $('#categoriaNombre').empty();
+    $('#categoriaNombre').append(nombre);
+    
 }
 function agregarCategoria(){
     nombre = $('#nombreCategoria').val().trim();
@@ -81,10 +75,9 @@ function agregarCategoria(){
              }
          });
     }
-          cerrarVentanaAgregar();
+        
           $('#nombreCategoria').val("");
 }
-
 function mostrarAlerta(texto){
     alerta ="<div class='alert alert-success'><strong>Success!</strong> "+texto+" </div>";   
     $('#alertaSucces').empty();

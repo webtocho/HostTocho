@@ -17,9 +17,9 @@
                     else{
                         while($row = mysqli_fetch_array($result)){// recorremos el arreglo de la consulta
                             echo $row['NOMBRE_CATEGORIA'];
-                            // llenar la tabla con las categorias
+                            // llenar la tabla con las categorias       
                              echo "<tr> <td>".$row['NOMBRE_CATEGORIA']."</td>"; //imprimimos el nombre
-                             echo "<td><button type='button' class='btn btn-warning' onclick='ventanaEliminar(".$row['ID_CATEGORIA'].")'>Eliminar</button></td></tr>"; //imprimimo el boton
+                             echo "<td><button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#eliminar_modal' onclick='setIdCategoria(".$row['ID_CATEGORIA'].",\"".$row['NOMBRE_CATEGORIA']."\")'  >Eliminar</button></td></tr>"; //imprimimo el boton
                         }
                     }
                 }else{ }//eror
