@@ -50,7 +50,6 @@ function ActualizarEstadisticas(id_convocatoria){
          type: "POST",
          dataType: 'text',
 		 success: function(resultado){
-		 	//alert("Se han actualizado las estadisticas");
 		 	alert(resultado);
 		 }
 	});
