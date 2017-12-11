@@ -8,7 +8,7 @@ define("MIEMBROS_MAXIMOS_DE_ROSTER", 12);
 define("MIEMBROS_MINIMOS_DE_ROSTER", 3);
 
 include("SRV_CONEXION.php");
-$db = new SRV_CONEXcaION();
+$db = new SRV_CONEXION();
 
 function obtener_condiciones_de_categoria($categoria) {
 	switch ($categoria) {
@@ -1872,6 +1872,7 @@ switch ($_POST['tipo']) {
 				$db->ExecuteQuery();
 				echo "ok";
 			} else if ($tipo == "png") {
+                                //cambiar dimension de la imagen
 				$original = imagecreatefrompng($temporal);
 				$ancho_original = imagesx($original);
 				$alto_original = imagesy($original);
@@ -1896,7 +1897,7 @@ switch ($_POST['tipo']) {
 		$conexion = $db->getConnection();
 		$sql = "SELECT * FROM noticias";
 		$resultado = $conexion->query($sql);
-		while ($fila = $resultado->fetch_assoc()) {
+		while ($fila = $resultado->fetch_assoc()){
 			$noticias["IMAGEN_NOTICIA"] = base64_encode($fila["IMAGEN_NOTICIA"]);
 			echo "<li>" .
 			"<div class='blog-img'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'class='img-responsive' alt=''/>" .

@@ -30,22 +30,26 @@ $(document).on('submit','#formlg',function(event){
         type: "POST",
         data:formData,    
         contentType: false,
-        processData: false,      
+        processData: false,
+        beforeSend: function(xhr){           
+            $('#alertaSucces').empty();
+            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+        },
             success: function(resultado){              
                 //window.locaton.replace("index.php");
                 if(resultado == "ok"){
-                    alert("Registro realizado con exito");
-                    window.location.replace("index.php");
-                }else{
-                    //alert(resultado);
+                    //alert("Registro realizado con exito");
+                    //window.location.replace("index.php");
+                    mostrarAlerta("Registro realizado con exito","correcto");
+                }else{                    
+                    mostrarAlerta(resultado,"fallido");
                 }
             },
-            error: function(jqXHR, textStatus) {               
-                //alert("No se ejecuto");
+            error: function(jqXHR, textStatus) {                               
             }
      });
     }else{
-        alert("Debes llenar todos los campos del formulario");
+        mostrarAlerta("Debes llenar todos los campos","fallido");
     }
 });
 function validarCampos(){

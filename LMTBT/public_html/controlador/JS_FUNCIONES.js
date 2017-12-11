@@ -76,7 +76,7 @@ function mostrarAlerta(texto,tipo){
     }   
     $('#alertaSucces').empty();
     $('#alertaSucces').append(alerta);
-    setTimeout(borrarAlert, 5000);
+    setTimeout(borrarAlert, 10000);
 }
 /*
  * Elimina el mensaje de la pantalla
