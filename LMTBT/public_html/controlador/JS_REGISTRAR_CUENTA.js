@@ -67,14 +67,15 @@ function RegistrarCuenta(){
             console.log(respuesta);
             if(respuesta == "ok") {
                 restaurar();
-                mostrarAlerta("Registro realizado con exito.")
+                mostrarAlerta("Registro realizado con exito.","correcto");
                 
             }else{
+                 mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
                 alert(respuesta);
             }
         },
         error: function(jqXHR, textStatus) {
-
+               mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
         }
     });
 
@@ -91,12 +92,3 @@ function RegistrarCuenta(){
 
 }
 
-function mostrarAlerta(texto){
-    alerta ="<div class='alert alert-success'><strong>Success!</strong> "+texto+" </div>";   
-    $('#alertaSucces').empty();
-    $('#alertaSucces').append(alerta);
-    setTimeout(borrarAlert, 3000);
-}
-function borrarAlert(){
-     $('#alertaSucces').empty(); 
-}

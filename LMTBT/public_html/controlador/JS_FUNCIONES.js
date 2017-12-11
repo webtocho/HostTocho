@@ -67,6 +67,8 @@ function capitalizar(s) {
  * Recive una cadena con el mensaje a mostrar en la pantalla esto se debe ejecutar al momento
  * en que nosotros obtenemos respuesta del servidor dependiendo el resultado
  * dicho mensaje se mostrara por tres segundos
+ * debe existir un div con id alertaSucces
+ *  @param {string, string} texto : texto que desea mostrar, tipo: "correcto" alerta en verde "error" elerta en rojo.
  */
 function mostrarAlerta(texto,tipo){
     if(tipo === "correcto"){
