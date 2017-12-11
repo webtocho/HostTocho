@@ -23,7 +23,7 @@ function expulsar(){
 function comprobarSesion(tipos){
     if(tipos.length === 0)
         return null;
-    
+   
     $.post( "../controlador/SRV_GET_SESION.php", {tipos : JSON.stringify(tipos)}, "text")
         .done(function(res) {
             if(res === "si")
@@ -61,4 +61,26 @@ function validarNum(num){
  */
 function capitalizar(s) {
     return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+}
+
+/*
+ * Recive una cadena con el mensaje a mostrar en la pantalla esto se debe ejecutar al momento
+ * en que nosotros obtenemos respuesta del servidor dependiendo el resultado
+ * dicho mensaje se mostrara por tres segundos
+ */
+function mostrarAlerta(texto,tipo){
+    if(tipo === "correcto"){
+        alerta ="<div class='alert alert-success'><strong>Success!</strong> "+texto+" </div>";
+    }else{
+        alerta ="<div class='alert alert-danger'><strong>Failed!</strong> "+texto+" </div>";
+    }   
+    $('#alertaSucces').empty();
+    $('#alertaSucces').append(alerta);
+    setTimeout(borrarAlert, 5000);
+}
+/*
+ * Elimina el mensaje de la pantalla
+ */
+function borrarAlert(){
+     $('#alertaSucces').empty(); 
 }

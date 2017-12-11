@@ -2,7 +2,7 @@
     /* Complemento de comprobarSesion en JS_FUNCIONES.js */
     
     session_start();
-    if (isset($_SESSION["ID_USUARIO"]) && isset($_SESSION["TIPO_USUARIO"])) {
+    if (isset($_SESSION["ID_USUARIO"]) && isset($_SESSION["TIPO_USUARIO"])){
         //Recuperamos el parámetro arreglo 'tipos' de POST, y hacemos que todos sus elementos sean mayúsculas.
         $tipos = array_map('strtoupper', json_decode($POST["tipos"]));
         

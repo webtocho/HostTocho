@@ -18,16 +18,17 @@ $(document).on('submit','#myForm',function(event){
             },
         type: "POST",
         datatype: "text",
-        beforeSend: function(xhr) {
-
+        beforeSend: function(xhr) {           
+            $('#alertaSucces').empty();
+            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
         },
         success: function(respuesta) {
             console.log(respuesta);
-            if(respuesta == "ok") {
-                alert("Registro realizado con exito.");
-                window.location.replace("index.php");
-            }else{
-                alert(respuesta);
+            if(respuesta == "ok") {               
+                mostrarAlerta("Registro realizado con exito.","correcto");
+                //window.location.replace("index.php");
+            }else{               
+                mostrarAlerta(respuesta,"fallido");
             }
         },
         error: function(jqXHR, textStatus) {
@@ -41,6 +42,6 @@ $(document).on('submit','#myForm',function(event){
         if(nombre.trim().length==0) mensaje+="\nNombre";
         if(apellido_paterno.trim().length==0) mensaje+="\nApellido Paterno";
         if(apellido_materno.trim().length==0) mensaje+="\nApellido Materno";
-        //alert(mensaje);
+        mostrarAlerta(mensaje,"fallido");
     }
 });
