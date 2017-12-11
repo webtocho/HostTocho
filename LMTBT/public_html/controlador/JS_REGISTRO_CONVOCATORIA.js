@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$(document).ready(function(){   
+/*$(document).ready(function(){
    accesoConvocatoria();
 });
 function accesoConvocatoria(){
@@ -20,15 +20,13 @@ function accesoConvocatoria(){
         error: function (jqXHR, textStatus) {
         }
         });
-}
-$(document).on('submit','#formlg',function(event){    
-    event.preventDefault();    
-    var formData = new FormData($('#formlg')[0]);
-    formData.append("tipo","insertar_convocatoria");
-    formData.append("estado","INACTIVO");  
+}*/
+$(document).on('submit','#formlg',function(event){
+    event.preventDefault();
+    var formData = new FormData($('#formlg')[0]);    
     if(validarCampos() === true){
      $.ajax({
-        url: "../controlador/SRV_CONSULTAS.php",
+        url: "../controlador/SRV_REGISTRO_CONVOCATORIA.php",
         type: "POST",
         data:formData,    
         contentType: false,

@@ -8,7 +8,7 @@ define("MIEMBROS_MAXIMOS_DE_ROSTER", 12);
 define("MIEMBROS_MINIMOS_DE_ROSTER", 3);
 
 include("SRV_CONEXION.php");
-$db = new SRV_CONEXION();
+$db = new SRV_CONEXcaION();
 
 function obtener_condiciones_de_categoria($categoria) {
 	switch ($categoria) {
@@ -514,7 +514,7 @@ switch ($_POST['tipo']) {
 			$fp = fopen($_FILES['FOTO_PERFIL']['tmp_name'], 'r+');
 			$foto_original = imagecreatefromstring(fread($fp, filesize($_FILES['FOTO_PERFIL']['tmp_name'])));
 			fclose($fp);
-
+                        
 			//Calculamos el ancho y alto para una versión de la imagen achicada.
 			$alto = 150;
 			$ancho = imagesx($foto_original) / imagesy($foto_original) * $alto;
@@ -1793,7 +1793,7 @@ switch ($_POST['tipo']) {
 		}
 		$conexion->autocommit(TRUE);
 		break;
-	case "insertar_convocatoria":
+	/*case "insertar_convocatoria":
 		$id = 0;
 		$nombre_torneo = $_POST['nombre'];
 		$fecha_cierre_convocatoria = $_POST['fecha_cierre'];
@@ -1844,7 +1844,7 @@ switch ($_POST['tipo']) {
 		} else {
 			echo "Ingresa una categoria validad";
 		}
-		break;
+		break;*/
 	case "insertar_noticia":
 		$id = 0;
 		$titulo_noticia = $_POST['titulo_noticia'];
