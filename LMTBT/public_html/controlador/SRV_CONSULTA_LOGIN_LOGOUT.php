@@ -7,8 +7,11 @@ $db = new SRV_CONEXION();
 
 switch ($_POST['tipo']) {
 	case "login":
+		// preparar una consilta para recuperar los datos del usuario para la SESSION
 		$consulta = $db->getConnection()->prepare("SELECT ID_USUARIO, CORREO, TIPO_USUARIO FROM usuarios WHERE CORREO = ?  AND PASSWORD = ?");
 		$consulta->bind_param("ss", $_POST['e_mail'], $_POST['password']);
+		//si al recuperar la informacion todo sale bien entonces asociamos los datos y le asignamos valores a las variables de SESSION
+		// de lo contrario el correo y la contraseña con la que inician sessionson invalidos.
 		if ($consulta->execute()) {
 			$res = $consulta->get_result();
 			$info = $res->fetch_assoc();
@@ -25,12 +28,14 @@ switch ($_POST['tipo']) {
 		}
 		break;
 	case "logout":
+		// borramos la cookie de la SESSION.
 		if (ini_get("session.use_cookies")) {
 			$params = session_get_cookie_params();
 			setcookie(
 					session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]
 			);
 		}
+		// destruimos la SESSION.
 		session_destroy();
 		echo "ok";
 		break;

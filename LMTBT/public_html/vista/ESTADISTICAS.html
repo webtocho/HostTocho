@@ -6,24 +6,26 @@
 	</title>
 	<meta charset="utf-8">
 	<link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
 		<script type="text/javascript" src="../controlador/JS_ESTADISTICAS.js"></script>
 </head>
 <body>
 	<div>
-            <center><h1>Estadisticas de Torneos</h1></center><br> 
+            <center><h1><a>Estado del Torneo</a></h1></center>
             <center>
-                <button onclick="CargarConvocatorias(1)" class="btn btn-warning">En curso</button>
-		<button onclick="CargarConvocatorias(2)" class="btn btn-info">Terminados</button>
-		<button onclick="CargarConvocatorias(3)" class="btn btn-success">Todos</button>
-            </center><br>
-            <select id="Select_Torneos" class="form-control" onchange="CargarEstadisticas(this.value)">
-		<option>Cargando...</option>
-            </select><br>
-            <div id="Div_Estadisticas" ></div>
+                <button onclick="CargarConvocatorias(1)" class="btn btn-primary">En curso</button>
+                <button onclick="CargarConvocatorias(2)" class="btn btn-success">Terminado</button>
+                <button onclick="CargarConvocatorias(3)" class="btn btn-warning">Todos</button>
+            </center>
+            <center><h2><a>Torneos</a></h2></center>
+            <select id="Select_Torneos" class="form-control" onchange="CargarEquipos(this.value)">
+                            <option value='' disabled selected hidden>Elige estado del torneo...</option>
+            </select>
+            <center><h2><a>Equipos</a></h2></center>
+            <select id="Select_Equipos" class="form-control" onchange="CargarEstadisticas(this.value)"></select><br>
+            <div id="Estadisticas" style="padding-left:5px;padding-right: 5px;"></div>
 	</div>
-	
-
 	
 	<script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap-3.1.1.min.js"></script>
 </body>

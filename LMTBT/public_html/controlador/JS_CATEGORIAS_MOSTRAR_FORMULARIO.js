@@ -6,9 +6,10 @@
 $(document).ready(function () {
 	mostrar_categorias_al_registrar_convocatoria();
 });
-function mostrar_categorias_al_registrar_convocatoria(){
-$.ajax({
-url: "../controlador/SRV_CATEGORIAS_MOSTRAR_FORMULARIO.php",
+// recuperamos la lista de categorias disponibles para el registro de convocatorias, y la añadimos al select correspondiente
+function mostrar_categorias_al_registrar_convocatoria() {
+	$.ajax({
+		url: "../controlador/SRV_CATEGORIAS_MOSTRAR_FORMULARIO.php",
 		data: {"tipo": "mostrar_categorias_al_registrar_convocatoria"},
 		type: "POST",
 		datatype: "text",
@@ -21,5 +22,5 @@ url: "../controlador/SRV_CATEGORIAS_MOSTRAR_FORMULARIO.php",
 			}
 		},
 		error: function (jqXHR, textStatus) {}
-});
+	});
 }

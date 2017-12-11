@@ -14,12 +14,12 @@
     $result = $conn->query($query);
     
     if($result&&mysqli_num_rows($result)>0){
-        echo '<option value=0>Selecciona una convocatoria</option>';
+        echo "<option value='' disabled selected hidden>Selecciona una convocatoria...</option>";
     	while($row =  mysqli_fetch_array($result)){
     		echo '<option value='.$row['ID_CONVOCATORIA'].'>'.$row['NOMBRE_TORNEO'].'</option>';
     	}
     }
-    else echo '<option value=0>No hay torneos</option>';
+    else echo "<option value='' disabled selected hidden>No hay torneos</option>";
     
     $conn->close();
 ?>
