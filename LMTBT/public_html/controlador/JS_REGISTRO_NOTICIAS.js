@@ -3,35 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function ejecutar_recuperar_noticias(){  
+function ejecutar_recuperar_noticias(){
     var ejecutar = setInterval(function(){recuperar_noticias()},5000);    
 }
 $(document).on('submit','#form_noticias',function(event){
     event.preventDefault();
     var formData = new FormData($('#form_noticias')[0]);
-    formData.append("tipo","insertar_noticia");
     if(comprobar_datos() == true){
     $.ajax({
-        url: "../controlador/SRV_CONSULTAS.php",
+        url: "../controlador/SRV_REGISTRO_NOTICIAS.php",
         type: "POST",
         data:formData,
         contentType: false,
         processData: false,
+        beforeSend: function(xhr){        
+            $('#alertaSucces').empty();
+            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+        },
             success: function(resultado){
                 //window.locaton.replace("index.php");
-                if(resultado == "ok"){                    
-                    alert("Registro realizado con exito");
-                    window.location.replace("index.php");
-                }else{
-                    //alert(resultado);
+                if(resultado == "ok"){                                      
+                    mostrarAlerta("Registro realizado con exito","correcto");
+                    //window.location.replace("index.php");
+                }else{                    
+                    mostrarAlerta(resultado,"fallido");
                 }
             },
             error: function(jqXHR, textStatus) {
                 //alert("No se ejecuto");
             }
     });
-    }else{
-        alert("Debes de llenar todos los campos");
+    }else{       
+        mostrarAlerta("Debes de llenar todos los campos","fallido");
     }
 });
 function comprobar_datos(){

@@ -31,7 +31,7 @@ $(document).on('submit','#formlg',function(event){
         data:formData,    
         contentType: false,
         processData: false,
-        beforeSend: function(xhr){           
+        beforeSend: function(xhr){        
             $('#alertaSucces').empty();
             $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
         },

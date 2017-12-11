@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 $(document).ready(function(){   
-   accesoNoticia();
+   //accesoNoticia();
 });
 function accesoNoticia(){
     $.ajax({
