@@ -13,7 +13,7 @@ switch ($_POST['tipo']) {
 			$resultado = $consulta->get_result();
 			$categorias = "<option value=''>Seleccione una categoria</option>";
 			while ($lista_categorias = $resultado->fetch_assoc())
-				$categorias .= "<option value='".$lista_categorias['ID_CATEGORIA'] . "'>".$lista_categorias['NOMBRE_CATEGORIA']."</option>";			
+				$categorias .= "<option value='".$lista_categorias['NOMBRE_CATEGORIA'] . "'>".$lista_categorias['NOMBRE_CATEGORIA']."</option>";
 			echo $categorias;
 		} else {
 			echo "Ha ocurrido un error al recuperar la informacion solicitada. Intente mas tarde porfavor.";

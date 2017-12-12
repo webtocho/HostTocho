@@ -33,14 +33,14 @@ function eliminarCategoria(){
             success: function (respuesta) {
                 if(respuesta=="1"){
                     cargarCategorias();
-                    mostrarAlerta("Se ha eliminado correctamente");
+                    mostrarAlerta("Se ha eliminado correctamente","correcto");
                 }else{
-                    alert("no se ejecuto");
+                      mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
                 }
                
             },
             error: function (jqXHR, textStatus) {
-                alert("error eliminar");
+                  mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
                
             }
         });   
@@ -65,25 +65,18 @@ function agregarCategoria(){
              datatype: "text",
              success: function (respuesta) {
                 if (respuesta.toString()=="1"){
-                    mostrarAlerta("Se ha agregado correctamente");
+                    mostrarAlerta("Se ha agregado correctamente","correcto");
                     cargarCategorias();
-                }else{}//error
+                }else{
+                     mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
+                }//error
              },
              error: function (jqXHR, textStatus) {
-                 alert("error al agregar");
+                 mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
 
              }
          });
     }
         
           $('#nombreCategoria').val("");
-}
-function mostrarAlerta(texto){
-    alerta ="<div class='alert alert-success'><strong>Success!</strong> "+texto+" </div>";   
-    $('#alertaSucces').empty();
-    $('#alertaSucces').append(alerta);
-    setTimeout(borrarAlert, 3000);
-}
-function borrarAlert(){
-     $('#alertaSucces').empty(); 
 }

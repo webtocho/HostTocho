@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$(document).ready(function(){   
+/*$(document).ready(function(){
    accesoConvocatoria();
 });
 function accesoConvocatoria(){
@@ -20,34 +20,36 @@ function accesoConvocatoria(){
         error: function (jqXHR, textStatus) {
         }
         });
-}
-$(document).on('submit','#formlg',function(event){    
-    event.preventDefault();    
-    var formData = new FormData($('#formlg')[0]);
-    formData.append("tipo","insertar_convocatoria");
-    formData.append("estado","INACTIVO");  
+}*/
+$(document).on('submit','#formlg',function(event){
+    event.preventDefault();
+    var formData = new FormData($('#formlg')[0]);    
     if(validarCampos() === true){
      $.ajax({
-        url: "../controlador/SRV_CONSULTAS.php",
+        url: "../controlador/SRV_REGISTRO_CONVOCATORIA.php",
         type: "POST",
         data:formData,    
         contentType: false,
-        processData: false,      
+        processData: false,
+        beforeSend: function(xhr){        
+            $('#alertaSucces').empty();
+            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+        },
             success: function(resultado){              
                 //window.locaton.replace("index.php");
                 if(resultado == "ok"){
-                    alert("Registro realizado con exito");
-                    window.location.replace("index.php");
-                }else{
-                    //alert(resultado);
+                    //alert("Registro realizado con exito");
+                    //window.location.replace("index.php");
+                    mostrarAlerta("Registro realizado con exito","correcto");
+                }else{                    
+                    mostrarAlerta(resultado,"fallido");
                 }
             },
-            error: function(jqXHR, textStatus) {               
-                //alert("No se ejecuto");
+            error: function(jqXHR, textStatus) {                               
             }
      });
     }else{
-        alert("Debes llenar todos los campos del formulario");
+        mostrarAlerta("Debes llenar todos los campos","fallido");
     }
 });
 function validarCampos(){
