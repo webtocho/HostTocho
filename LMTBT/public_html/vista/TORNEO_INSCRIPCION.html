@@ -8,32 +8,33 @@ and open the template in the editor.
     <head>
         <title> INSCRIPCIÓN </title>
         <link type="text/css" rel="stylesheet" href="css/style_torneo_inscripcion.css" />
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css" />
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css" />
         <script src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script src="../controlador/JS_LIBRERIAS_bootstrap-3.1.1.min.js"></script>
         <script  src="../controlador/JS_TORNEO_INSCRIPCION.js"></script>
         <meta charset="UTF-8">
 
 </head>
 <body id="body">
-    
+     <div id="alert"></div>
 <center>
-    <div class="form">
+    
+    <div class="form" id="form">
+       
       <form>
             <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;"> Inscripción </h1>
                    <select name="Categoria" id="Categoria">
-                       <option value="Seleccione">Seleccione</option>
-                       <option value="VARONIL">VARONIL</option>
-                       <option value="FEMENIL">FEMENIL</option>
-                       <option value="MIXTO">MIXTO</option>
-                       <option value="HEAVY">HEAVY WEIGTH</option>
-                       <option value="RABBIT">RABBIT</option>
+                       <option value="Seleccione" disabled selected>Seleccione</option>
+                      
                    </select>
 
                    <select name="Torneos" id="Torneos">
-                   <option value="Seleccione">Seleccione</option>
+                   <option value="Seleccione" disabled selected>Seleccione</option>
                    </select>
 
                    <select name="Equipo" id="Equipo" >
-                   <option value="Seleccione">Seleccione</option>
+                   <option value="Seleccione" disabled selected>Seleccione</option>
                    </select>
 
                    <input type="button" value="Inscribir" onclick="InscribirEquipo()" class="posicion" id="btn-submitdos"><br><br><br>
