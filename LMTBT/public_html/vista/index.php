@@ -175,6 +175,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</li>
                                 <li id = "acceso_torneo_coach"></li>
                                 <li id = "acceso_crear_noticias"></li>
+                                 <li id = "acceso_convocatoria"></li>
                                  <li id = "acceso_asignacion_horarios"></li>
                                  <li id = "acceso_perfiles_usuarios"></li>
                                <li id = "iniciar_cerrar_session"></li>                                
