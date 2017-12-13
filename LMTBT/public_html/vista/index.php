@@ -23,7 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="text/javascript" src="../controlador/JS_FELICITACIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_VALIDAR_ACCESO_USUARIO.js"></script>
         <script type="text/javascript" src="../controlador/JS_CONVOCATORIAS_VENCIDAS.js"></script>
-        <script type="text/javascript" src="../controlador/JS_REGISTRO_NOTICIAS.js"></script>
+        <script type="text/javascript" src="../controlador/JS_RECUPERAR_NOTICIAS.js"></script>
         <script type="text/javascript" src="../controlador/JS_CREAR_ROL_JUEGOS.js"></script>
         <script type='text/javascript' src='../controlador/JS_TORNEOS_ACTIVOS.js'></script>
         <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>	   

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-document.write("<script type='text/javascript' src='../controlador/JS_CONVOCATORIAS_VENCIDAS.js'></script>");
-document.write("<script type='text/javascript' src='../controlador/JS_TORNEOS_ACTIVOS.js'></script>");
-document.write("<script type='text/javascript' src='../controlador/JS_REGISTRO_NOTICIAS.js'></script>");
+//document.write("<script type='text/javascript' src='../controlador/JS_CONVOCATORIAS_VENCIDAS.js'></script>");
+//document.write("<script type='text/javascript' src='../controlador/JS_TORNEOS_ACTIVOS.js'></script>");
+//document.write("<script type='text/javascript' src='../controlador/JS_REGISTRO_NOTICIAS.js'></script>");
 $(document).ready(function(){   
     acceso_crear_noticias();
     acceso_asignacion_horarios();
@@ -15,7 +15,7 @@ $(document).ready(function(){
     acceso_torneo_coach();    
     ejecutar_recuperar_noticias();
 });
-function iniciar_cerrar_session() {    
+function iniciar_cerrar_session() {
             $.ajax({
                         url: "../controlador/SRV_LOGIN_LOGOUT.php",
                         data: {"tipo": "iniciar_cerrar_session"},
