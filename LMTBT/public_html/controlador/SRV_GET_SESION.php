@@ -1,18 +1,37 @@
 <?php
-    /* Complemento de comprobarSesion en JS_FUNCIONES.js */
+    /*  CÓMO LLAMAR A ESTE PHP: 
+        $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
+        .done(function(res) {
+            switch(parseInt(res)){
+                case 0:
+                    //Es un administrador
+                    break;
+                case 1:
+                    //Es un coach
+                    break;
+                default:
+                    //Es un usuario que no es ni coach, ni administrador.
+                    return;
+            }
+        })
+        .fail(function() {
+            //Hubo un error
+        });*/
     
     session_start();
-    if (isset($_SESSION["ID_USUARIO"]) && isset($_SESSION["TIPO_USUARIO"])){
+    include("SRV_FUNCIONES.php");
+    
+    if (isset($_SESSION["ID_USUARIO"]) && isset($_SESSION["TIPO_USUARIO"])) {
         //Recuperamos el parámetro arreglo 'tipos' de POST, y hacemos que todos sus elementos sean mayúsculas.
-        $tipos = array_map('strtoupper', json_decode($POST["tipos"]));
+        $tipos = array_map('strtoupper', $_POST["tipos"]);
         
         //Si el tipo del usuario logueado está en el arreglo 'tipos', el usuario es del tipo correcto.
         if (in_array($_SESSION["TIPO_USUARIO"], $tipos)){
-            return "si";
+            echo array_search($_SESSION["TIPO_USUARIO"], $tipos);
         } else {
-            return "no";
+            echo "-1";
         }
     } else {
-        return "null";
+        lanzar_error("No ha iniciado sesión", false);
     }
 ?>
