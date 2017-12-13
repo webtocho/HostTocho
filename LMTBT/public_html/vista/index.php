@@ -125,8 +125,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <li><a href="calendario.html">Mes</a></li>
                                         <li class="divider"></li>
                                     </ul>
-                                </li>-->
-                                <li><a href="ESTADISTICAS.html">Estadisticas</a></li>
+                                </li>-->                                
                                <!-- <li class="dropdown">
                                     <a href="equipos.html" class="dropdown-toggle" data-toggle="dropdown">Equipos<b class="caret"></b></a>
                                     <ul class="dropdown-menu multi-column columns-2">
@@ -159,28 +158,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             </div>
                                         </div>
                                     </ul>
-                                </li>-->
-                               <li>
-                                   <a href='REGISTRO_COACH.html'>Registrar coach</a>
-                               </li>
-                               <li>
-				<a href='EQUIPOS_EDICION.html'>Edicion equipos</a>
-			</li>
-                               <li>
-                                   <a href='ROLES_JUEGO.html'>Roles de juego</a>
-                               </li>                               
-			<li>
-				<a href='REGISTRAR_JUGADOR.html'>Registrar Jugador</a>
-			</li>
-			<li>
-				<a href='CONVOCATORIA.html'>Convocatoria</a>
-			</li>
-                                <li id = "acceso_torneo_coach"></li>
+                                </li>-->   
+                                <li id = "acceso_asignacion_horarios"></li>
+                                <li id = "acceso_categorias_edicion"></li>
+                                <li id = "acceso_registrar_coach">
+                                   <!--<a href='REGISTRO_COACH.html'>Registrar coach</a>-->
+                                </li>
+                                <li id = "acceso_convocatoria"></li> 
+                                <li id = "acceso_cuentas_busqueda"></li>
+                                <li id = "acceso_cuentas_detalles"></li>                                
+                                <li id = "acceso_equipos_ver"></li>    
+                                <li id = "acceso_estadisticas"></li>                                    
                                 <li id = "acceso_crear_noticias"></li>
-                                 <li id = "acceso_convocatoria"></li>
-                                 <li id = "acceso_asignacion_horarios"></li>
-                                 <li id = "acceso_perfiles_usuarios"></li>
-                               <li id = "iniciar_cerrar_session"></li>                                
+                                <li id = "acceso_registrar_jugador">
+				<!--<a href='REGISTRAR_JUGADOR.html'>Registrar Jugador</a>-->
+                                </li>
+                                <li id = "acceso_registro_cuenta"></li>
+                                
+                                <li id = "acceso_roles_juego">
+                                   <!--<a href='ROLES_JUEGO.html'>Roles de juego</a>-->
+                                </li>    
+                                <li id = "acceso_torneo_inscripcion"></li>                                
+                                <li id = "iniciar_cerrar_session"></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                             </ul>
                         </div>
                         <!--/.navbar-collapse-->

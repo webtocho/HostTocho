@@ -19,7 +19,6 @@ $( document ).ready(function() {
         .fail(function() {
             expulsar();
         });
-
 });
 $(document).on('submit','#form_noticias',function(event){
     event.preventDefault();
