@@ -21,14 +21,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="text/javascript" src="../controlador/JS_PLANTILLA_move-top.js"></script>
         <script type="text/javascript" src="../controlador/JS_PLANTILLA_easing.js"></script>
         <script type="text/javascript" src="../controlador/JS_FELICITACIONES.js"></script>
-       <script type="text/javascript" src="../controlador/JS_VALIDAR_ACCESO_USUARIO.js"></script>
-       <script type="text/javascript" src="../controlador/JS_CONVOCATORIAS_VENCIDAS.js"></script>
-       <script type="text/javascript" src="../controlador/JS_REGISTRO_NOTICIAS.js"></script>
-       <script type="text/javascript" src="../controlador/JS_CREAR_ROL_JUEGOS.js"></script>
-       <script type='text/javascript' src='../controlador/JS_TORNEOS_ACTIVOS.js'></script>
-       <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>
-	   
-	<script type='text/javascript' src='../controlador/JS_SESION_INICIAR_CERRAR.js'></script>
+        <script type="text/javascript" src="../controlador/JS_VALIDAR_ACCESO_USUARIO.js"></script>
+        <script type="text/javascript" src="../controlador/JS_CONVOCATORIAS_VENCIDAS.js"></script>
+        <script type="text/javascript" src="../controlador/JS_REGISTRO_NOTICIAS.js"></script>
+        <script type="text/javascript" src="../controlador/JS_CREAR_ROL_JUEGOS.js"></script>
+        <script type='text/javascript' src='../controlador/JS_TORNEOS_ACTIVOS.js'></script>
+        <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>	   
+        <script type='text/javascript' src='../controlador/JS_SESION_INICIAR_CERRAR.js'></script>
+        <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
 	
 	   
        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
@@ -45,6 +45,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGOUT.js"></script>
     </head>
     <body onload="felicitaciones()">
+        <div id="alertaSucces" class="modal fade" role="dialog">            
+        </div>
         <script>
         $(function () {
             $("#nueva_fecha").datepicker();
@@ -162,7 +164,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                    <a href='REGISTRO_COACH.html'>Registrar coach</a>
                                </li>
                                <li>
-				<a href='EQUIPOS_EDICION.html'>Edicion equipos</a>>
+				<a href='EQUIPOS_EDICION.html'>Edicion equipos</a>
 			</li>
                                <li>
                                    <a href='ROLES_JUEGO.html'>Roles de juego</a>
@@ -359,8 +361,7 @@ $(document).ready(function () {
                         <div class="banner-slider">
                             <h3 class="tittle">Nuestras Noticias</h3>
                             <div class="callbacks_container">
-                                <ul class="rslides" id="slider3" style="height: 471px;overflow: auto">
-                                    
+                                <ul class="rslides" id="slider3" style="height: 471px;overflow: auto">                                   
                                 </ul>
                             </div>
                         </div>
@@ -392,7 +393,7 @@ $(document).ready(function () {
                     <div class="col-md-4 soccer-right-part">
 
                          <!--Apartado para las convocatorias que ya se han vencido-->
-                        <div id="apartado_convocatorias_vencidas">                           
+                        <div id="apartado_convocatorias_lanzadas">                           
                         </div>
                         <!--Apartado para las convocatorias que ya se han vencido-->
                         <!--Apartado para llistar los torneos activos-->

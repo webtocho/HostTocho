@@ -10,6 +10,7 @@ function cargar_tabla_convocatorias_vencidas(){
     var ejecutar = setInterval(function(){actualizarTabla()},5000);
 }
 //var prro= setInterval(function(){actualizarTabla()},1000);
+
 function actualizarTabla(){
     $.ajax({
         url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
@@ -17,7 +18,7 @@ function actualizarTabla(){
             tipo:"consultar"
         },
         type: "POST",
-        datatype: "text",
+        datatype: "text",        
         success: function(resultado) {
             $('#contenidoTabla').empty(); //Vaciamos el contenido de la tabla
             $('#contenidoTabla').append(resultado);
@@ -32,8 +33,7 @@ function actualizarTabla(){
 function abrirPantallaParaEditarConsulta(id){
     $('#tituloVentanaEmergente').empty();
     $('#tituloVentanaEmergente').append("Modificar fecha de cierre");
-    var fila = (document).getElementById("fila_" + id).childNodes;
-    //document.getElementById("nueva_fecha").value = fila[0].innerHTML;    
+    var fila = (document).getElementById(id).childNodes;   
     document.getElementById("formulario").onsubmit = function(){
         editarFecha(id);
         return false;
@@ -53,11 +53,17 @@ function editarFecha(id){
         },
         type: "POST",
         datatype: "text",
+        beforeSend: function(xhr){        
+            $('#alertaSucces').empty();
+            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+        },
         success: function(resultado) {
-            if(resultado == "ok"){
-                alert("Cambio realizado con exito");
+            if(resultado == "ok"){               
+                //alert("Cambio realizado con exito");
+                mostrarAlerta("Cambio realizado con exito","correcto");                
             }else{             
                 //alert(resultado);
+                mostrarAlerta(resultadosssssss,"fallido"); 
             }       
         },
         error: function(jqXHR, textStatus) {

@@ -47,8 +47,7 @@ function comprobar_datos(){
 }
 function recuperar_noticias(){
     $.ajax({
-        url: "../controlador/SRV_CONSULTAS.php",
-        data: {"tipo": "recuperar_nocicias"},
+        url: "../controlador/SRV_RECUPERAR_NOTICIAS.php",       
         type: "POST",
         datatype: "text",
             beforeSend: function (xhr){

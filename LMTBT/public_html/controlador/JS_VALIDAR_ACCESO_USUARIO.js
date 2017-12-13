@@ -143,8 +143,8 @@ function lista_coach(){
             });
 }
 function mostrar_apartado_convocatorias_vencidas(){
-    $('#apartado_convocatorias_vencidas').append("<div class='top-news'>"+"<h4 class='side'>Convocatorias vencidas</h4><div style='height: 140px;overflow: auto'><table class='table table-bordered table-hover'>"+
-    "<thead><tr><th>Nombre torneo</th><th>Acciones</th></tr></thead><tbody id='contenidoTabla'></tbody></table></div></div>");
+    $('#apartado_convocatorias_lanzadas').append("<div class='top-news'>"+"<h4 class='side'>Convocatorias lanzadas</h4><div style='height: 140px;overflow: auto'><table class='table table-bordered table-hover'>"+
+    "<thead><tr><th>Nombre torneo</th><th>Fecha cierre</th><th>Que desea hacer</th></tr></thead><tbody id='contenidoTabla'></tbody></table></div></div>");
 }
 function mostrar_apartado_torneos_activos(){
     $('#apartado_torneos_activos').append("<div class='top-news'>"+"<h4 class='side'>Torneos activos</h4><div style='height: 140px;overflow: auto'><table class='table table-bordered table-hover'>"+

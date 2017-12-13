@@ -1640,7 +1640,7 @@ switch ($_POST['tipo']) {
 		$db->ExecuteQuery();
 		echo "ok";
 		break;
-	case "consultar_torneos_activos":
+	/*case "consultar_torneos_activos":
 		$conexion = $db->getConnection();
 		$sql = "SELECT *FROM convocatoria WHERE ESTADO = 'ACTIVO'";
 		$resultado = $conexion->query($sql);
@@ -1648,7 +1648,7 @@ switch ($_POST['tipo']) {
 			echo "<tr id='fila_" . $fila["ID_CONVOCATORIA"] . "'><td>" . $fila["NOMBRE_TORNEO"] . "</td><td>" .
 			"<button class='btn-warning' onclick='abrir_pantalla_para_terminar_torneo(" . $fila["ID_CONVOCATORIA"] . ")'>terminar</button>";
 		}
-		break;
+		break;*/
 	case "modificar_torneo_rol_generado":
 		$id = $_POST['id'];
 		$conexion = $db->getConnection();
@@ -1687,7 +1687,7 @@ switch ($_POST['tipo']) {
 			echo "Error al recuperar convocatorias";
 		}
 		break;
-	case "terminar_torneo":
+	/*case "terminar_torneo":
 		$conexion = $db->getConnection();
 		$conexion->autocommit(FALSE);
 		//$conexion->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
@@ -1745,7 +1745,7 @@ switch ($_POST['tipo']) {
 								  }else{
 								  $cambios_hechos = false;
 								  echo "No pude insertar noticia";
-								  } */
+								  } 
 							} else {
 								$cambios_hechos = false;
 								echo "No pude leer equipos";
@@ -1792,7 +1792,7 @@ switch ($_POST['tipo']) {
 			echo "Error en la transaccion";
 		}
 		$conexion->autocommit(TRUE);
-		break;
+		break;*/
 		case "recuperar_nocicias":
 		$noticias = array();
 		$bandera = true;

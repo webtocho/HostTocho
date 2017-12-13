@@ -84,5 +84,5 @@ function mostrarAlerta(texto,tipo){
  * Elimina el mensaje de la pantalla
  */
 function borrarAlert(){
-     $('#alertaSucces').empty(); 
+    $('#alertaSucces').empty();     
 }

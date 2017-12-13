@@ -3,6 +3,7 @@
     include("SRV_CONEXION.php");
     $db = new SRV_CONEXION();
     $conexion = $db->getConnection();
+    $conexion->autocommit(FALSE);
     $cambios_hechos = true;  
     function redimensionar_imagen($temporal,$tipo){
         $imagen_recuperada = null;
