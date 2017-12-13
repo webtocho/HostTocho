@@ -3,24 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*$(document).ready(function(){
-   accesoConvocatoria();
-});
-function accesoConvocatoria(){
-    $.ajax({
-        url: "../controlador/SRV_CONSULTAS.php",
-        data: {"tipo": "acceso_convocatoria"},
-        type: "POST",
-        datatype: "text",
-        success: function (respuesta) {
-            if (respuesta === "no"){
-                window.location.replace("index.php");
+$(document).ready(function(){
+   $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
+        .done(function(res){
+            switch(parseInt(res)){
+                case 0:
+                break;              
+                default:
+                expulsar();
+                return;
             }
-        },
-        error: function (jqXHR, textStatus) {
-        }
+        })
+        .fail(function() {
+            expulsar();
         });
-}*/
+});
 $(document).on('submit','#formlg',function(event){
     event.preventDefault();
     var formData = new FormData($('#formlg')[0]);    

@@ -5,14 +5,15 @@
  */
 $( document ).ready(function() {
       $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","FOTOGRAFO"]}, null, "text")
-        .done(function(res) {
+        .done(function(res){
             switch(parseInt(res)){
                 case 0:
-                    cargarCategorias();  
-                    break;
+                break;
+                case 1:
+                break;
                 default:
-                    expulsar();
-                    return;
+                expulsar();
+                return;
             }
         })
         .fail(function() {

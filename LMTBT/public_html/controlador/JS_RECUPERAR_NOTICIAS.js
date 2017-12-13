@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 function ejecutar_recuperar_noticias(){
-    var ejecutar = setInterval(function(){recuperar_noticias()},5000);    
+    var ejecutar = setInterval(function(){recuperar_noticias()},5000);
 }
 function recuperar_noticias(){
     $.ajax({
