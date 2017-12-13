@@ -1,9 +1,6 @@
 <?php
     session_start();
-    define('SQL_HOST', "localhost");
-define('SQL_DATABASE', "id3551892_tochoweb");
-define('SQL_USER', "id3551892_team");
-define('SQL_PASSWORD', "tochoweb");
+    
     include("SRV_CONEXION.php");
     $db = new SRV_CONEXION();
     $sql;
