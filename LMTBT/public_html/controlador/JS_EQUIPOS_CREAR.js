@@ -1,4 +1,5 @@
 var idDelCoach = null;
+var urs_es_coach = null;
 
 $(document).ready(function() {
     $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
@@ -6,6 +7,7 @@ $(document).ready(function() {
             switch(parseInt(res)){
                 case 0:
                     //Es admin
+                    urs_es_coach = false;
                     var frame = document.createElement("IFRAME");
                     document.getElementById("campos").appendChild(frame);
                     
@@ -21,6 +23,7 @@ $(document).ready(function() {
                     break;
                 case 1:
                     //Es coach
+                    urs_es_coach = true;
                     elegirCoach();
                     break;
                 default:
@@ -41,7 +44,7 @@ $(document).ready(function() {
 });
 
 function elegirCoach(id = null){
-    if(id === idDelCoach)
+    if(idDelCoach !== null && id === idDelCoach)
         return;
     
     idDelCoach = null;
@@ -53,7 +56,16 @@ function elegirCoach(id = null){
             idDelCoach = parseInt(res["ID_USUARIO"]);
         })
         .fail(function() {
-            document.getElementById("coach").value = "<Seleccione un coach>";
+            document.getElementById("coach").value = (urs_es_coach ? "<Error>" : "<Seleccione un coach>");
+            
+            $("#modal-title").html("Error");
+            $("#modal-body").html("No se pudo cargar " + (urs_es_coach ? "su información" : "la información del coach") +  ".");
+            $("#modal-body").append("<br>" + (urs_es_coach ? "<a href='javascript:location.reload();'>Recargue la página.</a>" : "Intente seleccionarlo de nuevo."));
+            if(urs_es_coach)
+                $("#modal-footer").hide();
+            else
+                $("#modal-footer").show();
+            $('#modal').modal({backdrop: 'static', keyboard: false});
         });
 }
 
