@@ -1,16 +1,11 @@
 <?php
     session_start();
-    $servername = "localhost";
-$username = "id3551892_team";
-$password = "tochoweb";
-$dbname = "id3551892_tochoweb";
+     $conn = new SRV_CONEXION();
 
     
-    $db = new mysqli($servername, $username, $password, $dbname);
+    $db = $conn->getConnection();
     
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    } 
+    
     $sql;
     $accion = $_POST["accion"];
     switch($accion) {

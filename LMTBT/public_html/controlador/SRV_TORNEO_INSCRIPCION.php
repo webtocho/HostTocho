@@ -3,7 +3,7 @@
     include("SRV_CONEXION.php");
     $conn = new SRV_CONEXION();
     $db = $conn->getConnection();
-    
+    date_default_timezone_set('America/Mexico_City');
     $sql;
     
     $accion = $_POST["accion"];
@@ -33,8 +33,8 @@
         
         case "getTorneo":
             $categoria =  $_POST["categoria"];
-            
-            $sql= "SELECT NOMBRE_TORNEO,ID_CONVOCATORIA FROM convocatoria where ID_CATEGORIA = '$categoria' and ESTADO = 'ACTIVO'";
+            $fecha_actual = date('Y-m-d');
+            $sql= "SELECT NOMBRE_TORNEO,ID_CONVOCATORIA FROM convocatoria where ID_CATEGORIA = '$categoria' and FECHA_CIERRE_CONVOCATORIA >= '$fecha_actual'";
             
             $result=$db->query($sql);
             
@@ -62,7 +62,6 @@
                 if ($_SESSION["TIPO_USUARIO"]=='COACH'){
                     
                     $iduser = $_SESSION["ID_USUARIO"];
-
                     $sql= "SELECT NOMBRE_EQUIPO,ID_EQUIPO FROM equipos WHERE ID_COACH = '$iduser'";
                     $result=$db->query($sql);
                     if($result == null){

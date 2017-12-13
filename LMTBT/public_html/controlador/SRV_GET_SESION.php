@@ -15,7 +15,7 @@
             }
         })
         .fail(function() {
-            //Hubo un error
+            //No se ha iniciado sesión
         });*/
     
     session_start();
