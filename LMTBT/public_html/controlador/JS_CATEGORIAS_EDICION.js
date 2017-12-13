@@ -7,8 +7,25 @@
 idCategoria=0; 
 
 $( document ).ready(function() {
-    cargarCategorias();  
- });
+      $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
+        .done(function(res) {
+            switch(parseInt(res)){
+                case 0:
+                    cargarCategorias();  
+                    break;
+                default:
+                    expulsar();
+                    return;
+            }
+        })
+        .fail(function() {
+            expulsar();
+        });
+
+}); 
+ 
+ 
+ 
 function cargarCategorias(){
        $.ajax({
             url: "../controlador/SRV_CATEGORIAS_OBTENER_ELIMINAR.php",

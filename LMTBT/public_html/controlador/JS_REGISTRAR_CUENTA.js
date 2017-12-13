@@ -4,8 +4,24 @@
  * and open the template in the editor.
  */
 $( document ).ready(function() {
-    CargarUsuarios();  
- });
+
+      $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
+        .done(function(res) {
+            switch(parseInt(res)){
+                case 0:
+                    CargarUsuarios(); 
+                    break;
+                default:
+                    expulsar();
+                    return;
+            }
+        })
+        .fail(function() {
+            expulsar();
+        });
+        
+}); 
+
 
 function CargarUsuarios(){
     var tipo_usuario=1;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_pagination.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/pagination.css" />
+        <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
+        <script type="text/javascript" src="../controlador/JS_CUENTAS_BUSQUEDA.js"></script>
+    </head>
+    <body>
+        <h4>Búsqueda de <a id="titulo">usuarios</a></h4>
+        
+        <div id="contenido">
+            <div>
+                <div id="filtros" class="form-group">
+                    <label for="rp">Resultados por página:</label>
+                    <input type="number" id="rp" name="rp" min="5" max="30" step="5" value="10" onchange="validarNum(this)">
+                    
+                    <br>
+                    
+                    <label id="_tipo" for="tipo">Tipo de usuario:</label>
+                    <select class="form-control" id="tipo">
+                        <option value="COACH" selected>Coach</option>
+                        <option value="JUGADOR">Jugador</option>
+                        <option value="CAPTURISTA">Capturista</option>
+                        <option value="FOTOGRAFO">Fotógrafo</option>
+                    </select>
+                    
+                    <label for="nb">Buscar en el nombre:</label>
+                    <input type="text" id="nb" name="nb" class="form-control" placeholder="<Todos>">
+                    
+                    <label for="ap">Buscar en el apellido:</label>
+                    <input type="text" id="ap" name="ap" class="form-control" placeholder="<Todos>">
+                    
+                    <div id="_sexo">
+                        <label>Sexo:</label>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="sexo" value="" checked>Ambos</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="sexo" value="M">Hombres</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="sexo" value="F">Mujeres</label>
+                        </div>
+                    </div>
+                    
+                    <label id="_edad" for="edad">Edad:</label>
+                    <select class="form-control" id="edad">
+                        <option value="">Cualquiera</option>
+                        <option value="<18">Menores de edad</option>
+                        <option value="18-39">Adultos jóvenes (Entre 18 y 39)</option>
+                        <option value=">40">Adultos (40 o más)</option>
+                        <option value="<10">10 o menos</option>
+                        <option value="11-15">Entre 11 y 15</option>
+                        <option value="16-20">Entre 16 y 20</option>
+                        <option value="21-25">Entre 21 y 25</option>
+                        <option value="26-30">Entre 26 y 30</option>
+                        <option value="31-35">Entre 31 y 35</option>
+                        <option value="36-40">Entre 35 y 40</option>
+                    </select>
+                    
+                    <div id="incluir">
+                        <label>Incluir: </label>
+                        <label class="checkbox-inline" id="i_correo">
+                            <input type="checkbox" id="i_c">Correo electrónico
+                        </label>
+                        <label class="checkbox-inline" id="i_sexo">
+                            <input type="checkbox" id="i_s">Sexo
+                        </label>
+                        <label class="checkbox-inline" id="i_edad">
+                            <input type="checkbox" id="i_e">Edad
+                        </label>
+                        <label class="checkbox-inline" id="i_foto">
+                            <input type="checkbox" id="i_f" checked>Foto de perfil
+                        </label>
+                    </div>
+                    
+                    <button class="btn btn-default" onclick="buscar()">
+                        <i class="glyphicon glyphicon-search"></i> Buscar
+                    </button>
+                </div>
+                
+                <div id="paginas"></div>
+            </div>
+            
+            <div id="resultados">Seleccione los filtros que desee y haga su búsqueda.</div>
+        </div>
+    </body>
+</html>
