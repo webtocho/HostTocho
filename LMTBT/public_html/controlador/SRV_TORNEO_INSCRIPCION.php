@@ -1,28 +1,58 @@
 <?php
     session_start();
-   define('SQL_HOST', "localhost");
- define('SQL_DATABASE', "id3551892_tochoweb");
- define('SQL_USER', "id3551892_team");
- define('SQL_PASSWORD', "tochoweb");
     include("SRV_CONEXION.php");
-    $db = new SRV_CONEXION();
-    $sql;
-    $accion = $_POST["accion"];
+    $conn = new SRV_CONEXION();
+    $db = $conn->getConnection();
     
+    $sql;
+    
+    $accion = $_POST["accion"];
+   
     
     switch($accion) {
+        case "getCategorias":
+            
+            $result= $db->query("SELECT * FROM categorias");
+            if($result == null){
+                echo "0";
+            }
+            else {
+                if(mysqli_num_rows($result)<=0 ){
+                    echo "1";
+                }
+                else{
+                     while($row = mysqli_fetch_array($result) ){
+                         echo "<option value='".$row['ID_CATEGORIA']."'>".$row['NOMBRE_CATEGORIA']."</option>";
+                     
+                     }
+                }
+            
+            }
+            
+            break;
+        
         case "getTorneo":
             $categoria =  $_POST["categoria"];
             
-            $sql= "SELECT NOMBRE_TORNEO,ID_CONVOCATORIA FROM convocatoria where CATEGORIA = '$categoria'";
-            $db->setQuery($sql);
-            $resultado=$db->getResult();
+            $sql= "SELECT NOMBRE_TORNEO,ID_CONVOCATORIA FROM convocatoria where ID_CATEGORIA = '$categoria' and ESTADO = 'ACTIVO'";
             
-            if($resultado != null){
-                $data = json_encode($resultado,JSON_UNESCAPED_UNICODE);
-                echo $data;
+            $result=$db->query($sql);
+            
+            if($result== null){
+                
+                echo "0";
             }else{
-               echo  "Fail";
+                if(mysqli_num_rows($result)<=0 ){
+                           echo "1";
+                       }
+                       else{
+                            while($row = mysqli_fetch_array($result) ){
+                                
+                                 echo "<option value='".$row['ID_CONVOCATORIA']."'>".$row['NOMBRE_TORNEO']."</option>";
+
+                            }
+                           }
+               
             }
             
             break;
@@ -30,42 +60,51 @@
             
             if (isset($_SESSION["ID_USUARIO"])) {
                 if ($_SESSION["TIPO_USUARIO"]=='COACH'){
+                    
                     $iduser = $_SESSION["ID_USUARIO"];
-                    $sql= "SELECT NOMBRE_EQUIPO,ID_EQUIPO FROM equipos WHERE ID_COACH = '$iduser'";
-                    $db->setQuery($sql);
-                    $resultado=$db->getResult();
-                    if($resultado != null){
 
-                        $data = json_encode($resultado,JSON_UNESCAPED_UNICODE);
-                        echo $data;
+                    $sql= "SELECT NOMBRE_EQUIPO,ID_EQUIPO FROM equipos WHERE ID_COACH = '$iduser'";
+                    $result=$db->query($sql);
+                    if($result == null){
+                         echo  "0";
                     }else{
-                       echo  "Fail";
+                       if(mysqli_num_rows($result)<=0 ){
+                           echo "1";
+                       }
+                       else{
+                            while($row = mysqli_fetch_array($result) ){
+                                
+                                 echo "<option value='".$row['ID_EQUIPO']."'>".$row['NOMBRE_EQUIPO']."</option>";
+
+                            }
+                           }
+                       }
                     }
-                }
+                
                 else{
-                    echo "!Type";
+                    echo "2";
                 }
                 
             }else{
-                echo "!Session";
+                echo "3";
             }
-            
-            
-            
             break;
+            
         case "setTorneo":
             $id_conv= $_POST["id_conv"];
             $id_equi = $_POST["id_equi"];
             $categ = $_POST["categoria"];
            
-            $sql= "UPDATE rosters SET ID_CONVOCATORIA = '$id_conv' WHERE ID_EQUIPO ='$id_equi' AND CATEGORIA = '$categ'";
-           
-            $db->setQuery($sql);
-            $resultado=$db->getResult(); 
-            if($resultado==true){
-                echo "ok";
+           // $sql= "UPDATE rosters SET ID_CONVOCATORIA = '$id_conv' WHERE ID_EQUIPO ='$id_equi' AND ID_CATEGORIA = '$categ' AND ID_CONVOCATORIA IS NULL";
+            $result=$db->prepare("UPDATE rosters SET ID_CONVOCATORIA = ? WHERE ID_EQUIPO = ? AND ID_CATEGORIA = ? AND ID_CONVOCATORIA IS NULL");
+            $result->bind_param("iii",$id_conv,$id_equi,$categ);
+            $result->execute();
+            if($resultado==null){
+                echo "0";
+            }else if($resultado==false){
+                 echo  "1";
             }else{
-                 echo  "Fail";
+                echo "2";
             }
             break;
     
