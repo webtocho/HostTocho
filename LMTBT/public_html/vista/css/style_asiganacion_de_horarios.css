@@ -24,23 +24,7 @@ body a:hover,h5.top a:hover,.b-text h5 a:hover,.b-bottom-text h5 a:hover,.b-text
     font-family: 'Bitter-Regular';
     src: url(../fonts/Bitter-Regular.ttf)format('truetype');
 }
-.bs-example {
+.container {
     padding:4em 1em;
     background-color: #fff;
-    text-align: center;
-}
-.padre {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#Select_Torneos {
-    padding-left:15px;
-    padding-right:15px;
-    width: 600px;
-}
-#Select_Equipos {
-    padding-left:15px;
-    padding-right:15px;
-    width: 600px;
 }
