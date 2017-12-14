@@ -1,7 +1,7 @@
 function iniciarSesion(){
     var e_mail, password;
-    e_mail = $.trim(document.getElementById("campo_correo").value);
-    password = $.trim(document.getElementById("campo_password").value);
+    e_mail = $.trim(  $('#campo_correo').val());
+    password = $.trim($('#campo_password').val());
 
     if(e_mail.length === 0 && password.length === 0){
         alert("Datos inválidos.");
@@ -20,14 +20,15 @@ function iniciarSesion(){
     }
 
     $.ajax({
+        type: "POST",
         url: "../controlador/SRV_CONSULTA_LOGIN_LOGOUT.php",
         data: {tipo : "login",
                     e_mail : e_mail,
                     password : password
                 },
-        type: "POST",
-        dataType: 'text',
-        async: false, //Esta operación es síncrona.
+        dataType: "text",
+        async: true,
+       // async: false, //Esta operación es síncrona.
         beforeSend: function (xhr) {
             //Bloqueamos los controladores.
             document.getElementById("btn_iniciar_sesion").disabled = true;
