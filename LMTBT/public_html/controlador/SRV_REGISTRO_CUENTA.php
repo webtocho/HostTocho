@@ -34,7 +34,7 @@
             return;
         }
     }                            
-    if(empty($_POST['correo']) == false && empty($_POST['password']) == false && empty($_POST['nombre']) == false && empty($_POST['apellido_paterno']) == false && empty($_POST['apellido_materno']) == false && empty($_POST['tipo_cuenta']) == false){
+    if(empty($_POST['correo']) == false && empty($_POST['password']) == false && empty($_POST['nombre']) == false && empty($_POST['apellido_paterno']) == false && empty($_POST['apellido_materno']) == false && empty($_POST['tipo_cuenta']) == false && empty($_POST['sexo']) == false){
         if(strlen($_POST['password']) > 7){
             if (filter_var($_POST['correo'], FILTER_VALIDATE_EMAIL)){
                 $sql = "SELECT *FROM usuarios";
@@ -47,8 +47,8 @@
                     }
                     if($correo_existe == false){    
                         //$tipo_usuario = "COACH";
-                        $consulta = $conexion->prepare('INSERT INTO usuarios VALUES (0,?,?,?,?,?,null,null,null,null,null,null,null,null,?)');
-                        $consulta->bind_param("ssssss",$_POST['correo'], $_POST['password'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno'],$_POST['tipo_cuenta']);
+                        $consulta = $conexion->prepare('INSERT INTO usuarios VALUES (0,?,?,?,?,?,null,?,null,null,null,null,null,null,?)');
+                        $consulta->bind_param("sssssss",$_POST['correo'], $_POST['password'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno'],$_POST['sexo'],$_POST['tipo_cuenta']);
                         if($consulta->execute()){
                             $cambios_hechos = true;
                         } else {

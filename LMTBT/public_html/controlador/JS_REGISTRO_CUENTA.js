@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$( document ).ready(function(){
     $('#tipo_cuenta').empty();           
       $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","COACH"]}, null, "text")
         .done(function(res){
@@ -28,8 +28,9 @@ $(document).on('submit','#myForm',function(event){
     var apellido_paterno = document.getElementById("ApellidoPaterno").value;
     var apellido_materno = document.getElementById("ApellidoMaterno").value;
     var tipo_cuenta = document.getElementById("tipo_cuenta").value;
+    var sexo = document.getElementById("sexo").value;
 
-    if(correo.trim().length>0 && password.trim().length>0 && nombre.trim().length>0 && apellido_paterno.trim().length>0 && apellido_materno.trim().length>0 && tipo_cuenta.trim().length>0){
+    if(correo.trim().length>0 && password.trim().length>0 && nombre.trim().length>0 && apellido_paterno.trim().length>0 && apellido_materno.trim().length>0 && tipo_cuenta.trim().length>0 && sexo.trim().length>0){
         $.ajax({
             url: "../controlador/SRV_REGISTRO_CUENTA.php",
             data: {
@@ -38,7 +39,8 @@ $(document).on('submit','#myForm',function(event){
             nombre:nombre,
             apellido_paterno:apellido_paterno,
             apellido_materno:apellido_materno,
-            tipo_cuenta:tipo_cuenta
+            tipo_cuenta:tipo_cuenta,
+            sexo:sexo
             },
         type: "POST",
         datatype: "text",
@@ -70,6 +72,8 @@ $(document).on('submit','#myForm',function(event){
         if(nombre.trim().length==0) mensaje+="\nNombre";
         if(apellido_paterno.trim().length==0) mensaje+="\nApellido Paterno";
         if(apellido_materno.trim().length==0) mensaje+="\nApellido Materno";
+        if(tipo_cuenta.trim().length==0) mensaje+="\nTipo de cuenta";
+        if(sexo.trim().length==0) mensaje+="\nSexo";
         mostrarAlerta(mensaje,"fallido");
     }
 });

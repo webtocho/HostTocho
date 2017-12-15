@@ -32,6 +32,6 @@
             echo "-1";
         }
     } else {
-        //lanzar_error("No ha iniciado sesión", false);
+        lanzar_error("No ha iniciado sesión", false);
     }
 ?>
