@@ -5,6 +5,7 @@
     $conexion = $db->getConnection();
     $conexion->autocommit(FALSE);
     $cambios_hechos = true;  
+    session_start();
     function redimensionar_imagen($temporal,$tipo){
         $imagen_recuperada = null;
         $tamanio;
@@ -38,6 +39,20 @@
             return $imagen_recuperada;
         }
     } 
+    
+    if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
+        if($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR" && $_SESSION["TIPO_USUARIO"] != "FOTOGRAFO"){
+            echo "No tienes permisos para crear noticias";
+            $conexion->autocommit(TRUE);
+            $conexion->close();
+            return;
+        }
+    } else {
+        echo "No tienes permisos para crear noticias";
+        $conexion->autocommit(TRUE);
+        $conexion->close();
+        return;
+    }            
     if(empty($_POST['titulo_noticia']) == false && empty($_POST['descripcion']) == false && empty($_FILES['imagen_noticia']) == false){
         $fecha_actual = date('Y-m-d');
         $consulta = $conexion->prepare('INSERT INTO noticias VALUES (0,?,?,?)');

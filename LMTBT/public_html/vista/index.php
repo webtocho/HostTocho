@@ -160,8 +160,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </ul>
                                 </li>-->   
                                 <li id = "acceso_asignacion_horarios"></li>
-                                <li id = "acceso_categorias_edicion"></li>
-                                <li id = "acceso_registrar_coach">
+                                <li id = "acceso_categorias_edicion"></li>                                
                                    <!--<a href='REGISTRO_COACH.html'>Registrar coach</a>-->
                                 </li>
                                 <li id = "acceso_convocatoria"></li> 

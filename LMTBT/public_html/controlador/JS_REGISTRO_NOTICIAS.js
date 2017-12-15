@@ -33,18 +33,22 @@ $(document).on('submit','#form_noticias',function(event){
         beforeSend: function(xhr){        
             $('#alertaSucces').empty();
             $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+            document.getElementById('enviar').disabled = true;
         },
             success: function(resultado){
                 //window.locaton.replace("index.php");
                 if(resultado == "ok"){                                      
                     mostrarAlerta("Registro realizado con exito","correcto");
+                    document.getElementById('enviar').disabled = false;
                     //window.location.replace("index.php");
                 }else{                    
                     mostrarAlerta(resultado,"fallido");
+                    document.getElementById('enviar').disabled = false;
                 }
             },
             error: function(jqXHR, textStatus) {
-                //alert("No se ejecuto");
+               mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
+               document.getElementById('enviar').disabled = false;
             }
     });
     }else{       

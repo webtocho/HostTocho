@@ -1549,7 +1549,7 @@ switch ($_POST['tipo']) {
 		echo json_encode($roster);
 		break;
 	case "iniciar_cerrar_session":
-		if (isset($_SESSION['ID_USUARIO'])) {
+		if (isset($_SESSION['ID_USUARIO'])){
 			$db->setQuery(sprintf("SELECT ID_USUARIO, TIPO_USUARIO FROM usuarios WHERE ID_USUARIO = " . $_SESSION['ID_USUARIO']));
 			$resul = $db->GetRow();
 			if ($_SESSION['ID_USUARIO'] == $resul['ID_USUARIO'] && $_SESSION['TIPO_USUARIO'] == $resul['TIPO_USUARIO']) {

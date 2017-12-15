@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 function cargar_tabla_torneos_activos(){
+    actualizar_tabla_torneos_activos();
     var ejecutar = setInterval(function(){actualizar_tabla_torneos_activos()},5000);
 }
 function actualizar_tabla_torneos_activos(){
@@ -15,8 +16,13 @@ function actualizar_tabla_torneos_activos(){
         type: "POST",
         datatype: "text",
         success: function(resultado) {
-            $('#contenido_tabla_torneos').empty(); //Vaciamos el contenido de la tabla
-            $('#contenido_tabla_torneos').append(resultado);                         
+            if(resultado == "error"){
+                $('#torneos_activos').empty();
+                $('#torneos_activos').append("<div class='item'><a>No tienes permisos para ver esto</a></div>");
+            }else{
+                $('#contenido_tabla_torneos').empty(); //Vaciamos el contenido de la tabla
+                $('#contenido_tabla_torneos').append(resultado);                         
+            }
         },
         error: function(jqXHR, textStatus) { 
         }

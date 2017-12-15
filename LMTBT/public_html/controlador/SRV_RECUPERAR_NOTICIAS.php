@@ -1,7 +1,6 @@
 <?php
     include("SRV_CONEXION.php");
-    $db = new SRV_CONEXION();
-    $conexion = $db->getConnection();           
+    $db = new SRV_CONEXION();    
     $noticias = array();
     $bandera = true;
     $conexion = $db->getConnection();

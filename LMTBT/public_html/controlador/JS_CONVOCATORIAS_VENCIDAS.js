@@ -7,6 +7,7 @@
     actualizarTabla();
 });*/
 function cargar_tabla_convocatorias_vencidas(){
+    actualizarTabla();
     var ejecutar = setInterval(function(){actualizarTabla()},5000);
 }
 //var prro= setInterval(function(){actualizarTabla()},1000);
@@ -19,11 +20,14 @@ function actualizarTabla(){
         },
         type: "POST",
         datatype: "text",        
-        success: function(resultado) {
-            $('#contenidoTabla').empty(); //Vaciamos el contenido de la tabla
-            $('#contenidoTabla').append(resultado);
-                //alert("Registro realizado con exito.");
-                //window.location.replace("index.php");           
+        success: function(resultado) {            
+            if(resultado == "error"){
+                $('#convocatorias_lanzadas').empty();    
+                $('#convocatorias_lanzadas').append("<div class='item'><a>No tienes permisos para ver esto</a></div>");
+            }else{
+                $('#contenidoTabla').empty(); //Vaciamos el contenido de la tabla
+                $('#contenidoTabla').append(resultado);
+            }                   
         },
         error: function(jqXHR, textStatus) {
            //alert("Error de ajax");
@@ -63,11 +67,12 @@ function editarFecha(id){
                 mostrarAlerta("Cambio realizado con exito","correcto");                
             }else{             
                 //alert(resultado);
-                mostrarAlerta(resultadosssssss,"fallido"); 
+                mostrarAlerta(resultado,"fallido"); 
             }       
         },
         error: function(jqXHR, textStatus) {
            //alert("Error de ajax");
+           mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
         }
     });
 }

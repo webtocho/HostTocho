@@ -12,10 +12,10 @@ switch ($_POST['tipo']) {
 		$consulta->bind_param("ss", $_POST['e_mail'], $_POST['password']);
 		//si al recuperar la informacion todo sale bien entonces asociamos los datos y le asignamos valores a las variables de SESSION
 		// de lo contrario el correo y la contraseña con la que inician sessionson invalidos.
-		if ($consulta->execute()) {
+		if ($consulta->execute()){
 			$res = $consulta->get_result();
 			$info = $res->fetch_assoc();
-			if ($info['ID_USUARIO']) {
+			if ($info['ID_USUARIO']){
 				$_SESSION['ID_USUARIO'] = $info['ID_USUARIO'];
 				$_SESSION['CORREO'] = $info['CORREO'];
 				$_SESSION['TIPO_USUARIO'] = $info['TIPO_USUARIO'];

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 function ejecutar_recuperar_noticias(){
+    recuperar_noticias();
     var ejecutar = setInterval(function(){recuperar_noticias()},5000);
 }
 function recuperar_noticias(){
@@ -17,8 +18,7 @@ function recuperar_noticias(){
                     $('#slider3').empty();
                     $('#slider3').append(respuesta);
             },
-            error: function (jqXHR, textStatus) {
-                //alert("Erro al ejecutar");
+            error: function (jqXHR, textStatus) {                
             }
     });
 }

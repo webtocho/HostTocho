@@ -6,6 +6,7 @@
     $conexion->autocommit(FALSE);
     $categoria_existe = false;
     $cambios_hechos = true;    
+    session_start();
     function redimensionar_imagen($temporal,$tipo){
         $imagen_recuperada = null;
         $tamanio;
@@ -38,7 +39,22 @@
         } else {
             return $imagen_recuperada;
         }
-    }            
+    }    
+    
+    if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
+        if($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR"){
+            echo "No tienes permisos para lanzar una convocatoria";
+            $conexion->autocommit(TRUE);
+            $conexion->close();
+            return;
+        }
+    } else {
+        echo "No tienes permisos para lanzar una convocatoria";
+        $conexion->autocommit(TRUE);
+        $conexion->close();
+        return;
+    } 
+    
     $id = 0;
     $nombre_torneo = $_POST['nombre'];
     $fecha_cierre_convocatoria = $_POST['fecha_cierre'];

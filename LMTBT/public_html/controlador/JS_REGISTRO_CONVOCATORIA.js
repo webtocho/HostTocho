@@ -31,6 +31,7 @@ $(document).on('submit','#formlg',function(event){
         beforeSend: function(xhr){        
             $('#alertaSucces').empty();
             $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+            document.getElementById('btn-submitdos').disabled = true;           
         },
             success: function(resultado){              
                 //window.locaton.replace("index.php");
@@ -38,11 +39,15 @@ $(document).on('submit','#formlg',function(event){
                     //alert("Registro realizado con exito");
                     //window.location.replace("index.php");
                     mostrarAlerta("Registro realizado con exito","correcto");
+                    document.getElementById('btn-submitdos').disabled = false;
                 }else{                    
                     mostrarAlerta(resultado,"fallido");
+                    document.getElementById('btn-submitdos').disabled = false;
                 }
             },
-            error: function(jqXHR, textStatus) {                               
+            error: function(jqXHR, textStatus) {
+                mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
+                document.getElementById('btn-submitdos').disabled = false;
             }
      });
     }else{

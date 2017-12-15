@@ -2,6 +2,18 @@
 include("SRV_CONEXION.php");
 $db = new SRV_CONEXION();
 $conexion = $db->getConnection();
+session_start();
+if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
+        if($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR"){
+            echo "error";
+            $conexion->close();
+            return;
+        }
+} else {
+        echo "error";
+        $conexion->close();
+        return;
+}
  switch($_POST['tipo']){
      case "consultar_torneos_activos":        
         $sql = "SELECT *FROM convocatoria WHERE ESTADO = 'ACTIVO'";
