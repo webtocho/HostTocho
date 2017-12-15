@@ -4,97 +4,68 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-      
-        <link type="text/css" rel="stylesheet" href="css/materialize.css" />
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/HE_FC.css"/>
-        
+        <link rel="stylesheet" type="text/css" href="css/HE_FC.css"/>   
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_materialize.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_MOSTRAR_DATOS_CEDULA.js"></script>
-         <script type="text/javascript" src="../controlador/JS_ESTADISTICAS.js"></script>
+         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
+         <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>
         <script src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
     </head>
     <body>
-     
-        
-        <div class="cuerpo">
+     <!--class="modal fade"-->
+       <div class="modal fade" id="esperando">
+           <center>
+       <IMG SRC="../vista/images/procesando.gif">
+           </center>
+       </div>
+        <div id="alertaSucces">
            
+            </div> 
+        <div class="cuerpo">
+            
             <div id="equipo1" class="lefth_q" style="overflow: auto">
                 <br>
                 <center>
-                <h5 id="label_equipo_1">equipo 1</h5>
-               
-                <table id="tabla_equipo_1">
-                    
-                </table>
+                <h5 id="label_equipo_1">-----</h5>
+               <div class="panel-body">
+               	<table class="table table-bordered table-hover" id="formulario_equipo_1">
+				<tr>
+                      <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>c1</th><th>c2</th> <th>Pt</th> 
+				</tr>
+				
+		
+			</table>
+			</div>
                  </center>
             </div>
            
             <div id="equipo2" class="rigth_q">
                 <br>
                 <center>
-                   <h5 id="label_equipo_2">equipo 2</h5>
-                   <table id="tabla_equipo_2">
-                    
-                </table>
+                   <h5 id="label_equipo_2">-----</h5>
+                     <div class="panel-body">
+               	<table class="table table-bordered table-hover" id="formulario_equipo_2">
+				<tr>
+                      <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>c1</th><th>c2</th> <th>Pt</th>      
+				</tr>
+			</table>
+			</div>
                  </center>
             </div>
-            <center>
-                <input type="submit" value="guardar datos" class="btn btn-default" onclick="llenar_rol_juego()">
-            </center>
+            <div id="BOTON_GUARDAR">
+           
+            </div> 
         </div>
-      
-       <!--class="modal fade"-->
-       <div class="modal fade" id="esperando">
-           <center>
-       <IMG SRC="../vista/img/procesando.gif">
-           </center>
-       </div>
-       
-       <div  class="modal fade" id="ventanaEmergente" role="dialog">
-            <div class="modal-dialog">
-                 <div class="modal-content" >
-                    <div class="modal-header" >
-                            <h4 id="tituloVentanaEmergente" class="modal-title">Datos del jugador</h4>
-                    </div>
-                    <div class="modal-body">
-			<form class="form-group" id="formulario">
-                            <label for="Anotaciones">Anotaciones Del Jugador:</label>
-                            <input type="number" class="form-control" id="Anotaciones" maxlength="30" required>			
-                            <label for="Pases">Pases Del Jugador:</label>
-                            <input type="number" class="form-control" id="Pases" maxlength="45" required>
-                             <label for="Tackles">Tackles Del Jugador</label>
-                            <input type="number" class="form-control" id="Tackles" max="100"  required>	
-                            <label for="Faults">Faults Del Jugador</label>
-                            <input type="number" class="form-control" id="Faults" max="100" required >	
-			</form>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        
-			<input type="submit" class="btn btn-default"  value="cerrar" onclick="CerrarPantalla()">
-                        <input type="submit"  class="btn btn-default" value="Guardar" onclick="guardar_datos()">
-                    </div>
-		</div>
-					
-            </div>
-        </div>
- 
+    
                       
             
     </body>
