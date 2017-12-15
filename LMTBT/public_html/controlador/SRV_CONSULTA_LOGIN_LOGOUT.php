@@ -4,8 +4,9 @@ session_start();
 
 include("SRV_CONEXION.php");
 $db = new SRV_CONEXION();
+$tipo =$_POST['tipo'];
 
-switch ($_POST['tipo']) {
+switch ($tipo) {
 	case "login":
 		// preparar una consilta para recuperar los datos del usuario para la SESSION
 		$consulta = $db->getConnection()->prepare("SELECT ID_USUARIO, CORREO, TIPO_USUARIO FROM usuarios WHERE CORREO = ?  AND PASSWORD = ?");

@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">
         <!-- Custom Theme files -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
@@ -415,9 +416,9 @@ $(document).ready(function () {
                         <div class="connect">
                             <h4 class="side">PERMANECE CONECTADO</h4>
                             <ul class="stay">
-                                <li class="c5-element-facebook"><a href="#"><span class="icon"></span><h5>700</h5><span class="text">Seguidores</span></a></li>
+                                <li class="c5-element-facebook"><a href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/"><span class="icon"></span><h5>700</h5><span class="text">Seguidores</span></a></li>
                                 <li class="c5-element-twitter"><a href="#"><span class="icon1"></span><h5>201</h5><span class="text">Seguidores</span></a></li>
-                                <li class="c5-element-gg"><a href="#"><span class="icon2"></span><h5>111</h5><span class="text">Seguidores</span></a></li>
+                                <li class="c5-element-gg"><a href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube""></span><h5>111</h5><span class="text">Seguidores</span></a></li>
 
                             </ul>
                         </div>
