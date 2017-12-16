@@ -271,7 +271,7 @@
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
             
-            unnset($query);
+            unset($query);
             $querys = array(
                     "DELETE FROM participantes_no_registrados WHERE ID_ROSTER = ?",
                     "DELETE FROM participantes_rosters WHERE ID_ROSTER = ?",
