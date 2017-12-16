@@ -195,6 +195,46 @@
         }
     }
     
+    /**
+     * Si el usuario es coach, esta función comprueba que el equipo (cuyo id se señala en el parámetro)
+     * le pertenezca, si no es así, se lanza un error y la ejecución del PHP se cancela.
+     * @param int $id_equipo ID del equipo a comprobar.
+     */
+    function validar_propiedad_equipo_coach($mysqli, $id_equipo){
+        if($_SESSION["TIPO_USUARIO"] == "COACH"){
+            $query = "SELECT ID_EQUIPO FROM equipos WHERE ID_EQUIPO = ? AND ID_COACH = ?";
+            if(($consulta = $mysqli->prepare($query)) && $consulta->bind_param("ii", $id_equipo, $_SESSION["ID_USUARIO"]) && $consulta->execute()){
+                $res = $consulta->get_result();
+                if($res->num_rows == 0){
+                    lanzar_error("Error de servidor (El equipo no le pertenece)");
+                }
+            } else {
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+        }
+    }
+    
+    /**
+     * Permite saber qué restricciones tiene una categoria.
+     * @param MySQLi $mysqli Conexión con la base de datos.
+     * @param int $id_categoria El id de la categoría, de la cual se quiere obtener la información.
+     * @return string Las restricciones en el lenguaje SQL.
+     */
+    function get_restricciones_categoria($mysqli, $id_categoria){
+        $query = "SELECT CONDICIONES FROM categorias WHERE ID_CATEGORIA = ?";
+        if(($consulta = $mysqli->prepare($query)) && $consulta->bind_param("i", $id_categoria) && $consulta->execute()){
+            $res = $consulta->get_result();
+            if($res->num_rows == 0){
+                lanzar_error("Error de servidor (La categoría no existe)");
+            } else {
+                $fila = $res->fetch_row();
+                return $fila[0];
+            }
+        } else {
+            lanzar_error("Error de servidor (" . __LINE__ . ")");
+        }
+    }
+    
     function iniciar_transaccion($mysqli){
         $mysqli->autocommit(FALSE);
     }

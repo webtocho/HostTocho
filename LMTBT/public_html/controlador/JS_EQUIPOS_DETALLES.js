@@ -1,4 +1,4 @@
-var id;
+var id; //ID de equipo
 
 $(document).ready(function() {
     //Desde EQUIPOS_VER se nos manda el id del equipo a consultar.
@@ -11,27 +11,35 @@ $(document).ready(function() {
                 case 0:
                 case 1:
                     crearModal(false,true,false,false);
+                    $("#modal-title").html("Cargando información...");
+                    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+                    $('#modal').modal({backdrop: 'static', keyboard: false});
+
                     if(id !== null){
-                        $("#modal-title").html("Cargando información...");
-                        $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'><center>");
-                        $('#modal').modal({backdrop: 'static', keyboard: false});
-                        
-                        $.post( "../controlador/SRV_EQUIPOS.php", {fn : "get", id : id}, null, "json")
+                        $.post( "../controlador/SRV_EQUIPOS.php", {fn : "get", id : id, id_c : "1", nb_e : "1", nb_c : "1", lg : "1",  r_act : "1"}, null, "json")
                             .done(function(res) {
                                 $("#nombre").html(res["nb_e"]);
                                 $("#coach").html(res["nb_c"]);
                                 document.getElementById("logotipo").src = "data:image/png;base64," + res["lg"];
+                                
+                                if (Object.keys(res["r_act"]).length > 0) {
+                                    $("#lista_rosters").html("");
+                                    $.each(res["r_act"], function (index, i) {
+                                            $("#lista_rosters").append("<li><a href='javascript:irAPaginaDeDetallesDeRoster(" + i[0] + ")'>" + i[1] + "</a></li>");
+                                    });
+                                }
+                                
                                 $('#modal').modal('hide');
                             })
                             .fail(function(xhr, status, error) {
                                 $("#modal-title").html("Error");
-                                $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. " + xhr.status + " " + status + ")"));
+                                $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. (" + xhr.status + " " + status + ")"));
                                 $("#modal-body").append("<br><a href='javascript:recargar();'>Reintentar</a>");
+                                $("#modal-body").append("<br><a href='EQUIPOS_VER.html'>Volver a la página de gestión de equipos</a>");
                             });
                     } else {
                         $("#modal-title").html("Error");
                         $("#modal-body").html("Es necesario que primero vaya a <a href='EQUIPOS_VER.html'>esta página</a> y seleccione un equipo.");
-                        $('#modal').modal({backdrop: 'static', keyboard: false});
                     }
                     break;
                 default:
@@ -47,6 +55,8 @@ $(document).ready(function() {
         });
 });
 
+
+
 function recargar(){
     sessionStorage.setItem("EQUIPOS_DETALLES", parseInt(id));
     location.reload();
@@ -57,20 +67,17 @@ function irAPaginaDeEdicion(){
     sessionStorage.setItem("EQUIPOS_EDICION", id);
     document.location.href = "EQUIPOS_EDICION.html";
 }
-/*
-function irAPaginaDeCrearRoster(){
-    sessionStorage.setItem("ROSTERS_CREAR_id", id);
-    sessionStorage.setItem("ROSTERS_CREAR_nb", $("#nombre").html());
-    document.location.href = "ROSTERS_CREAR.html";
-}*/
 
-/*
+function irAPaginaDeCrearRoster(){
+    sessionStorage.setItem("ROSTERS_CREAR", id);
+    document.location.href = "ROSTERS_CREAR.html";
+}
+
 function irAPaginaDeDetallesDeRoster(id_roster){
     sessionStorage.setItem("ROSTERS_DETALLES_id_e", id);
-    sessionStorage.setItem("ROSTERS_DETALLES_nb", $("#nombre").html());
-    sessionStorage.setItem("ROSTERS_CREAR_id_r", id_roster);
-    return true;
-}*/
+    sessionStorage.setItem("ROSTERS_DETALLES_id_r", id_roster);
+    document.location.href = "ROSTERS_DETALLES.html";
+}
 
 // Para eliminar un equipo, puede se que el equipo este participando en un torneo actualmente, de ser asi no se podra eliminar, de lo contrario si.
 function EliminarEquipo() {

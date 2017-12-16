@@ -175,6 +175,49 @@ function inicializar_input_edicion(input, dato_original = null){
 }
 
 /**
+ * Revisa si un arreglo tiene valores duplicados.
+ * Código obtenido de:
+ * https://www.thepolyglotdeveloper.com/2015/02/calculate-duplicates-exist-array-using-javascript/
+ * @param {Array} a Un arreglo de strings o números.
+ * @return {Boolean} Si el arreglo tiene al menos, un valor repetido.
+ */
+function array_tiene_duplicados(a) {
+    var counts = [];
+    for(var i = 0; i <= a.length; i++) {
+        if(counts[a[i]] === undefined) {
+            counts[a[i]] = 1;
+        } else {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * Crea un Dropdown de Bootstrap y regresa su código HTML.
+ * @param {string} titulo_boton El texto que contiene el botón que muestra las opciones.
+ * @param {string} opciones Un arreglo unidimensional con etiquetas <a>. Donde cada una es una opción.
+ * @return {string} El código HTML del dropdown.
+ */
+function crear_dropdown(titulo_boton, opciones){
+    var codigo =
+        "<div class='dropdown' style='display:inline-block;'>" +
+            "<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>" + titulo_boton +
+            "<span class='caret'></span></button>" +
+            "<ul class='dropdown-menu'>";
+    
+    for(var i = 0; i < opciones.length; i++) {
+        codigo += "<li>" + opciones[i] + "</li>";
+    }
+    
+    codigo+=
+            "</ul>" +
+        "</div>";
+    
+    return codigo;
+}
+
+/**
  * Recibe una cadena con el mensaje a mostrar en la pantalla. Esto se debe ejecutar al momento
  * en que nosotros obtenemos respuesta del servidor dependiendo el resultado.
  * Dicho mensaje se mostrara por tres segundos.

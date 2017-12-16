@@ -1,142 +1,139 @@
-var id_equipo;
-var id_roster;
+//ID del equipo
+var id_e;
+//ID del roster
+var id_r;
 
-$( document ).ready(function() {
-    //Desde EQUIPOS_VER se nos manda el id del equipo a consultar.
-    id_equipo = sessionStorage.getItem("id_equipo");
-    id_roster = sessionStorage.getItem("id_roster");
-    var nombre_equipo = sessionStorage.getItem("nombre_equipo");
+$(document).ready(function() {
+    id_e = sessionStorage.getItem("ROSTERS_DETALLES_id_e");
+    if(id_e !== null) sessionStorage.removeItem("ROSTERS_DETALLES_id_e");
+    id_r = sessionStorage.getItem("ROSTERS_DETALLES_id_r");
+    if(id_r !== null) sessionStorage.removeItem("ROSTERS_DETALLES_id_r");
     
-    try{
-        sessionStorage.removeItem("id_equipo");
-        sessionStorage.removeItem("id_roster");
-        sessionStorage.removeItem("nombre_equipo");
-    } catch (i){}
-    
-    if(id_equipo === null || id_roster == null || nombre_equipo === null){
-        document.location.href = "EQUIPOS_VER.html";
-        return;
-    } else{
-        $("#nombre_equipo").html(nombre_equipo);
-    }
-    
-    $.ajax({
-        url: "../controlador/SRV_GET_SESION.php",
-        type: "POST",
-        dataType: 'json',
-        async: false,
-        success: function (resultado) {
-            if(resultado["id"] == null || resultado["tipo"] == null){
-                //Si el usuario no ha iniciado sesión, lo redireccionamos.
-                window.location.replace("index.php");
-            } else if(resultado["id"] != null && resultado["tipo"] != null){
-                if(resultado["tipo"].toUpperCase() == "COACH" || resultado["tipo"].toUpperCase() == "ADMINISTRADOR"){
-                    $.ajax({
-                        url: "../controlador/SRV_CONSULTAS.php",
-                        data: {
-                            tipo : "get_roster",
-                            id_equipo : id_equipo,
-                            id_roster : id_roster
-                        },
-                        type: "POST",
-                        dataType: 'json',
-                        async: true,
-                        success: function (roster) {
-                            if(roster.hasOwnProperty('error')){
-                                alert(roster["error"]);
-                                document.location.href = "EQUIPOS_VER.html";
-                            } else {
-                                $("#categoria").html(roster["CATEGORIA"]);
+    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
+        .done(function(res) {
+            switch(parseInt(res)){
+                case 0:
+                case 1:
+                    crearModal(false,true,true,true);
+                    $("#modal-footer").hide();
+                    $("#modal-title").html("Cargando información del roster...");
+                    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+                    $('#modal').modal({backdrop: 'static', keyboard: false});
+
+                    if(id_e !== null && id_r !== null){                        
+                        $.post( "../controlador/SRV_ROSTERS.php", {fn : "get", id : id_r}, null, "json")
+                            .done(function(res) {
+                                $("#categoria").html(res["cat"]);
+                                $("#nombre_equipo").html(res["eq"]);
+                                $("#torneo").html((res["tor"] != null ? res["tor"] : "No está participando en ninguno"));
+                                if(!res["es_ed"])
+                                    $("#btn_editar").remove();
                                 
-                                if(Object.keys(roster["MIEMBROS"]).length > 0){
-                                    $.each(roster["MIEMBROS"] , function( index, i ) {
-                                        var fila = document.getElementById("miembros").insertRow(-1); //"-1" indica que se inserte al final.
-                                        var celda_numero = fila.insertCell(0), celda_nombre = fila.insertCell(1), celda_correo = fila.insertCell(2);
-                                        celda_numero.innerHTML = i["NUMERO"];
-                                        celda_nombre.innerHTML = i["APELLIDO_PATERNO"] + " " + i["APELLIDO_MATERNO"] + " " + i["NOMBRE"];
-                                        celda_correo.innerHTML = i["CORREO"];
+                                $("#modal-title").html("Cargando lista de jugadores...");
+                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", idCuenta : res["mb"], nombre : "1", otros : "1", foto : "1"}, null, "json")
+                                    .done(function(res_j) {
+                                        var fila, celda;
+                                        $.each(res_j, function (index, i) {
+                                            fila = document.getElementById("miembros").insertRow(-1);
+                                            
+                                            if(i !== null){
+                                                //Celda de nombre
+                                                fila.insertCell(-1).innerHTML = i["APELLIDO_PATERNO"] + " " + i["APELLIDO_MATERNO"] + " " + i["NOMBRE"];
+                                                //Celda de género
+                                                fila.insertCell(-1).innerHTML = (i["SEXO"] == "M" ? "Masculino" : (i["SEXO"] == 'F' ? "Femenino" : "<No definido>"));
+                                                //Celda de edad
+                                                fila.insertCell(-1).innerHTML = (i["EDAD"] != null ? i["EDAD"] : "<No definido>");
+                                                //Celda de foto
+                                                if(i["FOTO_PERFIL"] === null)
+                                                    fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
+                                                else
+                                                    fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + i["FOTO_PERFIL"] +"\" width='100'/>";
+                                            } else {
+                                                fila.insertCell(-1).innerHTML = "<Jugador eliminado>";
+                                                fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = "---";
+                                            }
+                                            
+                                            fila.insertCell(-1).innerHTML = res["nm"][index];
+                                        });
+
+                                        $('#modal').modal('hide');
+                                        $('#contenido').append(crear_btn_retorno());
+                                    })
+                                    .fail(function(xhr, status, error) {
+                                        $("#modal-title").html("Error al cargar la lista de jugadores");
+                                        $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. (" + xhr.status + " " + status + ")"));
+                                        $("#modal-body").append("<br><a href='javascript:recargar();'>Reintentar</a>");
+                                        $("#modal-body").append("<br>" + crear_btn_retorno());
                                     });
-                                }
-                            }
-                        },
-                        error: function (jqXHR, textStatus) {
-                            alert("Se produjo un error (" + textStatus + "), inténtelo de nuevo.");
-                        }
-                    });
-                } else {
-                    $('#contenido').html("<h2>Su cuenta no tiene acceso a esta página.</h2>");
-                }
-            } else {
-                console.log("SRV_GET_SESION.php no funciona como debería.");
+                            })
+                            .fail(function(xhr, status, error) {
+                                $("#modal-title").html("Error al cargar la información del roster");
+                                $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. (" + xhr.status + " " + status + ")"));
+                                $("#modal-body").append("<br><a href='javascript:recargar();'>Reintentar</a>");
+                                $("#modal-body").append("<br>" + crear_btn_retorno());
+                            });
+                    } else {
+                        $("#modal-title").html("Error");
+                        $("#modal-body").html("Es necesario que primero vaya a <a href='EQUIPOS_VER.html'>esta página</a>, seleccione un equipo y por último, un roster.");
+                    }
+                    break;
+                default:
+                    $('#contenido').html("<div class='alert alert-danger'>\n\
+                                  <strong>Error:</strong> No tiene permiso de acceder a esta página. Será redireccionado en unos segundos.\n\
+                                  </div>");
+                    setTimeout(function(){ expulsar(); }, 4000);
+                    return;
             }
-        },
-        error: function (jqXHR, textStatus) {
-            alert("Se produjo un error (" + textStatus + "), inténtelo de nuevo.");
-        }
-    });
+        })
+        .fail(function() {
+            expulsar();
+        });
 });
 
-function eliminar(){
-    if(!confirm("¿Está seguro que desea eliminar el roster completo?"))
-        return;
-    
-    $.ajax({
-        url: "../controlador/SRV_CONSULTAS.php",
-        data: {
-            tipo : "eliminar_roster",
-            id_equipo : id_equipo,
-            id_roster : id_roster,
-            categoria : $("#categoria").html()
-        },
-        type: "POST",
-        dataType: 'text',
-        async: false,
-        beforeSend: function (xhr) {
-            $("#contenido *").prop( "disabled", true );
-        },
-        success: function (respuesta) {
-            if(respuesta == "ok"){
-                //PENDIENTE
-                alert("Roster eliminado con éxito.");
-                document.location.href = "EQUIPOS_VER.html";
-            } else if (respuesta == "?"){
-                if(confirm("Advertencia: Este roster está siendo partícipe de un torneo.\n¿Está realmente seguro de que desea eliminarlo?")){
-                    $.ajax({
-                        url: "../controlador/SRV_CONSULTAS.php",
-                        data: {
-                            tipo : "eliminar_roster",
-                            id_equipo : id_equipo,
-                            id_roster : id_roster,
-                            categoria : $("#categoria").html(),
-                            confirmacion : "1"
-                        },
-                        type: "POST",
-                        dataType: 'text',
-                        async: false,
-                        success: function (respuesta) {
-                            if(respuesta == "ok"){
-                                //PENDIENTE
-                                alert("Roster eliminado con éxito.");
-                                document.location.href = "EQUIPOS_VER.html";
-                            } else {
-                                alert(respuesta);
-                            }
-                        }
-                    });
-                }
-            } else {
-                alert(respuesta);
-            }
-        },
-        complete: function (jqXHR, textStatus) {
-            $("#contenido *").prop( "disabled", false );
-        }
-    });
+function recargar(){
+    sessionStorage.setItem("ROSTERS_DETALLES_id_e", id_e);
+    sessionStorage.setItem("ROSTERS_DETALLES_id_r", id_r);
+    location.reload();
+}
+
+function irAPaginaDeDetalles(){
+    sessionStorage.setItem("EQUIPOS_DETALLES", id_e);
+    document.location.href = "EQUIPOS_DETALLES.html";
 }
 
 function irAPaginaDeEdicion(){
-    sessionStorage.setItem("id_equipo", id_equipo);
-    sessionStorage.setItem("nombre_equipo", $("#nombre_equipo").html());
-    sessionStorage.setItem("id_roster", id_roster);
+    sessionStorage.setItem("ROSTERS_EDICION_id_e", id_e);
+    sessionStorage.setItem("ROSTERS_EDICION_id_r", id_r);
     document.location.href = "ROSTERS_EDICION.html";
+}
+
+function crear_btn_retorno(){
+    return crear_dropdown("Regresar a...", [
+        "<a href='javascript:irAPaginaDeDetalles();'>Detalles del equipo</a>",
+        "<a href='EQUIPOS_VER.html'>Gestión de equipos</a>"]);
+}
+
+function confirmar_eliminacion(){
+    $("#modal-footer").hide();
+    $("#modal-title").html("Confirmación");
+    $("#modal-body").html("¿Está seguro de que desea eliminar el roster? Los datos no se podrán recuperar.<br><br>");
+    $("#modal-body").append("<button type='button' class='btn btn-danger' onclick='eliminar()'>Si</button>");
+    $("#modal-body").append("<button type='button' class='btn btn-primary' data-dismiss='modal'>No</button>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
+}
+
+function eliminar(){
+    $("#modal-title").html("Eliminando roster...");
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    
+    $.post( "../controlador/SRV_ROSTERS.php", {fn : "eli", id : id_r})
+        .done(function(res) {
+            $("#modal-title").html("Terminado");
+            $("#modal-body").html("Roster eliminado<br>" + crear_btn_retorno());
+        })
+        .fail(function(xhr, status) {
+            $("#modal-title").html("Error");
+            $("#modal-body").html("Error de servidor. " + (xhr.status == 500 ? xhr.responseText : "(" + xhr.status + " " + status + ")."));
+            $("#modal-footer").show();
+        });
 }

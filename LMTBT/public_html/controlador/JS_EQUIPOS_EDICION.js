@@ -20,12 +20,11 @@ $(document).ready(function() {
                     usr_es_coach = (parseInt(res) === 1);
                     crearModal(false,true,true,true);
                     $("#modal-footer").hide();
+                    $("#modal-title").html("Cargando información...");
+                    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+                    $('#modal').modal({backdrop: 'static', keyboard: false});
                     
-                    if(id_e !== null){
-                        $("#modal-title").html("Cargando información...");
-                        $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'><center>");
-                        $('#modal').modal({backdrop: 'static', keyboard: false});
-                        
+                    if(id_e !== null){                 
                         $.post( "../controlador/SRV_EQUIPOS.php", {fn : "get", id : id_e, id_c : "1", nb_e : "1", nb_c : "1"}, null, "json")
                             .done(function(res) {                                
                                 inicializar_input_edicion(document.getElementById("nombre"), res["nb_e"]);
@@ -56,7 +55,6 @@ $(document).ready(function() {
                     } else {
                         $("#modal-title").html("Error");
                         $("#modal-body").html("Es necesario que primero vaya a <a href='EQUIPOS_VER.html'>esta página</a> y seleccione un equipo.");
-                        $('#modal').modal({backdrop: 'static', keyboard: false});
                     }
                     break;
                 default:
@@ -112,12 +110,15 @@ function irAPaginaDeDetalles(){
 function guardarCambios(){
     document.getElementById("nombre").value = $.trim(document.getElementById("nombre").value);
     
-    $("#modal-footer").show();
-    $("#modal-title").html("Error");
+    $("#modal-footer").hide();
+    $("#modal-title").html("Guardando cambios...");
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
     
     if(document.getElementById("nombre").value.length === 0){
+        $("#modal-title").html("Error");
         $("#modal-body").html("El campo de nombre está vacío.");
-        $('#modal').modal();
+        $("#modal-footer").show();
         return;
     }
     
@@ -125,8 +126,9 @@ function guardarCambios(){
     var se_modifica_el_logo = (document.getElementById("logotipo").files.length !== 0);
     
     if(!se_modifica_el_nombre && !se_modifica_el_logo && id_c_nuevo == id_c_original){
+        $("#modal-title").html("Error");
         $("#modal-body").html("No ha hecho ningún cambio.");
-        $('#modal').modal();
+        $("#modal-footer").show();
         return;
     }
     
@@ -153,12 +155,6 @@ function guardarCambios(){
         dataType: 'text',
         processData: false,
         contentType: false,
-        beforeSend: function (xhr) {
-            $("#modal-footer").hide();
-            $("#modal-title").html("Procesando");
-            $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'><center>");
-            $('#modal').modal({backdrop: 'static', keyboard: false});
-        },
         success: function (respuesta) {
             $("#modal-title").html("Terminado");
             $("#modal-body").html("<center>Equipo modificado correctamente<br><a href='EQUIPOS_VER.html'>Volver a la página de gestión de equipos</a>" +

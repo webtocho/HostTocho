@@ -11,25 +11,6 @@
     validar_sesion_y_expulsar(["ADMINISTRADOR", "COACH"]);
     
     /**
-     * Si el usuario es coach, esta función comprueba que el equipo (cuyo id se señala en el parámetro)
-     * le pertenezca, si no es así, se lanza un error y la ejecución del PHP se cancela.
-     * @param int $id_equipo ID del equipo a comprobar.
-     */
-    function validar_permiso_coach($mysqli, $id_equipo){
-        if($_SESSION["TIPO_USUARIO"] == "COACH"){
-            $query = "SELECT ID_EQUIPO FROM equipos WHERE ID_EQUIPO = ? AND ID_COACH = ?";
-            if(($consulta = $mysqli->prepare($query)) && $consulta->bind_param("ii", $id_equipo, $_SESSION["ID_USUARIO"]) && $consulta->execute()){
-                $res = $consulta->get_result();
-                if($res->num_rows == 0){
-                    lanzar_error("Error de servidor (El equipo no le pertenece)");
-                }
-            } else {
-                lanzar_error("Error de servidor (" . __LINE__ . ")");
-            }
-        }
-    }
-    
-    /**
      * Revisa si el nombre del equipo es válido.
      * 
      * @param mysqli $mysqli Conexión a la base de datos.
@@ -98,37 +79,98 @@
             }
             
             //Si el usuario es coach, debemos comprobar que el id corresponda a un equipo que realmente le pertenece.
-            validar_permiso_coach($conexion, $_POST['id']);
+            validar_propiedad_equipo_coach($conexion, $_POST['id']);
             
             $datosASeleccionar = "";
             if(!empty($_POST['id_c'])){ $datosASeleccionar .= "ID_COACH"; }
             if(!empty($_POST['nb_e'])){ $datosASeleccionar .= (empty($datosASeleccionar) ? "" : ", ") . "NOMBRE_EQUIPO"; }
             if(!empty($_POST['nb_c'])){ $datosASeleccionar .= (empty($datosASeleccionar) ? "" : ", ") . "APELLIDO_PATERNO, APELLIDO_MATERNO, NOMBRE"; }
-            if(!empty($_POST['lg'])){ (empty($datosASeleccionar) ? "" : ", ") . "LOGOTIPO_EQUIPO"; }
-            if(empty($datosASeleccionar)){
-                $datosASeleccionar .= "*";
-		$_POST['id_c'] = $_POST['nb_e'] = $_POST['nb_c'] = $_POST['lg'] = "1";
-            }
+            if(!empty($_POST['lg'])){ $datosASeleccionar .= (empty($datosASeleccionar) ? "" : ", ") . "LOGOTIPO_EQUIPO"; }
+            
+            $info_equipo = array();
             
             $query = "SELECT " . $datosASeleccionar . " FROM equipos INNER JOIN usuarios ON equipos.ID_COACH = usuarios.ID_USUARIO WHERE ID_EQUIPO = ?";
-            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+            if(!empty($datosASeleccionar) && ($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
                 $res = $consulta->get_result();
                 if ($res->num_rows != 0){
                     $fila = $res->fetch_assoc();
-                    $info_equipo = array();
                     
                     if(!empty($_POST['id_c'])){ $info_equipo["id_c"] = $fila["ID_COACH"]; }
                     if(!empty($_POST['nb_e'])){ $info_equipo["nb_e"] = $fila["NOMBRE_EQUIPO"]; }
                     if(!empty($_POST['nb_c'])){ $info_equipo["nb_c"] = $fila["APELLIDO_PATERNO"] . " " . $fila["APELLIDO_MATERNO"] . " " . $fila["NOMBRE"]; }
                     if(!empty($_POST['lg'])){ $info_equipo["lg"] = base64_encode($fila["LOGOTIPO_EQUIPO"]); }
-                    
-                    echo json_encode($info_equipo);
                 } else {
                     lanzar_error("Error de servidor (El equipo ya no existe)");
                 }
             } else {
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
+            
+            if(!empty($_POST['r_act']) || !empty($_POST['cat_d'])){
+                //Este query es usado si se solicita la información de los rosters.
+                $query =   "SELECT DISTINCT ros.id_roster, 
+                                            ros.nombre_categoria 
+                            FROM   (SELECT id_roster, 
+                                           nombre_categoria, 
+                                           id_convocatoria 
+                                    FROM   rosters 
+                                           INNER JOIN categorias 
+                                                   ON rosters.id_categoria = categorias.id_categoria 
+                                    WHERE  id_equipo = ?) AS ros 
+                                    LEFT JOIN convocatoria AS con 
+                                           ON ros.id_convocatoria = con.id_convocatoria 
+                            WHERE  con.fecha_fin_torneo IS NULL 
+                                   OR curdate() <= fecha_fin_torneo";
+            }
+            
+            //Rosters activos
+            if(!empty($_POST['r_act'])){
+                /*Vamos a seleccionar los rosters creados que no están ligados a una torneo,
+                  o están ligados a un torneo que aún no ha terminado*/
+                if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+                    $res = $consulta->get_result();
+                    $info_equipo["r_act"] = array();
+
+                    while ($fila = $res->fetch_row()) {
+                        array_push($info_equipo["r_act"], $fila);
+                    }
+                } else {
+                    lanzar_error("Error de servidor (" . __LINE__ . ")");
+                }
+            }
+            
+            //Categorías disponible para crear rosters.
+            if(!empty($_POST['cat_d'])){
+                $categorias = array();
+                $categorias_ocupadas = array();
+                
+                if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+                    $res = $consulta->get_result();
+                    while ($fila = $res->fetch_row()) {
+                        array_push($categorias_ocupadas, $fila[1]);
+                    }
+                } else {
+                    lanzar_error("Error de servidor (" . __LINE__ . ")");
+                }
+                
+                if(($consulta = $conexion->prepare("SELECT ID_CATEGORIA, NOMBRE_CATEGORIA FROM categorias")) && $consulta->execute()){
+                    $res = $consulta->get_result();
+                    while ($fila = $res->fetch_row()) {
+                        array_push($categorias, $fila);
+                    }
+                } else {
+                    lanzar_error("Error de servidor (" . __LINE__ . ")");
+                }
+                
+                $info_equipo["cat_d"] = array();
+                foreach ($categorias as $cat){
+                    if(!in_array($cat[1], $categorias_ocupadas)){
+                        array_push($info_equipo["cat_d"], $cat);
+                    }
+                }
+            }
+            
+            echo json_encode($info_equipo);
             break;
         case "bus":
             $query = "SELECT ID_EQUIPO, NOMBRE_EQUIPO, LOGOTIPO_EQUIPO FROM equipos";
@@ -223,7 +265,7 @@
             }
             
             //Si el usuario es coach, debemos comprobar que el id corresponda a un equipo que realmente le pertenece.
-            validar_permiso_coach($conexion, $_POST['id_e']);
+            validar_propiedad_equipo_coach($conexion, $_POST['id_e']);
             
             $query = "UPDATE equipos SET";
             $param = array("");

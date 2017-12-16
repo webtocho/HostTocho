@@ -49,6 +49,10 @@ function elegirCoach(id = null){
     
     idDelCoach = null;
     document.getElementById("coach").value = "Cargando...";
+    $("#modal-footer").hide();
+    $("#modal-title").html("Cargando coach...");
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
     
     $.post("../controlador/SRV_CUENTAS.php", {fn : "get_info", id : "1", nombre: "1", idCuenta : (id == null ? "" : id)}, null, "json")
         .done(function(res) {
@@ -65,31 +69,35 @@ function elegirCoach(id = null){
                 $("#modal-footer").hide();
             else
                 $("#modal-footer").show();
-            $('#modal').modal({backdrop: 'static', keyboard: false});
         });
 }
 
 function crearEquipo(){
     document.getElementById("nombre").value = $.trim(document.getElementById("nombre").value);
     
-    $("#modal-footer").show();
-    $("#modal-title").html("Error");
+    $("#modal-footer").hide();
+    $("#modal-title").html("Creando equipo...");
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
     
     if(document.getElementById("nombre").value.length === 0){
+        $("#modal-title").html("Error");
         $("#modal-body").html("El nombre es inválido.");
-        $('#modal').modal();
+        $("#modal-footer").show();
         return;
     }
     
     if(document.getElementById("logotipo").files.length === 0){
+        $("#modal-title").html("Error");
         $("#modal-body").html("No ha seleccionado el logotipo.");
-        $('#modal').modal();
+        $("#modal-footer").show();
         return;
     }
     
     if(idDelCoach === null){
+        $("#modal-title").html("Error");
         $("#modal-body").html("No ha seleccionado un coach.");
-        $('#modal').modal();
+        $("#modal-footer").show();
         return;
     }
     
@@ -111,15 +119,9 @@ function crearEquipo(){
         dataType: 'text',
         processData: false,
         contentType: false,
-        beforeSend: function (xhr) {
-            $("#modal-footer").hide();
-            $("#modal-title").html("Procesando");
-            $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'><center>");
-            $('#modal').modal({backdrop: 'static', keyboard: false});
-        },
         success: function (respuesta) {
             $("#modal-title").html("Terminado");
-            $("#modal-body").html("<center>Equipo creado correctamente<br><a href='EQUIPOS_VER.html'>Volver a la página de gestión de equipos</a><center>");
+            $("#modal-body").html("<center>Equipo creado correctamente<br><a href='EQUIPOS_VER.html'>Volver a la página de gestión de equipos</a></center>");
         },
         error: function (xhr, status) {
             $("#modal-title").html("Error");

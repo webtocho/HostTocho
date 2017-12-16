@@ -42,38 +42,65 @@
                     $datosASeleccionar .= (empty($datosASeleccionar) ? "" : ", ") . "FACEBOOK, INSTAGRAM, TWITTER";
             }
             if (isset($_POST['otros']) && boolval($_POST['otros'])){
-                $datosASeleccionar .= (empty($datosASeleccionar) ? "" : ", ") . "FECHA_NACIMIENTO, SEXO, TIPO_SANGRE, TELEFONO";
+                $datosASeleccionar .= (empty($datosASeleccionar) ? "" : ", ") . "TRUNCATE(DATEDIFF(CURDATE(), FECHA_NACIMIENTO)/365,0) AS EDAD, SEXO, TIPO_SANGRE, TELEFONO";
             }
             if (isset($_POST['foto']) && boolval($_POST['foto'])){
                 $datosASeleccionar .= (empty($datosASeleccionar) ? "" : ", ") . "FOTO_PERFIL";
             }
-            if (empty($datosASeleccionar))
+            if (empty($datosASeleccionar)){
                 $datosASeleccionar .= "*";
+            }
             
             //Creamos nuestra consulta preparada.
-            $consulta = $conexion->prepare('SELECT ' . $datosASeleccionar . ' FROM usuarios WHERE ID_USUARIO = ?');
+            $query = 'SELECT ' . $datosASeleccionar . ' FROM usuarios WHERE ID_USUARIO = ?';
             
-            if ($consulta->bind_param("i", $_POST['idCuenta']) && $consulta->execute()) {
-                $res = $consulta->get_result();
+            if(!is_array($_POST['idCuenta'])){
+                if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['idCuenta']) && $consulta->execute()){
+                    $res = $consulta->get_result();
 
-                if ($res->num_rows == 1) {
-                    //Vamos a enviar la fila de la tabla como resultado.
-                    $info_cuenta = $res->fetch_assoc();
-                    //Si se incluyó la foto de perfil, la convertimos a un formato legible.
-                    if (!empty($info_cuenta["FOTO_PERFIL"])) {
-                        $info_cuenta["FOTO_PERFIL"] = base64_encode($info_cuenta["FOTO_PERFIL"]);
+                    if ($res->num_rows != 0) {
+                        //Vamos a enviar la fila de la tabla como resultado.
+                        $info_cuenta = $res->fetch_assoc();
+                        //Si se incluyó la foto de perfil, la convertimos a un formato legible.
+                        if (!empty($info_cuenta["FOTO_PERFIL"])) {
+                            $info_cuenta["FOTO_PERFIL"] = base64_encode($info_cuenta["FOTO_PERFIL"]);
+                        }
+
+                        //Eliminamos datos comprometedores.
+                        unset($info_cuenta['PASSWORD']);
+
+                        echo json_encode($info_cuenta);
+                    } else {
+                        lanzar_error("Error de servidor (El usuario ya no existe)", false);
                     }
-                    
-                    //Eliminamos datos comprometedores.
-                    unset($info_cuenta['PASSWORD']);
-                    
-                    echo json_encode($info_cuenta);
                 } else {
-                    lanzar_error("Error de servidor (El usuario ya no existe)", false);
+                    lanzar_error("Error de servidor (" . __LINE__ . ")", false);
                 }
+            } else if ($consulta = $conexion->prepare($query)){
+                $info_cuentas = array();
+                foreach ($_POST['idCuenta'] as $jug) {
+                    if($consulta->bind_param("i", $jug) && $consulta->execute() && ($res = $consulta->get_result())){
+                        if ($res->num_rows != 0){
+                            $tmp = $res->fetch_assoc();
+                        
+                            if (!empty($tmp["FOTO_PERFIL"])) {
+                                $tmp["FOTO_PERFIL"] = base64_encode($tmp["FOTO_PERFIL"]);
+                            }
+                            unset($tmp['PASSWORD']);
+
+                            array_push($info_cuentas, $tmp);
+                        } else {
+                            array_push($info_cuentas, null);
+                        }
+                    } else {
+                        lanzar_error("Error de servidor (Uno de los usuarios ya no existe)", false);
+                    }
+                }
+                echo json_encode($info_cuentas);
             } else {
                 lanzar_error("Error de servidor (" . __LINE__ . ")", false);
             }
+            
             break;
         case "buscar":
             validar_sesion_y_expulsar(["ADMINISTRADOR", "COACH"]);
@@ -103,10 +130,8 @@
             if(empty($_POST['tipo'])){
                 lanzar_error("Error de servidor (" . __LINE__ . ")", false);
                 break;
-            } else if ($_SESSION["TIPO_USUARIO"] == "COACH" && $_POST['tipo'] != "JUGADOR"){
-                lanzar_error("Error de servidor (Los coaches sólo pueden buscar jugadores)", false);
-                break;
             }
+            
             $query .= " FROM usuarios WHERE TIPO_USUARIO = ?";
             $param[0] .= "s";
             array_push($param, $_POST['tipo']);
@@ -169,6 +194,10 @@
                             break;
                         }
                     }
+                }
+                
+                if(!empty($_POST['id_cat'])){
+                    $query .= " " . get_restricciones_categoria($conexion, $_POST['id_cat']);
                 }
             }
             
