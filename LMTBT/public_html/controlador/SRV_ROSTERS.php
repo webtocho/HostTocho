@@ -286,7 +286,7 @@
                 }
             }
             
-            cerrar_transaccion($conexion, false);
+            cerrar_transaccion($conexion, true);
             break;
         default:
             lanzar_error("Error de servidor (" . __LINE__ . ")", false);
