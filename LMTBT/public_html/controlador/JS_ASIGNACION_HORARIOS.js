@@ -16,7 +16,7 @@ function getTorneo(){
         type: "POST",
         datatype: "text",
         success: function (info) {
-            
+           
            info = info.trim()
             if(info == 'Failx'){
                 alert("No se Encontro Ningun Torneo");

@@ -1,4 +1,5 @@
 <?php
+    require 'SRV_CONEXION.php';
     session_start();
      $conn = new SRV_CONEXION();
 
@@ -64,7 +65,6 @@
                                 echo "Failx";
                                 }
                                 else{
-                                    
                                     while($row = mysqli_fetch_array($result) ){
                                         echo "<option value='".$row['ID_CONVOCATORIA']."'>".$row['NOMBRE_TORNEO']."</option>";
 

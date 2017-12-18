@@ -49,10 +49,10 @@ function elegirCoach(id = null){
     
     idDelCoach = null;
     document.getElementById("coach").value = "Cargando...";
-    $("#modal-footer").hide();
-    $("#modal-title").html("Cargando coach...");
-    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
-    $('#modal').modal({backdrop: 'static', keyboard: false});
+   // $("#modal-footer").hide(); no se oculta nunca
+    //$("#modal-title").html("Cargando coach...");
+    //$("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    //$('#modal').modal({backdrop: 'static', keyboard: false});
     
     $.post("../controlador/SRV_CUENTAS.php", {fn : "get_info", id : "1", nombre: "1", idCuenta : (id == null ? "" : id)}, null, "json")
         .done(function(res) {
