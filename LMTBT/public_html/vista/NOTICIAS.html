@@ -5,6 +5,7 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
 <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="../controlador/JS_REGISTRO_NOTICIAS.js"></script>
+<script type="text/javascript" src="../controlador/JS_ACCESO_NOTICIA.js"></script>
 <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
 <style type="text/css">
     .bs-example{
@@ -15,6 +16,7 @@
 <body>
 <div id="alertaSucces" ></div>    
 <div class="bs-example">
+    <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#333;">Tuxtla</span></h1> </a></center>
     <center><h1>Noticias</h1></center>
     <form id="form_noticias" method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -28,7 +30,7 @@
         <div class="form-group">
             <input name="imagen_noticia[]" size="30" type="file" id="imagen" multiple required/>
         </div>
-        <center><button id="enviar" type="submit" class="btn btn-primary">Enviar</button></center>
+        <center><button type="submit" class="btn btn-primary">Enviar</button></center>
     </form>
 </div>
 </body>

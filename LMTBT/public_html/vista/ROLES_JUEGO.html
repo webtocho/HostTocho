@@ -21,22 +21,21 @@ and open the template in the editor.
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 
-<body>
+<body id="body">
     <br><br>
-  <div class="contenedor1">
-    <div class="contenido1">
+    <div class="container">
 
-<center><h3>Roles de Juego </h3></center>
+    <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#333;">Tuxtla</span></h1></a></center>
+    <center><h5>Roles de Juego </h5></center>
     <div class="row"  style="padding:  0cm   5cm 0cm 5cm;">
     <label><h5>Seleccione una convocatoria:</h5></label>         
-     <select  class='browser-default' id='lista_convocatorias_inactivas' onchange="lista_convocatorias_inactivas()"></select>
-
+    <select  class='browser-default' id='lista_convocatorias_inactivas' onchange="lista_convocatorias_inactivas()"></select>
 
     </div>
     <div class="row" style="padding:0cm   2cm 0cm 2cm;">
          <h3 id = "nombre_torneo" ></h3>
          <br>
-        <table class="striped" style="background: orange;">
+        <table class="striped">
           <thead>
             <tr>          
                 <th><center>TORNEO</center></th>
@@ -54,7 +53,6 @@ and open the template in the editor.
             <!-- trabajo de ajax -->
           </tbody>
         </table>
-      </div>
       </div>
   </div>
 

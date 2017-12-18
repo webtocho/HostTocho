@@ -5,6 +5,7 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
@@ -12,11 +13,13 @@
         <link type="text/css" rel="stylesheet" href="css/pagination.css" />
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_BUSQUEDA.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/style_cuentas_busqueda.css" />
     </head>
-    <body>
-        <h4>Búsqueda de <a id="titulo">usuarios</a></h4>
-        
+    <body id="body">
+    <center>
         <div id="contenido">
+            <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#333;">Tuxtla</span></h1> </a></center>
+            <h3 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Búsqueda de usuarios</h3>
             <div>
                 <div id="filtros" class="form-group">
                     <label for="rp">Resultados por página:</label>
@@ -41,7 +44,7 @@
                     <div id="_sexo">
                         <label>Sexo:</label>
                         <div class="radio-inline">
-                            <label><input type="radio" name="sexo" value="" checked id="sexo_neutro">Ambos</label>
+                            <label><input type="radio" name="sexo" value="" checked>Ambos</label>
                         </div>
                         <div class="radio-inline">
                             <label><input type="radio" name="sexo" value="M">Hombres</label>
@@ -91,6 +94,19 @@
             </div>
             
             <div id="resultados">Seleccione los filtros que desee y haga su búsqueda.</div>
+            <br>
+            <a href="#body" id="gototop">Ir Arriba</a>
+            <style type="text/css">
+                @media(max-width: 550px){
+                    #gototop{
+                        width: 100%;
+                        background-color: gray;
+                        color: #ffffff;
+                        padding: 10px;
+                    }
+                }
+            </style>
         </div>
+    </center>
     </body>
 </html>

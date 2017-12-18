@@ -5,12 +5,16 @@
         <title>Detalles de cuenta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_DETALLES.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/style_cuentas_detalles.css" />
     </head>
-    <body>
-        <h2>Detalles de la cuenta</h2>
+    <body id="body">
+    <center>
         <div id="contenido">
+            <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#000000;">Tuxtla</span></h1></a></center>
+            <h2 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Detalles de la cuenta</h2>
             <b>Nombre: </b><a id="nombre">Cargando...</a>
             <br>
             <b>Correo electrónico: </b><a id="correo">Cargando...</a>
@@ -33,8 +37,9 @@
                 </ul>
             </div>
             <br>
-            <button onclick="irAPaginaDeEdicion()">Modificar datos</button>
+            <button id="btn" onclick="irAPaginaDeEdicion()">Modificar datos</button>
         </div>
         <br>
+    </center>
     </body>
 </html>

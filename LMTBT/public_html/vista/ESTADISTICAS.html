@@ -5,21 +5,22 @@
     		Estadisticas
     	</title>
     	<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     	<link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css" />
     	<link href="css/style_estadisticas.css" rel='stylesheet' type='text/css' />
     		<script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
     		<script type="text/javascript" src="../controlador/JS_ESTADISTICAS.js"></script>
     </head>
-<body>
+<body id="body">
     <br>
-    <div class="padre">
+    <center>
 	<div class="bs-example">
+            <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#333;">Tuxtla</span></h1> </a></center>
             <center><h1><a>Estado del Torneo</a></h1></center>
-            <center>
                 <button onclick="CargarConvocatorias(1)" class="btn btn-primary">En curso</button>
                 <button onclick="CargarConvocatorias(2)" class="btn btn-success">Terminado</button>
                 <button onclick="CargarConvocatorias(3)" class="btn btn-warning">Todos</button>
-            </center>
             <center><h2><a>Torneos</a></h2></center>
             <center><select id="Select_Torneos" class="form-control" onchange="CargarEquipos(this.value)">
                             <option value='' disabled selected hidden>Elige estado del torneo...</option>
@@ -27,7 +28,8 @@
             <center><h2><a>Equipos</a></h2></center>
             <center><select id="Select_Equipos" class="form-control" onchange="CargarEstadisticas(this.value)"></select></center><br>
             <div id="Estadisticas" style="padding-left:5px;padding-right: 5px;"></div>
-	</div></div>
+	</div>
+    </center>
 	
 	<script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap-3.1.1.min.js"></script>
 </body>

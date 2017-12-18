@@ -1,6 +1,6 @@
 	    body{
-	        /*font-family: 'Roboto', sans-serif;*/
-	        font-family: 'Noto Sans', sans-serif;
+	        font-family: 'Roboto', sans-serif;
+	        /*font-family: 'Noto Sans', sans-serif;*/
 	    }
 	    #body{
 	        width: 99%;
@@ -10,12 +10,12 @@
 	        background-image: url(images/4.jpg);
 	        background-size: cover;
 	    }
-	    .form{
+	    #contenido{
 	        width: 700px;
-	        height: 500px;
+	        height: 100%;
 	        background-color: #fff;
 	        border-radius: 10px;
-	        padding: 3px;
+	        padding: 10px;
 	        margin-top: 40px;
 	        box-shadow: 5px 5px 15px #333;
 	    }
@@ -29,7 +29,7 @@
 	        border-right: 0px;
 	        margin-top: 20px;
 	    }
-	    #btn-submitdos{
+	    #btn-add,#btn{
 	        background-color: transparent;
 	        border: 1px solid darkorange;
 	        border-radius: 3px;
@@ -49,12 +49,14 @@
                     font-size: 12px;
                 }
 	    @media(max-width:550px){
-	        .form{
-	            width: 90%;
+	        #contenido{
+	            width: 100%;
 	            height: 100%;
 	            margin-top: 20px;
 	            margin-bottom: 30px;
                     padding: 10px;
+                    border-radius: 0px;
+                    box-shadow: none;
 	        }
                 table{
                     width: 100%;
@@ -69,7 +71,7 @@
 	    }
             
             @media(max-width:850px){
-                .form{
+                #contenido{
 	            width: 90%;
 	            height: 100%;
 	            margin-top: 20px;

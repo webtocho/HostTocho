@@ -1,0 +1,33 @@
+        body{
+            font-family: 'Roboto', sans-serif;
+            /*font-family: 'Noto Sans', sans-serif;*/
+        }
+        #body{
+            width: 99%;
+            height: 100%;
+            clear: both;
+            margin: auto;
+            background-image: url(../img/RC_IF_FONDO.png);
+            background-size: repeat;
+        }
+        #contenido{
+            width: 800px;
+            height: auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 50px auto;
+            border: 2px solid #d9d9d9;
+        }
+        
+        @media(max-width:550px){
+            #contenido{
+                width: 100%;
+                height: auto;
+                background-color: #fff;
+                border-radius: 0px;
+                padding: 30px;
+                margin: 0px auto;
+                border: 0px solid #d9d9d9;
+            }
+        }

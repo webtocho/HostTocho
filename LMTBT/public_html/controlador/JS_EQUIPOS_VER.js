@@ -57,10 +57,10 @@ function buscar(){
                     $("#equipos").html(tmp);
                     $.each(data , function( index, i ) {
                         // En la posición 0 viene el ID; en la 1, el nombre; y en la 2, el logotipo. 
-                        $("#equipos").append("<div style='display: inline-block;'>" +
-                                                "<img src=\"data:image/png;base64," + i[2] +"\"/>" +
-                                                "<div><a href='javascript:irAVerDetalles(" + i[0] + ")'>" + i[1] + "</a></div>" +
-                                             "</div>");
+                        $("#equipos").append("<div class='equipo'>" 
+                                    + "<img class='img-equipo' src=\"data:image/png;base64," + i[2] +"\"/>"
+                                    + "<p class='Titulo-E'>" + i[1]+ "</p>" + "<button class='btn-vde' onclick=\"irAVerDetalles(" + i[0] + ")\">Ver detalles</button>"
+                                    + "</div>");
                     });
 
                     $("#filtros :input").prop("disabled", false);

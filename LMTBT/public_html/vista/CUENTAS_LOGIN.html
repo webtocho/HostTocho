@@ -1,7 +1,9 @@
 <html>
+
     <head>
         <title>Iniciar Sesion</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link type="text/css" rel="stylesheet" href="css/style_cuentas_login.css" />
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGIN.js"></script>
@@ -10,9 +12,10 @@
       var WEB_ROOT = "http://" + document.location.hostname + "/Web_Tocho";</script> 
     -->
     </head>
-    <body>
+    <body id="body">
         <center>
             <div class="form">
+            <a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#000000;">Tuxtla</span></h1></a>
             <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Login</h1>
             <form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
             <input placeholder="Correo" type="email" name="campo_correo" id="campo_correo">

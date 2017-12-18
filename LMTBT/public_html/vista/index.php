@@ -99,6 +99,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!--Ventana emergente de confirmacion para terminar un torneo-->
         
         <div class="container">
+            <style type="text/css">
+                @media(max-width: 550px){
+                    .container{
+                        width: 100%;
+                        float: left;
+                    }
+                }
+            </style>
             <div class="header" id="home">
                 <div class="subhead white">
                     <nav class="navbar navbar-default" role="navigation">
@@ -109,7 +117,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.php"><h1>LMTB <span>Tuxtla</span></h1> </a>
+                            <a class="navbar-brand" href="index.php"><h1 style="font-size: 25px;">LMTB <span>Tuxtla</span></h1> </a>
                         </div><br>
                         <!--/.navbar-header-->
 

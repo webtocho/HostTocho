@@ -1,11 +1,15 @@
+        body{
+            font-family: 'Roboto', sans-serif;
+            /*font-family: 'Noto Sans', sans-serif;*/
+        }
         #body{
             width: 99%;
             height: 100%;
             clear: both;
             margin: auto;
             background-color: #fff;
-            /*background-image: url(img/RC_IF_TEAM_BG.jpg);
-            background-size: cover;*/
+            background-image: url(../img/RC_IF_FONDO.png);
+            background-size: repeat;
         }
         #contenido{
             width: 550px;
@@ -14,6 +18,7 @@
             padding: 23px;
             margin-top: 40px;
             box-shadow: 5px 5px 15px #333;
+            background-color: #fff;
         }
         #detalles{
             width: 90%;
