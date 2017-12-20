@@ -16,7 +16,7 @@
    var ID_CONVOCSTORIA;
    
 function llenar_tablas(){
-         /* sessionStorage.setItem("id_equipo_1", 1);
+        /* sessionStorage.setItem("id_equipo_1", 1);
         sessionStorage.setItem("id_equipo_2", 2);
         sessionStorage.setItem("id_rol_juego", 1);
         sessionStorage.setItem("id_convocatoria", 1);*/
@@ -75,18 +75,15 @@ function llenar_tablas(){
         },
         type: "POST",
         datatype: "text",
-          // // async:false,
         success: function(resultado) {
-           // $('#formulario_equipo_1').empty(); //Vaciamos el contenido de la tabla
             $('#formulario_equipo_1').append(resultado);
-            
         },
         error: function(jqXHR, textStatus) {
           mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER LOS JUGADORES DEL EQUIPO","incorrecto");
         }
     });
      $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+           url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
             tipo:"Obtener_jugador_equipo",
             team:team2,
@@ -132,7 +129,8 @@ function llenar_tablas(){
 
 
 
-function guardarT(id,ID_USUARIO){
+function guardarT(id,ID_USUARIO,ID_ROSTER){
+    
     var dato=document.getElementById(id).value;
           $.ajax({ 
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
@@ -140,19 +138,21 @@ function guardarT(id,ID_USUARIO){
             tipo:"guardarT",
             DATO:dato,
             ID_USUARIO:ID_USUARIO,
+            ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
         },
         type: "POST",
         datatype: "text",
-          // // async:false,
+          
         success: function(resultado) {
-
+             
         },
         error: function(jqXHR, textStatus) {
            mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
         }
     });
 }
-function guardarS(id,ID_USUARIO){
+function guardarS(id,ID_USUARIO,ID_ROSTER){
     
     var dato=document.getElementById(id).value;
           $.ajax({ 
@@ -161,6 +161,8 @@ function guardarS(id,ID_USUARIO){
             tipo:"guardarS",
             DATO:dato,
             ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
         },
         type: "POST",
         datatype: "text",
@@ -173,7 +175,7 @@ function guardarS(id,ID_USUARIO){
     });
 }
 
-function guardarI(id,ID_USUARIO){
+function guardarI(id,ID_USUARIO,ID_ROSTER){
        var dato=document.getElementById(id).value;
           $.ajax({ 
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
@@ -181,6 +183,8 @@ function guardarI(id,ID_USUARIO){
             tipo:"guardarI",
             DATO:dato,
             ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
         },
         type: "POST",
         datatype: "text",
@@ -192,7 +196,7 @@ function guardarI(id,ID_USUARIO){
         }
     });
 }
-function guardarA(id,ID_USUARIO){
+function guardarA(id,ID_USUARIO,ID_ROSTER){
          var dato=document.getElementById(id).value;
           $.ajax({ 
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
@@ -200,6 +204,8 @@ function guardarA(id,ID_USUARIO){
             tipo:"guardarA",
             DATO:dato,
             ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
         },
         type: "POST",
         datatype: "text",
@@ -211,7 +217,7 @@ function guardarA(id,ID_USUARIO){
         }
     });
 }
-function guardarC1(id,ID_USUARIO){
+function guardarC1(id,ID_USUARIO,ID_ROSTER){
          var dato=document.getElementById(id).value;
           $.ajax({ 
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
@@ -219,6 +225,8 @@ function guardarC1(id,ID_USUARIO){
             tipo:"guardarC1",
             DATO:dato,
             ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
         },
         type: "POST",
         datatype: "text",
@@ -230,7 +238,7 @@ function guardarC1(id,ID_USUARIO){
         }
     });
 }
-function guardarC2(id,ID_USUARIO){
+function guardarC2(id,ID_USUARIO,ID_ROSTER){
          var dato=document.getElementById(id).value;
           $.ajax({ 
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
@@ -238,6 +246,8 @@ function guardarC2(id,ID_USUARIO){
             tipo:"guardarC2",
             DATO:dato,
             ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
         },
         type: "POST",
         datatype: "text",
@@ -249,7 +259,7 @@ function guardarC2(id,ID_USUARIO){
         }
     });
 }
-function guardarPT(id,ID_USUARIO){
+function guardarPT(id,ID_USUARIO,ID_ROSTER){
         var dato=document.getElementById(id).value;
           $.ajax({ 
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
@@ -257,6 +267,8 @@ function guardarPT(id,ID_USUARIO){
             tipo:"guardarPT",
             DATO:dato,
             ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
         },
         type: "POST",
         datatype: "text",
