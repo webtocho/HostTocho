@@ -45,7 +45,7 @@ function CargarConvocatorias(estado){
 
 function ActualizarEstadisticas(id_convocatoria){
 	$.ajax({
-		 url: "../controlador/SRV_ACTUALIZAR_TABLA_CONVOCATORIAS.php",
+		 url: "../controlador/SRV_ACTUALIZAR_TABLA_POSICIONES.php",
 		 data: {convocatoria :id_convocatoria },
          type: "POST",
          dataType: 'text',
