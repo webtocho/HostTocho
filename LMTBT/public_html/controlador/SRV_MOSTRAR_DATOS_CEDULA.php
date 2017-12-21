@@ -50,7 +50,7 @@ switch ($_POST['tipo']){
         }  
          if (isset($_SESSION["TIPO_USUARIO"]) == 'CAPTURISTA' || isset($_SESSION["TIPO_USUARIO"]) == 'ADMINISTRADOR'){
             foreach ($info as $info2) { 
-                $sql = sprintf(" select * from cedulas where ID_JUGADOR=" .$info2["ID_JUGADOR"]);
+                $sql = sprintf(" select * from cedulas where ID_ROL_JUEGO=%s AND ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
                  $conexcion= $db->getConnection();
                  $resultado3=$conexcion->query($sql);
                 $info3=$resultado3->fetch_assoc();
