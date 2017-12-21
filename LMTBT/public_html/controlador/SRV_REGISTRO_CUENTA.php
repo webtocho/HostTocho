@@ -45,7 +45,7 @@
                             break;
                         }
                     }
-                    if($correo_existe == false){    
+                    if($correo_existe == false){
                         //$tipo_usuario = "COACH";
                         $consulta = $conexion->prepare('INSERT INTO usuarios VALUES (0,?,?,?,?,?,null,?,null,null,null,null,null,null,?)');
                         $consulta->bind_param("sssssss",$_POST['correo'], $_POST['password'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno'],$_POST['sexo'],$_POST['tipo_cuenta']);
@@ -88,7 +88,7 @@
             }else{
                 echo "Falló la consignación de la transacción.";
             }
-        }else{              
+        }else{
             $conexion->rollback();
             echo "Error en la transaccion";
         }
