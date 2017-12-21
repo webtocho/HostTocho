@@ -41,7 +41,7 @@ $(document).ready(function() {
                                 $("#torneo").html((res["tor"] != null ? res["tor"] : "No está participando en ninguno"));
                                 
                                 $("#modal-title").html("Cargando lista de jugadores...");
-                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", idCuenta : res["mb"], nombre : "1", foto : "1"}, null, "json")
+                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb : "1", ft : "1"}, null, "json")
                                     .done(function(res_j) {
                                         $.each(res_j, function (index, i) {
                                             if(i !== null){
@@ -111,12 +111,12 @@ function irAPaginaDeDetalles(){
 function agregarFilaMiembro(id, info, num = 0){
     var fila = document.getElementById("tabla_miembros").insertRow(-1);    
     //Celda de nombre completo
-    fila.insertCell(-1).innerHTML = info["APELLIDO_PATERNO"] + " " + info["APELLIDO_MATERNO"] + " " + info["NOMBRE"];
+    fila.insertCell(-1).innerHTML = info["nb_c"];
     //Celda de fotografía
-    if(info["FOTO_PERFIL"] === null)
+    if(info["ft"] === null)
         fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
     else
-        fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + info["FOTO_PERFIL"] +"\" width='100'/>";
+        fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + info["ft"] +"\" width='100'/>";
     //Celda de selección de número
     fila.insertCell(-1).innerHTML = "<input type='number' id='nb_" + id + "' min='0' max='99' step='1' value='" + num + "' onchange='validarNum(this)'>";
     //Celda de eliminación de fila.
@@ -130,7 +130,7 @@ function agregarMiembro(id){
         $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
         $('#modal').modal({backdrop: 'static', keyboard: false});
         
-        $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", idCuenta : id, nombre : "1", foto : "1"}, null, "json")
+        $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : id, nb : "1", ft : "1"}, null, "json")
             .done(function(res) {
                 agregarFilaMiembro(id, res);
                 miembros.push(id);

@@ -78,10 +78,10 @@ function elegirCoach(id = null){
     document.getElementById("coach").value = "Cargando...";
     $("#coach").css("background-color", "#ffbbb2");
     
-    $.post("../controlador/SRV_CUENTAS.php", {fn : "get_info", id : "1", nombre: "1", idCuenta : (id == null ? "" : id)}, null, "json")
+    $.post("../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : (id == null ? "" : id), id : "1", nb_c: "1"}, null, "json")
         .done(function(res) {
-            document.getElementById("coach").value = res["APELLIDO_PATERNO"] + " " + res["APELLIDO_MATERNO"] + " " + res["NOMBRE"];
-            id_c_nuevo = parseInt(res["ID_USUARIO"]);
+            document.getElementById("coach").value = res["nb_c"];
+            id_c_nuevo = parseInt(res["id"]);
         })
         .fail(function() {
             $("#modal-footer").show();

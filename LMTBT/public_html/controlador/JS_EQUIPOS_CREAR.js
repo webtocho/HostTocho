@@ -54,10 +54,10 @@ function elegirCoach(id = null){
     //$("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
     //$('#modal').modal({backdrop: 'static', keyboard: false});
     
-    $.post("../controlador/SRV_CUENTAS.php", {fn : "get_info", id : "1", nombre: "1", idCuenta : (id == null ? "" : id)}, null, "json")
+    $.post("../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : (id == null ? "" : id), id : "1", nb_c: "1"}, null, "json")
         .done(function(res) {
-            document.getElementById("coach").value = res["APELLIDO_PATERNO"] + " " + res["APELLIDO_MATERNO"] + " " + res["NOMBRE"];
-            idDelCoach = parseInt(res["ID_USUARIO"]);
+            document.getElementById("coach").value = res["nb_c"];
+            idDelCoach = parseInt(res["id"]);
         })
         .fail(function() {
             document.getElementById("coach").value = (urs_es_coach ? "<Error>" : "<Seleccione un coach>");

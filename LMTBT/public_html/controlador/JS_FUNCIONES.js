@@ -127,7 +127,7 @@ function oninput_input_edicion(input){
 /**
  * Este es un evento complemento para los inputs de tipo 'text'
  * que hagan uso de oninput_input_edicion. Se coloca de la siguiente forma:
- * oninput="onchange_input_edicion_txt(this);"
+ * onchange="onchange_input_edicion_txt(this);"
  * 
  * Elimina espacios innecesarios después de que el usuario escriba algo en él.
  * 

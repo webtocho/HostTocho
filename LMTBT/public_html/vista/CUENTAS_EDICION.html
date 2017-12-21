@@ -5,33 +5,33 @@
         <title>Modificar cuenta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
+        <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_EDICION.js"></script>
-        <link type="text/css" rel="stylesheet" href="css/style_cuentas_edicion.css" />
     </head>
-    <body id="body">
+    <body>
+        <h2>Modificar datos de la cuenta</h2>
         <div id="contenido">
-            <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#333;">Tuxtla</span></h1> </a></center>
-            <h2 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;text-align:center;">Modificar datos de la cuenta</h2>
             <form enctype="multipart/form-data" id="formulario">
                 <label for="apellido_paterno">Apellido paterno:</label><br>
-                <input type="text" name="apellido_paterno" id="apellido_paterno" oninput="aplicar_cambio(this);">
+                <input type="text" name="apellido_paterno" id="apellido_paterno" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
                 
                 <br>
                 
                 <label for="apellido_materno">Apellido materno:</label><br>
-                <input type="text" name="apellido_materno" id="apellido_materno" oninput="aplicar_cambio(this);">
+                <input type="text" name="apellido_materno" id="apellido_materno" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
                 
                 <br>
                 
                 <label for="nombre">Nombre:</label><br>
-                <input type="text" name="nombre" id="nombre" oninput="aplicar_cambio(this);">
+                <input type="text" name="nombre" id="nombre" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
                 
                 <br><br>
                 
                 <label for="correo">Correo electrónico:</label><br>
-                <input type="text" name="correo" id="correo" oninput="aplicar_cambio(this);">
+                <input type="text" name="correo" id="correo" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
                 
                 <br><br>
                 
@@ -48,17 +48,17 @@
                     <br><br>
                     
                     <label for="nacimiento">Fecha de nacimiento:</label><br>
-                    <input type="date" min="1960-01-01" max="2009-12-31" name="nacimiento" id="nacimiento" onchange="aplicar_cambio(this);">
+                    <input type="date" min="1960-01-01" max="2009-12-31" name="nacimiento" id="nacimiento" onchange="oninput_input_edicion(this);">
                     
                     <br><br>
                     
                     <label for="telefono">Número de teléfono:</label><br>
-                    <input type="tel" name="telefono" id="telefono" oninput="aplicar_cambio(this);">
+                    <input type="tel" name="telefono" id="telefono" oninput="oninput_input_edicion(this);">
                     
                     <br><br>
                     
                     <label for="sangre">Tipo de sangre:</label><br>
-                    <select name="sangre" id="sangre" onchange="aplicar_cambio(this);">
+                    <select name="sangre" id="sangre" onchange="oninput_input_edicion(this);">
                         <option value="">¿?</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
@@ -72,21 +72,35 @@
                     
                     <br><br>
                     
+                    <label>Enfermedades:</label><br>
+                    <div id="enfermedades">
+                        <input id="ch_otras_enf" type="checkbox"> Otras (especifique)<br>
+                        <input type="text" id="tx_otras_enf" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
+                    </div>
+                    
+                    <br>
+                    
+                    <label>Alergias:</label><br>
+                    <div id="alergias">
+                        <input id="ch_otras_alg" type="checkbox"> Otras (especifique)<br>
+                        <input type="text" id="tx_otras_alg" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
+                    </div>
+                    
+                    <br>
+                    
                     <b>Enlaces/links de redes sociales:</b><br>
                     <label for="facebook">Facebook:</label>
-                    <input type="text" name="facebook" id="facebook" oninput="aplicar_cambio(this);"><br>
+                    <input type="text" name="facebook" id="facebook" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);"><br>
                     <label for="twitter">Twitter:</label>
-                    <input type="text" name="twitter" id="twitter" oninput="aplicar_cambio(this);"><br>
+                    <input type="text" name="twitter" id="twitter" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);"><br>
                     <label for="instagram">Instagram:</label>
-                    <input type="text" name="instagram" id="instagram" oninput="aplicar_cambio(this);"><br>
+                    <input type="text" name="instagram" id="instagram" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);"><br>
                 </div>
                 
                 <br><br>
             </form>
-            <center>
-            <button id="btn" onclick="reiniciarDatos()">Restablecer información</button>
-            <button id="btndos" onclick="editarUsuario()">Guardar cambios</button>
-            </center>
+            <button onclick="reiniciarDatos()">Restablecer información</button>
+            <button onclick="editar()">Guardar cambios</button>
         </div>
         <br>
     </body>

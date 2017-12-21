@@ -30,7 +30,7 @@ $(document).ready(function() {
                                     $("#btn_editar").remove();
                                 
                                 $("#modal-title").html("Cargando lista de jugadores...");
-                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", idCuenta : res["mb"], nombre : "1", otros : "1", foto : "1"}, null, "json")
+                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb : "1", sx : "1", ed : "1", ft : "1"}, null, "json")
                                     .done(function(res_j) {
                                         var fila, celda;
                                         $.each(res_j, function (index, i) {
@@ -38,16 +38,16 @@ $(document).ready(function() {
                                             
                                             if(i !== null){
                                                 //Celda de nombre
-                                                fila.insertCell(-1).innerHTML = i["APELLIDO_PATERNO"] + " " + i["APELLIDO_MATERNO"] + " " + i["NOMBRE"];
+                                                fila.insertCell(-1).innerHTML = i["nb"];
                                                 //Celda de género
-                                                fila.insertCell(-1).innerHTML = (i["SEXO"] == "M" ? "Masculino" : (i["SEXO"] == 'F' ? "Femenino" : "<No definido>"));
+                                                fila.insertCell(-1).innerHTML = (i["sx"] == "M" ? "Masculino" : (i["sx"] == 'F' ? "Femenino" : "<No definido>"));
                                                 //Celda de edad
-                                                fila.insertCell(-1).innerHTML = (i["EDAD"] != null ? i["EDAD"] : "<No definido>");
+                                                fila.insertCell(-1).innerHTML = (i["ed"] != null ? i["ed"] : "<No definido>");
                                                 //Celda de foto
-                                                if(i["FOTO_PERFIL"] === null)
+                                                if(i["ft"] === null)
                                                     fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
                                                 else
-                                                    fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + i["FOTO_PERFIL"] +"\" width='100'/>";
+                                                    fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + i["ft"] +"\" width='100'/>";
                                             } else {
                                                 fila.insertCell(-1).innerHTML = "<Jugador eliminado>";
                                                 fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = "---";
