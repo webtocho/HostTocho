@@ -7,7 +7,7 @@ include("SRV_CONEXION.php");
 
 switch ($_POST['tipo']){
     case "Obtener_nombre_equipo":
-        $sql = sprintf("SELECT * FROM equipos WHERE ID_EQUIPO =" . $_POST['team']);
+        $sql = sprintf("SELECT * FROM equipos WHERE ID_EQUIPO =". $_POST['team']);
         $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         $info=$resultado->fetch_assoc();
@@ -18,7 +18,7 @@ switch ($_POST['tipo']){
     
     case "Obtener_jugador_equipo":
         $ID_ROSTER;
-         $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO =" . $_POST['team']);
+         $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO =".$_POST['team']);
           $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         $info=$resultado->fetch_assoc();
@@ -31,7 +31,12 @@ switch ($_POST['tipo']){
          while ($row = $resultado->fetch_assoc()) {
             $info[] = $row;
         }
-         $sql = sprintf("select count(*) from cedulas where ID_ROL_JUEGO=" . $_POST['ROL']);
+        
+           $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO =". $_POST['team']);
+        $conexcion0= $db->getConnection();
+        $resultado0=$conexcion0->query($sql);
+        $info0=$resultado0->fetch_assoc();
+         $sql = sprintf("select count(*) from cedulas where ID_ROL_JUEGO=%s AND ID_ROSTER=%s",$_POST['ROL'],$info0["ID_ROSTER"]);
           $resultado2=$conexcion->query($sql);
             $info2=$resultado2->fetch_assoc();
         $numero_de_filas=$info2["count(*)"];
@@ -45,18 +50,18 @@ switch ($_POST['tipo']){
         }  
          if (isset($_SESSION["TIPO_USUARIO"]) == 'CAPTURISTA' || isset($_SESSION["TIPO_USUARIO"]) == 'ADMINISTRADOR'){
             foreach ($info as $info2) { 
-                $sql = sprintf(" select * from cedulas where ID_JUGADOR=" .$info2["ID_JUGADOR"]);
+                $sql = sprintf(" select * from cedulas where ID_ROL_JUEGO=%s AND ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
                  $conexcion= $db->getConnection();
                  $resultado3=$conexcion->query($sql);
                 $info3=$resultado3->fetch_assoc();
                 echo '<tr><th>'.$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]." ".$info2["APELLIDO_MATERNO"]."</th>".
-                   "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."T' maxlength='30' required  min='0' value='". $info3["T"]."' onclick='guardarT(this.id,".$info2["ID_JUGADOR"].")'></th>"
-                ."<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."S' maxlength='30' value='". $info3["S"]."' onclick='guardarS(this.id,".$info2["ID_JUGADOR"].")' required></th>".
-                 "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."I' maxlength='30' value='". $info3["I"]."' onclick='guardarI(this.id,".$info2["ID_JUGADOR"].")' required></th>".
-                "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."A' maxlength='30' value='". $info3["A"]."'  onclick='guardarA(this.id,".$info2["ID_JUGADOR"].")'required></th>".
-                "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."C1' maxlength='30' value='". $info3["C1"]."' onclick='guardarC1(this.id,".$info2["ID_JUGADOR"].")' required></th>".
-               "<th><input type='number' class='form-control'id='".$info2["ID_JUGADOR"]."C2' maxlength='30' value='". $info3["C2"]."' onclick='guardarC2(this.id,".$info2["ID_JUGADOR"].")' required ></th>".
-              "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."PT' maxlength='30' value='". $info3["PT"]."' onclick='guardarPT(this.id,".$info2["ID_JUGADOR"].")'required></th></tr>"; 
+                   "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."T' maxlength='30' required  min='0' value='". $info3["T"]."' onclick='guardarT(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>"
+                ."<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."S' maxlength='30' value='". $info3["S"]."' onclick='guardarS(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required></th>".
+                 "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."I' maxlength='30' value='". $info3["I"]."' onclick='guardarI(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required></th>".
+                "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."A' maxlength='30' value='". $info3["A"]."'  onclick='guardarA(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'required></th>".
+                "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."C1' maxlength='30' value='". $info3["C1"]."' onclick='guardarC1(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required></th>".
+               "<th><input type='number' class='form-control'id='".$info2["ID_JUGADOR"]."C2' maxlength='30' value='". $info3["C2"]."' onclick='guardarC2(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required ></th>".
+              "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."PT' maxlength='30' value='". $info3["PT"]."' onclick='guardarPT(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'required></th></tr>"; 
 		}
          }else{
             foreach ($info as $info2) {  
@@ -78,44 +83,44 @@ switch ($_POST['tipo']){
        
         break;
     case "guardarT":
-      $sql = sprintf(" UPDATE cedulas SET  T=%s where ID_JUGADOR=%s",$_POST["DATO"],$_POST["ID_USUARIO"]); 
-      $conexcion= $db->getConnection();
-      $resultado3=$conexcion->query($sql);
+      $sql = sprintf(" UPDATE cedulas SET  T=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'],$_POST['ID_ROSTER']); 
+      $conexcion2= $db->getConnection();
+      $resultado3=$conexcion2->query($sql);
       echo $resultado3;
     break;
     case "guardarS":
-      $sql = sprintf(" UPDATE cedulas SET  S=%s where ID_JUGADOR=%s",$_POST["DATO"],$_POST["ID_USUARIO"]); 
-      $conexcion= $db->getConnection();
+     $sql = sprintf(" UPDATE cedulas SET  S=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'], $_POST['ID_ROSTER']); 
+       $conexcion= $db->getConnection();
       $resultado3=$conexcion->query($sql);
       echo $resultado3;
     break;
     case "guardarI":
-      $sql = sprintf(" UPDATE cedulas SET  I=%s where ID_JUGADOR=%s",$_POST["DATO"],$_POST["ID_USUARIO"]); 
+     $sql = sprintf(" UPDATE cedulas SET  I=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'], $_POST['ID_ROSTER']); 
       $conexcion= $db->getConnection();
       $resultado3=$conexcion->query($sql);
       echo $resultado3;
     break;
     case "guardarA":
-      $sql = sprintf(" UPDATE cedulas SET  A=%s where ID_JUGADOR=%s",$_POST["DATO"],$_POST["ID_USUARIO"]); 
-      $conexcion= $db->getConnection();
+      $sql = sprintf(" UPDATE cedulas SET  A=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'], $_POST['ID_ROSTER']); 
+       $conexcion= $db->getConnection();
       $resultado3=$conexcion->query($sql);
       echo $resultado3;
     break;
     case "guardarC1":
-      $sql = sprintf(" UPDATE cedulas SET  C1=%s where ID_JUGADOR=%s",$_POST["DATO"],$_POST["ID_USUARIO"]); 
+      $sql = sprintf(" UPDATE cedulas SET  C1=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'], $_POST['ID_ROSTER']); 
       $conexcion= $db->getConnection();
       $resultado3=$conexcion->query($sql);
       echo $resultado3;
     break;
     case "guardarC2":
-      $sql = sprintf(" UPDATE cedulas SET  C2=%s where ID_JUGADOR=%s",$_POST["DATO"],$_POST["ID_USUARIO"]); 
+      $sql = sprintf(" UPDATE cedulas SET  C2=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'],$_POST['ID_ROSTER']); 
       $conexcion= $db->getConnection();
       $resultado3=$conexcion->query($sql);
       echo $resultado3;
     break;
     case "guardarPT":
-      $sql = sprintf(" UPDATE cedulas SET  PT=%s where ID_JUGADOR=%s",$_POST["DATO"],$_POST["ID_USUARIO"]); 
-      $conexcion= $db->getConnection();
+     $sql = sprintf(" UPDATE cedulas SET  PT=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'], $_POST['ID_ROSTER']); 
+       $conexcion= $db->getConnection();
       $resultado3=$conexcion->query($sql);
       echo $resultado3;
     break;

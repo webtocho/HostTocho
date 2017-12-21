@@ -7,8 +7,8 @@
 	        height: 100%;
 	        clear: both;
 	        margin: auto;
-	        background-image: url(images/4.jpg);
-	        background-size: cover;
+	        background-image: url(../img/RC_IF_FONDO.png);
+	        background-size: repeat;
 	    }
 	    #contenido{
 	        width: 700px;
