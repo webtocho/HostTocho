@@ -49,15 +49,16 @@ function elegirCoach(id = null){
     
     idDelCoach = null;
     document.getElementById("coach").value = "Cargando...";
-   // $("#modal-footer").hide(); no se oculta nunca
-    //$("#modal-title").html("Cargando coach...");
-    //$("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
-    //$('#modal').modal({backdrop: 'static', keyboard: false});
+    $("#modal-footer").hide();
+    $("#modal-title").html("Cargando coach...");
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
     
     $.post("../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : (id == null ? "" : id), id : "1", nb_c: "1"}, null, "json")
         .done(function(res) {
             document.getElementById("coach").value = res["nb_c"];
             idDelCoach = parseInt(res["id"]);
+            $('#modal').modal('hide');
         })
         .fail(function() {
             document.getElementById("coach").value = (urs_es_coach ? "<Error>" : "<Seleccione un coach>");

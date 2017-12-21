@@ -372,12 +372,12 @@
             }
             
             if (!empty($_POST['ps'])) {
-                if (preg_match("/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/", $_POST['ps'])){
+                if (preg_match("/^[a-zA-Z]\w{4,15}$/", $_POST['ps'])){
                     $parametros[0] .= "s";
                     array_push($parametros, $_POST['ps']);
                     $updates .= (empty($updates) ? "" : ", ") . "PASSWORD = ?";
                 } else {
-                    lanzar_error("La contraseña es inválida [debe comenzar con una letra, debe tener entre 5 y 15 caracteres, sólo puede contener letras (sin contar la Ñ/ñ, ni letras acentuadas o con diéresis) y números].");
+                    lanzar_error("La contraseña es inválida. Debe tener entre 5 y 15 caracteres; letras (no acentuadas, excluyendo la Ñ) y/o números.");
                 }
             }
             
@@ -400,7 +400,7 @@
             
             if ($es_jugador){
                 if (!empty($_POST['nc'])) {
-                    if( ($d = DateTime::createFromFormat("Y-m-d", $_POST['FECHA_NACIMIENTO'])) && ($d->format("Y-m-d") == $_POST['FECHA_NACIMIENTO']) ){
+                    if( ($d = DateTime::createFromFormat("Y-m-d", $_POST['nc'])) && ($d->format("Y-m-d") == $_POST['nc']) ){
                         $año_actual = intval(date("Y"));
                         $año_nacimiento = intval($d->format("Y"));
                         

@@ -30,10 +30,11 @@ $(document).ready(function() {
                             document.getElementById("foto").src = "data:image/png;base64," + res['ft'];
                         else
                             document.getElementById("foto").src = "img/RC_IF_ANONIMO.png";
-
-                        if(res['nc'] != null)
-                            $("#nacimiento").html((new Date(res['nc'].replace(/-/g, '\/'))).toLocaleDateString("es-ES", { year: 'numeric', month: 'long', day: 'numeric' }));
-                        else
+                        
+                        if(res['nc'] != null){
+                            var nc = new Date((res['nc']).replace(/-/g, '\/'));
+                            $("#nacimiento").html((new Date( nc.getTime() + Math.abs(nc.getTimezoneOffset()*60000) )).toLocaleDateString("es-MX", { year: 'numeric', month: 'long', day: 'numeric' }));
+                        }else
                             $("#nacimiento").html(indefinido);
 
                         $("#telefono").html((res["TELEFONO"] != null ? res["TELEFONO"] : indefinido));
