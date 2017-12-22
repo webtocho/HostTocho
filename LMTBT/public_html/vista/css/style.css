@@ -1240,7 +1240,7 @@ span.text {
     font-size: 14px;
     color:#fff;
 }
-.c5-element-facebook,.c5-element-twitter,.c5-element-dribble,.c5-element-gg {
+.c5-element-facebook,.c5-element-twitter,.c5-element-dribble,.c5-element-gg,.c5-element-whtp {
     background:#337ab7;
     padding:0.8em 1em;
     margin-bottom: 0.9em;
@@ -1257,10 +1257,10 @@ span.text {
     background:#29689E;
 }
 .c5-element-twitter{
-    background:#1dcaff;
+    background:#36465D;
 }
 .c5-element-twitter:hover{
-    background:#04A5E2;
+    background:#36465D;
 }
 .c5-element-gg{
     background:#BB0000;
@@ -1274,6 +1274,13 @@ span.text {
 .c5-element-dribble:hover {
     background: #E03979;
 }
+.c5-element-whtp{
+    background: #0CC243;
+}
+.c5-element-whtp:hover {
+    background: #0CC242;
+}
+
 .c5-element-twitter h5,.c5-element-dribble h5,.c5-element-facebook h5,.c5-element-gg h5{
     font-size: 14px;
     color: #fff;
