@@ -19,15 +19,15 @@ function felicitaciones(){
                                     responsiveBreakpoints: {
                                         portrait: {
                                             changePoint: 480,
-                                            visibleItems: 2
+                                            visibleItems: 1
                                         },
                                         landscape: {
                                             changePoint: 640,
-                                            visibleItems: 2
+                                            visibleItems: 1
                                         },
                                         tablet: {
                                             changePoint: 768,
-                                            visibleItems: 3
+                                            visibleItems: 1
                                         }
                                     }
                                 });
@@ -38,5 +38,18 @@ function felicitaciones(){
            alert("Error del servidor. Cumpleaños");
         }
     });
+    NextGames();
 }
 
+function NextGames(){
+    $.ajax({
+        url: "../controlador/SRV_PROXIMOS_PARTIDOS.php",
+        success: function (res) {
+            $('#ProximosPartidos').empty();
+            $('#ProximosPartidos').append(res);
+        },
+        error: function (jqXHR, textStatus) {
+           alert("Error del servidor. Proximos partidos");
+        }
+    });    
+}
