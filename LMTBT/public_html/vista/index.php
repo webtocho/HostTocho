@@ -412,7 +412,6 @@ $(document).ready(function () {
                         <!--Apartado Cumpleaños:inicia -->
                         <div class="modern">
                             <h4 class="side">Cumpleañeros</h4>
-                            <p>En este día tan especial no hará falta un delicioso pastel para desearte un feliz cumpleaños. ¡Muchas felicidades!</p><br>
                             <div id="example1">
                                 <div id="owl-demo" class="owl-carousel text-center"></div>
                             </div>

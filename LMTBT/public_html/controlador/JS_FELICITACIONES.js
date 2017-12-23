@@ -49,7 +49,7 @@ function NextGames(){
             $('#ProximosPartidos').append(res);
         },
         error: function (jqXHR, textStatus) {
-           alert("Error del servidor. Proximos partidos");
+           alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");
         }
     });    
 }
