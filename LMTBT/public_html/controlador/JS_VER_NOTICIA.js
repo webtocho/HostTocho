@@ -21,9 +21,13 @@ function cargarNoticia(){
             success: function (respuesta) {
                  $('#titulo').empty();
                  $('#cuerpo').empty();
+                 $('#imagenes').empty();
+                
                 contenido = JSON.parse(respuesta);
+                
                  $('#titulo').append(contenido[0]);
                  $('#cuerpo').append(contenido[1]);
+                 $('#imagenes').append(contenido[2]);
             },
             error: function (jqXHR, textStatus) {
                 alert("error obtener");

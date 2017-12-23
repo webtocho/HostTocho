@@ -13,15 +13,32 @@
                  $noticia = array("TITULO", "CUERPO", "IMAGEN");
                 $noticia[0]= "<h1>". $contenido["TITULO"] . "</h1>";
                 $noticia[1]= "<p>". $contenido["NOTICIA"] . "</p>";
-                echo json_encode($noticia);
-                 /* $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id_noticia"; 
+                
+                 $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id"; 
                   if($resultado2 = $conexion->query($sql2)){
-                        while ($fila2 = $resultado2->fetch_assoc()){
+                      $texto="<ol class='carousel-indicators'> "; 
+                      $texto2="<div class='carousel-inner'>";
+        
+                     
+                      $cont=0;
+                      while ($fila2 = $resultado2->fetch_assoc()){
                             $noticias["IMAGEN_NOTICIA"] = base64_encode($fila2["IMAGEN"]);
-                            $noticia =  "<div class='blog-img'>"."<img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'class='img-responsive' alt=''/>"."</div>"; 
-                        }
-                     }*/
-                 
+                            if($cont==0){ 
+                                 $texto.=" <li data-target='#myCarousel' data-slide-to=".$cont." class='active'></li>";
+                                $texto2 .=  "<div class='item active'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "' ></div>"; 
+                            } else{ 
+                                $texto.=" <li data-target='#myCarousel' data-slide-to=".$cont." ></li>";
+                                $texto2 .=  "<div class='item'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'></div>"; 
+                            }
+                           
+                        $cont++;
+                            
+                      }
+                      $texto.="</ol>";
+                      $texto2.="</div>";
+                      $noticia[2]=  $texto . $texto2 ;
+                  }
+                echo json_encode($noticia); 
              }
             break;
         
