@@ -6,12 +6,12 @@
             clear: both;
             margin: auto;
             background-color: #fff;
-            /*background-image: url(images/4.jpg);
-            background-size: cover;*/
+            background-image: url(../img/RC_IF_FONDO.png);
+            background-size: repeat;
         }
         .form{
             width: 500px;
-            height: 500px;
+            height: auto;
             background-color: #fff;
             border-radius: 10px;
             padding: 3px;
@@ -43,7 +43,7 @@
         @media(max-width:550px){
             .form{
                 width: 95%;
-                height: 450px;
+                height: auto;
                 margin-top: 20px;
                 margin-bottom: 30px;
             }
