@@ -260,7 +260,7 @@ $(function () {
                                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                                             <div class="facts">
                                                 <div class="tab_list">
-                                                    <table>
+                                                    <table id="ProximosPartidos">
                                                         <tbody>
                                                             <tr>
                                                                 <td class="one">01 June 10:00</td>
@@ -411,7 +411,7 @@ $(document).ready(function () {
                         <!--Apartado Cumpleaños:inicia -->
                         <div class="modern">
                             <h4 class="side">Cumpleañeros</h4>
-                            <br>
+                            <p>En este día tan especial no hará falta un delicioso pastel para desearte un feliz cumpleaños. ¡Muchas felicidades!</p><br>
                             <div id="example1">
                                 <div id="owl-demo" class="owl-carousel text-center"></div>
                             </div>

@@ -13,7 +13,7 @@
                 echo "<div class='item'>"; $inicia=1;
                 $foto = base64_encode($row['FOTO_PERFIL']);
                 if($foto==null){
-                    echo "<img class='img-responsive lot' src='img/RF_OF_ICONS_1.png' alt='' />";
+                    echo "<img class='img-responsive lot' src='img/CUMPLE_ICON.png' alt=''/>";
                 }else{
                     echo "<img class='img-responsive lot' src='data:image/png;base64,".$foto."' alt=''/>";
                 }
