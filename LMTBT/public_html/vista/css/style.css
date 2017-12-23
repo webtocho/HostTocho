@@ -1260,13 +1260,13 @@ span.text {
     background:#36465D;
 }
 .c5-element-twitter:hover{
-    background:#36465D;
+    background:#0A122A;
 }
 .c5-element-gg{
     background:#BB0000;
 }
 .c5-element-gg:hover{
-    background:#BB0000;
+    background:#FE2E2E;
 }
 .c5-element-dribble{
     background: #ea4c89;
@@ -1275,10 +1275,10 @@ span.text {
     background: #E03979;
 }
 .c5-element-whtp{
-    background: #0CC243;
+    background: #0B0B61;
 }
 .c5-element-whtp:hover {
-    background: #0CC242;
+    background: #045FB4;
 }
 
 .c5-element-twitter h5,.c5-element-dribble h5,.c5-element-facebook h5,.c5-element-gg h5{

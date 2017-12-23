@@ -30,6 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>	   
         <script type='text/javascript' src='../controlador/JS_SESION_INICIAR_CERRAR.js'></script>
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
+         <script type="text/javascript" src="../controlador/JS_ENVIAR_ID_NOTICIA.js"></script>
 	
 	   
        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
@@ -117,9 +118,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.php"><h1 style="font-size: 25px;">LMTB <span>Tuxtla</span></h1> </a>
-                        </div><br>
-                        <!--/.navbar-header-->
+                            <a class="navbar-brand" href="index.php"><h1 style="font-size: 25px;">LMTB <span>Tuxtla</span></h1><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 168px;"/></a>
+                        </div><br><br>                        <!--/.navbar-header-->
 
                         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
@@ -365,11 +365,12 @@ $(document).ready(function () {
                             <br><h3 class="tittle">Ultimo Video</h3>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/dsYQjgz3Z3E" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                         </div>
-                        <!--//video-->
+                        <!--//video NOTICIAS-->
                         <div class="banner-slider">
                             <h3 class="tittle">Nuestras Noticias</h3>
                             <div class="callbacks_container">
-                                <ul class="rslides" id="slider3" style="height: 471px;overflow: auto">                                   
+                                <ul class="rslides" id="slider3" style="height: 471px;overflow: auto">  
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -449,7 +450,7 @@ $(document).ready(function () {
                         <div class="connect">
                             <h4 class="side">CONTACTO</h4>
                             <ul class="stay">
-                                <li class="c5-element-whtp"><span class="fa fa-whatsapp" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Whatsapp: 9616541169</span></li>
+                                <li class="c5-element-whtp"><center><span class="fa fa-at" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Correo: superbowlstore@hotmail.com</span></center></li>
                             </ul>
                         </div>
                         <!--Contacto-->

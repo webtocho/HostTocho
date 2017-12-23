@@ -17,7 +17,7 @@
                     $noticia .=  "<div class='blog-img'>"."<img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'class='img-responsive' alt=''/>"."</div>"; 
                 //}
             }
-            $noticia .= "<div class='blog-info'><a class='news' href='#'>" . $fila["TITULO"] . "</a>" .
+            $noticia .= "<div class='blog-info'><a class='news' href='VER_NOTICIA.html'  onclick='enviarIdNoticia(".$id_noticia. ")'>" . $fila["TITULO"] . "</a>" .
             "<p>" . $fila["NOTICIA"] . "</p>" .
             "<div class='bog_post_info infoPost'><span class='datePost'><a href='#' class='post_date'>".$fila["FECHA_PUBLICACION"]."</a></span>" .
             "<span class='commentPost'><a class='icon-comment-1' title='Comments - 2' href='#'><i class='glyphicon glyphicon-comment'></i>2</a></span>" .

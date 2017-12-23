@@ -47,6 +47,7 @@ function NextGames(){
         success: function (res) {
             $('#ProximosPartidos').empty();
             $('#ProximosPartidos').append(res);
+            
         },
         error: function (jqXHR, textStatus) {
            alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");
