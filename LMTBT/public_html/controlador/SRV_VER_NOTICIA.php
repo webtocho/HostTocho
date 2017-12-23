@@ -1,5 +1,7 @@
 <?php
+    session_start();
     include("SRV_CONEXION.php");
+     
     $db = new SRV_CONEXION();    
     $conexion = $db->getConnection();
     
@@ -41,6 +43,66 @@
                 echo json_encode($noticia); 
              }
             break;
+            case "comentar":
+                 
+                if (isset($_SESSION["ID_USUARIO"])){
+                    $texto=$_POST['texto']; 
+                     $result = $conexion->prepare("INSERT INTO comentarios(ID_NOTICIA,ID_USUARIO,COMENTARIO) VALUES (?,?,?) ");
+                     $result->bind_param("iis",$id,$_SESSION["ID_USUARIO"],$texto);
+                        if ($result->execute()) {
+                            echo "1";
+                        } else {
+                            echo "0";//$result->error;
+                        }              
+                      
+                }
+                
+            break;  
+            case "cargarComentarios":
+                $query = "SELECT * FROM comentarios WHERE ID_NOTICIA = ". $id ;
+                $result = $conexion->query($query);
+                  if($result){
+                    if(mysqli_num_rows($result)<=0){// validamos que la consulta contenga informacion
+                         echo "";
+                    }
+                    else{
+                        while($row = mysqli_fetch_array($result)){// recorremos el arreglo de la consulta
+                            $query2 = "SELECT * FROM usuarios WHERE ID_USUARIO = ".$row['ID_USUARIO'];
+                            $result2 = $conexion->query($query2);
+                            if($result2){
+                                $usuario =mysqli_fetch_array($result2);
+                                echo "<div class='media'> ";
+           
+                            //imagen
+                         
+                                if($usuario['FOTO_PERFIL']!=null){
+                                     $imagen["IMAGEN"] = base64_encode($usuario["FOTO_PERFIL"]);
+                                    echo "<div class='media-left'><img class='media-object' style='width:60px' src='data:image/png;base64," . $imagen["IMAGEN"] . "'  ></div>";
+                                
+                                }else{
+                                    echo "<div class='media-left'> <img src='../vista/img/RC_IF_ANONIMO.png' class='media-object' style='width:60px'></div>";
+                                }
+                                // comentario
+                                echo "<div class='media-body'>";
+                                echo "<h4 class='media-heading'>".$usuario['NOMBRE']."</h4>";
+                                echo "<p> ".$row['COMENTARIO']." </p>  </div></div>";
+                            }
+                             
+                                 
+                        }
+                    }
+                   }else{ }//eror
+                
+                
+
+   
+
+  
+   
+    
+
+                
+               break;
         
     }   
     $conexion->close();
