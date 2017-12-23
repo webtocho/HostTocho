@@ -3,7 +3,7 @@
     $db = new SRV_CONEXION();
     $conn = $db->getConnection();
 
-	$query="SELECT * FROM roles_juego WHERE FECHA >= CURDATE() AND ID_EQUIPO_GANADOR=-1 AND HORA>CURTIME() ORDER BY FECHA ASC,HORA ASC LIMIT 4";
+	$query="SELECT * FROM roles_juego WHERE CONCAT(FECHA,' ',HORA) > LOCALTIME() AND ID_EQUIPO_GANADOR=-1 ORDER BY FECHA ASC,HORA ASC LIMIT 5";
 
 	$resultado = $conn->query($query);
 
