@@ -158,6 +158,14 @@
         return $str;
     }
     
+    function preparar_nombre($str){
+        return ucwords(strtolower(eliminar_espacios($str)));
+    }
+    
+    function preparar_oracion($str){
+        return ucfirst(strtolower(eliminar_espacios($str)));
+    }
+    
     /**
      * Revisa si el usuario cumple una o varias condiciones.
      * Si $condicion contiene uno o varios '?', debe mandar los parámetros opcionales.

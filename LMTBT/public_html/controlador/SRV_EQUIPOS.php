@@ -17,7 +17,7 @@
      * @param string $key_nombre Llave del nombre a evaluar, en el arreglo $_POST.
      */
     function validar_nombre_equipo($mysqli, $key_nombre){
-        $_POST[$key_nombre] = ucfirst(strtolower(eliminar_espacios($_POST[$key_nombre])));
+        $_POST[$key_nombre] = preparar_oracion($_POST[$key_nombre]);
         if(!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ '-]{2,}$/", $_POST[$key_nombre])){
             lanzar_error("Nombre inválido.");
         }

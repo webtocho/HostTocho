@@ -107,18 +107,18 @@ function agregarMiembro(id){
         $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
         $('#modal').modal({backdrop: 'static', keyboard: false});
         
-        $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", idCuenta : id, nombre : "1", foto : "1"}, null, "json")
+        $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : id, nb_c : "1", ft : "1"}, null, "json")
             .done(function(res) {
                 var fila = document.getElementById("tabla_miembros").insertRow(-1);
                 
                 //Celda de nombre completo
-                fila.insertCell(-1).innerHTML = res["APELLIDO_PATERNO"] + " " + res["APELLIDO_MATERNO"] + " " + res["NOMBRE"];
+                fila.insertCell(-1).innerHTML = res["nb_c"];
                 
                 //Celda de fotografía
                 if(res["FOTO_PERFIL"] === null)
                     fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
                 else
-                    fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + res["FOTO_PERFIL"] +"\" width='100'/>";
+                    fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + res["ft"] +"\" width='100'/>";
                 
                 //Celda de selección de número
                 fila.insertCell(-1).innerHTML = "<input type='number' id='nb_" + id + "' min='0' max='99' step='1' value='0' onchange='validarNum(this)'>";

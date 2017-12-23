@@ -420,17 +420,40 @@ $(document).ready(function () {
                         </div>
                         <br>
                         <!--Apartado Cumpleaños:termina -->
-                       
+<!--Facebook-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--facebook-->
+<!--Youtube-->
+<script src="https://apis.google.com/js/platform.js"></script>
+<!--Youtube-->
                         <div class="connect">
                             <h4 class="side">PERMANECE CONECTADO</h4>
                             <ul class="stay">
-                                <li class="c5-element-facebook"><a href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/"><span class="icon"></span><h5>700</h5><span class="text">Seguidores</span></a></li>
-                                <li class="c5-element-twitter"><a href="#"><span class="icon1"></span><h5>201</h5><span class="text">Seguidores</span></a></li>
-                                <li class="c5-element-gg"><a href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube""></span><h5>111</h5><span class="text">Seguidores</span></a></li>
+                                <center><div class="fb-like" data-href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/" data-width="300" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></center><br>
+                                <li class="c5-element-facebook"><a href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/"><span class="icon"></span><span class="text">Visita nuestra pagina en Facebook</span></a></li>
+                                <li class="c5-element-twitter"><a href="https://roger930.tumblr.com/"><span class="fa fa-tumblr-square" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Tumblr</span></a></li>
+                                <div class="g-ytsubscribe" data-channelid="UCyt2LwpS9czwaM7E0j9DI0Q" data-layout="full" data-count="default"></div>
+                                <li class="c5-element-gg"><a href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube-play" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Youtube</span></a></li>
 
                             </ul>
                         </div>
                         <!--//connect-->
+                        <!--Contacto-->
+                        <br>
+                        <div class="connect">
+                            <h4 class="side">CONTACTO</h4>
+                            <ul class="stay">
+                                <li class="c5-element-whtp"><span class="fa fa-whatsapp" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Whatsapp: 9616541169</span></li>
+                            </ul>
+                        </div>
+                        <!--Contacto-->
                     </div>
                     <!--//soccer-right-part-->
                     <div class="clearfix"> </div>

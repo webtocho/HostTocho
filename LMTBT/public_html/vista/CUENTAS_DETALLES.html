@@ -5,16 +5,15 @@
         <title>Detalles de cuenta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
+        <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_DETALLES.js"></script>
-        <link type="text/css" rel="stylesheet" href="css/style_cuentas_detalles.css" />
     </head>
-    <body id="body">
-    <center>
+    <body>
+        <h2>Detalles de la cuenta</h2>
         <div id="contenido">
-            <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#000000;">Tuxtla</span></h1></a></center>
-            <h2 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Detalles de la cuenta</h2>
             <b>Nombre: </b><a id="nombre">Cargando...</a>
             <br>
             <b>Correo electrónico: </b><a id="correo">Cargando...</a>
@@ -35,11 +34,18 @@
                 <b>Redes sociales: </b><ul id="lista_redes">
                     <li><i>&lt;Ninguna&gt;</i></li>
                 </ul>
+                <br>
+                <b>Enfermedades: </b><ul id="lista_enfermedades">
+                    <li><i>&lt;Ninguna&gt;</i></li>
+                </ul>
+                <br>
+                <b>Alergias: </b><ul id="lista_alergias">
+                    <li><i>&lt;Ninguna&gt;</i></li>
+                </ul>
             </div>
             <br>
-            <button id="btn" onclick="irAPaginaDeEdicion()">Modificar datos</button>
+            <button onclick="irAPaginaDeEdicion()">Modificar datos</button>
         </div>
         <br>
-    </center>
     </body>
 </html>
