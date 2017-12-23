@@ -1,6 +1,34 @@
 <?php
     include("SRV_CONEXION.php");
     $db = new SRV_CONEXION();    
+    $conexion = $db->getConnection();
+    
+    $id = $_POST['id'];
+    
+    switch($_POST['tipo']){	
+        case "get":
+            $sql = "SELECT * FROM noticias WHERE ID_NOTICIAS =".$id;
+             if($resultado = $conexion->query($sql)){
+                 $contenido = $resultado->fetch_assoc();
+                 $noticia = array("TITULO", "CUERPO", "IMAGEN");
+                $noticia[0]= "<h1>". $contenido["TITULO"] . "</h1>";
+                $noticia[1]= "<p>". $contenido["NOTICIA"] . "</p>";
+                echo json_encode($noticia);
+                 /* $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id_noticia"; 
+                  if($resultado2 = $conexion->query($sql2)){
+                        while ($fila2 = $resultado2->fetch_assoc()){
+                            $noticias["IMAGEN_NOTICIA"] = base64_encode($fila2["IMAGEN"]);
+                            $noticia =  "<div class='blog-img'>"."<img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'class='img-responsive' alt=''/>"."</div>"; 
+                        }
+                     }*/
+                 
+             }
+            break;
+        
+    }   
+    $conexion->close();
+    
+    /*
     $noticias = array();
     $bandera = true;
     $conexion = $db->getConnection();
@@ -25,6 +53,6 @@
             "<div class='clearfix'></div></div></div></li>";
             echo $noticia;
         }
-    }
-    $conexion->close();   
+    }*/
+       
 ?>

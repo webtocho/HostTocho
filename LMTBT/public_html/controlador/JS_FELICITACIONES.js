@@ -47,6 +47,7 @@ function NextGames(){
         success: function (res) {
             $('#ProximosPartidos').empty();
             $('#ProximosPartidos').append(res);
+            
         },
         error: function (jqXHR, textStatus) {
            alert("Error del servidor. Proximos partidos");
