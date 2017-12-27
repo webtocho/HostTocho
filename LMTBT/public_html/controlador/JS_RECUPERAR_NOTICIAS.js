@@ -8,6 +8,7 @@ function ejecutar_recuperar_noticias(){
     var ejecutar = setInterval(function(){recuperar_noticias()},5000);
 }
 function recuperar_noticias(){
+
     $.ajax({
         url: "../controlador/SRV_RECUPERAR_NOTICIAS.php",       
         type: "POST",
@@ -15,8 +16,11 @@ function recuperar_noticias(){
             beforeSend: function (xhr){
             },
             success: function (respuesta){                
-                    $('#slider3').empty();
-                    $('#slider3').append(respuesta);
+                   // $('#slider3').empty();
+                   // $('#slider3').append(respuesta);
+                   
+                    $('#apartadoNoticia').empty();
+                    $('#apartadoNoticia').append(respuesta);
             },
             error: function (jqXHR, textStatus) {                
             }

@@ -13,11 +13,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <meta name="keywords" content="Basketball Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">
+       <!-- <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Custom Theme files -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
+        
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_PLANTILLA_move-top.js"></script>
         <script type="text/javascript" src="../controlador/JS_PLANTILLA_easing.js"></script>
@@ -348,10 +350,11 @@ $(document).ready(function () {
                             <div class="facts">
                                 <a><h3>Estado del Torneo</h3></a>
                                 <center>
-                                    <button onclick="CargarConvocatorias(1)">En curso</button>
-                                    <button onclick="CargarConvocatorias(2)">Terminados</button>
-                                    <button onclick="CargarConvocatorias(3)">Todos</button>
+                                    <button onclick="CargarConvocatorias(1)" class="btn btn-primary">En curso</button>
+                                    <button onclick="CargarConvocatorias(2)" class="btn btn-success">Terminados</button>
+                                    <button onclick="CargarConvocatorias(3)" class="btn btn-warning">Todos</button>
                                 </center>
+                                <br/>
                                 <select id="Select_Torneos" class="form-control" onchange="CargarTablaPosiciones(this.value)">
                                     <option>Click en el Estado del Torneo</option>
                                 </select><br>
@@ -365,15 +368,22 @@ $(document).ready(function () {
                             <br><h3 class="tittle">Ultimo Video</h3>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/dsYQjgz3Z3E" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                         </div>
-                        <!--//video NOTICIAS-->
+                        <br>
+                         <h3 class="tittle">Nuestras Noticias</h3>
+                        <div id="apartadoNoticia">
+                        </div>
+                        <!--//video NOTICIAS        
+                        <!-- 
+                        
                         <div class="banner-slider">
-                            <h3 class="tittle">Nuestras Noticias</h3>
+                           
                             <div class="callbacks_container">
                                 <ul class="rslides" id="slider3" style="height: 471px;overflow: auto">  
                                     
                                 </ul>
                             </div>
                         </div>
+                        -->
                         <!--banner Slider starts Here-->
                         <script src="../controlador/JS_PLANTILLA_responsiveslides.min.js"></script>
                         <script>

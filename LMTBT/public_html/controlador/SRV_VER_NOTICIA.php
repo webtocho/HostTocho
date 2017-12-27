@@ -26,11 +26,11 @@
                       while ($fila2 = $resultado2->fetch_assoc()){
                             $noticias["IMAGEN_NOTICIA"] = base64_encode($fila2["IMAGEN"]);
                             if($cont==0){ 
-                                 $texto.=" <li data-target='#myCarousel' data-slide-to=".$cont." class='active'></li>";
-                                $texto2 .=  "<div class='item active'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "' ></div>"; 
+                                 $texto.=" <li data-target='#myCarousel' data-slide-to='".$cont."' class='active'></li>";
+                                $texto2 .=  "<div class='item active'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='img-responsive'  style='max-width:auto; height: 100%;'></div>"; 
                             } else{ 
-                                $texto.=" <li data-target='#myCarousel' data-slide-to=".$cont." ></li>";
-                                $texto2 .=  "<div class='item'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'></div>"; 
+                                $texto.=" <li data-target='#myCarousel' data-slide-to='".$cont."' ></li>";
+                                $texto2 .=  "<div class='item'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "' class='img-responsive' style='max-width:auto; height: 100%;'></div>"; 
                             }
                            
                         $cont++;
@@ -46,8 +46,8 @@
             case "comentar":
                  
                 if (isset($_SESSION["ID_USUARIO"])){
-                    $texto=$_POST['texto']; 
-                     $result = $conexion->prepare("INSERT INTO comentarios(ID_NOTICIA,ID_USUARIO,COMENTARIO) VALUES (?,?,?) ");
+                    $texto=$_POST['texto'];                     
+                    $result = $conexion->prepare("INSERT INTO comentarios(ID_NOTICIA,ID_USUARIO,COMENTARIO) VALUES (?,?,?) ");
                      $result->bind_param("iis",$id,$_SESSION["ID_USUARIO"],$texto);
                         if ($result->execute()) {
                             echo "1";

@@ -56,7 +56,10 @@
     if(empty($_POST['titulo_noticia']) == false && empty($_POST['descripcion']) == false && empty($_FILES['imagen_noticia']) == false){
         $fecha_actual = date('Y-m-d');
         $consulta = $conexion->prepare('INSERT INTO noticias VALUES (0,?,?,?)');
-        $consulta->bind_param("sss",$_POST['titulo_noticia'],$_POST['descripcion'],$fecha_actual);
+        $texto =$_POST['descripcion'];
+        $texto  =str_replace(array("\r\n", "\r", "\n"), "<br />", $texto );
+        
+        $consulta->bind_param("sss",$_POST['titulo_noticia'],$texto,$fecha_actual);
         if($consulta->execute()){
             $cambios_hechos = true;
         } else {
