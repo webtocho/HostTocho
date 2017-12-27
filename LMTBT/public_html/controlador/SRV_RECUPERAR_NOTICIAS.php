@@ -4,8 +4,12 @@
     $noticias = array();
     $bandera = true;
     $conexion = $db->getConnection();
-    $sql = "SELECT * FROM noticias ORDER BY  ID_NOTICIAS DESC";
+    $linea = $_POST['fila'];
+    $limit=5;
+    
+    $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS DESC LIMIT ".$linea.",5";
     if($resultado = $conexion->query($sql)){
+       
         $html="";     
         while ($fila = $resultado->fetch_assoc()){
              $html=""; 
@@ -38,9 +42,40 @@
                     $html.= "</div>";
                 $html.= "</div>";
             $html.=" </div><hr>";
+            
+            
+
             echo $html;
        
             }
+            //pagination
+            
+            $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS ";
+            if($resultado = $conexion->query($sql)){
+                
+                $linea=floor(intval($linea)/$limit); 
+                $rows = mysqli_num_rows($resultado);
+                $htmlP="<ul class='pagination'>";
+                $pagination = floor($rows/$limit);
+                 $htmlP.="<li ><a   onclick='recuperar_noticias(0)' >inicio</a></li>";
+                for($i=0; $i<=$pagination;$i++){
+                    if($i==$linea)
+                        $htmlP.="<li class='disabled'><a   onclick='recuperar_noticias(".$i. ")' >".($i+1)."</a></li>";
+                    else
+                         $htmlP.="<li><a   onclick='recuperar_noticias(".$i. ")' >".($i+1)."</a></li>";
+                }
+                $htmlP.="<li ><a   onclick='recuperar_noticias(".$pagination.")' >Final</a></li>";
+                $htmlP.="</ul>";
+                echo $htmlP;
+            }
     }
-    $conexion->close();   
+    $conexion->close();  
+    
+    /*
+  <li><a href='#'>1</a></li>
+  <li><a href='#'>2</a></li>
+  <li><a href='#'>3</a></li>
+  <li class='disabled'><a href='#'>4</a></li>
+  <li><a href='#'>5</a></li>
+*/
 ?>

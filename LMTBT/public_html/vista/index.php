@@ -183,12 +183,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li id = "acceso_registrar_jugador">
 				<!--<a href='REGISTRAR_JUGADOR.html'>Registrar Jugador</a>-->
                                 </li>
-                                <li id = "acceso_registro_cuenta"></li>
+                               
                                 
                                 <li id = "acceso_roles_juego">
                                    <!--<a href='ROLES_JUEGO.html'>Roles de juego</a>-->
                                 </li>    
-                                <li id = "acceso_torneo_inscripcion"></li>                                
+                                <li id = "acceso_torneo_inscripcion"></li>
+                                <li id = "acceso_registro_cuenta"></li>                                
                                 <li id = "iniciar_cerrar_session"></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                             </ul>
                         </div>

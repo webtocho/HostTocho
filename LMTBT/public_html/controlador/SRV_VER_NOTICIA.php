@@ -41,7 +41,8 @@
                       $noticia[2]=  $texto . $texto2 ;
                   }
                 echo json_encode($noticia); 
-             }
+             } 
+             
             break;
             case "comentar":
                  

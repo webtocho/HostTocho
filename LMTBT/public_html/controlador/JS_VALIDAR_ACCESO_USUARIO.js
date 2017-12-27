@@ -21,16 +21,16 @@ $(document).ready(function(){
                     $('#acceso_registro_cuenta').empty();
                     $('#acceso_roles_juego').empty();
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
-                    $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Asignar horarios</a>");
-                    $('#acceso_categorias_edicion').append("<a href='CATEGORIAS_EDICION.html'>Editar categorias</a>");                    
-                    $('#acceso_convocatoria').append("<a href='CONVOCATORIA.html'>Lanzar convocatoria</a>");
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");
-                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Detalles cuentas</a>");
-                    $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Ver equipos</a>");
+                    $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");
+                    $('#acceso_categorias_edicion').append("<a href='CATEGORIAS_EDICION.html'>Ver Categorias</a>");                    
+                    $('#acceso_convocatoria').append("<a href='CONVOCATORIA.html'>Nuevo Torneo</a>");
+                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
+                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");
+                    $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Ver Equipos</a>");
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");
-                    $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Crear noticias</a>");
-                    $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrar cuenta</a>");
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");  
+                    $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Nueva Noticia</a>");
+                    $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrar Cuenta</a>");
+                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");  
                     mostrar_apartado_convocatorias_vencidas();
                     mostrar_apartado_torneos_activos();
                     cargar_tabla_convocatorias_vencidas();
@@ -48,15 +48,15 @@ $(document).ready(function(){
                     $('#acceso_roles_juego').empty();
                     $('#acceso_torneo_inscripcion').empty();                      
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario                   
-                    $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Asignar horarios</a>");                    
+                    $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
                     $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");
-                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Detalles cuentas</a>");
-                    $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Ver equipos</a>");                    
+                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");
+                    $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Mis Equipos</a>");                    
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                  
                     //$('#acceso_registrar_jugador').append("<a href='REGISTRAR_JUGADOR.html'>Registrar jugador</a>");
-                    $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrar jugador</a>");
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");   
-                    $('#acceso_torneo_inscripcion').append("<a href='TORNEO_INSCRIPCION.html'>Inscripcion torneo</a>");                     
+                    $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrar Jugador</a>");
+                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");   
+                    $('#acceso_torneo_inscripcion').append("<a href='TORNEO_INSCRIPCION.html'>Inscripcion Torneo</a>");                     
                 case 2: 
                     ///////vaciamos los contenedores
                     $('#acceso_asignacion_horarios').empty();                                                                           
@@ -66,10 +66,10 @@ $(document).ready(function(){
                     $('#acceso_roles_juego').empty(); 
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");
-                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Detalles cuentas</a>");                                   
+                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
+                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");                                   
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");                       
+                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");                       
                 break;
                 case 3: 
                     ///////vaciamos los contenedores
@@ -79,9 +79,9 @@ $(document).ready(function(){
                     $('#acceso_crear_noticias').empty();
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");    
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");                                        
+                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");                                        
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");
-                    $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Crear noticias</a>");                   
+                    $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Nueva Noticia</a>");                   
                 break;
                 case 4:
                     ///////vaciamos los contenedores
@@ -92,10 +92,10 @@ $(document).ready(function(){
                     $('#acceso_roles_juego').empty();     
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");
-                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Detalles cuentas</a>");                                   
+                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");
+                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");                                   
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");
+                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");
                 break;
                 default:
                     ///////vaciamos los contenedores
