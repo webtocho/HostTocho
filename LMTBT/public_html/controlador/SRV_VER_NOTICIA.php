@@ -5,6 +5,11 @@
     $db = new SRV_CONEXION();    
     $conexion = $db->getConnection();
     
+    $debug=0;
+    if(isset($_SESSION["TIPO_USUARIO"])) 
+        if($_SESSION["TIPO_USUARIO"]=="ADMINISTRADOR")$debug=1;
+
+     
     $id = $_POST['id'];
     
     switch($_POST['tipo']){	
@@ -44,6 +49,12 @@
              } 
              
             break;
+            case "eliminarComent":
+                
+                 $sqlC = "DELETE  FROM comentarios WHERE ID_COMENTARIO = $id"; 
+                 if($resultadoC = $conexion->query($sqlC)){}
+            
+            break;
             case "comentar":
                  
                 if (isset($_SESSION["ID_USUARIO"])){
@@ -74,8 +85,15 @@
                                 $usuario =mysqli_fetch_array($result2);
                                 
                                 echo "<div class='panel panel-default'>";
-                                echo"<div class='panel-heading' style='background-color: black;color: white;'>";
+                                echo"<div class='panel-heading' style='background-color: black;color: white;'>";    
                                     echo "<h4 class='media-heading'><p>".$usuario['NOMBRE']." ".$usuario['APELLIDO_PATERNO']."</p></h4>";
+                                    if($debug=="1"){
+                                        echo"<p class='text-right'>
+                                            <button type='button' class='btn btn-danger btn-sm' onclick=eliminarComentario('".$row['ID_COMENTARIO']."')>
+                                            <span class='glyphicon glyphicon-remove'></span> Remove 
+                                            </button>
+                                            </p>";
+                                    }
                                 echo"</div>";
                                 echo"<div class='panel-body'>";
                                    

@@ -6,17 +6,16 @@
 
 
 
-
+ 
 $(document).ready(function(){
       $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","COACH","JUGADOR","FOTOGRAFO","CAPTURISTA"]}, null, "text")
         .done(function(res) {
-            
-          
         })
         .fail(function() {
            noRegistrado();
+            debug =0;
         });
-    
+        
     cargarNoticia();
     cargarComentarios();
 });
@@ -45,11 +44,29 @@ function cargarComentarios(){
     
     
 }
+
+function eliminarComentario(id){
+     $.ajax({
+            url: "../controlador/SRV_VER_NOTICIA.php",
+            data: {tipo: "eliminarComent",id:id},
+            type: "POST",
+            datatype: "text",
+            success: function (respuesta) {
+                 $('#comment').val("");
+                 cargarComentarios();
+            },
+            error: function (jqXHR, textStatus) {
+                alert("error obtener");
+            }
+        });
+    
+}
 function comentar(){
+   
     id = sessionStorage.getItem("idNoticia");
     var texto =  $('#comment').val();
-    
-    $.ajax({
+    if(texto.trim().length>1){
+        $.ajax({
             url: "../controlador/SRV_VER_NOTICIA.php",
             data: {tipo: "comentar",id:id,texto:texto},
             type: "POST",
@@ -62,6 +79,7 @@ function comentar(){
                 alert("error obtener");
             }
         });
+    }
     
 }
 function cargarNoticia(){

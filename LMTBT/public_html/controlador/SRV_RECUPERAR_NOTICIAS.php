@@ -12,10 +12,17 @@
        
         $html="";     
         while ($fila = $resultado->fetch_assoc()){
-             $html=""; 
-            
+            $numeroComent=0;
+            $html="";  
             $id_noticia = $fila["ID_NOTICIAS"];
-            $noticia = "<li>";
+            
+            $sqlComent = "SELECT * FROM comentarios WHERE ID_NOTICIA =".$id_noticia;
+            if($resultadoC = $conexion->query( $sqlComent)){
+                $numeroComent=mysqli_num_rows($resultadoC);
+            }
+            
+            
+            //$noticia = "<li>";
             $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id_noticia LIMIT 1";        
          
  
@@ -40,6 +47,9 @@
                             $html.= "<p>" . substr($fila["NOTICIA"],0,300) . " ...</p>";
                         $html.= "</div>";
                     $html.= "</div>";
+                $html.= "</div>";
+                $html.="<div class='panel-footer'>";  
+                $html.="<p class='text-right'><span class='glyphicon glyphicon-comment' style='font-size:18px;'></span>".$numeroComent."</p>";
                 $html.= "</div>";
             $html.=" </div><hr>";
             
