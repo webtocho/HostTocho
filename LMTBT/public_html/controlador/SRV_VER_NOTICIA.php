@@ -14,7 +14,7 @@
                  $contenido = $resultado->fetch_assoc();
                  $noticia = array("TITULO", "CUERPO", "IMAGEN");
                 $noticia[0]= "<h1>". $contenido["TITULO"] . "</h1>";
-                $noticia[1]= "<p>". $contenido["NOTICIA"] . "</p>";
+                $noticia[1]= "<p>Fecha de publicación: ". $contenido["FECHA_PUBLICACION"] ."</p><p>". $contenido["NOTICIA"] . "</p>";
                 
                  $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id"; 
                   if($resultado2 = $conexion->query($sql2)){
@@ -71,6 +71,16 @@
                             $result2 = $conexion->query($query2);
                             if($result2){
                                 $usuario =mysqli_fetch_array($result2);
+                                
+                                echo "<div class='panel panel-default'>";
+                                echo"<div class='panel-heading' style='background-color: black;color: white;'>";
+                                    echo "<h4 class='media-heading'><p>".$usuario['NOMBRE']." ".$usuario['APELLIDO_PATERNO']."</p></h4>";
+                                echo"</div>";
+                                echo"<div class='panel-body'>";
+                                   
+                                
+                                
+                                
                                 echo "<div class='media'> ";
            
                             //imagen
@@ -84,8 +94,9 @@
                                 }
                                 // comentario
                                 echo "<div class='media-body'>";
-                                echo "<h4 class='media-heading'>".$usuario['NOMBRE']."</h4>";
-                                echo "<p> ".$row['COMENTARIO']." </p>  </div></div>";
+                                echo "<p> ".$row['COMENTARIO']." </p>  </div></div>";                               
+                                echo "</div>";
+                                echo "</div>";
                             }
                              
                                  
