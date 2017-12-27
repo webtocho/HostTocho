@@ -52,21 +52,38 @@
             
             $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS ";
             if($resultado = $conexion->query($sql)){
-                
-                $linea=floor(intval($linea)/$limit); 
                 $rows = mysqli_num_rows($resultado);
-                $htmlP="<ul class='pagination'>";
-                $pagination = floor($rows/$limit);
-                 $htmlP.="<li ><a   onclick='recuperar_noticias(0)' >inicio</a></li>";
-                for($i=0; $i<=$pagination;$i++){
-                    if($i==$linea)
-                        $htmlP.="<li class='disabled'><a   onclick='recuperar_noticias(".$i. ")' >".($i+1)."</a></li>";
-                    else
-                         $htmlP.="<li><a   onclick='recuperar_noticias(".$i. ")' >".($i+1)."</a></li>";
+                if($rows>0){
+                    $linea=floor(intval($linea)/$limit); 
+                    $rows = mysqli_num_rows($resultado);
+                    $htmlP="<center><ul class='pagination'>";
+                    $pagination = floor($rows/$limit);
+                     $htmlP.="<li ><a   onclick='recuperar_noticias(0)' >inicio</a></li>";
+
+                     $inicio = $linea;
+                     if($inicio>3){$inicio-=3;$htmlP.="<li ><a>...</a></li>";}
+                     else if($inicio>0){$inicio=0;}
+                     
+                     $final=$linea;
+                     $extra="";
+                     if( ($pagination-$final )>4){$final+=4;$extra="<li ><a>...</a></li>";}
+                     else{$final = $pagination;}
+                    
+                     for($i=$inicio; $i<=$final;$i++){
+
+
+                        if($i==$linea)
+                            $htmlP.="<li class='disabled'><a   >".($i+1)."</a></li>";
+                        else
+                             $htmlP.="<li><a   onclick='recuperar_noticias(".$i. ")' >".($i+1)."</a></li>";
+
+
+                    }
+                    $htmlP.=$extra;
+                    $htmlP.="<li ><a   onclick='recuperar_noticias(".($pagination).")' >Final</a></li>";
+                    $htmlP.="</ul></center>";
+                    echo $htmlP;
                 }
-                $htmlP.="<li ><a   onclick='recuperar_noticias(".$pagination.")' >Final</a></li>";
-                $htmlP.="</ul>";
-                echo $htmlP;
             }
     }
     $conexion->close();  
