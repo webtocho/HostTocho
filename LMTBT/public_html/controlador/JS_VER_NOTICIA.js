@@ -31,6 +31,10 @@ function cargarComentarios(){
             data: {tipo: "cargarComentarios",id:id},
             type: "POST",
             datatype: "text",
+             beforeSend: function (xhr){
+                 $('#comentarios').empty();
+                  $('#comentarios').append("<img src='./images/cargando_naranja.gif' >");
+            },
             success: function (respuesta) {
                  $('#comentarios').empty();
                  $('#comentarios').append(respuesta);
@@ -94,6 +98,10 @@ function cargarNoticia(){
             data: {tipo: "get",id:id},
             type: "POST",
             datatype: "text",
+            beforeSend: function (xhr){
+                 $('#cuerpo').empty();
+                 $('#cuerpo').append("<img src='./images/cargando_naranja.gif' >");
+            },
             success: function (respuesta) {
                  $('#titulo').empty();
                  $('#cuerpo').empty();
