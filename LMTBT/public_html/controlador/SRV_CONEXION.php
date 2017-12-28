@@ -23,7 +23,7 @@ class SRV_CONEXION {
 
     public function DatabaseConnect() {
         $this->conexion = new mysqli($this->sqlHost, $this->sqlUser, $this->sqlPassword, $this->sqlDatabase);
-         mysqli_set_charset($this->conexion, "utf8");
+        mysqli_set_charset($this->conexion, "utf8");
         if (mysqli_connect_errno()) {
             echo "conexion fallida:", mysqli_connect_errno();
             exit();

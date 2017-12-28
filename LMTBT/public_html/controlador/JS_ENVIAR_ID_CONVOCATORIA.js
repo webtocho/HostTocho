@@ -3,11 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-
-function enviarIdNoticia(id){
-       
-    sessionStorage.setItem("idNoticia", id);
+function eviar_id_convocatoria(id){
+    sessionStorage.setItem("id_convocatoria", id);
     location.href ="../vista/VER_NOTICIA.html";
 }

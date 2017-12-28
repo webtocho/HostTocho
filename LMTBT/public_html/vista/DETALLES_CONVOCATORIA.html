@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">       
+        <!-- Custom Theme files -->        
+        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/style.css" rel='stylesheet' type='text/css' />
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_pagination.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/pagination.css" />
+        <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
+        <script type="text/javascript" src="../controlador/JS_DETALLES_CONVOCATORIA.js"></script>
+        <script type="text/javascript" src="../controlador/JS_CREAR_ROL_JUEGOS.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/style_cuentas_busqueda.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    </head>
+    <body id="body">
+        <div id="alertaSucces" role="dialog">            
+        </div>  
+        <script>
+        $(function () {
+            $("#nueva_fecha").datepicker();
+        });
+        </script>
+        <!--Ventana emergente para modificar la fecha de la convocatoria-->
+        <div id="ventanaEmergente" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!--Contenido de la ventana emergente-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 id="tituloVentanaEmergente" class="modal-title">Titulo</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" id="formulario">
+                        <label for="nueva_fecha">Nueva fecha:</label>
+                        <input type="text" class="form-control" id="nueva_fecha" maxlength="30" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" form="formulario" class="btn btn-default" value="Guardar">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--Ventana emergente para modificar la fecha de la convocatoria-->
+        <!--Ventana emergente de confirmacion para terminar un torneo-->
+        <div class="modal fade" id="ventanaConfirmacion" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Confirmación</h4>
+                </div>
+                <div class="modal-body">
+                  ¿Estás seguro que deseas realizar esta accion?
+                </div>
+                <div class="modal-footer">
+                  <button id="botonConfirmacion" type="button" class="btn btn-success">Sí</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+              </div>
+            </div>
+         </div>
+        <!--Ventana emergente de confirmacion para terminar un torneo-->                        
+    <center>
+        <div id="contenido">
+            <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
+            <div id="info_convocatoria">
+                <h3 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;" id="nombre_convocatoria">Detalles convocatoria</h3>
+                <h3 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;" id="fecha_cierre">12/16/2017</h3>
+            </div>
+            <div>               
+                <div id="paginas"></div>
+            </div>            
+            <div id="resultados">     
+                <div class='top-news'>
+                    <h4 class='side'>Equipos inscritos</h4>
+                    <div id='convocatorias_lanzadas'>
+                        <table class='table table-bordered table-hover'>
+                            <thead>
+                                <tr>
+                                    <th>Nombre equipo</th>
+                                    <th>Que desea hacer</th>
+                                </tr>
+                            </thead>
+                            <tbody id='contenidoTabla'></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="enventos">
+                <a href="#body" id="gototop" class="desing">Ir Arriba</a>
+                <a href="#body" class="desing">Cambiar fechas</a>
+                <a href="#body" class="desing">Generar rol</a>            
+                <style type="text/css">
+                    @media(max-width: 550px){
+                        .desing{
+                            width: 100%;
+                            background-color: gray;
+                            color: #ffffff;
+                            padding: 10px;
+                        }
+                    }
+                </style>
+            </div>
+        </div>
+    </center>
+    </body>
+</html>

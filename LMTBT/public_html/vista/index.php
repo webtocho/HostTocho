@@ -32,7 +32,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>	   
         <script type='text/javascript' src='../controlador/JS_SESION_INICIAR_CERRAR.js'></script>
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
-         <script type="text/javascript" src="../controlador/JS_ENVIAR_ID_NOTICIA.js"></script>
+        <script type="text/javascript" src="../controlador/JS_ENVIAR_ID_NOTICIA.js"></script>
+        <script type="text/javascript" src="../controlador/JS_ENVIAR_ID_CONVOCATORIA.js"></script>         
 	
 	   
        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
@@ -50,35 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </head>
     <body onload="felicitaciones()">
         <div id="alertaSucces" class="modal fade" role="dialog">            
-        </div>
-        <script>
-        $(function () {
-            $("#nueva_fecha").datepicker();
-        });
-        </script>
-        <!--Ventana emergente para modificar la fecha de la convocatoria-->
-        <div id="ventanaEmergente" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <!--Contenido de la ventana emergente-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 id="tituloVentanaEmergente" class="modal-title">Titulo</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-group" id="formulario">
-                        <label for="nueva_fecha">Nueva fecha:</label>
-                        <input type="text" class="form-control" id="nueva_fecha" maxlength="30" required>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" form="formulario" class="btn btn-default" value="Guardar">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
-            </div>
-        </div>
-        <!--Ventana emergente para modificar la fecha de la convocatoria-->
+        </div>        
         
         
         <!--Ventana emergente de confirmacion para terminar un torneo-->

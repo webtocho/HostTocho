@@ -6,41 +6,7 @@
     $conexion->autocommit(FALSE);
     $categoria_existe = false;
     $cambios_hechos = true;    
-    session_start();
-    function redimensionar_imagen($temporal,$tipo){
-        $imagen_recuperada = null;
-        $tamanio;
-        if ($tipo == "jpg" || $tipo == "jpeg"){
-        //cambiar dimension de la imagen
-            $nombre_archivo_tmp = uniqid() . ".jpg";
-            $original = imagecreatefromjpeg($temporal);
-            $ancho_original = imagesx($original);
-            $alto_original = imagesy($original);
-            $copia = imagecreatetruecolor(960, 640);
-            imagecopyresampled($copia, $original, 0, 0, 0, 0, 960, 640, $ancho_original, $alto_original);
-            imagejpeg($copia, $nombre_archivo_tmp, 100);
-            $imagen_recuperada = addslashes(file_get_contents($nombre_archivo_tmp));
-            $tamanio = filesize($nombre_archivo_tmp);
-            unlink($nombre_archivo_tmp);
-        }else if($tipo == "png"){
-            $nombre_archivo_tmp = uniqid() . ".png";
-            $original = imagecreatefrompng($temporal);
-            $ancho_original = imagesx($original);
-            $alto_original = imagesy($original);
-            $copia = imagecreatetruecolor(960, 640);
-            imagecopyresampled($copia, $original, 0, 0, 0, 0, 960, 640, $ancho_original, $alto_original);
-            imagepng($copia, $nombre_archivo_tmp);
-            $imagen_recuperada = addslashes(file_get_contents($nombre_archivo_tmp));
-            $tamanio = filesize($nombre_archivo_tmp);
-            unlink($nombre_archivo_tmp);
-        }
-        if($tamanio >= 16777215){
-            return null;
-        } else {
-            return $imagen_recuperada;
-        }
-    }    
-    
+    session_start();        
     if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
         if($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR"){
             echo "No tienes permisos para lanzar una convocatoria";
@@ -96,9 +62,9 @@
                                 if (checkdate($validar_fecha_cierre[0], $validar_fecha_cierre[1], $validar_fecha_cierre[2]) == true && checkdate($validar_fecha_inicio[0], $validar_fecha_inicio[1], $validar_fecha_inicio[2]) == true && checkdate($validar_fecha_fin[0], $validar_fecha_fin[1], $validar_fecha_fin[2]) == true) {
                                 ////////////////////////////////////////////////////////////
                                         $tipo = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
-                                        $temporal = $_FILES['imagen']['tmp_name'];                                        
-                                        $imagen = redimensionar_imagen($temporal,$tipo);
-                                        if($imagen != null){           
+                                        $size = $_FILES['imagen']['size'];
+                                        $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));                                        
+                                        if($tipo == "jpg" || $tipo == "jpeg" || $tipo == "png" && $size <= 16777215){
                                             $consulta = $conexion->prepare("INSERT INTO convocatoria VALUES (0,?,?,?,?,'".$imagen."',?,?)");
                                             $consulta->bind_param("sssssi",$nombre_torneo,$fecha_cierre_convocatoria,$fecha_inicio_torneo,$fecha_fin_torneo,$estado,$id_categoria);
                                             if($consulta->execute()){
@@ -111,7 +77,7 @@
                                             $conexion->autocommit(TRUE);
                                             $conexion->close();
                                             return;
-                                        }                          
+                                        }                                                             
                                 } else {
                                     echo "Ingrese una fecha valida";
                                     $conexion->autocommit(TRUE);
