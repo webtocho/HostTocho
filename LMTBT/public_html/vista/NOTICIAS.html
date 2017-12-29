@@ -4,32 +4,31 @@
 <title>Crear Noticias</title>
 <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
 <link href="css/style_noticias.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="../controlador/JS_REGISTRO_NOTICIAS.js"></script>
-<script type="text/javascript" src="../controlador/JS_ACCESO_NOTICIA.js"></script>
 <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
-<style type="text/css">
-    .bs-example{
-    	margin: 100px;
-    }
-</style>
 </head>
 <body>
 <div id="alertaSucces" ></div>    
 <div class="bs-example">
-    <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-    <center><h1>Noticias</h1></center>
+    <center><a href="index.php" id="logo"><img id="logoimg" src="img/IF_LOGO.jpg" alt="TochoWeb"/></a></center>
+    <center><h1 id="titunoti">Noticias</h1></center>
     <form id="form_noticias" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="inputEmail">Titulo de la noticia</label>
-            <input name="titulo_noticia" type="text" class="form-control" id="titulo" placeholder="titulo noticia" required>
+            <input name="titulo_noticia" type="text" class="form-control" id="titulo" placeholder="Titulo de la noticia" required>
         </div>        
         <div class="form-group">
             <label for="inputPassword">Descripcion de la noticia</label>
-            <textarea name="descripcion" class="form-control" id = "descripcion_noticias" required></textarea>
+            <textarea name="descripcion" class="form-control" id = "descripcion_noticias" placeholder="Cuerpo de la noticia" required></textarea>
         </div>
-        <div class="form-group">
-            <input name="imagen_noticia[]" size="30" type="file" id="imagen" multiple required/>
+        
+        <div class="well">
+            <a href="#" class="upload btn" style="color: #ffffff">
+            <i class="fa fa-file-image-o" style="padding-right: 5px;font-size:30px"></i>
+            Subir archivos
+            <input class="opacity" name="imagen_noticia[]" size="30" type="file" id="imagen" multiple required/></a>
         </div>
         <center><button type="submit" class="btn btn-primary" id="enviar">Enviar</button></center>
     </form>

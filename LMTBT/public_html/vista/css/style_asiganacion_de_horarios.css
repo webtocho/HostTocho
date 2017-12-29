@@ -21,6 +21,11 @@ body a:hover,h5.top a:hover,.b-text h5 a:hover,.b-bottom-text h5 a:hover,.b-text
     background-color: #fff;
     background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
 }
+.striped{
+    background-color: darkorange;
+    color: #ffffff;
+    width: 100%;
+}
 @font-face {
     font-family: 'Roboto-Regular';
     src: url(../fonts/Roboto-Regular.ttf)format('truetype');

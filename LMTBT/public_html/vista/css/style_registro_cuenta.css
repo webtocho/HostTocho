@@ -19,6 +19,12 @@
 	        margin-top: 40px;
 	        box-shadow: 5px 5px 15px #333;
 	    }
+	    #tipo_cuenta {
+	    	width: auto;
+	    }
+	    #sexo {
+	    	width: auto;
+	    }
 	    #nombre,#ApellidoPaterno,#Password,#ApellidoMaterno,#Correo{
 	        width: 90%;
 	        height: 28px;
@@ -29,15 +35,7 @@
 	        border-right: 0px;
 	        margin-top: 20px;
 	    }
-	    #btn-submitdos{
-	        background-color: transparent;
-	        border: 1px solid darkorange;
-	        border-radius: 3px;
-	        background-color: #fff;
-	        color: darkorange;
-	        margin-top: 30px;
-	        padding: 3px;
-	    }
+
 	    @media(max-width:550px){
 	        .form{
 	            width: 95%;
