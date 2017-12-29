@@ -149,7 +149,7 @@ function InscribirEquipo(){
 
             }
             else if(info == '1'){
-                $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al guardar la informacion solicitada. Intentelo de nuevo mas tarde </strong> </div>");
+                $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>No se pudo realizar la inscripcion</strong> </div>");
 
             }
             else{

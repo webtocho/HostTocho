@@ -93,15 +93,23 @@
             $id_conv= $_POST["id_conv"];
             $id_equi = $_POST["id_equi"];
             $categ = $_POST["categoria"];
-           
+             $result=$db->prepare("Select * from rosters WHERE ID_EQUIPO = ? AND ID_CATEGORIA = ? AND ID_CONVOCATORIA IS NULL");
+            $result->bind_param("iii",$id_conv,$id_equi,$categ);
+            $result->execute();
+            if($result != null ){
+                if(mysqli_num_rows($result)<=0 ){
+                        echo "1";
+                        break;
+                }
+                               
+
+            }
            // $sql= "UPDATE rosters SET ID_CONVOCATORIA = '$id_conv' WHERE ID_EQUIPO ='$id_equi' AND ID_CATEGORIA = '$categ' AND ID_CONVOCATORIA IS NULL";
             $result=$db->prepare("UPDATE rosters SET ID_CONVOCATORIA = ? WHERE ID_EQUIPO = ? AND ID_CATEGORIA = ? AND ID_CONVOCATORIA IS NULL");
             $result->bind_param("iii",$id_conv,$id_equi,$categ);
             $result->execute();
             if($resultado==null){
                 echo "0";
-            }else if($resultado==false){
-                 echo  "1";
             }else{
                 echo "2";
             }
