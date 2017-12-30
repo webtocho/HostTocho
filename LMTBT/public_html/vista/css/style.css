@@ -3115,3 +3115,15 @@ p.sign {
     }
 
 }
+
+@media(max-width: 500px){
+    #imglogoindex{
+        display: none;
+    }
+}
+
+@media(min-width: 700px){
+    #imglogoindex{
+        display: block;
+    }
+}

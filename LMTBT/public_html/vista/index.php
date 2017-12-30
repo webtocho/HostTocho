@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.php"><h1 style="font-size: 25px;">LMTB <span>Tuxtla</span></h1><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 168px;"/></a>
+                            <a class="navbar-brand" href="index.php"><h1 style="font-size: 25px;">LMTB <span>Tuxtla</span></h1><img src="img/IF_LOGO.jpg" alt="TochoWeb" id="imglogoindex" style="height: 125px;width: 168px;"/></a>
                         </div><br><br>                        <!--/.navbar-header-->
 
                         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
