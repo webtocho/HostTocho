@@ -42,6 +42,9 @@ $(document).ready(function() {
                                     }
                                 }, 500);
                                 frame.src = 'CUENTAS_BUSQUEDA.html';
+                                $(frame).style.width ="100%";
+                                $(frame).style.height = "auto";
+                                $(frame).style.backgroundColor = "#fff";
                                 
                                 $('#modal').modal('hide');
                                 $('#contenido').append(crear_btn_retorno());
