@@ -18,7 +18,7 @@ class SRV_CONEXION {
         $this->sqlHost = "localhost";
         $this->sqlDatabase = "lmtbt";
         $this->sqlUser = "tochomaster"; 
-        $this->sqlPassword = "tochoweb";               
+        $this->sqlPassword = "tochoweb";                                          
     }
 
     public function DatabaseConnect() {

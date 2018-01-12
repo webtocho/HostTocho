@@ -9,8 +9,7 @@ $db = new SRV_CONEXION();
 switch ($_POST['tipo']) {
 	case "lista_convocatorias_inactivas":
 		// preparamos una consulta para retornar la lista de convocatorias (torneos) que aun no han vencido
-		$consulta = $db->getConnection()->prepare('SELECT ID_CONVOCATORIA, NOMBRE_TORNEO FROM convocatoria WHERE FECHA_CIERRE_CONVOCATORIA < ? AND FECHA_FIN_TORNEO >= ?');
-		$consulta->bind_param("ss", date('Y-m-d'), date('Y-m-d'));
+		$consulta = $db->getConnection()->prepare('SELECT ID_CONVOCATORIA, NOMBRE_TORNEO FROM convocatoria WHERE ESTADO = "ACTIVO"');
 		if ($consulta->execute()) {
 			$resultado = $consulta->get_result();
 			$list_convocatoria = "<option value='-1'>Seleccione el torneo</option>";
@@ -49,8 +48,9 @@ switch ($_POST['tipo']) {
 			return;
 		}
 		// preparamos una consulta para obtener los roles de juegos de las convocatorias que aun no han vencido
+		$fecha_hoy = date('Y-m-d');
 		$consulta = $db->getConnection()->prepare("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.FECHA_CIERRE_CONVOCATORIA < ? AND convocatoria.FECHA_FIN_TORNEO >= ? AND convocatoria.ID_CONVOCATORIA = ?");
-		$consulta->bind_param("ssi", date('Y-m-d'), date('Y-m-d'), $_POST['id_convocatoria']);
+		$consulta->bind_param("ssi", $fecha_hoy, $fecha_hoy, $_POST['id_convocatoria']);
 		if ($consulta->execute()) {
 			/*
 			$resultado = array();
@@ -61,7 +61,7 @@ switch ($_POST['tipo']) {
 			*/
 			//*
 			$consulta->close();
-			$db->setQuery(sprintf("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.FECHA_CIERRE_CONVOCATORIA < '%s' AND convocatoria.FECHA_FIN_TORNEO >= '%s' AND convocatoria.ID_CONVOCATORIA = %s", date('Y-m-d'), date('Y-m-d'), $_POST['id_convocatoria']));
+			$db->setQuery(sprintf("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.FECHA_CIERRE_CONVOCATORIA < '%s' AND convocatoria.FECHA_FIN_TORNEO >= '%s' AND convocatoria.ID_CONVOCATORIA = %s", $fecha_hoy, $fecha_hoy, $_POST['id_convocatoria']));
 			$resultado = $db->GetResult();
 			//*/
 			// en la tabla de rol_juegos las filas contienen los ID´s de los equipos que se enfrentaran, interesa conocer el nombre de estos asi tambien la categoria en la que estan participando
@@ -78,7 +78,7 @@ switch ($_POST['tipo']) {
 					if ($consulta->execute()) {
 						$res = $consulta->get_result();
 						$r2 = $res->fetch_assoc();
-						$resultado[$key]['NOMBRE_EQUIPO_2'] = $r1['NOMBRE_EQUIPO'];
+						$resultado[$key]['NOMBRE_EQUIPO_2'] = $r2['NOMBRE_EQUIPO'];
 						$consulta = $db->getConnection()->prepare("SELECT NOMBRE_CATEGORIA FROM categorias WHERE ID_CATEGORIA= ?");
 						$consulta->bind_param("i", $roles['ID_CATEGORIA']);
 						if ($consulta->execute()) {
