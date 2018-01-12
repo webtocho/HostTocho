@@ -9,10 +9,11 @@ $db = new SRV_CONEXION();
 switch ($_POST['tipo']) {
 	case "lista_convocatorias_inactivas":
 		// preparamos una consulta para retornar la lista de convocatorias (torneos) que aun no han vencido
-		$consulta = $db->getConnection()->prepare('SELECT ID_CONVOCATORIA, NOMBRE_TORNEO FROM convocatoria WHERE ESTADO = "ACTIVO"');
+		$consulta = $db->getConnection()->prepare("SELECT ID_CONVOCATORIA, NOMBRE_TORNEO FROM convocatoria WHERE ESTADO = 'ACTIVO'");
+		// si se pudo ejecuar la consulta, entonces se recuperan los datos, de lo contrario se informa un error
 		if ($consulta->execute()) {
 			$resultado = $consulta->get_result();
-			$list_convocatoria = "<option value='-1'>Seleccione el torneo</option>";
+			$list_convocatoria = "<option value='-1' selected hidden>Seleccione el torneo</option>";
 			while ($fila = $resultado->fetch_assoc())
 				$list_convocatoria .= "<option value='" . $fila['ID_CONVOCATORIA'] . "'>" . $fila['NOMBRE_TORNEO'] . "</option>";
 			echo $list_convocatoria;
@@ -115,15 +116,15 @@ switch ($_POST['tipo']) {
 			}
 			if ($roles['ID_EQUIPO_1'] != 0 && $roles['ID_EQUIPO_2'] != 0) {
 				$roles_juego .= "<tr>"
-						. "<td><center><h5 style='font-family:Calibri;'>" . $roles['NOMBRE_TORNEO'] . "</h5></center></td>"
-						. "<td><center><h5>" . $roles['CATEGORIA'] . "</h5></center></td>"
-						. "<td><center><h5>" . $roles['PUNTOS_EQUIPO_1'] . "</h5></center></td>"
-						. "<td><center><h5>" . $roles['NOMBRE_EQUIPO_1'] . "</h5></center></td>"
-						. "<td><center><h4>VS</h4></center></td>"
-						. "<td><center><h5>" . $roles['NOMBRE_EQUIPO_2'] . "</h5></center></td>"
-						. "<td><center><h5>" . $roles['PUNTOS_EQUIPO_2'] . "</h5></center></td>"
-						. "<td><center><h5>" . $equipo_ganador . "</h5></center></td>"
-						. "<td><center><button onclick='guardar_cedula(" . $roles['ID_EQUIPO_1'] . "," . $roles['ID_EQUIPO_2'] . "," . $roles['ID_ROL_JUEGO'] . "," . $roles['ID_CONVOCATORIA'] . ")'>" . $usuario_permitido . "</button></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_TORNEO'] . "</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['CATEGORIA'] . "</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['PUNTOS_EQUIPO_1'] . "</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_EQUIPO_1'] . "</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>VS</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_EQUIPO_2'] . "</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['PUNTOS_EQUIPO_2'] . "</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $equipo_ganador . "</h6></center></td>"
+						. "<td><center><h6 style='font-family:Calibri;color:black;'><button onclick='guardar_cedula(" . $roles['ID_EQUIPO_1'] . "," . $roles['ID_EQUIPO_2'] . "," . $roles['ID_ROL_JUEGO'] . "," . $roles['ID_CONVOCATORIA'] . ")'>" . $usuario_permitido . "</button></h6></center></td>"
 						. "</tr>";
 			}
 		}
