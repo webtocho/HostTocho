@@ -49,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGOUT.js"></script>
     </head>
-    <body onload="felicitaciones()">
+    <body onload="">
         <div id="alertaSucces" class="modal fade" role="dialog">            
         </div>        
         

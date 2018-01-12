@@ -1,3 +1,10 @@
+
+$(document).ready(function() {
+ felicitaciones();
+NextGames();
+});
+
+
 function felicitaciones(){
 	$.ajax({
         url: "../controlador/SRV_FELICITACIONES_OBTENER.php",
@@ -38,7 +45,7 @@ function felicitaciones(){
            alert("Error del servidor. Cumpleaños");
         }
     });
-    NextGames();
+    
 }
 
 function NextGames(){
