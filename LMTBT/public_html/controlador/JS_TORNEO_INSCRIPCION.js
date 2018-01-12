@@ -1,9 +1,10 @@
 
 $( document ).ready(function() {
    
+     getCategorias();
      
-     getEquipos();
      (document).getElementById("Categoria").onchange = getTorneo;
+    
 });
 
 function getCategorias(){
@@ -41,7 +42,7 @@ function getCategorias(){
 function getTorneo(){
     
     $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione</option>");
-   
+    getEquipos();
     
 
     var categoria =  document.getElementById("Categoria").value;
@@ -73,13 +74,15 @@ function getTorneo(){
 }
 
 function getEquipos(){
-    /*
-    $('#Equipo').html("<option value='Seleccione'>Seleccione</option>");*/
-    getCategorias();
+    
+    $('#Equipo').html("<option value='Seleccione'>Seleccione</option>");
+    
+     var categoria =  document.getElementById("Categoria").value;
+     console.log(categoria);
     
     $.ajax({
         url: "../controlador/SRV_TORNEO_INSCRIPCION.php",
-        data: {accion : "getEquipos"},
+        data: {accion : "getEquipos",categoria: categoria},
         type: "POST",
         datatype: "text",
         success: function (info) {
@@ -125,6 +128,7 @@ function InscribirEquipo(){
         var id_convocatoria = document.getElementById("Torneos").value;
         var data_categoria = document.getElementById("Categoria").value;
         var data_equipo = document.getElementById("Equipo").value;
+       
      if(id_convocatoria== "Seleccione" || id_convocatoria== "none" || data_categoria== "Seleccione" || data_categoria== "none" || data_equipo== "Seleccione" || data_equipo== "none"){
          $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Error! Introduzca los datos correctos</strong> </div>");
         $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione</option>");
