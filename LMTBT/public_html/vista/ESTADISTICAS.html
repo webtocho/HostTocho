@@ -27,7 +27,13 @@
                             <option value='' disabled selected hidden>Elige estado del torneo...</option>
             </select></center>
             <center><h2><a>Equipos</a></h2></center>
-            <center><select id="Select_Equipos" class="form-control" onchange="CargarEstadisticas(this.value)"></select></center><br>
+            <center><select id="Select_Equipos" class="form-control" onchange="MostrarBotones(this.value)"></select></center><br>
+            <center>
+                <button id="BotonGeneral" class="btn btn-success" onclick="CargarEstadisticas(this.value)" style="display: none;">Puntaje total</button>
+                <button id="BotonPartidos" class="btn btn-warning" onclick="CargarPartidos(this.value)" style="display:none;">Puntaje por partido</button>
+            </center>
+            <select id="PorPartidos" class="form-control" onchange="ResultadoPartido(this.value)" style="display: none;"></select>
+            
             <div id="Estadisticas" style="padding-left:5px;padding-right: 5px;"></div>
 	</div>
         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>

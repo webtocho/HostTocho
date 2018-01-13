@@ -12,7 +12,7 @@
     }
     //comprobamos si hay jugadores en ese roster
     if($jugadores&&mysqli_num_rows($jugadores)>0){
-        echo "<center><h3><a>PUNTAJE TOTAL DE TODOS LOS PARTIDOS</a></h3></center>";
+        echo "<center><h3><a>PUNTAJE TOTAL POR JUGADOR</a></h3></center>";
     	echo "<table class='table'>";
     	echo '<thead><tr><th>JUGADOR</th> <th>NUMERO</th> <th>T</th> <th>S</th>'; 
         echo '<th>I</th> <th>A</th> <th>C1</th> <th>C2</th> <th>PT</th>'; 
