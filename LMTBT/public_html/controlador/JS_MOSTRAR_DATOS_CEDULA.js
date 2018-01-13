@@ -16,10 +16,10 @@
    var ID_CONVOCSTORIA;
    
 function llenar_tablas(){
-       // sessionStorage.setItem("id_equipo_1", 1);
-       // sessionStorage.setItem("id_equipo_2", 2);
-       // sessionStorage.setItem("id_rol_juego", 1);
-      //  sessionStorage.setItem("id_convocatoria", 1);
+        sessionStorage.setItem("id_equipo_1", 1);
+        sessionStorage.setItem("id_equipo_2", 2);
+        sessionStorage.setItem("id_rol_juego", 1);
+        sessionStorage.setItem("id_convocatoria", 1);
         
        var team1 = sessionStorage.getItem("id_equipo_1");
        var team2 = sessionStorage.getItem("id_equipo_2");
@@ -306,4 +306,66 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
         }
     });
     ActualizarEstadisticas(ID_CONVOCSTORIA);
+}
+
+function add(tipo,id,idJugador,idRoster){
+   // alert(tipo+"\n"+id+"\n"+idJugador+"\n"+idRoster);
+    var dato=document.getElementById(id).value;
+	dato++;
+	document.getElementById(id).value=dato;
+        switch(tipo){
+            case "T":
+                guardarT(id,idJugador,idRoster);
+            break;
+            case "S":
+                guardarS(id,idJugador,idRoster);
+            break;
+            case "I":
+              guardarI(id,idJugador,idRoster);
+            break;
+            case "A":
+                guardarA(id,idJugador,idRoster);
+            break;
+            case "C1":
+               guardarC1(id,idJugador,idRoster);
+            break;
+             case "C2":
+               guardarC2(id,idJugador,idRoster);
+            break;
+             case "PT":
+                guardarPT(id,idJugador,idRoster);
+            break;
+        }
+}
+
+function reduce(tipo,id,idJugador,idRoster){
+    //alert(tipo+"\n"+id+"\n"+idJugador+"\n"+idRoster);
+    var dato=document.getElementById(id).value;
+	if(dato!=0){
+	dato--;
+	document.getElementById(id).value=dato;
+         switch(tipo){
+            case "T":
+                guardarT(id,idJugador,idRoster);
+            break;
+            case "S":
+                guardarS(id,idJugador,idRoster);
+            break;
+            case "I":
+              guardarI(id,idJugador,idRoster);
+            break;
+            case "A":
+                guardarA(id,idJugador,idRoster);
+            break;
+            case "C1":
+               guardarC1(id,idJugador,idRoster);
+            break;
+             case "C2":
+               guardarC2(id,idJugador,idRoster);
+            break;
+             case "PT":
+                guardarPT(id,idJugador,idRoster);
+            break;
+        }
+    }
 }
