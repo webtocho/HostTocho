@@ -106,7 +106,7 @@ $(document).ready(function(){
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                                                                     
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");
+                   // $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");
                     $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrarse</a>");
                 return;
             }
@@ -120,7 +120,7 @@ $(document).ready(function(){
             ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
             $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                                                                     
             $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
-            $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");
+           // $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");
             $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrarse</a>");            
     });    
 });
