@@ -32,7 +32,7 @@ switch ($_POST['tipo']){
             $info[] = $row;
         }
         
-           $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO =". $_POST['team']);
+            $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
         $conexcion0= $db->getConnection();
         $resultado0=$conexcion0->query($sql);
         $info0=$resultado0->fetch_assoc();

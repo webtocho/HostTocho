@@ -293,6 +293,7 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
             ID_ROL:ID_ROL,
             TEAM1:ID_TEAM_1,
             TEAM2:ID_TEAM_2,
+            ID_CONVOCSTORIA:ID_CONVOCSTORIA,
         },
         type: "POST",
         datatype: "text",
