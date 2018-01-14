@@ -144,13 +144,13 @@ switch ($_POST['tipo']){
       $PUNTOS_TEAM_1=0;
       $PUNTOS_TEAM_2=0;
       
-      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s",$_POST['TEAM1']); 
+      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM1'],$_POST['ID_CONVOCSTORIA']); 
       $conexcion= $db->getConnection();  
       $resultado=$conexcion->query($sql);
       $info=$resultado->fetch_assoc();
       $ID_ROSTER_TEAM_1=$info["ID_ROSTER"];
       
-      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s",$_POST['TEAM2']); 
+      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s ID_CONVOCATORIA=%s",$_POST['TEAM2'],$_POST['ID_CONVOCSTORIA']); 
       $conexcion2= $db->getConnection();  
       $resultado2=$conexcion2->query($sql);
       $info2=$resultado2->fetch_assoc();
