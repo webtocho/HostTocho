@@ -1,18 +1,16 @@
-
 $(document).ready(function() {
  felicitaciones();
-NextGames();
+ NextGames();
 });
-
 
 function felicitaciones(){
 	$.ajax({
         url: "../controlador/SRV_FELICITACIONES_OBTENER.php",
         success: function (info) {
      		if(info==1){
-                    $('#owl-demo').empty();
-                    $('#owl-demo').append("<p>Hoy no hay cumpleañeros</p>");
-     		}else{
+                    $('#ApartadoCumpleanios').hide();
+     		}
+            else{
                     $('#owl-demo').empty();
                     $('#owl-demo').append(info);
                     $(function () {
@@ -45,7 +43,6 @@ function felicitaciones(){
            alert("Error del servidor. Cumpleaños");
         }
     });
-    
 }
 
 function NextGames(){
@@ -54,7 +51,6 @@ function NextGames(){
         success: function (res) {
             $('#ProximosPartidos').empty();
             $('#ProximosPartidos').append(res);
-            
         },
         error: function (jqXHR, textStatus) {
            alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");

@@ -22,6 +22,8 @@
 			echo "<td clas='ONE'>".$name2['NOMBRE_EQUIPO']."</td></tr>";
 		}
 		echo "</tbody>";
+	}else{
+		echo "<a><h2>NO SE HAN ENCONTRADO PARTIDOS</h2><br><a><h3>ESPERA NUESTRO SIGUIENTE TORNEO</h3></a>";
 	}
 
 	

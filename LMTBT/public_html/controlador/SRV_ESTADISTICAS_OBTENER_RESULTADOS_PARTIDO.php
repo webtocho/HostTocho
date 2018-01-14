@@ -10,13 +10,15 @@
     $result = $stmt->get_result();
 
     if($stmt->num_rows>-1){
-    	
+    	$nameEquipo = "SELECT NOMBRE_EQUIPO FROM equipos INNER JOIN rosters ON equipos.ID_EQUIPO=rosters.ID_EQUIPO WHERE ID_ROSTER=".$roster;
+        $equipo = $conn->query($nameEquipo);
+        $equipo = $equipo->fetch_array(MYSQLI_ASSOC);
+        echo "<center><h2><a>".$equipo['NOMBRE_EQUIPO']."</a></h2></center>";
     	echo "<center><h3><a>PUNTAJE EN EL PARTIDO</a></h3></center>";
     	echo "<table class='table'>";
     	echo '<thead><tr><th>JUGADOR</th> <th>NUMERO</th> <th>T</th> <th>S</th>'; 
         echo '<th>I</th> <th>A</th> <th>C1</th> <th>C2</th> <th>PT</th>'; 
         echo '</tr></thead><tbody>';
-        
     	
     	while ($row = $result->fetch_array(MYSQLI_ASSOC)){
             $query="SELECT NUMERO FROM participantes_rosters WHERE ID_JUGADOR=".$row['ID_JUGADOR']." and ID_ROSTER=".$row['ID_ROSTER'];

@@ -49,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGOUT.js"></script>
     </head>
-    <body onload="">
+    <body>
         <div id="alertaSucces" class="modal fade" role="dialog">            
         </div>        
         
@@ -395,7 +395,7 @@ $(document).ready(function () {
                         <!--Apartado para listar los torneos activos-->
 
                         <!--Apartado Cumpleaños:inicia -->
-                        <div class="modern">
+                        <div class="modern" id="ApartadoCumpleanios">
                             <h4 class="side">Cumpleañeros</h4>
                             <div id="example1">
                                 <div id="owl-demo" class="owl-carousel text-center"></div>

@@ -6,7 +6,8 @@
 	$result = $conn->query($query);
 
 	if($result){
-        if(mysqli_num_rows($result)<=0) echo "<div class='item'><a>Hoy no hay cumpleañeros</a></div>";
+        if(mysqli_num_rows($result)<=0) //echo "<div class='item'><a>Hoy no hay cumpleañeros</a></div>";
+        echo 1;
 		else{
             $inicia=0;
             while($row = mysqli_fetch_array($result)){

@@ -12,6 +12,10 @@
     }
     //comprobamos si hay jugadores en ese roster
     if($jugadores&&mysqli_num_rows($jugadores)>0){
+        $nameEquipo = "SELECT NOMBRE_EQUIPO FROM equipos INNER JOIN rosters ON equipos.ID_EQUIPO=rosters.ID_EQUIPO WHERE ID_ROSTER=".$roster;
+        $equipo = $conn->query($nameEquipo);
+        $equipo = $equipo->fetch_array(MYSQLI_ASSOC);
+        echo "<center><h2><a>".$equipo['NOMBRE_EQUIPO']."</a></h2></center>";
         echo "<center><h3><a>PUNTAJE TOTAL POR JUGADOR</a></h3></center>";
     	echo "<table class='table'>";
     	echo '<thead><tr><th>JUGADOR</th> <th>NUMERO</th> <th>T</th> <th>S</th>'; 
