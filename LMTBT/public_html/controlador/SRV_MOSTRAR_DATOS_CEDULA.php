@@ -151,6 +151,7 @@ switch ($_POST['tipo']){
       $ID_ROSTER_TEAM_1=$info["ID_ROSTER"];
       
       $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM2'],$_POST['ID_CONVOCSTORIA']); 
+
       $conexcion2= $db->getConnection();  
       $resultado2=$conexcion2->query($sql);
       $info2=$resultado2->fetch_assoc();
