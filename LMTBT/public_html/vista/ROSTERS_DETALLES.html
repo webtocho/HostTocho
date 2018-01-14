@@ -10,9 +10,12 @@
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_ROSTERS_DETALLES.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/style_rosters_detalles.css"/>
     </head>
-    <body>
+    <body id="body">
+    <center>
         <div id="contenido">
+            <center><a href="index.php" id="logo"><img id="logoimg" src="img/IF_LOGO.jpg" alt="TochoWeb"/></a></center>
             <h2 id="titulo">Detalles del roster</h2>
             
             <b>Categoría: </b><a id="categoria">Cargando...</a>
@@ -34,10 +37,12 @@
             </table>
             
             <br><br>
-            
-            <button class="btn btn-danger" onclick="confirmar_eliminacion()">Eliminar</button>
-            <button id="btn_editar" class="btn btn-warning" onclick="irAPaginaDeEdicion()">Editar</button>
+            <div id="btns">
+                <button class="btn btn-danger" onclick="confirmar_eliminacion()">Eliminar</button>
+                <button id="btn_editar" class="btn btn-warning" onclick="irAPaginaDeEdicion()">Editar</button>
+            </div>
         </div>
+    </center>
         <br>
     </body>
 </html>

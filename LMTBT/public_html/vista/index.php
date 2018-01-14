@@ -49,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGOUT.js"></script>
     </head>
-    <body onload="felicitaciones()">
+    <body>
         <div id="alertaSucces" class="modal fade" role="dialog">            
         </div>        
         
@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.php"><h1 style="font-size: 25px;">LMTB <span>Tuxtla</span></h1><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 168px;"/></a>
+                            <a class="navbar-brand" href="index.php"><h1 style="font-size: 25px;">LMTB <span>Tuxtla</span></h1><img src="img/IF_LOGO.jpg" alt="TochoWeb" id="imglogoindex" style="height: 125px;width: 168px;"/></a>
                         </div><br><br>                        <!--/.navbar-header-->
 
                         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
@@ -395,7 +395,7 @@ $(document).ready(function () {
                         <!--Apartado para listar los torneos activos-->
 
                         <!--Apartado Cumpleaños:inicia -->
-                        <div class="modern">
+                        <div class="modern" id="ApartadoCumpleanios">
                             <h4 class="side">Cumpleañeros</h4>
                             <div id="example1">
                                 <div id="owl-demo" class="owl-carousel text-center"></div>

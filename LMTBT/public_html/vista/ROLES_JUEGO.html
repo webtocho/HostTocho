@@ -15,9 +15,9 @@ and open the template in the editor.
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
   <script type="text/javascript" src="../controlador/JS_LIBRERIAS_materialize.min.js"></script>
-  <script type="text/javascript" src="../controlador/JS_VALIDAR_ACCESO_USUARIO.js"></script>
   <script type="text/javascript" src="../controlador/JS_MOSTRAR_ROLES_JUEGO.js"></script>
   <script type="text/javascript" src="../controlador/JS_MOSTRAR_CEDULA.js"></script>
+  <script type="text/javascript" src="../controlador/JS_CARACTERISTICAS.js"></script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 
@@ -26,7 +26,7 @@ and open the template in the editor.
     <div class="container">
 
     <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-    <center><h5>Roles de Juego </h5></center>
+    <center><h4 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Roles de Juego </h5></center>
     <div class="row"  style="padding:  0cm   5cm 0cm 5cm;">
     <label><h5>Seleccione una convocatoria:</h5></label>         
     <select  class='browser-default' id='lista_convocatorias_inactivas' onchange="lista_convocatorias_inactivas()"></select>
@@ -40,11 +40,11 @@ and open the template in the editor.
             <tr>          
                 <th><center>TORNEO</center></th>
                 <th><center>CATEGORIA</center></th>
-                <th><center>GOLES EQUIPO 1</center></th>
+                <th><center>PUNTOS EQUIPO 1</center></th>
                 <th><center>EQUIPO 1</center></th>
                 <th><center>VS</center></th>
                 <th><center>EQUIPO 2</center></th>
-                <th><center>GOLES EQUIPO 2</center></th>
+                <th><center>PUNTOS EQUIPO 2</center></th>
                 <th><center>EQUIPO GANADOR</center></th>
                 <th><center>CEDULAS DEL ROL</center></th>
             </tr>
@@ -55,6 +55,7 @@ and open the template in the editor.
         </table>
       </div>
   </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
 
   </body>
   </html>

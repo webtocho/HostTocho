@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Busqueda de Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,12 +14,13 @@
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_BUSQUEDA.js"></script>
         <link type="text/css" rel="stylesheet" href="css/style_cuentas_busqueda.css" />
+        <script type="text/javascript" src="../controlador/JS_CARACTERISTICAS.js"></script>
     </head>
     <body id="body">
     <center>
         <div id="contenido">
-            <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-            <h3 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Búsqueda de usuarios</h3>
+            <center><a href="index.php" id="logo"><img src="img/IF_LOGO.jpg" alt="TochoWeb" id="logoimg"/></a></center>
+            <h3 id="titulo">Búsqueda de usuarios</h3>
             <div>
                 <div id="filtros" class="form-group">
                     <label for="rp">Resultados por página:</label>
@@ -84,8 +85,8 @@
                             <input type="checkbox" id="i_f" checked>Foto de perfil
                         </label>
                     </div>
-                    
-                    <button class="btn btn-default" onclick="buscar()">
+                    <br>
+                    <button class="btn btn-primary" onclick="buscar()">
                         <i class="glyphicon glyphicon-search"></i> Buscar
                     </button>
                 </div>
@@ -95,7 +96,6 @@
             
             <div id="resultados">Seleccione los filtros que desee y haga su búsqueda.</div>
             <br>
-            <a href="#body" id="gototop">Ir Arriba</a>
             <style type="text/css">
                 @media(max-width: 550px){
                     #gototop{
@@ -107,6 +107,7 @@
                 }
             </style>
         </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
     </center>
     </body>
 </html>

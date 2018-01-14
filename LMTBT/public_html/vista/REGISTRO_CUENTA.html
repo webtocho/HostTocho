@@ -4,7 +4,7 @@
         <title>Registro de cuenta</title>
         <meta charset="UTF-8">
             <link rel="stylesheet" type="text/css" href="HE_FORM_CO.css"/>
-            <link type="text/css" rel="stylesheet" href="css/style_registro_coach.css" />
+            <link type="text/css" rel="stylesheet" href="css/style_registro_cuenta.css" />
             <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
             <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
             <script src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
@@ -24,16 +24,16 @@
                         <input placeholder="Nombre" type="text" name="nombre" id="nombre" required>
                         <input placeholder="Apellido Paterno" type="text" name="ApellidoPaterno" id="ApellidoPaterno" required>
                         <input placeholder="Apellido Materno" type="text" name="ApellidoMaterno" id="ApellidoMaterno" required>
-                        <select id="sexo" required>
+                        <select class="form-control" id="sexo" required>
                         <option value="">Sexo</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
-                        </select>
-                        <select  name="Tipo de cuenta" id="tipo_cuenta" required>                           
-                        </select>
-			<center><input type="submit" value="Registrar" id="btn-submitdos"></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
-                        </form>
+                        </select><br>
+                        <select class="form-control" name="Tipo de cuenta" id="tipo_cuenta" required>                           
+                        </select><br>
+			<center><input class="btn btn-primary" type="submit" value="Registrar" id="btn-submitdos"></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
+                        </form><br>
 			</div>
-		</center>
+		</center><br><br>
     </body>
 </html>

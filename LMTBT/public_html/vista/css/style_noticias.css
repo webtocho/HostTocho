@@ -1,60 +1,60 @@
-            body{
-                font-family: 'Roboto', sans-serif;
-                /*font-family: 'Noto Sans', sans-serif;*/
-            }
-            #body{
-                width: 99%;
-                height: 100%;
-                clear: both;
-                margin: auto;
-                background-color: #fff;
-                /*background-image: url(img/RC_IF_TEAM_BG.jpg);
-                background-size: cover;*/
-            }
-            #contenido{
-                width: 500px;
-                height: 100%;
-                background-color: #fff;
-                border-radius: 10px;
-                padding: 20px;
-                margin-top: 40px;
-                box-shadow: 5px 5px 15px #333;
-            }
-            #inputEmail,#d-noticia,#imagen{
-                width: 90%;
-                height: 28px;
-                margin: 2%;
-                border-bottom: 1px solid darkorange;
-                border-top: 0px;
-                border-left: 0px;
-                border-right: 0px;
-                margin-top: 20px;
-            }
-            #d-noticia{
-                width: 90%;
-                height: 100px;
-                margin: 2%;
-                border: 1px solid darkorange;
-                margin-top: 20px;
-            }
-        #btn-submitdos{
-            background-color: transparent;
-            border: 1px solid darkorange;
-            border-radius: 3px;
-            background-color: #fff;
-            color: darkorange;
-            margin-top: 30px;
-            padding: 3px;
-        }
-            #cargando{
-                width: 100%;
-            }
-            
-            @media(max-width:550px){
-                #contenido{
-                    width: 90%;
-                    height: 100%;
-                    margin-top: 20px;
-                    margin-bottom: 30px;
-                }
-            }
+html, body{
+    font-family: 'Roboto-Regular';
+    font-size: 100%;
+    background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
+
+}
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url(../fonts/Roboto-Regular.ttf)format('truetype');
+}
+@font-face {
+    font-family: 'Bitter-Regular';
+    src: url(../fonts/Bitter-Regular.ttf)format('truetype');
+}
+.bs-example {
+    padding:1em 4em;
+    background-color: #fff;
+    margin: 100px;
+}
+.choose {
+	background-color: #428BCA;
+}
+#titunoti {
+	text-align: center;
+	background-color:#333;
+	color:#ffffff;
+	width:93%;
+	border-radius:3px;
+}
+#logo {
+	text-decoration:none;
+}
+#logoimg {
+	height: 125px;
+	width: 125px;
+}
+.upload{
+       padding: 0.5px 0.5px;
+       position: relative;        
+    }
+    .upload input[type="file"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    }
+    .opacity{
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
+     -moz-opacity: 0;
+     -khtml-opacity: 0;
+     opacity: 0;
+    }
+    /*bootstrap*/    
+.well {
+display: inline-block;
+padding: 10px 10px 10px 10px;
+background-color: #428BCA;
+}

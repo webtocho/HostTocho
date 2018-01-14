@@ -8,7 +8,7 @@
 });*/
 function cargar_tabla_convocatorias_vencidas(){
     actualizarTabla();
-    var ejecutar = setInterval(function(){actualizarTabla()},5000);
+   // var ejecutar = setInterval(function(){actualizarTabla()},5000);
 }
 //var prro= setInterval(function(){actualizarTabla()},1000);
 

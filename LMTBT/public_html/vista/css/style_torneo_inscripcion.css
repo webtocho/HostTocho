@@ -38,6 +38,13 @@
                         margin-top: 30px;
                         padding: 3px;
                     }
+                    #logo {
+                        text-decoration:none;
+                    }
+                    #logoimg {
+                            height: 125px;
+                            width: 125px;
+                    }
                     @media(max-width:550px){
                         #body{
                             width: 100%;

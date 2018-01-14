@@ -1,0 +1,10 @@
+html, body{
+    font-family: 'Roboto-Regular';
+    font-size: 100%;
+    background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
+}
+.cuerpo {
+    background-color: #FFFFFF;
+    display: inline-block;
+    padding:0.5em 0.5em;
+}

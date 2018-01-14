@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link type="text/css" rel="stylesheet" href="css/style_cuentas_login.css" />
+        <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGIN.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,8 +21,8 @@
             <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Login</h1>
             <form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
             <input placeholder="Correo" type="email" name="campo_correo" id="campo_correo">
-            <input placeholder="Contraseña" type="password" name="campo_password" id="campo_password">
-            <center><input type="button" value="Iniciar Sesion" onClick="iniciarSesion();" id='btn_iniciar_sesion' name='btn_iniciar_sesion'></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
+            <input placeholder="Contraseña" type="password" name="campo_password" id="campo_password"><br><br>
+            <center><input class="btn btn-primary" type="button" value="Iniciar Sesion" onClick="iniciarSesion();" id='btn_iniciar_sesion' name='btn_iniciar_sesion'></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
             </form>
             <a style="color:#333;font-size:14px;" class='pink-text' href=''><b>¿Olvidaste tu contraseña?</b></a>
             </div>

@@ -18,12 +18,12 @@ switch ($_POST['tipo']){
     
     case "Obtener_jugador_equipo":
         $ID_ROSTER;
-         $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO =".$_POST['team']);
+            $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
           $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         $info=$resultado->fetch_assoc();
         $ID_ROSTER=$info["ID_ROSTER"];
-         $sql = sprintf(" select * from rosters inner join participantes_rosters on rosters.ID_ROSTER = participantes_rosters.ID_ROSTER inner join usuarios on participantes_rosters.ID_JUGADOR = usuarios.ID_USUARIO where ID_EQUIPO=" . $_POST['team']);
+        $sql = sprintf("select * from rosters inner join participantes_rosters on rosters.ID_ROSTER = participantes_rosters.ID_ROSTER inner join usuarios on participantes_rosters.ID_JUGADOR = usuarios.ID_USUARIO where rosters.ID_EQUIPO=%s AND rosters.ID_ROSTER=%s",$_POST['team'],$ID_ROSTER);
          $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         
@@ -32,7 +32,7 @@ switch ($_POST['tipo']){
             $info[] = $row;
         }
         
-           $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO =". $_POST['team']);
+            $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
         $conexcion0= $db->getConnection();
         $resultado0=$conexcion0->query($sql);
         $info0=$resultado0->fetch_assoc();
@@ -54,14 +54,15 @@ switch ($_POST['tipo']){
                  $conexcion= $db->getConnection();
                  $resultado3=$conexcion->query($sql);
                 $info3=$resultado3->fetch_assoc();
-                echo '<tr><th>'.$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]." ".$info2["APELLIDO_MATERNO"]."</th>".
-                   "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."T' maxlength='30' required  min='0' value='". $info3["T"]."' onclick='guardarT(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>"
-                ."<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."S' maxlength='30' value='". $info3["S"]."' onclick='guardarS(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required></th>".
-                 "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."I' maxlength='30' value='". $info3["I"]."' onclick='guardarI(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required></th>".
-                "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."A' maxlength='30' value='". $info3["A"]."'  onclick='guardarA(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'required></th>".
-                "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."C1' maxlength='30' value='". $info3["C1"]."' onclick='guardarC1(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required></th>".
-               "<th><input type='number' class='form-control'id='".$info2["ID_JUGADOR"]."C2' maxlength='30' value='". $info3["C2"]."' onclick='guardarC2(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")' required ></th>".
-              "<th><input type='number' class='form-control' id='".$info2["ID_JUGADOR"]."PT' maxlength='30' value='". $info3["PT"]."' onclick='guardarPT(this.id,".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'required></th></tr>"; 
+                echo "<tr><th>"
+                .$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]."</th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."T' maxlength='30' value='".$info3["T"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"T\"".",\"".$info2["ID_JUGADOR"]."T\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"T\"".",\"".$info2["ID_JUGADOR"]."T\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>"
+                ."<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."S' maxlength='30' value='".$info3["S"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"S\"".",\"".$info2["ID_JUGADOR"]."S\"".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"S\"".",\"".$info2["ID_JUGADOR"]."S\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."I' maxlength='30' value='".$info3["I"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"I\"".",\"".$info2["ID_JUGADOR"]."I\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"I\"".",\"".$info2["ID_JUGADOR"]."I\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."A' maxlength='30' value='".$info3["A"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"A\"".",\"".$info2["ID_JUGADOR"]."A\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"A\"".",\"".$info2["ID_JUGADOR"]."A\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."C1' maxlength='30' value='".$info3["C1"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"C1\"".",\"".$info2["ID_JUGADOR"]."C1\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"C1\"".",\"".$info2["ID_JUGADOR"]."C1\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."C2' maxlength='30' value='".$info3["C2"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"C2\"".",\"".$info2["ID_JUGADOR"]."C2\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"C2\"".",\"".$info2["ID_JUGADOR"]."C2\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."PT' maxlength='30' value='".$info3["PT"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"PT\"".",\"".$info2["ID_JUGADOR"]."PT\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"PT\"".",\"".$info2["ID_JUGADOR"]."PT\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th></tr>"; 
 		}
          }else{
             foreach ($info as $info2) {  
@@ -70,14 +71,14 @@ switch ($_POST['tipo']){
                  $resultado3=$conexcion->query($sql);
                 $info3=$resultado3->fetch_assoc();
 		echo '<tr><th>'
-                .$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]." ".$info2["APELLIDO_MATERNO"]
-                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='". $info3["T"]."' required disabled>"
-                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["S"]."'  required disabled>"
-                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["I"]."'  required disabled>"
-                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["A"]."'  required disabled>"
-                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["C1"]."' required disabled>"
-                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["C2"]."' required disabled>"
-                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["PT"]."' required disabled></th></tr>"; 
+                .$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]." "
+                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='". $info3["T"]."' required readonly='readonly'>"
+                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["S"]."'  required readonly='readonly'>"
+                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["I"]."'  required readonly='readonly'>"
+                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["A"]."'  required readonly='readonly'>"
+                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["C1"]."' required readonly='readonly'>"
+                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["C2"]."' required readonly='readonly'>"
+                 ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["PT"]."' required readonly='readonly'></th></tr>"; 
              }
         } 
        
@@ -143,13 +144,14 @@ switch ($_POST['tipo']){
       $PUNTOS_TEAM_1=0;
       $PUNTOS_TEAM_2=0;
       
-      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s",$_POST['TEAM1']); 
+      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM1'],$_POST['ID_CONVOCSTORIA']); 
       $conexcion= $db->getConnection();  
       $resultado=$conexcion->query($sql);
       $info=$resultado->fetch_assoc();
       $ID_ROSTER_TEAM_1=$info["ID_ROSTER"];
       
-      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s",$_POST['TEAM2']); 
+      $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM2'],$_POST['ID_CONVOCSTORIA']); 
+
       $conexcion2= $db->getConnection();  
       $resultado2=$conexcion2->query($sql);
       $info2=$resultado2->fetch_assoc();

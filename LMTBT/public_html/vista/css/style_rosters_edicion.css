@@ -11,14 +11,21 @@
 	        background-size: repeat;
 	    }
 	    #contenido{
-	        width: 700px;
+	        width: 900px;
 	        height: 100%;
 	        background-color: #fff;
 	        border-radius: 10px;
-	        padding: 10px;
+	        padding: 20px;
 	        margin-top: 40px;
 	        box-shadow: 5px 5px 15px #333;
 	    }
+            #titulo {
+                text-align: center;
+                background-color:#333;
+                color:#ffffff;
+                width:93%;
+                border-radius:3px;
+            }
 	    #seleccion_categoria,#busqueda_jugador,#seleccion_jugador{
 	        width: 90%;
 	        height: 28px;

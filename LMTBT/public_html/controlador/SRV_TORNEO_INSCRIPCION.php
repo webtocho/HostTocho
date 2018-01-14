@@ -62,7 +62,9 @@
                 if ($_SESSION["TIPO_USUARIO"]=='COACH'){
                     
                     $iduser = $_SESSION["ID_USUARIO"];
-                    $sql= "SELECT NOMBRE_EQUIPO,ID_EQUIPO FROM equipos WHERE ID_COACH = '$iduser'";
+                    $categ = $_POST["categoria"];
+                    
+                    $sql= "SELECT e.NOMBRE_EQUIPO,e.ID_EQUIPO FROM equipos e join rosters r on e.ID_EQUIPO = r.ID_EQUIPO WHERE ID_COACH = '$iduser' and ID_CATEGORIA= '$categ'";
                     $result=$db->query($sql);
                     if($result == null){
                          echo  "0";
@@ -93,15 +95,25 @@
             $id_conv= $_POST["id_conv"];
             $id_equi = $_POST["id_equi"];
             $categ = $_POST["categoria"];
-           
+             $result=$db->prepare("Select * from rosters WHERE ID_EQUIPO = ? AND ID_CATEGORIA = ? AND ID_CONVOCATORIA IS NULL");
+            $result->bind_param("ii",$id_equi,$categ);
+            $result->execute();
+            $data = $result;
+           if($result != null ){
+               $data->store_result();
+                if($data->num_rows<=0 ){
+                        echo "1";
+                        break;
+                }
+                               
+
+            
            // $sql= "UPDATE rosters SET ID_CONVOCATORIA = '$id_conv' WHERE ID_EQUIPO ='$id_equi' AND ID_CATEGORIA = '$categ' AND ID_CONVOCATORIA IS NULL";
             $result=$db->prepare("UPDATE rosters SET ID_CONVOCATORIA = ? WHERE ID_EQUIPO = ? AND ID_CATEGORIA = ? AND ID_CONVOCATORIA IS NULL");
             $result->bind_param("iii",$id_conv,$id_equi,$categ);
             $result->execute();
-            if($resultado==null){
+            if($result==null){
                 echo "0";
-            }else if($resultado==false){
-                 echo  "1";
             }else{
                 echo "2";
             }
@@ -109,8 +121,8 @@
     
     }
     
-    
-
+    }
+    $db->close();
 
   
     
