@@ -55,7 +55,7 @@ $(document).ready(function(){
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                  
                     //$('#acceso_registrar_jugador').append("<a href='REGISTRAR_JUGADOR.html'>Registrar jugador</a>");
                     $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrar Jugador</a>");
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");   
+                    //$('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");   
                     $('#acceso_torneo_inscripcion').append("<a href='TORNEO_INSCRIPCION.html'>Inscripcion Torneo</a>");                     
                 case 2: 
                     ///////vaciamos los contenedores
@@ -69,7 +69,7 @@ $(document).ready(function(){
                     $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");                                   
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");                       
+                   // $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");                       
                 break;
                 case 3: 
                     ///////vaciamos los contenedores
