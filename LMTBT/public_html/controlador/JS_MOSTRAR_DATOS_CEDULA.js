@@ -16,10 +16,10 @@
    var ID_CONVOCSTORIA;
    
 function llenar_tablas(){
-       sessionStorage.setItem("id_equipo_1", 1);
-        sessionStorage.setItem("id_equipo_2", 2);
-        sessionStorage.setItem("id_rol_juego", 1);
-        sessionStorage.setItem("id_convocatoria", 1);
+       //sessionStorage.setItem("id_equipo_1", 1);
+       // sessionStorage.setItem("id_equipo_2", 2);
+       // sessionStorage.setItem("id_rol_juego", 1);
+       // sessionStorage.setItem("id_convocatoria", 1);
         
        var team1 = sessionStorage.getItem("id_equipo_1");
        var team2 = sessionStorage.getItem("id_equipo_2");
@@ -147,7 +147,7 @@ function guardarT(id,ID_USUARIO,ID_ROSTER){
         datatype: "text",
           
         success: function(resultado) {
-             
+          
         },
         error: function(jqXHR, textStatus) {
            mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
