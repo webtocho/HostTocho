@@ -1,6 +1,6 @@
 <?php
     date_default_timezone_set('America/Mexico_City');
-    include("SRV_CONEXION.php");
+    include("SRV_CONEXION.php");    
     $db = new SRV_CONEXION();
     $conexion = $db->getConnection();
     $conexion->autocommit(FALSE);
@@ -61,9 +61,9 @@
                             try {
                                 if (checkdate($validar_fecha_cierre[0], $validar_fecha_cierre[1], $validar_fecha_cierre[2]) == true && checkdate($validar_fecha_inicio[0], $validar_fecha_inicio[1], $validar_fecha_inicio[2]) == true && checkdate($validar_fecha_fin[0], $validar_fecha_fin[1], $validar_fecha_fin[2]) == true) {
                                 ////////////////////////////////////////////////////////////
-                                        $tipo = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
-                                        $size = $_FILES['imagen']['size'];
-                                        $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));                                        
+                                        $tipo = pathinfo($_FILES['imagen_noticia']['name'][0], PATHINFO_EXTENSION);
+                                        $size = $_FILES['imagen_noticia']['size'][0];
+                                        $imagen = addslashes(file_get_contents($_FILES['imagen_noticia']['tmp_name'][0]));                                        
                                         if($tipo == "jpg" || $tipo == "jpeg" || $tipo == "png" && $size <= 16777215){
                                             $consulta = $conexion->prepare("INSERT INTO convocatoria VALUES (0,?,?,?,?,'".$imagen."',?,?)");
                                             $consulta->bind_param("sssssi",$nombre_torneo,$fecha_cierre_convocatoria,$fecha_inicio_torneo,$fecha_fin_torneo,$estado,$id_categoria);

@@ -37,9 +37,13 @@ $(document).on('submit','#form_noticias',function(event){
         },
             success: function(resultado){
                 //window.locaton.replace("index.php");
-                if(resultado == "ok"){                                      
+                if(resultado == "ok"){
                     mostrarAlerta("Registro realizado con exito","correcto");
                     document.getElementById('enviar').disabled = false;
+                    document.getElementById('titulo').value = "";
+                    document.getElementById('descripcion_noticias').value = "";                    
+                    document.getElementById('imagen').value = "";                      
+                    setTimeout(mandarAinicio, 5000);
                     //window.location.replace("index.php");
                 }else{                    
                     mostrarAlerta(resultado,"fallido");
@@ -55,6 +59,9 @@ $(document).on('submit','#form_noticias',function(event){
         mostrarAlerta("Debes de llenar todos los campos","fallido");
     }
 });
+function mandarAinicio(){
+    window.location.replace("index.php");
+}
 function comprobar_datos(){
     if(document.getElementById("titulo").value.trim().length>0 && document.getElementById("descripcion_noticias").value.trim().length>0 &&
        document.getElementById("imagen").value.trim().length>0 ){

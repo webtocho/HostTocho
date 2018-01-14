@@ -53,8 +53,15 @@ $(document).on('submit','#myForm',function(event){
             console.log(respuesta);
             if(respuesta == "ok") {               
                 mostrarAlerta("Registro realizado con exito.","correcto");
-                document.getElementById('btn-submitdos').disabled = false;
-                //window.location.replace("index.php");
+                document.getElementById('btn-submitdos').disabled = false;                
+                document.getElementById('Correo').value = "";
+                document.getElementById('Password').value = "";
+                document.getElementById('nombre').value = "";
+                document.getElementById('ApellidoPaterno').value = "";
+                document.getElementById('ApellidoMaterno').value = "";
+                document.getElementById('sexo').value = "";
+                document.getElementById('tipo_cuenta').value = "";
+                setTimeout(mandarAinicio, 5000);
             }else{               
                 mostrarAlerta(respuesta,"fallido");
                 document.getElementById('btn-submitdos').disabled = false;
@@ -77,3 +84,6 @@ $(document).on('submit','#myForm',function(event){
         mostrarAlerta(mensaje,"fallido");
     }
 });
+function mandarAinicio(){
+    window.location.replace("index.php");
+}

@@ -38,8 +38,17 @@ $(document).on('submit','#formlg',function(event){
                 if(resultado == "ok"){
                     //alert("Registro realizado con exito");
                     //window.location.replace("index.php");
+                    registraNoticia(formData);
                     mostrarAlerta("Registro realizado con exito","correcto");
                     document.getElementById('btn-submitdos').disabled = false;
+                    document.getElementById('nombre_torneo').value = "";
+                    document.getElementById('fecha_cierre_convocatoria').value = "";
+                    document.getElementById('fecha_inicio_torneo').value = "";
+                    document.getElementById('fecha_fin_torneo').value = "";
+                    document.getElementById('categoria').value = "";                    
+                    document.getElementById('imagen').value = "";                    
+                    setTimeout(mandarAinicio, 5000); 
+                    
                 }else{                    
                     mostrarAlerta(resultado,"fallido");
                     document.getElementById('btn-submitdos').disabled = false;
@@ -54,6 +63,34 @@ $(document).on('submit','#formlg',function(event){
         mostrarAlerta("Debes llenar todos los campos","fallido");
     }
 });
+function mandarAinicio(){
+    window.location.replace("index.php");
+}
+function registraNoticia(formData){
+    formData.delete('nombre');
+    formData.delete('fecha_cierre');
+    formData.delete('fecha_inicio');
+    formData.delete('fecha_fin');
+    formData.delete('fecha_fin');
+    formData.delete('categoria');
+    var titulo = document.getElementById('nombre_torneo').value;
+    var descripcion = "Nuevo torneo de la liga municipal tocho bandera ya puedes inscribirte";
+    formData.append('titulo_noticia',titulo);
+    formData.append('descripcion',descripcion);
+    $.ajax({
+        url: "../controlador/SRV_REGISTRO_NOTICIAS.php",       
+        data:formData,
+        type: "POST",
+        contentType: false,
+        processData: false,
+            beforeSend: function (xhr){                
+            },
+            success: function (respuesta){                 
+            },
+            error: function (jqXHR, textStatus) {                                
+            }
+    });    
+}
 function validarCampos(){
     if(document.getElementById("nombre_torneo").value.trim().length>0 && document.getElementById("fecha_cierre_convocatoria").value.trim().length>0 && 
        document.getElementById("fecha_inicio_torneo").value.trim().length>0 && document.getElementById("fecha_fin_torneo").value.trim().length>0 && 
