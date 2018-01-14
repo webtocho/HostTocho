@@ -30,7 +30,7 @@ $(document).ready(function() {
                                     $("#btn_editar").remove();
                                 
                                 $("#modal-title").html("Cargando lista de jugadores...");
-                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb : "1", sx : "1", ed : "1", ft : "1"}, null, "json")
+                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb_c : "1", sx : "1", ed : "1", ft : "1"}, null, "json")
                                     .done(function(res_j) {
                                         var fila, celda;
                                         $.each(res_j, function (index, i) {
@@ -38,7 +38,7 @@ $(document).ready(function() {
                                             
                                             if(i !== null){
                                                 //Celda de nombre
-                                                fila.insertCell(-1).innerHTML = i["nb"];
+                                                fila.insertCell(-1).innerHTML = i["nb_c"];
                                                 //Celda de género
                                                 fila.insertCell(-1).innerHTML = (i["sx"] == "M" ? "Masculino" : (i["sx"] == 'F' ? "Femenino" : "<No definido>"));
                                                 //Celda de edad

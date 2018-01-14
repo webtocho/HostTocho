@@ -381,6 +381,11 @@
                 }
             }
             
+            if (se_subio_archivo("ft")){
+                $foto = leer_imagen("ft", 150) or die();
+                $updates .= (empty($updates) ? "" : ", ") . "FOTO_PERFIL = '" . $foto . "'";
+            }
+            
             $es_jugador = false;
             if($_POST['id'] == $_SESSION["ID_USUARIO"]){
                 $es_jugador = ($_SESSION["TIPO_USUARIO"] == "JUGADOR");
@@ -476,11 +481,6 @@
                     } else {
                         lanzar_error("El enlace de Instagram no es válido.");
                     }
-                }
-                
-                if (se_subio_archivo("ft")){
-                    $foto = leer_imagen("ft", 150) or die();
-                    $updates .= (empty($updates) ? "" : ", ") . "FOTO_PERFIL = '" . $foto . "'";
                 }
             }
             

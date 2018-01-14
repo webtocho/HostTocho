@@ -115,7 +115,7 @@ function agregarMiembro(id){
                 fila.insertCell(-1).innerHTML = res["nb_c"];
                 
                 //Celda de fotografía
-                if(res["FOTO_PERFIL"] === null)
+                if(res["ft"] === null)
                     fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
                 else
                     fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + res["ft"] +"\" width='100'/>";

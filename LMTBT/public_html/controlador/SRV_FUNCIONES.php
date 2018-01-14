@@ -6,7 +6,7 @@
     
     /**
      * Esta función se ejecuta automáticamente al terminar la ejecución del PHP.
-     * Si se suscitó un error a nivel de PHP (como una variable no declarada), se lanza un error.
+     * Si se suscitó un WARNING (como una variable no declarada), se lanza un error.
      */
     function checar_error(){
         $last_error = error_get_last();

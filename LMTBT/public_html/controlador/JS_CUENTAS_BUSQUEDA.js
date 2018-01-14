@@ -70,6 +70,7 @@ function buscar(){
     document.getElementById("ap").value = $.trim(document.getElementById("ap").value);
     parametros["nb"] = document.getElementById("nb").value;
     parametros["ap"] = document.getElementById("ap").value;
+    parametros["i_f"] = (document.getElementById("i_f").checked ? "1" : "0");
     
     if((document.getElementById("tipo") === null && document.getElementById("incluir") !== null) || (document.getElementById("tipo") !== null && document.getElementById("tipo").value === "JUGADOR")){
         parametros["tipo"] = "JUGADOR";
@@ -86,7 +87,6 @@ function buscar(){
         parametros["i_c"] = (document.getElementById("i_c").checked ? "1" : "0");
         parametros["i_s"] = (document.getElementById("i_s").checked ? "1" : "0");
         parametros["i_e"] = (document.getElementById("i_e").checked ? "1" : "0");
-        parametros["i_f"] = (document.getElementById("i_f").checked ? "1" : "0");
     } else if (document.getElementById("tipo") === null && document.getElementById("incluir") === null)
         parametros["tipo"] = "COACH";
     else
@@ -127,12 +127,12 @@ function buscar(){
                         $("#resultados").html("");
                         var incluir_correo, incluir_sexo, incluir_edad, incluir_foto;
                         incluir_correo = incluir_sexo = incluir_edad = incluir_foto = false;
+                        incluir_foto = document.getElementById("i_f").checked;
                         
                         if((document.getElementById("tipo") === null && document.getElementById("incluir") !== null) || (document.getElementById("tipo") !== null && document.getElementById("tipo").value === "JUGADOR")){
                             incluir_correo = document.getElementById("i_c").checked;
                             incluir_sexo = document.getElementById("i_s").checked;
                             incluir_edad = document.getElementById("i_e").checked;
-                            incluir_foto = document.getElementById("i_f").checked;
                         }
                         
                         var tabla = document.createElement("TABLE");

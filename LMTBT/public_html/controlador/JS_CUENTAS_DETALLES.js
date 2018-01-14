@@ -24,17 +24,17 @@ $(document).ready(function() {
                     $("#correo").html(res['cr']);
                     $("#sexo").html((res["sx"] == "M" ? "Masculino" : (res["sx"] == 'F' ? "Femenino" : indefinido)));
                     $("#tipo").html(res['tp']);
-
-                    if(res['tp'] == "JUGADOR"){
-                        if(res['ft'] !== null)
-                            document.getElementById("foto").src = "data:image/png;base64," + res['ft'];
-                        else
-                            document.getElementById("foto").src = "img/RC_IF_ANONIMO.png";
-                        
+                    
+                    if(res['ft'] !== null)
+                        document.getElementById("foto").src = "data:image/png;base64," + res['ft'];
+                    else
+                        document.getElementById("foto").src = "img/RC_IF_ANONIMO.png";
+                    
+                    if(res['tp'] == "JUGADOR"){                        
                         if(res['nc'] != null){
                             var nc = new Date((res['nc']).replace(/-/g, '\/'));
                             $("#nacimiento").html((new Date( nc.getTime() + Math.abs(nc.getTimezoneOffset()*60000) )).toLocaleDateString("es-MX", { year: 'numeric', month: 'long', day: 'numeric' }));
-                        }else
+                        } else
                             $("#nacimiento").html(indefinido);
 
                         $("#telefono").html((res["TELEFONO"] != null ? res["TELEFONO"] : indefinido));
