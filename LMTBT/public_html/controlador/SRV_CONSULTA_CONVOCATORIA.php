@@ -36,7 +36,7 @@
                         $res = $consulta->get_result();			
                         while($fila= $res->fetch_assoc()){
                             if($fila["CUOTA"] == "NO PAGADO"){
-                                echo  "<tr id='" . $fila["ID_ROSTER"] . "'><td>" . $fila["NOMBRE_EQUIPO"] . "</td><td id='eventos'>".                           
+                                echo  "<tr id='" . $fila["ID_ROSTER"] . "'><td>" . $fila["NOMBRE_EQUIPO"] . "</td><td id='eventos".$fila["ID_ROSTER"]."'>".                           
                                 "<a class='news' href='#body' id='pago' onclick='abrir_pantalla_para_poner_pago(" . $fila["ID_ROSTER"] . ")'><h5>¿Ya pago?</h5></a>".
                                 "<a class='news' href='#body' id='expulsar' onclick='abrir_pantalla_para_expulsar(" . $fila["ID_ROSTER"] . ")'><h5>Expulsar</h5></a></td></tr>";
                             }else{

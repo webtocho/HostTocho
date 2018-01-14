@@ -49,8 +49,9 @@ switch ($_POST['tipo']) {
 			return;
 		}
 		// preparamos una consulta para obtener los roles de juegos de las convocatorias que aun no han vencido
+                $fecha = date('Y-m-d');
 		$consulta = $db->getConnection()->prepare("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.FECHA_CIERRE_CONVOCATORIA < ? AND convocatoria.FECHA_FIN_TORNEO >= ? AND convocatoria.ID_CONVOCATORIA = ?");
-		$consulta->bind_param("ssi", date('Y-m-d'), date('Y-m-d'), $_POST['id_convocatoria']);
+		$consulta->bind_param("ssi",$fecha ,$fecha, $_POST['id_convocatoria']);
 		if ($consulta->execute()) {
 			/*
 			$resultado = array();

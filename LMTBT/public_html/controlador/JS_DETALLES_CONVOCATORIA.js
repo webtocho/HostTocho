@@ -129,8 +129,8 @@ function poner_pagado(id){
         success: function(resultado) {
             if(resultado == "ok"){                               
                 mostrarAlerta("Cambio realizado con exito","correcto");                 
-                $('#eventos').empty();
-                $('#eventos').append("<a class='news' href='#body'><h5>PAGADO</h5></a>");
+                $('#eventos'+id).empty();
+                $('#eventos'+id).append("<a class='news' href='#body'><h5>PAGADO</h5></a>");
             }else{                            
                 mostrarAlerta(resultado,"fallido"); 
             }       
