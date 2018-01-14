@@ -18,12 +18,12 @@ switch ($_POST['tipo']){
     
     case "Obtener_jugador_equipo":
         $ID_ROSTER;
-         $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO AND ID_CONVOCATORIA =",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
+            $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
           $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         $info=$resultado->fetch_assoc();
         $ID_ROSTER=$info["ID_ROSTER"];
-         $sql = sprintf(" select * from rosters inner join participantes_rosters on rosters.ID_ROSTER = participantes_rosters.ID_ROSTER inner join usuarios on participantes_rosters.ID_JUGADOR = usuarios.ID_USUARIO where ID_EQUIPO=" . $_POST['team']);
+        $sql = sprintf("select * from rosters inner join participantes_rosters on rosters.ID_ROSTER = participantes_rosters.ID_ROSTER inner join usuarios on participantes_rosters.ID_JUGADOR = usuarios.ID_USUARIO where rosters.ID_EQUIPO=%s AND rosters.ID_ROSTER=%s",$_POST['team'],$ID_ROSTER);
          $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         

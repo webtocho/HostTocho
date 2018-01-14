@@ -26,7 +26,7 @@ and open the template in the editor.
     height: 50%;
     
     border: 1px solid black;
-    overflow:  auto;
+   
 }
 .rigth_q{
     margin-top: 2%; 
@@ -36,7 +36,7 @@ and open the template in the editor.
     height: 50%;
   
     border: 1px solid black;
-     overflow:  auto;
+    
 }
 
 .ventana{
