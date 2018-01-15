@@ -18,8 +18,8 @@
         echo "<center><h2><a>".$equipo['NOMBRE_EQUIPO']."</a></h2></center>";
         echo "<center><h3><a>PUNTAJE TOTAL POR JUGADOR</a></h3></center>";
     	echo "<table class='table'>";
-    	echo '<thead><tr><th>JUGADOR</th> <th>NUMERO</th> <th>T</th> <th>S</th>'; 
-        echo '<th>I</th> <th>A</th> <th>C1</th> <th>C2</th> <th>PT</th>'; 
+    	echo '<thead><tr><th><center>JUGADOR</center></th> <th><center>NUMERO</center></th> <th><center>T</center></th> <th><center>S</center></th>'; 
+        echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th> <th><center>PT</center></th>'; 
         echo '</tr></thead><tbody>';
         while ($row=mysqli_fetch_array($jugadores)) {
         	$id = $row['ID_JUGADOR'];
