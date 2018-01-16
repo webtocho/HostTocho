@@ -24,7 +24,7 @@ $(document).ready(function(){
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");
                     $('#acceso_categorias_edicion').append("<a href='CATEGORIAS_EDICION.html'>Ver Categorias</a>");                    
                     $('#acceso_convocatoria').append("<a href='CONVOCATORIA.html'>Nuevo Torneo</a>");
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
+                    //$('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");
                     $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Ver Equipos</a>");
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");
@@ -49,7 +49,7 @@ $(document).ready(function(){
                     $('#acceso_torneo_inscripcion').empty();                      
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario                   
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");
+                   // $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");
                     $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Mis Equipos</a>");                    
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                  
@@ -66,7 +66,7 @@ $(document).ready(function(){
                     $('#acceso_roles_juego').empty(); 
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
+                   // $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");                                   
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
                    // $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");                       
@@ -79,7 +79,7 @@ $(document).ready(function(){
                     $('#acceso_crear_noticias').empty();
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");    
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");                                        
+                   // $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");                                        
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");
                     $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Nueva Noticia</a>");                   
                 break;
@@ -92,7 +92,7 @@ $(document).ready(function(){
                     $('#acceso_roles_juego').empty();     
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                    $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");
+                    //$('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");                                   
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
                     $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");
