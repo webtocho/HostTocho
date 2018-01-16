@@ -18,7 +18,7 @@
              if($resultado = $conexion->query($sql)){
                  $contenido = $resultado->fetch_assoc();
                  $noticia = array("TITULO", "CUERPO", "IMAGEN");
-                $noticia[0]= "<h1>". $contenido["TITULO"] . "</h1>";
+                $noticia[0]= "<center><h1 style='text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;'>". $contenido["TITULO"] . "</h1></center>";
                 $noticia[1]= "<p>Fecha de publicación: ". $contenido["FECHA_PUBLICACION"] ."</p><p>". $contenido["NOTICIA"] . "</p>";
                 
                  $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id"; 

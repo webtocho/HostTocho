@@ -231,7 +231,6 @@ $(function () {
                                 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                                     <ul class="resp-tabs-list">
                                         <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>PROXIMO PARTIDO</span></li>
-                                        <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>HORARIO DE ENTRENAMIENTO</span></li>
                                     </ul>
                                     <div class="resp-tabs-container">
                                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
@@ -270,40 +269,7 @@ $(function () {
                                                     </table>
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-                                            <div class="facts">
-                                                <div class="tab_list">
-                                                    <table>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="two">Sunday 07:00 - 10:00</td>
-                                                                <td class="two">Workout</td>
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="two">Sunday 14:00 - 18:00</td>
-                                                                <td class="two">Aerobic</td>
-
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="two">Monday 07:00 - 10:00</td>
-                                                                <td class="two">Swimming</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="two">Wednesday 07:00 - 10:00</td>
-                                                                <td class="two">Traning Strategy</td>
-
-
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
+                                        </div>                                     
                                         <script src="../controlador/JS_PLANTILLA_easyResponsiveTabs.js" type="text/javascript"></script>
                                         <script type="text/javascript">
 $(document).ready(function () {
