@@ -64,7 +64,7 @@
                     $iduser = $_SESSION["ID_USUARIO"];
                     $categ = $_POST["categoria"];
                     
-                    $sql= "SELECT e.NOMBRE_EQUIPO,e.ID_EQUIPO FROM equipos e join rosters r on e.ID_EQUIPO = r.ID_EQUIPO WHERE ID_COACH = '$iduser' and ID_CATEGORIA= '$categ'";
+                    $sql= "SELECT e.NOMBRE_EQUIPO,e.ID_EQUIPO FROM equipos e join rosters r on e.ID_EQUIPO = r.ID_EQUIPO WHERE ID_COACH = '$iduser' and ID_CATEGORIA= '$categ' AND ID_CONVOCATORIA IS NULL";
                     $result=$db->query($sql);
                     if($result == null){
                          echo  "0";

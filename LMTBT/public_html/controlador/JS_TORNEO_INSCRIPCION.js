@@ -41,7 +41,7 @@ function getCategorias(){
 
 function getTorneo(){
     
-    $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione</option>");
+    $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione Torneo</option>");
     getEquipos();
     
 
@@ -75,10 +75,10 @@ function getTorneo(){
 
 function getEquipos(){
     
-    $('#Equipo').html("<option value='Seleccione'>Seleccione</option>");
+    $('#Equipo').html("<option value='Seleccione'>Seleccione Equipo</option>");
     
      var categoria =  document.getElementById("Categoria").value;
-     console.log(categoria);
+    
     
     $.ajax({
         url: "../controlador/SRV_TORNEO_INSCRIPCION.php",
@@ -131,10 +131,10 @@ function InscribirEquipo(){
        
      if(id_convocatoria== "Seleccione" || id_convocatoria== "none" || data_categoria== "Seleccione" || data_categoria== "none" || data_equipo== "Seleccione" || data_equipo== "none"){
          $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Error! Introduzca los datos correctos</strong> </div>");
-        $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione</option>");
-        $('#Categoria').html("<option value='Seleccione' disabled selected>Seleccione</option>");
-       $('#Equipo').html("<option value='Seleccione' disabled selected>Seleccione</option>");
-       getEquipos();
+        $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione Torneo</option>");
+        $('#Categoria').html("<option value='Seleccione' disabled selected>Seleccione Categoria</option>");
+       $('#Equipo').html("<option value='Seleccione' disabled selected>Seleccione Equipo</option>");
+       getCategorias();
        
         
         return;
@@ -159,9 +159,9 @@ function InscribirEquipo(){
             else{
                 $('#alert').empty();
                 $('#alert').append("<div class='alert alert-success alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Datos guardados correctamente</strong> </div>");
-               $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione</option>");
-                $('#Categoria').html("<option value='Seleccione' disabled selected>Seleccione</option>");
-               $('#Equipo').html("<option value='Seleccione' disabled selected>Seleccione</option>");
+               $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione Torneo</option>");
+                $('#Categoria').html("<option value='Seleccione' disabled selected>Seleccione Categoria</option>");
+               $('#Equipo').html("<option value='Seleccione' disabled selected>Seleccione Equipo</option>");
                getEquipos();
                 setTimeout(function(){ window.location.href="../vista"},3000);
             }
