@@ -20,9 +20,9 @@ $(document).ready(function() {
                     }, 500);
                     
                     frame.src = 'CUENTAS_BUSQUEDA.html';
-                    $(frame).style.width ="100%";
-                    $(frame).style.height = "auto";
-                    $(frame).style.backgroundColor = "#fff";
+                    $(frame).css("width","100%");
+                    $(frame).css("height", "400px");
+                    //$(frame).css("backgroundColor", "#fff");
                     break;
                 case 1:
                     //Es coach
