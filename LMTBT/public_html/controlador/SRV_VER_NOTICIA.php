@@ -18,7 +18,7 @@
              if($resultado = $conexion->query($sql)){
                  $contenido = $resultado->fetch_assoc();
                  $noticia = array("TITULO", "CUERPO", "IMAGEN");
-                $noticia[0]= "<center><h1 style='text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;'>". $contenido["TITULO"] . "</h1></center>";
+                $noticia[0]= "<h1>". $contenido["TITULO"] . "</h1>";
                 $noticia[1]= "<p>Fecha de publicación: ". $contenido["FECHA_PUBLICACION"] ."</p><p>". $contenido["NOTICIA"] . "</p>";
                 
                  $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id"; 
@@ -84,14 +84,14 @@
                                 
                                 echo "<div class='panel panel-default'>";
                                 echo"<div class='panel-heading' style='background-color: black;color: white;'>";    
-                                    echo "<h4 class='media-heading'><p>".$usuario['NOMBRE']." ".$usuario['APELLIDO_PATERNO']." &nbsp &nbsp &nbsp &nbsp".$usuario['TIPO_USUARIO']."</p></h4>";
+                                    echo "<h4 class='media-heading'><p>".$usuario['NOMBRE']." ".$usuario['APELLIDO_PATERNO']."</p></h4>";
                                     if($debug=="1"){
                                         echo"<p class='text-right'>
-                                            <button type='button' class='btn btn-danger btn-sm' onclick=eliminarComentario('".strip_tags($row['ID_COMENTARIO'])."')>
+                                            <button type='button' class='btn btn-danger btn-sm' onclick=eliminarComentario('".$row['ID_COMENTARIO']."')>
                                             <span class='glyphicon glyphicon-remove'></span> Remove 
                                             </button>
                                             </p>";
-                                    } 
+                                    }
                                 echo"</div>";
                                 echo"<div class='panel-body'>";   
                                 echo "<div class='media'> ";
