@@ -116,15 +116,15 @@ switch ($_POST['tipo']) {
 			}
 			if ($roles['ID_EQUIPO_1'] != 0 && $roles['ID_EQUIPO_2'] != 0) {
 				$roles_juego .= "<tr>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_TORNEO'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['CATEGORIA'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['PUNTOS_EQUIPO_1'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_EQUIPO_1'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>VS</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_EQUIPO_2'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['PUNTOS_EQUIPO_2'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $equipo_ganador . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'><button onclick='guardar_cedula(" . $roles['ID_EQUIPO_1'] . "," . $roles['ID_EQUIPO_2'] . "," . $roles['ID_ROL_JUEGO'] . "," . $roles['ID_CONVOCATORIA'] . ")'>" . $usuario_permitido . "</button></h6></center></td>"
+						. "<td><center><h6>" . $roles['NOMBRE_TORNEO'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['CATEGORIA'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['PUNTOS_EQUIPO_1'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['NOMBRE_EQUIPO_1'] . "</h6></center></td>"
+						. "<td><center><h6>VS</h6></center></td>"
+						. "<td><center><h6>" . $roles['NOMBRE_EQUIPO_2'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['PUNTOS_EQUIPO_2'] . "</h6></center></td>"
+						. "<td><center><h6>" . $equipo_ganador . "</h6></center></td>"
+						. "<td><center><h6><button onclick='guardar_cedula(" . $roles['ID_EQUIPO_1'] . "," . $roles['ID_EQUIPO_2'] . "," . $roles['ID_ROL_JUEGO'] . "," . $roles['ID_CONVOCATORIA'] . ")'>" . $usuario_permitido . "</button></h6></center></td>"
 						. "</tr>";
 			}
 		}
