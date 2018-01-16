@@ -84,14 +84,14 @@
                                 
                                 echo "<div class='panel panel-default'>";
                                 echo"<div class='panel-heading' style='background-color: black;color: white;'>";    
-                                    echo "<h4 class='media-heading'><p>".$usuario['NOMBRE']." ".$usuario['APELLIDO_PATERNO']."</p></h4>";
+                                    echo "<h4 class='media-heading'><p>".$usuario['NOMBRE']." ".$usuario['APELLIDO_PATERNO']." &nbsp &nbsp &nbsp &nbsp".$usuario['TIPO_USUARIO']."</p></h4>";
                                     if($debug=="1"){
                                         echo"<p class='text-right'>
-                                            <button type='button' class='btn btn-danger btn-sm' onclick=eliminarComentario('".$row['ID_COMENTARIO']."')>
+                                            <button type='button' class='btn btn-danger btn-sm' onclick=eliminarComentario('".strip_tags($row['ID_COMENTARIO'])."')>
                                             <span class='glyphicon glyphicon-remove'></span> Remove 
                                             </button>
                                             </p>";
-                                    }
+                                    } 
                                 echo"</div>";
                                 echo"<div class='panel-body'>";   
                                 echo "<div class='media'> ";

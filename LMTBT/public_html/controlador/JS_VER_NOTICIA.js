@@ -65,10 +65,30 @@ function eliminarComentario(id){
         });
     
 }
+
+var caracteresTotal =200;
+function caracteres(){
+     var texto =  $('#comment').val();
+     var total = texto.length;
+     
+     if(caracteresTotal-total<=0){
+          texto = texto.substring(0, 120);
+          $('#comment').val(texto);
+          $('#caracteres').empty();
+          $('#caracteres').append("<p>"+(0)+"</p>");
+            
+     }else{
+          $('#caracteres').empty();
+          $('#caracteres').append("<p>"+(caracteresTotal-total)+"</p>");
+         
+    }
+}
+
 function comentar(){
    
     id = sessionStorage.getItem("idNoticia");
     var texto =  $('#comment').val();
+    texto = texto.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if(texto.trim().length>1){
         $.ajax({
             url: "../controlador/SRV_VER_NOTICIA.php",
@@ -78,6 +98,8 @@ function comentar(){
             success: function (respuesta) {
                  $('#comment').val("");
                  cargarComentarios();
+                 $('#caracteres').empty();
+                 $('#caracteres').append("<p>"+(caracteresTotal)+"</p>");
             },
             error: function (jqXHR, textStatus) {
                 alert("error obtener");
