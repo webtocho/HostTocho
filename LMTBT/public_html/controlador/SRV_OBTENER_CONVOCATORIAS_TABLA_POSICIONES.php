@@ -8,7 +8,7 @@
     $query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria";
    
     if($tipo==1){$query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria WHERE ESTADO='ACTIVO'";}
-    else if($tipo==2){$query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria WHERE ESTADO='INACTIVO'";}
+    else if($tipo==2){$query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria WHERE ESTADO='INACTIVO' AND CURDATE()>FECHA_CIERRE_CONVOCATORIA";}
 
     $result = $conn->query($query);
     
