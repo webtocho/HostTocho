@@ -15,7 +15,7 @@ var nb_funcion = null;
  */
 function inicializar(tipo, nombre_boton, nombre_funcion){
     if(tipo === "JUGADOR"){
-        $("#titulo").html("jugadores");
+        $("#titulo").html($("#titulo").html().replace("usuarios", "jugadores"));
         $("#_tipo").remove();
         $("#tipo").remove();
         
@@ -24,7 +24,7 @@ function inicializar(tipo, nombre_boton, nombre_funcion){
         $("#edad").show();
         $("#incluir").show();
     } else if(tipo === "COACH") {
-        $("#titulo").html("coaches");
+        $("#titulo").html($("#titulo").html().replace("usuarios", "coaches"));
         $("#_tipo").remove();
         $("#tipo").remove();
         

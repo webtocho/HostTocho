@@ -498,7 +498,8 @@
                 }
             }
             
-            if(!empty($_POST['ap_p']) || !empty($_POST['ap_m']) || !empty($_POST['nb'])){
+            //Bloque eliminado: Se asegura de que no existan 2 cuentas con el mismo nombre completo.
+            /*if(!empty($_POST['ap_p']) || !empty($_POST['ap_m']) || !empty($_POST['nb'])){
                 $query = "SELECT APELLIDO_PATERNO, APELLIDO_MATERNO, NOMBRE FROM usuarios WHERE ID_USUARIO = ?";
                 $query_2 = "SELECT ID_USUARIO FROM usuarios WHERE ID_USUARIO != ? AND (APELLIDO_PATERNO LIKE ? AND APELLIDO_MATERNO LIKE ? AND NOMBRE LIKE ?)";
                 
@@ -515,7 +516,7 @@
                     cerrar_transaccion($conexion, false);
                     lanzar_error("Error de servidor (" . __LINE__ . ")");
                 }
-            }
+            }*/
             
             if(!empty($_POST['cr'])){
                 $query = "SELECT ID_USUARIO FROM usuarios WHERE ID_USUARIO != ? AND CORREO LIKE ?";
@@ -530,7 +531,9 @@
                 }
             }
             
-            if(!empty($_POST['nc'])){
+            /*Bloque eliminado: Se revisa si, después de cambiar la fecha de nacimiento, el jugador aún califica
+              para todos los rosters en los que participa*/
+            /*if(!empty($_POST['nc'])){
                 //Seleccionamos los ID's de las categorías de los rosters activos donde participa el usuario.
                 $query = "SELECT DISTINCT ros.id_categoria 
                             FROM   (SELECT rosters.id_categoria, 
@@ -547,8 +550,11 @@
                 if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
                     $res = $consulta->get_result();
                     while ($fila = $res->fetch_row()) {
+                        $restricciones = get_restricciones_categoria($mysqli, $fila[0]);
+                        if(empty($restricciones)){ continue; }
+                        
                         $query = "SELECT ID_USUARIO FROM usuarios WHERE ID_USUARIO = ? AND TIPO_USUARIO = 'JUGADOR' "
-                                    . get_restricciones_categoria($mysqli, $fila[0]);
+                                    . $restricciones;
                         if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
                             if ($consulta->get_result()->num_rows != 0){
                                 cerrar_transaccion($conexion, false);
@@ -563,7 +569,7 @@
                     cerrar_transaccion($conexion, false);
                     lanzar_error("Error de servidor (" . __LINE__ . ")");
                 }
-            }
+            }*/
             
             if(isset($_POST['en']) && isset($_POST['al'])){
                 $_POST['en'] = json_decode($_POST['en']);

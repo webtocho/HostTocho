@@ -41,7 +41,7 @@ $(document).ready(function() {
                                 $("#torneo").html((res["tor"] != null ? res["tor"] : "No está participando en ninguno"));
                                 
                                 $("#modal-title").html("Cargando lista de jugadores...");
-                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb : "1", ft : "1"}, null, "json")
+                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb_c : "1", ft : "1"}, null, "json")
                                     .done(function(res_j) {
                                         $.each(res_j, function (index, i) {
                                             if(i !== null){
