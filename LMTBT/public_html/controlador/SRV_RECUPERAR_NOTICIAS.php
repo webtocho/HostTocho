@@ -64,7 +64,8 @@
             if($resultado = $conexion->query($sql)){
                 $rows = mysqli_num_rows($resultado);
                 if($rows>0){
-                    $linea=floor(intval($linea)/$limit); 
+                    $linea=floor(intval($linea)/$limit);
+                    
                     $rows = mysqli_num_rows($resultado);
                     $htmlP="<center><ul class='pagination'>";
                     $pagination = floor($rows/$limit);
