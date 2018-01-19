@@ -257,7 +257,7 @@ label{
 }
 /*--slider-css--*/
 .banner{
-    background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;
+    background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px; 
     background-size:cover;
     -webkit-background-size:cover;
     -o-background-size:cover;
@@ -681,6 +681,8 @@ h3.tittle,h2.tittle {
     text-align: center;
     font-weight: bold;
 }
+
+
 h3.tittle i,h2.tittle i {
     color: #fff;
     font-size: 1em;
