@@ -10,15 +10,18 @@
         echo 1;
 		else{
             $inicia=0;
+            
             while($row = mysqli_fetch_array($result)){
                 echo "<div class='item'>"; $inicia=1;
                 $foto = base64_encode($row['FOTO_PERFIL']);
+                echo "<center>";
                 if($foto==null){
-                    echo "<img class='img-responsive lot' src='img/CUMPLE_ICON.png' alt=''/>";
+                    echo "<img class='img-responsive lot' src='img/CUMPLE_ICON.png' alt='' style='max-width:250px;max-height:250px;'/>";
                 }else{
-                    echo "<img class='img-responsive lot' src='data:image/png;base64,".$foto."' alt=''/>";
+                    echo "<img class='img-responsive lot' src='data:image/png;base64,".$foto."' alt='' style='max-width:250px;max-height:250px;'/>";
                 }
-                echo "<br><a>".$row['NOMBRE']." ".$row['APELLIDO_PATERNO']." ".$row['APELLIDO_MATERNO']."</a>";
+                
+                echo "</center><br><a>".$row['NOMBRE']." ".$row['APELLIDO_PATERNO']." ".$row['APELLIDO_MATERNO']."</a>";
                 echo "</div>";
                 }
         }

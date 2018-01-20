@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ROSTERS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    	<link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
+        <script type="text/javascript" src="../controlador/JS_ROSTERS_PUBLICO.js"></script>
+    </head>
+    <body>
+        <center>
+            <h2>
+                <a>Rosters</a>
+            </h2>
+        </center>
+        <!--label >Equipo</label-->
+        <select id="Equipos" class="form-control" onchange="CargarRoster(this.value)"></select><br>
+        <!--label placeholder>Categoria</label-->
+        <select id="Roster" class="form-control" onchange="CargarDatos(this.value)" style="display:none;"></select><br>
+
+        
+        <div id="Datos" style="padding-left:1%;padding-right:1%;"></div>
+     
+    </body>
+</html>
