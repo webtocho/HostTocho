@@ -178,17 +178,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <ul class="rslides callbacks callbacks1" id="slider4">
                             <li class="callbacks1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
-                                    <h3>LA LIGA DE LOS VERDADEROS JUGADORES</h3>
+                                    <h3 id="titulo1">LA LIGA DE LOS VERDADEROS JUGADORES</h3>
                                 </div>
                             </li>
                             <li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
-                                    <h3>CONVIERTETE EN EL MEJOR JUGADOR DEL TORNEO</h3>
+                                    <h3 id="titulo2">CONVIERTETE EN EL MEJOR JUGADOR DEL TORNEO</h3>
                                 </div>
                             </li>
                             <li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
-                                    <h3>SIGUE HASTA LA VICTORIA</h3>
+                                     <h3 id="titulo3">SIGUE HASTA LA VICTORIA</h3>
                                 </div>
                             </li>
                         </ul>
