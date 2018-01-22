@@ -342,10 +342,12 @@ $(document).ready(function () {
                             <h4 class="side">PERMANECE CONECTADO</h4>
                             <ul class="stay">
                                 <center><div class="fb-like" data-href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/" data-width="300" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></center><br>
-                                <li class="c5-element-facebook"><a href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/"><span class="icon"></span><span class="text">Visita nuestra pagina en Facebook</span></a></li>
-                                <li class="c5-element-twitter"><a href="https://roger930.tumblr.com/"><span class="fa fa-tumblr-square" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Tumblr</span></a></li>
+                                <li class="c5-element-facebook"><a target="_blank" href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/"><span class="icon"></span><span class="text">Visita nuestra pagina en Facebook</span></a></li>
+                                <li class="c5-element-twitter"><a target="_blank" href="https://roger930.tumblr.com/"><span class="fa fa-tumblr-square" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Tumblr</span></a></li>
                                 <div class="g-ytsubscribe" data-channelid="UCyt2LwpS9czwaM7E0j9DI0Q" data-layout="full" data-count="default"></div>
-                                <li class="c5-element-gg"><a href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube-play" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Youtube</span></a></li>
+                                <li class="c5-element-gg"><a target="_blank" href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube-play" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Youtube</span></a></li>
+                                <li class="c5-element-twit"><a target="_blank" href="https://twitter.com/cristia72456408"><span class="fa fa-twitter" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Twitter</span></a></li>
+                                <li class="c5-element-insta"><a target="_blank" href="https://www.instagram.com/lmtb_tuxtla/"><span class="fa fa-instagram" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Instagram</span></a></li>
 
                             </ul>
                         </div>
