@@ -98,51 +98,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <!--<li><a href="informacion.html">Informacion</a></li>
-                                <!-- <li class="dropdown">
-                                    <a href="calendario.html" class="dropdown-toggle" data-toggle="dropdown">Calendario<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="calendario.html">Hoy</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="calendario.html">Semana</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="calendario.html">Mes</a></li>
-                                        <li class="divider"></li>
-                                    </ul>
-                                </li>-->                                
-                               <!-- <li class="dropdown">
-                                    <a href="equipos.html" class="dropdown-toggle" data-toggle="dropdown">Equipos<b class="caret"></b></a>
-                                    <ul class="dropdown-menu multi-column columns-2">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <ul class="multi-column-dropdown">
-                                                    <li><a href="typo.html">Varonil</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="index.php">Femenil</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="blog.html">Mixto</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="typo.html">Otro</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="typo.html">Otro</a></li>
-                                                </ul>
-                                            </div>
-                                            <!--<div class="col-sm-6">
-                                                    <ul class="multi-column-dropdown">
-                                                       <li><a href="#">Features</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#"> Movies</a></li>
-                                                        <li class="divider"></li>
-                                                            <li><a href="#">Sports</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Reviews</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Account</a></li>
-                                                    </ul>
-                                            </div>
-                                        </div>
-                                    </ul>
-                                </li>-->   
                                 <li id = "acceso_asignacion_horarios"></li>
                                 <li id = "acceso_categorias_edicion"></li>                                
                                    <!--<a href='REGISTRO_COACH.html'>Registrar coach</a>-->
@@ -163,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </li>    
                                 <li id = "acceso_torneo_inscripcion"></li>
                                 <li id = "acceso_registro_cuenta"></li>                                
-                                <li id = "iniciar_cerrar_session"></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                <li id = "iniciar_cerrar_session"></li>
                             </ul>
                         </div>
                         <!--/.navbar-collapse-->
@@ -234,7 +189,7 @@ $(function () {
                                     </ul>
                                     <div class="resp-tabs-container">
                                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                                            <div class="facts">
+                                            <div class="facts" style="background-image: url(img/RC_IF_TEAM_BG.jpeg)">
                                                 <div class="tab_list">
                                                     <table id="ProximosPartidos">
                                                         <tbody>
@@ -287,7 +242,7 @@ $(document).ready(function () {
                         <!--//about-->
                         <div class="about">
                             <br><h3 class="tittle">Tabla de Posiciones</h3>
-                            <div class="facts">
+                            <div class="facts" style="background-image: url(img/RC_IF_TEAM2_BG.jpeg)">
                                 <a><h3>Estado del Torneo</h3></a>
                                 <center>
                                     <button onclick="CargarConvocatorias(1)" class="btn btn-primary">En curso</button>
