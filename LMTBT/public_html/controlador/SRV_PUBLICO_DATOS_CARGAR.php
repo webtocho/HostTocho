@@ -17,7 +17,7 @@
 			$foto = base64_encode($jugador['FOTO_PERFIL']);
                         if($foto==null){
                             //style='max-width:50px;max-height:50px;'
-                            echo "<center><img class='img-responsive lot' src='img/CUMPLE_ICON.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
+                            echo "<center><img class='img-responsive lot' src='img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
                         }else{
                             echo "<center><img class='img-responsive lot' src='data:image/png;base64,".$foto."' alt='' style='max-width:150px;max-height:150px;'/></center>";
                         }

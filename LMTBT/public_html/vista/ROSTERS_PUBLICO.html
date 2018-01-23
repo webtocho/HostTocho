@@ -10,23 +10,25 @@ and open the template in the editor.
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="css/style_rosters_publico.css" rel='stylesheet' type='text/css'/>
     	<link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_ROSTERS_PUBLICO.js"></script>
+        <script type="text/javascript" src="../controlador/JS_CARACTERISTICAS.js"></script>
     </head>
-    <body>
-        <center>
-            <h2>
-                <a>Rosters</a>
-            </h2>
-        </center>
+    <body id="body">
+        <br><br>
+        <div class="container"><center>
+        <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
+        <center><h2 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Rosters</h2></center>
+        <div class="container2">
         <!--label >Equipo</label-->
         <select id="Equipos" class="form-control" onchange="CargarRoster(this.value)"></select><br>
         <!--label placeholder>Categoria</label-->
-        <select id="Roster" class="form-control" onchange="CargarDatos(this.value)" style="display:none;"></select><br>
-
-        
+        <select id="Roster" class="form-control" onchange="CargarDatos(this.value)" style="display:none;"></select></div>
+        <br>
         <div id="Datos" style="padding-left:1%;padding-right:1%;"></div>
-     
+     </div></center><br>
+             <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
     </body>
 </html>
