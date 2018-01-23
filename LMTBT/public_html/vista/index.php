@@ -14,6 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
        <!-- <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">-->
+       <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Custom Theme files -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
