@@ -3,23 +3,23 @@
 	$db = new SRV_CONEXION();
 	$conn = $db->getConnection();
 	$id = $_POST['id_equipo'];
-	$pre = $conn->prepare("SELECT ID_ROSTER,ID_CATEGORIA FROM rosters WHERE ID_EQUIPO=?");
-	$pre->bind_param("i", $id);
-	$pre->execute();
-	$result = $pre->get_result();
-
+        $categorias = "SELECT NOMBRE_CATEGORIA,ID_CATEGORIA FROM categorias";
+        $result = $conn->query($categorias);
 	if($result && $result->num_rows>0){
+                $pre = $conn->prepare("SELECT ID_ROSTER FROM rosters WHERE ID_EQUIPO=? AND ID_CATEGORIA=? ORDER BY ID_ROSTER DESC LIMIT 1");
 		echo "<option value='' disabled selected hidden>Selecciona una categoria</option>";
 		while($row = $result->fetch_array(MYSQLI_ASSOC)){
-			$sql = "SELECT NOMBRE_CATEGORIA FROM categorias WHERE ID_CATEGORIA = ".$row['ID_CATEGORIA'];
-			$name = $conn->query($sql);
-			$name = $name->fetch_array(MYSQLI_ASSOC);
-			$categoria = $name['NOMBRE_CATEGORIA'];
-			echo "<option value='".$row['ID_ROSTER']."'>".$categoria."</option>";
+                    $pre->bind_param("ii", $id,$row['ID_CATEGORIA']);
+                    $pre->execute();
+                    $roster = $pre->get_result();
+                    $info = $roster->fetch_array(MYSQLI_ASSOC);
+                    if($roster && $roster->num_rows>0){
+                        echo "<option value='".$info['ID_ROSTER']."'>".$row['NOMBRE_CATEGORIA']."</option>";
+                    }
 		}
+                $pre->close();
 	}else{
 		echo "<option value='' disabled selected hidden> No se encontraron equipos</option>";
 	}
-	$pre->close();
 	$conn->close();
 ?>
