@@ -8,6 +8,7 @@ function CargarEquipos(){
             $('#Equipos').empty();
             $('#Equipos').append(res);
             $('#Roster').hide();
+            $('#Datos').empty();
         },
         error: function (jqXHR, textStatus) {
            alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");
@@ -24,6 +25,7 @@ function CargarRoster(id){
             $('#Roster').empty();
             $('#Roster').append(res);
             $('#Roster').show();
+            $('#Datos').empty();
         },
         error: function (jqXHR, textStatus) {
            alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");

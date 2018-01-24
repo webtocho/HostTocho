@@ -19,7 +19,7 @@
 		}
                 $pre->close();
 	}else{
-		echo "<option value='' disabled selected hidden> No se encontraron equipos</option>";
+		echo "<option value='' disabled selected hidden> No se encontraron rosters</option>";
 	}
 	$conn->close();
 ?>
