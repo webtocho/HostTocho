@@ -15,16 +15,19 @@ function recuperar_baner(){
         type: "POST",
         datatype: "text",
             beforeSend: function (xhr){
+                
+               
                 $('#titulo1').empty();
                 $('#titulo2').empty();
                 $('#titulo3').empty(); 
+                $('.banner').css('background-image','url(./images/baner.gif)');
             },
             success: function (respuesta){ 
                 contenido = JSON.parse(respuesta);
                 $('#titulo1').append(contenido[0]);
                 $('#titulo2').append(contenido[1]);  
                 $('#titulo3').append(contenido[2]);
-                $('.banner').css('background-image','url('+contenido[3]+')'); 
+                $('.banner').css('background-image','url('+contenido[3]+')' ); 
             },
             error: function (jqXHR, textStatus) {                
             }

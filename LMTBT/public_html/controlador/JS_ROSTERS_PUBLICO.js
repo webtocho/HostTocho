@@ -4,6 +4,10 @@ $(document).ready(function() {
 function CargarEquipos(){
     $.ajax({
         url: "../controlador/SRV_PUBLICO_EQUIPOS_CARGAR.php",
+        beforeSend: function (xhr){
+                 $('#Datos').empty();
+                 $('#Datos').append("<img src='./images/cargando_naranja.gif' >");
+        },
         success: function (res) {
             $('#Equipos').empty();
             $('#Equipos').append(res);
@@ -21,6 +25,10 @@ function CargarRoster(id){
         url: "../controlador/SRV_PUBLICO_ROSTER_CARGAR.php",
         type: "POST",
         datatype: "text",
+        beforeSend: function (xhr){
+                 $('#Datos').empty();
+                 $('#Datos').append("<img src='./images/cargando_naranja.gif' >");
+        },
         success: function (res) {
             $('#Roster').empty();
             $('#Roster').append(res);
@@ -38,6 +46,10 @@ function CargarDatos(id){
         url: "../controlador/SRV_PUBLICO_DATOS_CARGAR.php",
         type: "POST",
         datatype: "text",
+        beforeSend: function (xhr){
+                 $('#Datos').empty();
+                 $('#Datos').append("<img src='./images/cargando_naranja.gif' >");
+        },
         success: function (res) {
             $('#Datos').empty();
             $('#Datos').append(res);

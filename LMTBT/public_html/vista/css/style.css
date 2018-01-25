@@ -255,9 +255,10 @@ label{
         padding: 10px;
     }
 }
-/*--slider-css--*/
+/*--slider-css--
+ background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px; */
 .banner{
-    background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px; 
+   
     background-size:cover;
     -webkit-background-size:cover;
     -o-background-size:cover;
@@ -950,8 +951,9 @@ p#demo {
 .time-bg h4 span {
     color: #ffcc00;
 }
+/** background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;*/
 .banner {
-    background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;
+   
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;

@@ -7,7 +7,7 @@
         $result = $conn->query($categorias);
 	if($result && $result->num_rows>0){
                 $pre = $conn->prepare("SELECT ID_ROSTER FROM rosters WHERE ID_EQUIPO=? AND ID_CATEGORIA=? ORDER BY ID_ROSTER DESC LIMIT 1");
-		echo "<option value='' disabled selected hidden>Selecciona una categoria</option>";
+		echo "<option value='' disabled selected hidden>Selecciona un Roster</option>";
 		while($row = $result->fetch_array(MYSQLI_ASSOC)){
                     $pre->bind_param("ii", $id,$row['ID_CATEGORIA']);
                     $pre->execute();
