@@ -32,7 +32,7 @@
                             $noticias["IMAGEN_NOTICIA"] = base64_encode($fila2["IMAGEN"]);
                             if($cont==0){ 
                                  $texto.=" <li data-target='#myCarousel' data-slide-to='".$cont."' class='active'></li>";
-                                $texto2 .=  "<div class='item active'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='img-responsive'  style='max-width:auto; max-height: 900px;'></div>"; 
+                                $texto2 .=  "<div class='item active'><img   src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='img-responsive'  style='max-width:auto; max-height: 900px;'></div>"; 
                             } else{ 
                                 $texto.=" <li data-target='#myCarousel' data-slide-to='".$cont."' ></li>";
                                 $texto2 .=  "<div class='item'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "' class='img-responsive' style='max-width:auto; max-height: 900px;'></div>"; 
@@ -100,10 +100,10 @@
                          
                                 if($usuario['FOTO_PERFIL']!=null){
                                      $imagen["IMAGEN"] = base64_encode($usuario["FOTO_PERFIL"]);
-                                    echo "<div class='media-left'><img class='media-object' style='width:60px' src='data:image/png;base64," . $imagen["IMAGEN"] . "'  ></div>";
+                                    echo "<div class='media-left'><img  class='img-rounded' style='width:60px' src='data:image/png;base64," . $imagen["IMAGEN"] . "'  ></div>";
                                 
                                 }else{
-                                    echo "<div class='media-left'> <img src='../vista/img/RC_IF_ANONIMO.png' class='media-object' style='width:60px'></div>";
+                                    echo "<div class='media-left'> <img src='../vista/img/RC_IF_ANONIMO.png'  class='img-rounded' style='width:60px'></div>";
                                 }
                                 // comentario
                                 echo "<div class='media-body'>";
