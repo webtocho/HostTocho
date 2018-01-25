@@ -30,8 +30,11 @@ function CargarRoster(id){
                  $('#Datos').append("<img src='./images/cargando_naranja.gif' >");
         },
         success: function (res) {
+            html = JSON.parse(res);
             $('#Roster').empty();
-            $('#Roster').append(res);
+            $('#logo').empty();
+            $('#logo').append(html[0]);
+            $('#Roster').append(html[1]);
             $('#Roster').show();
             $('#Datos').empty();
         },
