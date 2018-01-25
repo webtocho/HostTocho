@@ -99,26 +99,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
+                                <li id = "acceso_roster_publico"></li>
                                 <li id = "acceso_asignacion_horarios"></li>
                                 <li id = "acceso_categorias_edicion"></li>                                
-                                   <!--<a href='REGISTRO_COACH.html'>Registrar coach</a>-->
-                                </li>
-                                <li id = "acceso_convocatoria"></li> 
-                                <li id = "acceso_cuentas_busqueda"></li>
-                                <li id = "acceso_cuentas_detalles"></li>                                
-                                <li id = "acceso_equipos_ver"></li>    
+                                <li id = "acceso_convocatoria"></li>                               
                                 <li id = "acceso_estadisticas"></li>                                    
                                 <li id = "acceso_crear_noticias"></li>
-                                <li id = "acceso_registrar_jugador">
-				<!--<a href='REGISTRAR_JUGADOR.html'>Registrar Jugador</a>-->
-                                </li>
-                               
-                                
-                                <li id = "acceso_roles_juego">
-                                   <!--<a href='ROLES_JUEGO.html'>Roles de juego</a>-->
-                                </li>    
-                                <li id = "acceso_torneo_inscripcion"></li>
-                                <li id = "acceso_registro_cuenta"></li>                                
+                                <li id = "acceso_registrar_jugador"> </li>
+                                <li id = "acceso_roles_juego"></li>    
+                                <li id = "acceso_registro_cuenta"></li>
+                                 <li id = "acceso_torneo_inscripcion"></li>
+                                <li id = "acceso_equipos_ver"></li>    
+                                <li id = "acceso_cuentas_detalles"></li> 
                                 <li id = "iniciar_cerrar_session"></li>
                             </ul>
                         </div>

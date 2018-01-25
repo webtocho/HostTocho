@@ -13,7 +13,7 @@ $(document).ready(function(){
                     $('#acceso_asignacion_horarios').empty();
                     $('#acceso_categorias_edicion').empty();                   
                     $('#acceso_convocatoria').empty();                        
-                    $('#acceso_cuentas_busqueda').empty();                      
+                    $('#acceso_roster_publico').empty();                      
                     $('#acceso_cuentas_detalles').empty();  
                     $('#acceso_equipos_ver').empty();
                     $('#acceso_estadisticas').empty();
@@ -24,7 +24,7 @@ $(document).ready(function(){
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");
                     $('#acceso_categorias_edicion').append("<a href='CATEGORIAS_EDICION.html'>Ver Categorias</a>");                    
                     $('#acceso_convocatoria').append("<a href='CONVOCATORIA.html'>Nuevo Torneo</a>");
-                    //$('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
+                    $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la Liga</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");
                     $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Ver Equipos</a>");
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");
@@ -39,7 +39,7 @@ $(document).ready(function(){
                 case 1:  
                     ///////vaciamos los contenedores
                     $('#acceso_asignacion_horarios').empty();                                                                           
-                    $('#acceso_cuentas_busqueda').empty();                      
+                    $('#acceso_roster_publico').empty();                      
                     $('#acceso_cuentas_detalles').empty();  
                     $('#acceso_equipos_ver').empty();
                     $('#acceso_estadisticas').empty();                                   
@@ -49,7 +49,7 @@ $(document).ready(function(){
                     $('#acceso_torneo_inscripcion').empty();                      
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario                   
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                   // $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar cuentas</a>");
+                    $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la Liga</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");
                     $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Mis Equipos</a>");                    
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                  
@@ -60,13 +60,13 @@ $(document).ready(function(){
                 case 2: 
                     ///////vaciamos los contenedores
                     $('#acceso_asignacion_horarios').empty();                                                                           
-                    $('#acceso_cuentas_busqueda').empty();                      
+                    $('#acceso_roster_publico').empty();                      
                     $('#acceso_cuentas_detalles').empty();                      
                     $('#acceso_estadisticas').empty();                                                       
                     $('#acceso_roles_juego').empty(); 
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                   // $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuentas</a>");
+                    $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la Liga</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");                                   
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
                    // $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");                       
@@ -74,36 +74,38 @@ $(document).ready(function(){
                 case 3: 
                     ///////vaciamos los contenedores
                     $('#acceso_asignacion_horarios').empty();
-                    $('#acceso_cuentas_busqueda').empty();                                                               
+                    $('#acceso_roster_publico').empty();                                                               
                     $('#acceso_estadisticas').empty();
                     $('#acceso_crear_noticias').empty();
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");    
-                   // $('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");                                        
+                    $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la Liga</a>");                                      
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");
                     $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Nueva Noticia</a>");                   
                 break;
                 case 4:
                     ///////vaciamos los contenedores
                     $('#acceso_asignacion_horarios').empty();                                                                           
-                    $('#acceso_cuentas_busqueda').empty();                      
+                    $('#acceso_roster_publico').empty();                      
                     $('#acceso_cuentas_detalles').empty();                      
                     $('#acceso_estadisticas').empty();                                                       
                     $('#acceso_roles_juego').empty();     
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                    
-                    //$('#acceso_cuentas_busqueda').append("<a href='CUENTAS_BUSQUEDA.html'>Buscar Cuenta</a>");
+                    $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la Liga</a>");
                     $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");                                   
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
                     $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");
                 break;
                 default:
                     ///////vaciamos los contenedores
+                     $('#acceso_roster_publico').empty();          
                     $('#acceso_asignacion_horarios').empty();                                                                                                                  
                     $('#acceso_estadisticas').empty();                                                       
                     $('#acceso_roles_juego').empty();
                     $('#acceso_registro_cuenta').empty();
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
+                      $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la Liga</a>");
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                                                                     
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
                    // $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");
@@ -113,11 +115,13 @@ $(document).ready(function(){
         })
         .fail(function() {
             ///////vaciamos los contenedores
+            $('#acceso_roster_publico').empty();          
             $('#acceso_asignacion_horarios').empty();                                                                                                                  
             $('#acceso_estadisticas').empty();                                                       
             $('#acceso_roles_juego').empty(); 
             $('#acceso_registro_cuenta').empty();
             ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
+             $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la Liga</a>");
             $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");                                                                     
             $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");                                     
            // $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles juego</a>");
