@@ -79,7 +79,7 @@ function irAPaginaDeDetallesDeRoster(id_roster){
     document.location.href = "ROSTERS_DETALLES.html";
 }
 
-// Para eliminar un equipo, puede se que el equipo este participando en un torneo actualmente, de ser asi no se podra eliminar, de lo contrario si.
+// Para eliminar un equipo, puede ser que el equipo este participando en un torneo actualmente, de ser asi no se podra eliminar, de lo contrario si.
 function EliminarEquipo() {
     if (confirm('¿Está seguro de que desea eliminar este equipo?')) {
         $.ajax({
@@ -95,7 +95,7 @@ function EliminarEquipo() {
                     alert("El equipo fue eliminado con éxito.");
                     document.location.href = "EQUIPOS_VER.html";
                 } else if (respuesta == "no") {
-                    alert("El equipo no puede ser eliminado ya que participa en un torneo actualmente o no se encuentran registros de este equipo para eliminar.");
+                    alert("El equipo no puede ser eliminado ya que participa en un torneo actualmente");
                     document.location.href = "EQUIPOS_VER.html";
                 } else {
                     alert(respuesta);
