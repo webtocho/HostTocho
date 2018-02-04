@@ -679,6 +679,62 @@
             
             cerrar_transaccion($conexion, true);
             break;
+        case "borrar_ft":
+            if(empty($_POST['id'])){
+                lanzar_error("No se envió el parámetro.");
+            }
+            
+            if ($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR") {
+                lanzar_error("Usted no tiene permiso para realizar esta acción.");
+            }
+            
+            $query = "UPDATE usuarios SET FOTO_PERFIL = NULL WHERE ID_USUARIO = ?";
+            if(!(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute())){
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+            break;
+        case "borrar":
+            if(empty($_POST['id'])){
+                lanzar_error("No se envió el parámetro.");
+            }
+            
+            if ($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR") {
+                lanzar_error("Usted no tiene permiso para realizar esta acción.");
+            }
+            
+            $query = "select TIPO_USUARIO from usuarios WHERE ID_USUARIO = ?";
+            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+                $res = $consulta->get_result();
+                if($res->num_rows == 0){ lanzar_error("El usuario ya no existe."); } else {
+                    switch ($res->fetch_row()[0]){
+                        case "ADMINISTRADOR":
+                            lanzar_error("Su cuenta no puede ser eliminada, sólo puede transferir su propiedad a otra persona.");
+                            break;
+                        case "COACH":
+                            $query = "SELECT COUNT(*) FROM equipos WHERE ID_COACH = ?";
+                            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute() && ($res = $consulta->get_result())){
+                                if($res->fetch_row()[0] != 0){
+                                    lanzar_error("Este coach está dirigiendo equipos. Primero debe borrar sus equipos o transferirles la propiedad a otros coaches.");
+                                }
+                            } else {
+                                lanzar_error("Error de servidor (" . __LINE__ . ")");
+                            }
+                            break;
+                    }
+                }
+            } else {
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+            
+            $query = "DELETE FROM usuarios WHERE ID_USUARIO = ?";
+            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+                if($consulta->affected_rows == 0){
+                    lanzar_error("El usuario ya no existe.");
+                }
+            } else {
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+            break;
         default:
             lanzar_error("Error de servidor (" . __LINE__ . ")", false);
     }

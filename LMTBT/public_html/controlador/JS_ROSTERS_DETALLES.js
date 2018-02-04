@@ -49,7 +49,7 @@ $(document).ready(function() {
                                                 else
                                                     fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + i["ft"] +"\" width='100'/>";
                                             } else {
-                                                fila.insertCell(-1).innerHTML = "<Jugador eliminado>";
+                                                fila.insertCell(-1).innerHTML = "<i>&#60Eliminado&#62</i>";
                                                 fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = "---";
                                             }
                                             

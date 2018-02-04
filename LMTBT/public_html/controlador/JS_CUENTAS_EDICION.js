@@ -2,8 +2,8 @@ var id; //ID de cuenta
 
 $(document).ready(function() {
     //Desde EQUIPOS_VER se nos manda el id del equipo a consultar.
-    id = sessionStorage.getItem("CUENTAS_DETALLES");
-    if(id !== null) sessionStorage.removeItem("CUENTAS_DETALLES");
+    id = sessionStorage.getItem("CUENTAS_EDICION");
+    if(id !== null) sessionStorage.removeItem("CUENTAS_EDICION");
     
     crearModal(false,true,true,true);
     $("#modal-footer").hide();

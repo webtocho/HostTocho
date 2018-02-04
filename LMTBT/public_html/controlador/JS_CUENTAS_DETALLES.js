@@ -5,14 +5,15 @@ $(document).ready(function() {
     id = sessionStorage.getItem("CUENTAS_DETALLES");
     if(id !== null) sessionStorage.removeItem("CUENTAS_DETALLES");
     
-    crearModal(false,true,false,false);
+    crearModal(false,true,true,true);
+    $("#modal-footer").hide();
     $("#modal-title").html("Cargando información...");
     $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     $.post( "../controlador/SRV_GET_SESION.php", {tipos : ["ADMINISTRADOR"]}, null, "text")
-        .done(function(res) {
-            if(parseInt(res) !== 0){
+        .done(function(usr) {
+            if(parseInt(usr) !== 0){
                 id = null;
             }
             
@@ -29,6 +30,14 @@ $(document).ready(function() {
                         document.getElementById("foto").src = "data:image/png;base64," + res['ft'];
                     else
                         document.getElementById("foto").src = "img/RC_IF_ANONIMO.png";
+                    
+                    if(parseInt(usr) === 0){
+                        if(id != null)
+                            $("#btn_editar").after("<button class=\"btn btn-danger\" onclick=\"eliminarCuenta()\">Eliminar</button>");
+                        
+                        if(res['ft'] !== null)
+                            $("#btn_editar").after("<button class=\"btn btn-warning\" id=\"btn_borrar_ft\" onclick=\"borrarFoto()\">Borrar foto de perfil</button>");
+                    }
                     
                     if(res['tp'] == "JUGADOR"){                        
                         if(res['nc'] != null){
@@ -91,4 +100,46 @@ function irAPaginaDeEdicion(){
     if(id !== null)
         sessionStorage.setItem("CUENTAS_EDICION", id);
     document.location.href = "CUENTAS_EDICION.html";
+}
+
+function borrarFoto(){
+    $("#modal-footer").hide();
+    $("#modal-title").html("Confirmación");
+    $("#modal-body").html("¿Está seguro de que desea borrar la foto de perfil de este usuario?<br><br>");
+    $("#modal-body").append("<button type=\"button\" class=\"btn btn-danger\" onclick=\"hacerCambios('Eliminando foto de perfil...', true)\">Si</button>");
+    $("#modal-body").append("<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">No</button>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
+}
+
+function eliminarCuenta(){
+    $("#modal-footer").hide();
+    $("#modal-title").html("Confirmación");
+    $("#modal-body").html("¿Está seguro de que desea eliminar esta cuenta? Sus datos no se podrán recuperar.<br><br>");
+    $("#modal-body").append("<button type=\"button\" class=\"btn btn-danger\" onclick=\"hacerCambios('Eliminando cuenta...', false)\">Si</button>");
+    $("#modal-body").append("<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">No</button>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
+}
+
+function hacerCambios(titulo, del_cuenta_o_foto){
+    $("#modal-footer").hide();
+    $("#modal-title").html(titulo);
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
+    
+    $.post( "../controlador/SRV_CUENTAS.php", {fn : "borrar" + (del_cuenta_o_foto === true ? "_ft" : ""), id : id})
+        .done(function(res) {
+            if(del_cuenta_o_foto){
+                document.getElementById("foto").src = "img/RC_IF_ANONIMO.png";
+                $("#btn_borrar_ft").remove();
+                $('#modal').modal('hide');
+            } else {
+                $("#modal-title").html("Terminado");
+                $("#modal-body").html("Cuenta eliminada correctamente.<br><a href='CUENTAS_GESTION.html'>Volver a la página de gestión de cuentas.</a>");
+            }
+        })
+        .fail(function(xhr, status) {
+            $("#modal-title").html("Error");
+            $("#modal-body").html("Error de servidor. " + (xhr.status == 500 ? xhr.responseText : "(" + xhr.status + " " + status + ")."));
+            $("#modal-footer").show();
+        });
 }

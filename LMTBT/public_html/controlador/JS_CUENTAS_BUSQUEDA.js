@@ -32,6 +32,8 @@ function inicializar(tipo, nombre_boton, nombre_funcion){
         $("#_edad").remove();
         $("#edad").remove();
         $("#incluir").remove();
+    } else if(tipo === "TODOS") {
+        //Nada
     } else {
         $("#contenido").html("Error grave");
     }
