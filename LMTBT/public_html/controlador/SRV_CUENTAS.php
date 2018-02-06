@@ -409,7 +409,8 @@
                         $año_actual = intval(date("Y"));
                         $año_nacimiento = intval($d->format("Y"));
                         
-                        if($año_nacimiento < ($año_actual - 50) || $año_nacimiento > ($año_actual - 8)){
+                        //|| $año_nacimiento > ($año_actual - 3)
+                        if($año_nacimiento < ($año_actual - 100)){
                             lanzar_error("Año de nacimiento inválido.");
                         } else {
                             $parametros[0] .= "s";
