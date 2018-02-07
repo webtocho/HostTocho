@@ -50,8 +50,8 @@ switch ($_POST['tipo']) {
 		}
 		// preparamos una consulta para obtener los roles de juegos de las convocatorias que aun no han vencido
 		$fecha_hoy = date('Y-m-d');
-		$consulta = $db->getConnection()->prepare("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.FECHA_CIERRE_CONVOCATORIA < ? AND convocatoria.FECHA_FIN_TORNEO >= ? AND convocatoria.ID_CONVOCATORIA = ?");
-		$consulta->bind_param("ssi", $fecha_hoy, $fecha_hoy, $_POST['id_convocatoria']);
+		$consulta = $db->getConnection()->prepare("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.ESTADO = 'ACTIVO' AND convocatoria.ID_CONVOCATORIA = ?");
+		$consulta->bind_param("i",$_POST['id_convocatoria']);
 		if ($consulta->execute()) {
 			/*
 			$resultado = array();
@@ -62,7 +62,7 @@ switch ($_POST['tipo']) {
 			*/
 			//*
 			$consulta->close();
-			$db->setQuery(sprintf("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.FECHA_CIERRE_CONVOCATORIA < '%s' AND convocatoria.FECHA_FIN_TORNEO >= '%s' AND convocatoria.ID_CONVOCATORIA = %s", $fecha_hoy, $fecha_hoy, $_POST['id_convocatoria']));
+			$db->setQuery(sprintf("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.ESTADO = 'ACTIVO' AND convocatoria.ID_CONVOCATORIA = %s", $_POST['id_convocatoria']));
 			$resultado = $db->GetResult();
 			//*/
 			// en la tabla de rol_juegos las filas contienen los ID´s de los equipos que se enfrentaran, interesa conocer el nombre de estos asi tambien la categoria en la que estan participando
@@ -116,15 +116,15 @@ switch ($_POST['tipo']) {
 			}
 			if ($roles['ID_EQUIPO_1'] != 0 && $roles['ID_EQUIPO_2'] != 0) {
 				$roles_juego .= "<tr>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_TORNEO'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['CATEGORIA'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['PUNTOS_EQUIPO_1'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_EQUIPO_1'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>VS</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['NOMBRE_EQUIPO_2'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $roles['PUNTOS_EQUIPO_2'] . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'>" . $equipo_ganador . "</h6></center></td>"
-						. "<td><center><h6 style='font-family:Calibri;color:black;'><button onclick='guardar_cedula(" . $roles['ID_EQUIPO_1'] . "," . $roles['ID_EQUIPO_2'] . "," . $roles['ID_ROL_JUEGO'] . "," . $roles['ID_CONVOCATORIA'] . ")'>" . $usuario_permitido . "</button></h6></center></td>"
+						. "<td><center><h6>" . $roles['NOMBRE_TORNEO'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['CATEGORIA'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['PUNTOS_EQUIPO_1'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['NOMBRE_EQUIPO_1'] . "</h6></center></td>"
+						. "<td><center><h6>VS</h6></center></td>"
+						. "<td><center><h6>" . $roles['NOMBRE_EQUIPO_2'] . "</h6></center></td>"
+						. "<td><center><h6>" . $roles['PUNTOS_EQUIPO_2'] . "</h6></center></td>"
+						. "<td><center><h6>" . $equipo_ganador . "</h6></center></td>"
+						. "<td><center><h6><button onclick='guardar_cedula(" . $roles['ID_EQUIPO_1'] . "," . $roles['ID_EQUIPO_2'] . "," . $roles['ID_ROL_JUEGO'] . "," . $roles['ID_CONVOCATORIA'] . ")'>" . $usuario_permitido . "</button></h6></center></td>"
 						. "</tr>";
 			}
 		}

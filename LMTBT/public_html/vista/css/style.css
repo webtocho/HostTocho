@@ -255,9 +255,10 @@ label{
         padding: 10px;
     }
 }
-/*--slider-css--*/
+/*--slider-css--
+ background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px; */
 .banner{
-    background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;
+   
     background-size:cover;
     -webkit-background-size:cover;
     -o-background-size:cover;
@@ -479,7 +480,7 @@ label{
 .facts {
     padding: 3em;
     text-align: center!important;
-    background: url(../img/RC_IF_TEAM_BG.jpg)no-repeat 0px 0px;
+    
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -681,6 +682,8 @@ h3.tittle,h2.tittle {
     text-align: center;
     font-weight: bold;
 }
+
+
 h3.tittle i,h2.tittle i {
     color: #fff;
     font-size: 1em;
@@ -948,8 +951,9 @@ p#demo {
 .time-bg h4 span {
     color: #ffcc00;
 }
+/** background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;*/
 .banner {
-    background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;
+   
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -1240,7 +1244,7 @@ span.text {
     font-size: 14px;
     color:#fff;
 }
-.c5-element-facebook,.c5-element-twitter,.c5-element-dribble,.c5-element-gg,.c5-element-whtp {
+.c5-element-facebook,.c5-element-twitter,.c5-element-dribble,.c5-element-gg,.c5-element-whtp,.c5-element-twit,.c5-element-insta {
     background:#337ab7;
     padding:0.8em 1em;
     margin-bottom: 0.9em;
@@ -1280,8 +1284,20 @@ span.text {
 .c5-element-whtp:hover {
     background: #045FB4;
 }
+.c5-element-twit{
+    background:#2DAAE2;
+}
+.c5-element-twit:hover{
+    background:#246BAD;
+}
+.c5-element-insta{
+    background:#4D3126;
+}
+.c5-element-insta:hover{
+    background:#9F7056;
+}
 
-.c5-element-twitter h5,.c5-element-dribble h5,.c5-element-facebook h5,.c5-element-gg h5{
+.c5-element-twitter h5,.c5-element-dribble h5,.c5-element-facebook h5,.c5-element-gg h5,.c5-element-whtp h5,.c5-element-twit h5,.c5-element-insta h5{
     font-size: 14px;
     color: #fff;
     margin-right: 1em;

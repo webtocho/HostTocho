@@ -381,6 +381,11 @@
                 }
             }
             
+            if (se_subio_archivo("ft")){
+                $foto = leer_imagen("ft", 150) or die();
+                $updates .= (empty($updates) ? "" : ", ") . "FOTO_PERFIL = '" . $foto . "'";
+            }
+            
             $es_jugador = false;
             if($_POST['id'] == $_SESSION["ID_USUARIO"]){
                 $es_jugador = ($_SESSION["TIPO_USUARIO"] == "JUGADOR");
@@ -404,7 +409,8 @@
                         $año_actual = intval(date("Y"));
                         $año_nacimiento = intval($d->format("Y"));
                         
-                        if($año_nacimiento < ($año_actual - 50) || $año_nacimiento > ($año_actual - 8)){
+                        //|| $año_nacimiento > ($año_actual - 3)
+                        if($año_nacimiento < ($año_actual - 100)){
                             lanzar_error("Año de nacimiento inválido.");
                         } else {
                             $parametros[0] .= "s";
@@ -477,11 +483,6 @@
                         lanzar_error("El enlace de Instagram no es válido.");
                     }
                 }
-                
-                if (se_subio_archivo("ft")){
-                    $foto = leer_imagen("ft", 150) or die();
-                    $updates .= (empty($updates) ? "" : ", ") . "FOTO_PERFIL = '" . $foto . "'";
-                }
             }
             
             iniciar_transaccion($conexion);
@@ -498,7 +499,8 @@
                 }
             }
             
-            if(!empty($_POST['ap_p']) || !empty($_POST['ap_m']) || !empty($_POST['nb'])){
+            //Bloque eliminado: Se asegura de que no existan 2 cuentas con el mismo nombre completo.
+            /*if(!empty($_POST['ap_p']) || !empty($_POST['ap_m']) || !empty($_POST['nb'])){
                 $query = "SELECT APELLIDO_PATERNO, APELLIDO_MATERNO, NOMBRE FROM usuarios WHERE ID_USUARIO = ?";
                 $query_2 = "SELECT ID_USUARIO FROM usuarios WHERE ID_USUARIO != ? AND (APELLIDO_PATERNO LIKE ? AND APELLIDO_MATERNO LIKE ? AND NOMBRE LIKE ?)";
                 
@@ -515,7 +517,7 @@
                     cerrar_transaccion($conexion, false);
                     lanzar_error("Error de servidor (" . __LINE__ . ")");
                 }
-            }
+            }*/
             
             if(!empty($_POST['cr'])){
                 $query = "SELECT ID_USUARIO FROM usuarios WHERE ID_USUARIO != ? AND CORREO LIKE ?";
@@ -530,7 +532,9 @@
                 }
             }
             
-            if(!empty($_POST['nc'])){
+            /*Bloque eliminado: Se revisa si, después de cambiar la fecha de nacimiento, el jugador aún califica
+              para todos los rosters en los que participa*/
+            /*if(!empty($_POST['nc'])){
                 //Seleccionamos los ID's de las categorías de los rosters activos donde participa el usuario.
                 $query = "SELECT DISTINCT ros.id_categoria 
                             FROM   (SELECT rosters.id_categoria, 
@@ -547,8 +551,11 @@
                 if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
                     $res = $consulta->get_result();
                     while ($fila = $res->fetch_row()) {
+                        $restricciones = get_restricciones_categoria($mysqli, $fila[0]);
+                        if(empty($restricciones)){ continue; }
+                        
                         $query = "SELECT ID_USUARIO FROM usuarios WHERE ID_USUARIO = ? AND TIPO_USUARIO = 'JUGADOR' "
-                                    . get_restricciones_categoria($mysqli, $fila[0]);
+                                    . $restricciones;
                         if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
                             if ($consulta->get_result()->num_rows != 0){
                                 cerrar_transaccion($conexion, false);
@@ -563,7 +570,7 @@
                     cerrar_transaccion($conexion, false);
                     lanzar_error("Error de servidor (" . __LINE__ . ")");
                 }
-            }
+            }*/
             
             if(isset($_POST['en']) && isset($_POST['al'])){
                 $_POST['en'] = json_decode($_POST['en']);
@@ -672,6 +679,62 @@
             }
             
             cerrar_transaccion($conexion, true);
+            break;
+        case "borrar_ft":
+            if(empty($_POST['id'])){
+                lanzar_error("No se envió el parámetro.");
+            }
+            
+            if ($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR") {
+                lanzar_error("Usted no tiene permiso para realizar esta acción.");
+            }
+            
+            $query = "UPDATE usuarios SET FOTO_PERFIL = NULL WHERE ID_USUARIO = ?";
+            if(!(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute())){
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+            break;
+        case "borrar":
+            if(empty($_POST['id'])){
+                lanzar_error("No se envió el parámetro.");
+            }
+            
+            if ($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR") {
+                lanzar_error("Usted no tiene permiso para realizar esta acción.");
+            }
+            
+            $query = "select TIPO_USUARIO from usuarios WHERE ID_USUARIO = ?";
+            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+                $res = $consulta->get_result();
+                if($res->num_rows == 0){ lanzar_error("El usuario ya no existe."); } else {
+                    switch ($res->fetch_row()[0]){
+                        case "ADMINISTRADOR":
+                            lanzar_error("Su cuenta no puede ser eliminada, sólo puede transferir su propiedad a otra persona.");
+                            break;
+                        case "COACH":
+                            $query = "SELECT COUNT(*) FROM equipos WHERE ID_COACH = ?";
+                            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute() && ($res = $consulta->get_result())){
+                                if($res->fetch_row()[0] != 0){
+                                    lanzar_error("Este coach está dirigiendo equipos. Primero debe borrar sus equipos o transferirles la propiedad a otros coaches.");
+                                }
+                            } else {
+                                lanzar_error("Error de servidor (" . __LINE__ . ")");
+                            }
+                            break;
+                    }
+                }
+            } else {
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+            
+            $query = "DELETE FROM usuarios WHERE ID_USUARIO = ?";
+            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+                if($consulta->affected_rows == 0){
+                    lanzar_error("El usuario ya no existe.");
+                }
+            } else {
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
             break;
         default:
             lanzar_error("Error de servidor (" . __LINE__ . ")", false);

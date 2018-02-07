@@ -5,7 +5,7 @@
  */
 function cargar_tabla_torneos_activos(){
     actualizar_tabla_torneos_activos();
-    var ejecutar = setInterval(function(){actualizar_tabla_torneos_activos()},5000);
+ //   var ejecutar = setInterval(function(){actualizar_tabla_torneos_activos()},5000);
 }
 function actualizar_tabla_torneos_activos(){
     $.ajax({

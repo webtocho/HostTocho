@@ -6,69 +6,59 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>CEDULA</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/HE_FC.css"/>   
+        <link rel="stylesheet" type="text/css" href="css/HE_FC.css"/> 
+        <link href="css/style_formulario_cedula.css" rel='stylesheet' type='text/css'/> 
+        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_materialize.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_MOSTRAR_DATOS_CEDULA.js"></script>
          <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
          <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>
+         <script type="text/javascript" src="../controlador/JS_CARACTERISTICAS.js"></script>
         <script src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
     </head>
-    <body>
-        <center><a href="index.php" style="text-decoration:none;"><h1 style="font-size:20px;color:darkorange;">LMTB <span style="color:#333;">Tuxtla</span></h1> </a></center>
-     <!--class="modal fade"-->
-       <div class="modal fade" id="esperando">
-           <center>
-       <IMG SRC="../vista/images/procesando.gif">
-           </center>
-       </div>
-        <div id="alertaSucces">
-           
-            </div> 
-     <!--input type="button" value="hola" onclick="hola('hola')"-->
-        <div class="cuerpo" >
-            
+    <body id="body">
+        <!--class="modal fade"-->
+        <div class="modal fade" id="esperando">
+        <center><IMG SRC="../vista/images/procesando.gif"></center></div>
+        <div id="alertaSucces">     
+        </div><br><br>
+      <center><div id="cuerpo" >
+        <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
+        <center><h1 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;" >Asignacion de Horarios</h1></center>  
             <div id="equipo1" class="lefth_q" >
                 <br>
                 <center>
-                <h5 id="label_equipo_1">-----</h5>
-               <div class="panel-body">
-               	<table class="table table-bordered table-hover" id="formulario_equipo_1">
-				<tr>
-                      <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>C1</th><th>C2</th> <th>PT</th> 
-				</tr>
-				
-		
-			</table>
-			</div>
-                 </center>
+                  <h3 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;" id="label_equipo_1">-----</h3>
+                    <div class="panel-body">
+               	      <table class="table table-bordered table-hover" id="formulario_equipo_1">
+				                <tr>
+                          <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>C1</th><th>C2</th> <th>PT</th> 
+				                </tr>
+			                </table>
+			              </div>
+                </center>
             </div>
-           
             <div id="equipo2" class="rigth_q" >
                 <br>
                 <center>
-                   <h5 id="label_equipo_2">-----</h5>
-                     <div class="panel-body">
-               	<table class="table table-bordered table-hover" id="formulario_equipo_2">
-				<tr>
-                      <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>C1</th><th>C2</th> <th>PT</th>      
-				</tr>
-			</table>
-			</div>
-                 </center>
+                  <h3 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;" id="label_equipo_2">-----</h3>
+                    <div class="panel-body">
+               	      <table class="table table-bordered table-hover" id="formulario_equipo_2">
+				                <tr>
+                          <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>C1</th><th>C2</th> <th>PT</th>      
+				                </tr>
+			                </table>
+			              </div>
+                </center>
             </div>
-            <div id="BOTON_GUARDAR">
-           
-            </div> 
-        </div>
-    
-                      
-            
+            <div id="BOTON_GUARDAR"></div> 
+        </div></center><br><br>       
     </body>
 </html>

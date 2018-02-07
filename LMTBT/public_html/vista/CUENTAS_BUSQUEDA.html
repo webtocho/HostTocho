@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
@@ -19,7 +20,6 @@
     <body id="body">
     <center>
         <div id="contenido">
-            <center><a href="index.php" id="logo"><img src="img/IF_LOGO.jpg" alt="TochoWeb" id="logoimg"/></a></center>
             <h3 id="titulo">Búsqueda de usuarios</h3>
             <div>
                 <div id="filtros" class="form-group">
@@ -70,8 +70,11 @@
                         <option value="36-40">Entre 35 y 40</option>
                     </select>
                     
+                    <label>Incluir: </label>
+                    <label class="checkbox-inline" id="i_foto">
+                        <input type="checkbox" id="i_f" checked>Foto de perfil
+                    </label>
                     <div id="incluir">
-                        <label>Incluir: </label>
                         <label class="checkbox-inline" id="i_correo">
                             <input type="checkbox" id="i_c">Correo electrónico
                         </label>
@@ -80,9 +83,6 @@
                         </label>
                         <label class="checkbox-inline" id="i_edad">
                             <input type="checkbox" id="i_e">Edad
-                        </label>
-                        <label class="checkbox-inline" id="i_foto">
-                            <input type="checkbox" id="i_f" checked>Foto de perfil
                         </label>
                     </div>
                     <br>
@@ -107,7 +107,6 @@
                 }
             </style>
         </div>
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
     </center>
     </body>
 </html>

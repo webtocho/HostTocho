@@ -14,7 +14,18 @@ switch ($_POST['tipo']) {
 		$resultado = $db->GetResult();
 
 		if (count($resultado) > 0) {
-			// creamos una transaccion ya al tratarse de muchas cunsultas, en algun momento puede ocurrir algun fallo y gracias a la transaccion se podra revertir aquellas consultas que se habian ejecutado con exito
+			$case = 0;
+		} else {
+			$case = 1;
+			$db->setQuery(sprintf("SELECT ID_EQUIPO_1, ID_EQUIPO_2 FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE ID_EQUIPO_1 = %s OR ID_EQUIPO_2 = %s ", $_POST['id_equipo'], $_POST['id_equipo']));
+			$resultado = $db->GetResult();
+			if (count($resultado) == 0) {
+				$case = 2;
+			}
+		}
+
+		if ($case == 0 || $case == 2) {
+			// creamos una transaccion y al tratarse de muchas cunsultas, en algun momento puede ocurrir algun fallo y gracias a la transaccion se podra revertir aquellas consultas que se habian ejecutado con exito
 			$conexion = $db->getConnection();
 			$conexion->autocommit(FALSE);
 

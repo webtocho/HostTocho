@@ -14,6 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
        <!-- <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">-->
+       <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Custom Theme files -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,72 +99,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <!--<li><a href="informacion.html">Informacion</a></li>
-                                <!-- <li class="dropdown">
-                                    <a href="calendario.html" class="dropdown-toggle" data-toggle="dropdown">Calendario<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="calendario.html">Hoy</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="calendario.html">Semana</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="calendario.html">Mes</a></li>
-                                        <li class="divider"></li>
-                                    </ul>
-                                </li>-->                                
-                               <!-- <li class="dropdown">
-                                    <a href="equipos.html" class="dropdown-toggle" data-toggle="dropdown">Equipos<b class="caret"></b></a>
-                                    <ul class="dropdown-menu multi-column columns-2">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <ul class="multi-column-dropdown">
-                                                    <li><a href="typo.html">Varonil</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="index.php">Femenil</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="blog.html">Mixto</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="typo.html">Otro</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="typo.html">Otro</a></li>
-                                                </ul>
-                                            </div>
-                                            <!--<div class="col-sm-6">
-                                                    <ul class="multi-column-dropdown">
-                                                       <li><a href="#">Features</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#"> Movies</a></li>
-                                                        <li class="divider"></li>
-                                                            <li><a href="#">Sports</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Reviews</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Account</a></li>
-                                                    </ul>
-                                            </div>
-                                        </div>
-                                    </ul>
-                                </li>-->   
+                                <li id = "gestion_cuentas"></li>
+                                <li id = "acceso_roster_publico"></li>
                                 <li id = "acceso_asignacion_horarios"></li>
                                 <li id = "acceso_categorias_edicion"></li>                                
-                                   <!--<a href='REGISTRO_COACH.html'>Registrar coach</a>-->
-                                </li>
-                                <li id = "acceso_convocatoria"></li> 
-                                <li id = "acceso_cuentas_busqueda"></li>
-                                <li id = "acceso_cuentas_detalles"></li>                                
-                                <li id = "acceso_equipos_ver"></li>    
+                                <li id = "acceso_convocatoria"></li>                               
                                 <li id = "acceso_estadisticas"></li>                                    
                                 <li id = "acceso_crear_noticias"></li>
-                                <li id = "acceso_registrar_jugador">
-				<!--<a href='REGISTRAR_JUGADOR.html'>Registrar Jugador</a>-->
-                                </li>
-                               
-                                
-                                <li id = "acceso_roles_juego">
-                                   <!--<a href='ROLES_JUEGO.html'>Roles de juego</a>-->
-                                </li>    
-                                <li id = "acceso_torneo_inscripcion"></li>
-                                <li id = "acceso_registro_cuenta"></li>                                
-                                <li id = "iniciar_cerrar_session"></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                <li id = "acceso_registrar_jugador"> </li>
+                                <li id = "acceso_roles_juego"></li>    
+                                <li id = "acceso_registro_cuenta"></li>
+                                 <li id = "acceso_torneo_inscripcion"></li>
+                                <li id = "acceso_equipos_ver"></li>    
+                                <li id = "acceso_cuentas_detalles"></li> 
+                                <li id = "iniciar_cerrar_session"></li>
                             </ul>
                         </div>
                         <!--/.navbar-collapse-->
@@ -178,17 +127,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <ul class="rslides callbacks callbacks1" id="slider4">
                             <li class="callbacks1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
-                                    <h3>LA LIGA DE LOS VERDADEROS JUGADORES</h3>
+                                    <h3 id="titulo1">LA LIGA DE LOS VERDADEROS JUGADORES</h3>
                                 </div>
                             </li>
                             <li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
-                                    <h3>CONVIERTETE EN EL MEJOR JUGADOR DEL TORNEO</h3>
+                                    <h3 id="titulo2">CONVIERTETE EN EL MEJOR JUGADOR DEL TORNEO</h3>
                                 </div>
                             </li>
                             <li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
                                 <div class="banner-info">
-                                    <h3>SIGUE HASTA LA VICTORIA</h3>
+                                     <h3 id="titulo3">SIGUE HASTA LA VICTORIA</h3>
                                 </div>
                             </li>
                         </ul>
@@ -231,11 +180,10 @@ $(function () {
                                 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                                     <ul class="resp-tabs-list">
                                         <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>PROXIMO PARTIDO</span></li>
-                                        <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>HORARIO DE ENTRENAMIENTO</span></li>
                                     </ul>
                                     <div class="resp-tabs-container">
                                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                                            <div class="facts">
+                                            <div class="facts" style="background-image: url(img/RC_IF_TEAM_BG.jpeg)">
                                                 <div class="tab_list">
                                                     <table id="ProximosPartidos">
                                                         <tbody>
@@ -270,40 +218,7 @@ $(function () {
                                                     </table>
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-                                            <div class="facts">
-                                                <div class="tab_list">
-                                                    <table>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="two">Sunday 07:00 - 10:00</td>
-                                                                <td class="two">Workout</td>
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="two">Sunday 14:00 - 18:00</td>
-                                                                <td class="two">Aerobic</td>
-
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="two">Monday 07:00 - 10:00</td>
-                                                                <td class="two">Swimming</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="two">Wednesday 07:00 - 10:00</td>
-                                                                <td class="two">Traning Strategy</td>
-
-
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
+                                        </div>                                     
                                         <script src="../controlador/JS_PLANTILLA_easyResponsiveTabs.js" type="text/javascript"></script>
                                         <script type="text/javascript">
 $(document).ready(function () {
@@ -321,7 +236,7 @@ $(document).ready(function () {
                         <!--//about-->
                         <div class="about">
                             <br><h3 class="tittle">Tabla de Posiciones</h3>
-                            <div class="facts">
+                            <div class="facts" style="background-image: url(img/RC_IF_TEAM2_BG.jpeg)">
                                 <a><h3>Estado del Torneo</h3></a>
                                 <center>
                                     <button onclick="CargarConvocatorias(1)" class="btn btn-primary">En curso</button>
@@ -421,10 +336,12 @@ $(document).ready(function () {
                             <h4 class="side">PERMANECE CONECTADO</h4>
                             <ul class="stay">
                                 <center><div class="fb-like" data-href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/" data-width="300" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></center><br>
-                                <li class="c5-element-facebook"><a href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/"><span class="icon"></span><span class="text">Visita nuestra pagina en Facebook</span></a></li>
-                                <li class="c5-element-twitter"><a href="https://roger930.tumblr.com/"><span class="fa fa-tumblr-square" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Tumblr</span></a></li>
+                                <li class="c5-element-facebook"><a target="_blank" href="https://www.facebook.com/Liga-Municipal-De-Tocho-Bandera-de-Tuxtla-472623376268881/"><span class="icon"></span><span class="text">Visita nuestra pagina en Facebook</span></a></li>
+                                <li class="c5-element-twitter"><a target="_blank" href="https://roger930.tumblr.com/"><span class="fa fa-tumblr-square" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Tumblr</span></a></li>
                                 <div class="g-ytsubscribe" data-channelid="UCyt2LwpS9czwaM7E0j9DI0Q" data-layout="full" data-count="default"></div>
-                                <li class="c5-element-gg"><a href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube-play" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Youtube</span></a></li>
+                                <li class="c5-element-gg"><a target="_blank" href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube-play" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Youtube</span></a></li>
+                                <li class="c5-element-twit"><a target="_blank" href="https://twitter.com/cristia72456408"><span class="fa fa-twitter" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Twitter</span></a></li>
+                                <li class="c5-element-insta"><a target="_blank" href="https://www.instagram.com/lmtb_tuxtla/"><span class="fa fa-instagram" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Instagram</span></a></li>
 
                             </ul>
                         </div>

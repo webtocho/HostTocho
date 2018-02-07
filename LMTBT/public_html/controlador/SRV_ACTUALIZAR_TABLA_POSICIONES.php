@@ -19,30 +19,34 @@ $result = $conn->query($stmt);
             while($row = mysqli_fetch_array($result)){
                     $equipos[]=$row['ID_EQUIPO'];
                 //comprobamos cada equipo si ya esta registrado en la tabla de posiciones
-                $comprobamos = "SELECT * FROM tabla_posiciones WHERE ID_EQUIPO=".$row['ID_EQUIPO'];
+                $comprobamos = "SELECT * FROM tabla_posiciones WHERE ID_EQUIPO=".$row['ID_EQUIPO']." AND ID_CONVOCATORIA=".$id_convocatoria;
                 $resultadoComprobar = $conn->query($comprobamos);
-                
-                if($resultadoComprobar && mysqli_num_rows($resultadoComprobar)>0){
+                echo "";
+                if($resultadoComprobar&&$resultadoComprobar->num_rows>0){
                     //si un equipo ya esta registrado en la tabla posiciones no hacemos nada mas
                 }
                 else{
                     //si un equipo no esta en la tabla lo agregamos, el filtro en la tabal es por convocatoria
+
                     $insertar="INSERT INTO tabla_posiciones VALUES(0,0,0,0,0,0,0,".$id_convocatoria.",".$row['ID_EQUIPO'].")";
                     $conn->query($insertar);
                 }
                     //incrementamos el total de equipso registrados en la convocatoria
                     $total++;
+                
             }
+            mysqli_free_result($result);
             //Sacamos los puntajes de los partidos (ya jugados) de un equipo
                 $empate=0;
             for($i=0;$i<$total;$i++){
                 $id_equipo=$equipos[$i];
 
-                $query2="SELECT * FROM roles_juego WHERE ID_CONVOCATORIA=$id_convocatoria AND (ID_EQUIPO_1 = $id_equipo OR ID_EQUIPO_2 = $id_equipo) AND ID_EQUIPO_GANADOR>-1";
+                $query2="SELECT * FROM roles_juego WHERE ID_CONVOCATORIA=".$id_convocatoria." AND ( ID_EQUIPO_1 = ". $id_equipo ." OR ID_EQUIPO_2 = ".$id_equipo." ) AND ID_EQUIPO_GANADOR>-1";
                 //query para obtener todos los partidos jugados de un equipo
                 $result2 = $conn->query($query2);
                     //Comprobamos si ya se jugo al menos un partido
-                    if($result2&&mysqli_num_rows($result2)>0){
+                echo "";
+                    if($result2&&$result2->num_rows>0){
                             $pj=mysqli_num_rows($result2);
                             $pg=0;
                             $pp=0;
@@ -69,7 +73,7 @@ $result = $conn->query($stmt);
                             }
                             //Actualizamos los valores en Tabla Posiciones
 
-                    $query3 = "UPDATE tabla_posiciones SET PARTIDOS_JUGADOS = $pj , PARTIDOS_GANADOS=$pg , PARTIDOS_PERDIDOS = $pp , PARTIDOS_EMPATADOS = $pe , PUNTOS_FAVOR = $pf, PUNTOS_CONTRA = $pc, DIFERENCIA = $dif WHERE ID_CONVOCATORIA = $id_convocatoria AND ID_EQUIPO = $id_equipo";
+                    $query3 = "UPDATE tabla_posiciones SET PARTIDOS_JUGADOS =". $pj." , PARTIDOS_GANADOS=".$pg." , PARTIDOS_PERDIDOS = ".$pp." , PARTIDOS_EMPATADOS = ".$pe." , PUNTOS_FAVOR = ".$pf.", PUNTOS_CONTRA = ".$pc.", DIFERENCIA = ".$dif." WHERE ID_CONVOCATORIA = ".$id_convocatoria." AND ID_EQUIPO = ".$id_equipo;
                     $conn->query($query3);
 
                     }

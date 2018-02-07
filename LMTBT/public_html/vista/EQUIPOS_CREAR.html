@@ -8,6 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
+        <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
+        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <link type="text/css" rel="stylesheet" href="css/style_equipos_crear.css" />
@@ -19,18 +22,15 @@
                 <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
                 <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Crear un equipo</h1>
                 <form id="campos" enctype="multipart/form-data">
-                    <input type="text" name="nombre" id="nombre" onchange="eliminar_espacios_input(this);" placeholder="Nombre del equipo">
-                    
+                    <input type="text" name="nombre" id="nombre" onchange="eliminar_espacios_input(this);" placeholder="Nombre del equipo">                
                     <label for="logotipo">Elija la imagen de su logotipo</label>
                     <input type="file" accept="image/*" name="logotipo" id="logotipo">
-
                     <label for="coach">Coach</label>
                     <input type="text" name="coach" id="coach" value="<Seleccione un coach>" disabled>
                 </form>
-
-                <button onclick="crearEquipo()" id="btn-submitdos">Crear ahora</button>
+                <button class="btn btn-primary" onclick="crearEquipo()" id="btn-submitdos">Crear ahora</button><br>
             </div>
-        </center>
+        </center><br><br>
     </body>
 
 </html>

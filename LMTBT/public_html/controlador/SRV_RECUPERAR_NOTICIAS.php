@@ -38,7 +38,7 @@
                 $html.="<div class='panel-body'>";     
                     $html.="<div class='media'>";
                         $html.=" <div class='media-left'>";
-                            $html.=  "<div class='blog-img'>"."<img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='media-object' style='height:150px; max-width:300px; ' alt=''/>"."</div>"; 
+                            $html.=  "<div class='blog-img'>"."<img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='media-object img-rounded img-responsive' style='height:150px; max-width:300px; ' alt=''/>"."</div>"; 
                         $html.="</div>";
             }
                     
@@ -64,7 +64,8 @@
             if($resultado = $conexion->query($sql)){
                 $rows = mysqli_num_rows($resultado);
                 if($rows>0){
-                    $linea=floor(intval($linea)/$limit); 
+                    $linea=floor(intval($linea)/$limit);
+                    
                     $rows = mysqli_num_rows($resultado);
                     $htmlP="<center><ul class='pagination'>";
                     $pagination = floor($rows/$limit);

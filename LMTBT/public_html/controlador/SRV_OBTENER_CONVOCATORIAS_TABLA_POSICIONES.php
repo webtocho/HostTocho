@@ -5,10 +5,10 @@
     $conn = $db->getConnection();
     
     $tipo = $_POST['tipo'];
-    $query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria";
+    $query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria WHERE CURDATE()>FECHA_CIERRE_CONVOCATORIA";
    
     if($tipo==1){$query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria WHERE ESTADO='ACTIVO'";}
-    else if($tipo==2){$query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria WHERE ESTADO='INACTIVO'";}
+    else if($tipo==2){$query="SELECT ID_CONVOCATORIA,NOMBRE_TORNEO FROM convocatoria WHERE ESTADO='INACTIVO' AND CURDATE()>FECHA_CIERRE_CONVOCATORIA";}
 
     $result = $conn->query($query);
     

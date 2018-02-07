@@ -7,14 +7,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
+        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_DETALLES.js"></script>
         <link type="text/css" rel="stylesheet" href="css/style_cuentas_detalles.css"/>
     </head>
-    <body>
-        <h2>Detalles de la cuenta</h2>
+    <body id="body">
         <div id="contenido">
+            <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
+            <center><h2 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;" >Detalles de la cuenta</h2></center>
+            <center><b></b><img title="Foto de Perfil" id="foto"></center>
+            <br>
             <b>Nombre: </b><a id="nombre">Cargando...</a>
             <br>
             <b>Correo electrónico: </b><a id="correo">Cargando...</a>
@@ -22,10 +26,9 @@
             <b>Sexo: </b><a id="sexo">Cargando...</a>
             <br>
             <b>Tipo de cuenta: </b><a id="tipo">Cargando...</a>
-            <br><br>
+            <br>
+            
             <div id="datos_jugador">
-                <b>Foto de perfil: </b><img id="foto">
-                <br>
                 <b>Fecha de nacimiento: </b><a id="nacimiento">Cargando...</a>
                 <br>
                 <b>Número de teléfono: </b><a id="telefono">Cargando...</a>
@@ -45,7 +48,7 @@
                 </ul>
             </div>
             <br>
-            <button onclick="irAPaginaDeEdicion()">Modificar datos</button>
+            <center><button class="btn btn-primary" onclick="irAPaginaDeEdicion()" id="btn_editar">Modificar datos</button></center>
         </div>
         <br>
     </body>

@@ -129,12 +129,12 @@ switch ($_POST['tipo']){
         
          if (isset($_SESSION["TIPO_USUARIO"]) == 'CAPTURISTA' || isset($_SESSION["TIPO_USUARIO"]) == 'ADMINISTRADOR'){
              echo " <center>"
-                 ."<input type='submit' value='guardar datos' class='btn btn-default' onclick='llenar_rol_juego(".$_POST["ROL"].",".$_POST["TEAM1"].",".$_POST["TEAM2"].")'>"
-                 ."</center>";
+                 ."<input type='submit' class='btn btn-primary' value='Guardar datos' onclick='llenar_rol_juego(".$_POST["ROL"].",".$_POST["TEAM1"].",".$_POST["TEAM2"].")'>"
+                 ."</center><br>";
          }else{
               echo " <center>"
-                    ."<input type='submit' value='guardar datos' class='btn btn-default' disabled>"
-                    ."</center>";
+                    ."<input type='submit' class='btn btn-primary' value='Guardar datos' class='btn btn-default' disabled>"
+                    ."</center><br>";
          }
     break;
     case "GUARDAR_DATOS":

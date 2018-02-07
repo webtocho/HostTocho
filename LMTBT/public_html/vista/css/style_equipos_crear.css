@@ -11,7 +11,7 @@
             background-size: repeat;
         }
         .form{
-            width: 500px;
+            width: 1000px;
             height: auto;
             background-color: #fff;
             border-radius: 10px;
@@ -31,12 +31,10 @@
         }
         #btn-submitdos{
             background-color: transparent;
-            border: 1px solid darkorange;
-            border-radius: 3px;
-            background-color: #fff;
-            color: darkorange;
-            margin-top: 30px;
-            padding: 3px;
+            border: 2px solid;
+            border-radius: 4px;
+            margin-top: 35px;
+            padding: 4px;
         }
         @media(max-width:550px){
             .form{

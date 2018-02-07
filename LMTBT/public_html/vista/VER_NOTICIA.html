@@ -5,6 +5,7 @@
             <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css"/>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <link href="css/style_ver_noticia.css" rel="stylesheet" type="text/css"/> 
+            <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
             <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
             <script src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>           
             <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
@@ -69,8 +70,9 @@
               <div id="cajaDeComentarios">   
               <div class="form-group">
               <label style="color: #337AB7" for="comment">Comment:</label>
-                <textarea class="form-control" rows="5" id="comment"></textarea>
+                <textarea class="form-control" style="resize: none" rows="5" id="comment"  oninput="caracteres()"></textarea>
               </div>
+                  <label>Caracteres: <div id="caracteres"><p>200</p></div></label>
               <center><button type="button" class="btn btn-primary" onclick="comentar()">Enviar</button></center><br>
               </div>
         

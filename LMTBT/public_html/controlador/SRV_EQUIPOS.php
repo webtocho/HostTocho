@@ -18,7 +18,7 @@
      */
     function validar_nombre_equipo($mysqli, $key_nombre){
         $_POST[$key_nombre] = preparar_oracion($_POST[$key_nombre]);
-        if(!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ '-]{2,}$/", $_POST[$key_nombre])){
+        if(!preg_match("/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ '-]{2,}$/", $_POST[$key_nombre])){
             lanzar_error("Nombre inválido.");
         }
 

@@ -2,8 +2,8 @@ var id; //ID de cuenta
 
 $(document).ready(function() {
     //Desde EQUIPOS_VER se nos manda el id del equipo a consultar.
-    id = sessionStorage.getItem("CUENTAS_DETALLES");
-    if(id !== null) sessionStorage.removeItem("CUENTAS_DETALLES");
+    id = sessionStorage.getItem("CUENTAS_EDICION");
+    if(id !== null) sessionStorage.removeItem("CUENTAS_EDICION");
     
     crearModal(false,true,true,true);
     $("#modal-footer").hide();
@@ -192,6 +192,15 @@ function editar(){
         aplicar_cambio_contrasena();
     }
     
+    if(document.getElementById("foto").files.length !== 0){
+        if(document.getElementById('foto').files[0].size < 10485760)
+            parametros.append("ft", document.getElementById('foto').files[0]);
+        else{
+            alert("La imagen es demasiado grande");
+            return;
+        }
+    }
+    
     if(document.getElementById("datos_jugador") !== null){
         var datos_validos =
             agregar_parametro(parametros, "nacimiento", "nc", "Fecha de nacimiento") &&
@@ -203,15 +212,6 @@ function editar(){
     
         if(!datos_validos)
             return;
-        
-        if(document.getElementById("foto").files.length !== 0){
-            if(document.getElementById('foto').files[0].size < 10485760)
-                parametros.append("ft", document.getElementById('foto').files[0]);
-            else{
-                alert("La imagen es demasiado grande");
-                return;
-            }
-        }
         
         //Agregamos enfermedades.
         var tmp = [];

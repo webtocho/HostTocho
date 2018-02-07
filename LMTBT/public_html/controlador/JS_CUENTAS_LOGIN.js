@@ -1,3 +1,16 @@
+$(function() {
+	$('#campo_correo').bind("keypress", function(event){
+		var key = event.which || event.keyCode;
+		if(key == 13) iniciarSesion();
+	})
+
+	$('#campo_password').bind("keypress", function(event){
+		var key = event.which || event.keyCode;
+		if(key == 13) iniciarSesion();
+	})
+
+});
+
 function iniciarSesion(){
     var e_mail, password;
     e_mail = $.trim(  $('#campo_correo').val());

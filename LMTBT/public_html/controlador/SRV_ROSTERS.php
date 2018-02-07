@@ -215,6 +215,11 @@
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
             
+            $query = "DELETE FROM participantes_rosters WHERE ID_ROSTER = ? AND ID_JUGADOR IS NULL";
+            if(!(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id_r']) && $consulta->execute())){
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+            
             //Actualizamos los números de los jugadores que se mantienen en el roster
             $query = "UPDATE participantes_rosters SET NUMERO = ? WHERE ID_ROSTER = ? AND ID_JUGADOR = ?";
             if($consulta = $conexion->prepare($query)){
@@ -271,22 +276,15 @@
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
             
-            unset($query);
-            $querys = array(
-                    "DELETE FROM participantes_no_registrados WHERE ID_ROSTER = ?",
-                    "DELETE FROM participantes_rosters WHERE ID_ROSTER = ?",
-                    "DELETE FROM cedulas WHERE ID_ROSTER = ?",
-                    "DELETE FROM rosters WHERE ID_ROSTER = ?");
-            iniciar_transaccion($conexion);
+            /*  Querys eliminados porque ahora se usa cascada.
+                "DELETE FROM participantes_no_registrados WHERE ID_ROSTER = ?",
+                "DELETE FROM participantes_rosters WHERE ID_ROSTER = ?",
+                "DELETE FROM cedulas WHERE ID_ROSTER = ?"*/
             
-            foreach ($querys as $query) {
-                if(!($consulta = $conexion->prepare($query)) || !$consulta->bind_param("i", $_POST['id']) || !$consulta->execute()){
-                    cerrar_transaccion($conexion, false);
-                    lanzar_error("Error de servidor (" . __LINE__ . ")");
-                }
+            $query = "DELETE FROM rosters WHERE ID_ROSTER = ?";
+            if(!($consulta = $conexion->prepare($query)) || !$consulta->bind_param("i", $_POST['id']) || !$consulta->execute()){
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
-            
-            cerrar_transaccion($conexion, true);
             break;
         default:
             lanzar_error("Error de servidor (" . __LINE__ . ")", false);

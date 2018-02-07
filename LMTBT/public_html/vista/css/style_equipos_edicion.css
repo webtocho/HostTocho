@@ -1,18 +1,15 @@
-        body{
-            font-family: 'Roboto', sans-serif;
-            /*font-family: 'Noto Sans', sans-serif;*/
-        }
         #body{
             width: 99%;
             height: 100%;
             clear: both;
             margin: auto;
-            background-image: url(img/RC_IF_TEAM_BG.jpg);
-            background-size: cover;
+            background-color: #333;
+            background-image: url(../img/RC_IF_FONDO.png);
+            background-repeat: repeat;
         }
-        .form{
-            width: 500px;
-            height: 500px;
+        #contenido{
+            width: 1000px;
+            height: auto;
             background-color: #fff;
             border-radius: 10px;
             padding: 3px;
@@ -39,7 +36,7 @@
             padding: 3px;
         }
         @media(max-width:550px){
-            .form{
+            #contenido{
                 width: 95%;
                 height: 450px;
                 margin-top: 20px;
