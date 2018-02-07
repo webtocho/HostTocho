@@ -20,6 +20,8 @@ $(document).ready(function(){
                     $('#acceso_crear_noticias').empty();                
                     $('#acceso_registro_cuenta').empty();
                     $('#acceso_roles_juego').empty();
+                    $('#gestion_cuentas').empty();
+                     
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='ASIGNACION_HORARIOS.html'>Horarios</a>");
                     $('#acceso_categorias_edicion').append("<a href='CATEGORIAS_EDICION.html'>Ver Categorias</a>");                    
@@ -30,7 +32,9 @@ $(document).ready(function(){
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadisticas</a>");
                     $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Nueva Noticia</a>");
                     $('#acceso_registro_cuenta').append("<a href='REGISTRO_CUENTA.html'>Registrar Cuenta</a>");
-                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");  
+                    $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles Juego</a>");
+                    $('#gestion_cuentas').append("<a href='CUENTAS_GESTION.html'>Gestion Cuentas</a>");  
+                    
                     mostrar_apartado_convocatorias_vencidas();
                     mostrar_apartado_torneos_activos();
                     cargar_tabla_convocatorias_vencidas();
@@ -38,6 +42,7 @@ $(document).ready(function(){
                 break;
                 case 1:  
                     ///////vaciamos los contenedores
+                    $('#gestion_cuentas').empty();
                     $('#acceso_asignacion_horarios').empty();                                                                           
                     $('#acceso_roster_publico').empty();                      
                     $('#acceso_cuentas_detalles').empty();  
@@ -59,6 +64,7 @@ $(document).ready(function(){
                     $('#acceso_torneo_inscripcion').append("<a href='TORNEO_INSCRIPCION.html'>Inscripcion Torneo</a>");                     
                 case 2: 
                     ///////vaciamos los contenedores
+                    $('#gestion_cuentas').empty();
                     $('#acceso_asignacion_horarios').empty();                                                                           
                     $('#acceso_roster_publico').empty();                      
                     $('#acceso_cuentas_detalles').empty();                      
@@ -73,6 +79,7 @@ $(document).ready(function(){
                 break;
                 case 3: 
                     ///////vaciamos los contenedores
+                    $('#gestion_cuentas').empty();
                     $('#acceso_asignacion_horarios').empty();
                     $('#acceso_roster_publico').empty();                                                               
                     $('#acceso_estadisticas').empty();
@@ -85,6 +92,7 @@ $(document).ready(function(){
                 break;
                 case 4:
                     ///////vaciamos los contenedores
+                    $('#gestion_cuentas').empty();
                     $('#acceso_asignacion_horarios').empty();                                                                           
                     $('#acceso_roster_publico').empty();                      
                     $('#acceso_cuentas_detalles').empty();                      
@@ -99,6 +107,7 @@ $(document).ready(function(){
                 break;
                 default:
                     ///////vaciamos los contenedores
+                    $('#gestion_cuentas').empty();
                      $('#acceso_roster_publico').empty();          
                     $('#acceso_asignacion_horarios').empty();                                                                                                                  
                     $('#acceso_estadisticas').empty();                                                       
@@ -115,6 +124,7 @@ $(document).ready(function(){
         })
         .fail(function() {
             ///////vaciamos los contenedores
+            $('#gestion_cuentas').empty();
             $('#acceso_roster_publico').empty();          
             $('#acceso_asignacion_horarios').empty();                                                                                                                  
             $('#acceso_estadisticas').empty();                                                       

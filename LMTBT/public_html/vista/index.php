@@ -99,6 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
+                                <li id = "gestion_cuentas"></li>
                                 <li id = "acceso_roster_publico"></li>
                                 <li id = "acceso_asignacion_horarios"></li>
                                 <li id = "acceso_categorias_edicion"></li>                                
