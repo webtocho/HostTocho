@@ -1291,10 +1291,10 @@ span.text {
     background:#246BAD;
 }
 .c5-element-insta{
-    background:#4D3126;
+    background:#A63EB7;
 }
 .c5-element-insta:hover{
-    background:#9F7056;
+    background:#8E47B9;
 }
 
 .c5-element-twitter h5,.c5-element-dribble h5,.c5-element-facebook h5,.c5-element-gg h5,.c5-element-whtp h5,.c5-element-twit h5,.c5-element-insta h5{
@@ -1303,6 +1303,10 @@ span.text {
     margin-right: 1em;
     text-transform: uppercase;
     display:inline-block;
+}
+#about{
+    background-color: #7A7A7A;
+    border-color: #7A7A7A;
 }
 span.count {
     margin-right: 15px;

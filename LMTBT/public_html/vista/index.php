@@ -10,17 +10,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <title>Liga Municipal De Tocho Bandera de Tuxtla</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Basketball Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+        <meta name="keywords" content="Basketball Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-       <!-- <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">-->
-       <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
+        <!-- <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">-->
+        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Custom Theme files -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>   
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_PLANTILLA_move-top.js"></script>
         <script type="text/javascript" src="../controlador/JS_PLANTILLA_easing.js"></script>
@@ -342,19 +342,48 @@ $(document).ready(function () {
                                 <li class="c5-element-gg"><a target="_blank" href="https://www.youtube.com/channel/UCyt2LwpS9czwaM7E0j9DI0Q/feed"><span class="fa fa-youtube-play" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Youtube</span></a></li>
                                 <li class="c5-element-twit"><a target="_blank" href="https://twitter.com/cristia72456408"><span class="fa fa-twitter" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Twitter</span></a></li>
                                 <li class="c5-element-insta"><a target="_blank" href="https://www.instagram.com/lmtb_tuxtla/"><span class="fa fa-instagram" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Visita nuestra pagina en Instagram</span></a></li>
+                                <li class="c5-element-whtp"><span class="fa fa-at" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;superbowlstore@hotmail.com</span></li>
 
                             </ul>
                         </div>
                         <!--//connect-->
-                        <!--Contacto-->
+                        <!--Acerca de-->
                         <br>
                         <div class="connect">
-                            <h4 class="side">CONTACTO</h4>
+                            <h4 class="side">Acerca de</h4>
                             <ul class="stay">
-                                <li class="c5-element-whtp"><center><span class="fa fa-at" style="font-size:25px;color:#FFFFFF"></span><span class="text">&nbsp;&nbsp;&nbsp;Correo: superbowlstore@hotmail.com</span></center></li>
+                                <center><button type="button" id="about" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Equipo de trabajo</button></center>
                             </ul>
                         </div>
-                        <!--Contacto-->
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Desarrollado por:</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Angel Eduardo Valenzuela Hernandez</p>  
+                              <p>Francisco Javier de la Cruz Jimenez</p>
+                              <p>Jaime Francisco Ruiz Lopez</p>  
+                              <p>Jared E. Gomez Santiz</p>
+                              <p>Javier Alberto Argüello Tello</p>
+                              <p>Jose Julian Molina Ocaña</p>
+                              <p>Mario Adrian Lopez Mendez</p>
+                              <p>Mauricio Armando Perez Hernandez</p>          
+                            </div>
+                            <div class="modal-footer">
+                              <p>Generacion 2015-2018, UPCH</p>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        </div>
+                        <!--Acerca de-->
                     </div>
                     <!--//soccer-right-part-->
                     <div class="clearfix"> </div>
