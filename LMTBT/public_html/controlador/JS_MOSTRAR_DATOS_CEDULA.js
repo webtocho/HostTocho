@@ -29,6 +29,22 @@ function llenar_tablas(){
        $.ajax({
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
+            tipo:"ComprobarLogin",
+        },
+        type: "POST",
+        datatype: "text",
+        success: function(resultado) {
+             if(resultado==false){
+                 window.location.replace("index.php");
+             }
+        },
+        error: function(jqXHR, textStatus) {
+           mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER EL NOMBRE DEL EQUIPO","incorrecto");
+        }
+    });
+       $.ajax({
+        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        data:{
             tipo:"Obtener_nombre_equipo",
             team:team1,
         },
