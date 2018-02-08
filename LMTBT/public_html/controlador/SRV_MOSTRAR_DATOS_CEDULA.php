@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("SRV_CONEXION.php");
-
     $db = new SRV_CONEXION();
 
 
@@ -191,6 +190,13 @@ switch ($_POST['tipo']){
       $conexcion5= $db->getConnection();  
       $resultado5=$conexcion5->query($sql);
      echo "ok";
+    break;
+    case "ComprobarLogin":
+         if (!empty($_SESSION["ID_USUARIO"]) && !empty($_SESSION["TIPO_USUARIO"])){
+             echo true;
+         }else{
+             echo false;
+         }
     break;
 }
 
