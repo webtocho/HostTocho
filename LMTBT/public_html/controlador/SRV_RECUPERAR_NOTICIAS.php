@@ -5,9 +5,12 @@
     $bandera = true;
     $conexion = $db->getConnection();
     $linea = $_POST['fila'];
-    $limit=5;
+    $limit=4;
     
-    $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS DESC LIMIT ".$linea.",5";
+    $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS DESC LIMIT ".$linea.",4";
+    
+    
+    
     if($resultado = $conexion->query($sql)){
        
         $html="";     
@@ -31,16 +34,25 @@
                    // $html.="<div class='container'>";
                         $html.="<a class='news' href='VER_NOTICIA.html'  onclick='enviarIdNoticia(".$id_noticia. ")'><h2>".$fila["TITULO"]."</h2></a>";      
                 $html.="</div>";
+                
+             $html.="<div class='panel-body'>";     
+             $html.="<div class='media'>";
+             $html.=" <div class='media-left'>";    
+                
+                
             if($resultado2 = $conexion->query($sql2)){
                 $fila2 = $resultado2->fetch_assoc(); 
                
                 $noticias["IMAGEN_NOTICIA"] = base64_encode($fila2["IMAGEN"]);
-                $html.="<div class='panel-body'>";     
-                    $html.="<div class='media'>";
-                        $html.=" <div class='media-left'>";
-                            $html.=  "<div class='blog-img'>"."<img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='media-object img-rounded img-responsive' style='height:150px; max-width:300px; ' alt=''/>"."</div>"; 
-                        $html.="</div>";
+               try{
+                            $html.=  "<div class='blog-img'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='media-object img-rounded img-responsive' style='height:150px; max-width:300px; ' alt=''/>"."</div>"; 
+                  }catch (Exception $e) {
+ $html.="<div>error</div>";
+}
+
+  
             }
+                $html.="</div>";
                     
                         $html.=" <div class='media-body'>";
                             $html.="<h4 class='media-heading'>".$fila["FECHA_PUBLICACION"]."</h4>";
