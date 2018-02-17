@@ -41,31 +41,7 @@ $(document).ready(function() {
                                 $("#torneo").html((res["tor"] != null ? res["tor"] : "No está participando en ninguno"));
                                 
                                 $("#modal-title").html("Cargando lista de jugadores...");
-                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb_c : "1", ft : "1"}, null, "json")
-                                    .done(function(res_j) {
-                                        $.each(res_j, function (index, i) {
-                                            if(i !== null){
-                                                agregarFilaMiembro(res["mb"][index], i, res["nm"][index]);
-                                                miembros.push(res["mb"][index]);
-                                            } else {
-                                                var fila = document.getElementById("tabla_miembros").insertRow(-1);
-                                                fila.insertCell(-1).innerHTML = "<i>&#60Eliminado&#62</i>";
-                                                fila.insertCell(-1).innerHTML = " --- ";
-                                                fila.insertCell(-1).innerHTML = "<input type='number' min='0' max='99' step='1' value='" + res["nm"][index] + "' onchange='validarNum(this)' disabled>";
-                                                fila.insertCell(-1).innerHTML = "<i>Se descartará automáticamente<br>al guardar.</i>"
-                                            }
-                                        });
-                                        
-                                        $('#modal').modal('hide');
-                                        $('#contenido').append(crear_btn_retorno());
-                                    })
-                                    .fail(function(xhr, status, error) {
-                                        $("#modal-title").html("Error al cargar la lista de jugadores");
-                                        $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. (" + xhr.status + " " + status + ")"));
-                                        $("#modal-body").append("<br><a href='javascript:recargar();'>Reintentar</a>");
-                                        $("#modal-body").append("<br>" + crear_btn_retorno());
-                                        $("#modal-footer").show();
-                                    });
+                                cargarJugadores(res["mb"], res["nm"], 0);
                             })
                             .fail(function(xhr, status, error) {
                                 $("#modal-title").html("Error al cargar la información del roster");
@@ -92,6 +68,43 @@ $(document).ready(function() {
             expulsar();
         });
 });
+
+/**
+ * Carga la información de los jugadores que participan en el roster.
+ * @param {Array} lista Un arreglo unidimensional de los ID's de los jugadores que participantes.
+ * @param {Array} numeros Un arreglo unidimensional con los números de los números de jugador (debe ser del mismo tamaño que el otro parámetro).
+ * @param {Number} index_jg El índice del jugador 
+ */
+function cargarJugadores(lista, numeros, index_jg){
+    if(index_jg === lista.length){
+        $('#modal').modal('hide');
+        $('#contenido').append(crear_btn_retorno());
+        return;
+    }
+    
+    $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : [lista[index_jg]], nb_c : "1", ft : "1"}, null, "json")
+        .done(function(res) {
+            if(res[0] !== null){
+                agregarFilaMiembro(lista[index_jg], res[0], numeros[index_jg]);
+                miembros.push(lista[index_jg]);
+            } else {
+                var fila = document.getElementById("tabla_miembros").insertRow(-1);
+                fila.insertCell(-1).innerHTML = "<i>&#60Eliminado&#62</i>";
+                fila.insertCell(-1).innerHTML = " --- ";
+                fila.insertCell(-1).innerHTML = "<input type='number' min='0' max='99' step='1' value='" + numeros[index_jg] + "' onchange='validarNum(this)' disabled>";
+                fila.insertCell(-1).innerHTML = "<i>Se descartará automáticamente<br>al guardar.</i>";
+            }
+            
+            cargarJugadores(lista, numeros, index_jg + 1);
+        })
+        .fail(function(xhr, status, error) {
+            $("#modal-title").html("Error al cargar la lista de jugadores");
+            $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. (" + xhr.status + " " + status + ")"));
+            $("#modal-body").append("<br><a href='javascript:recargar();'>Reintentar</a>");
+            $("#modal-body").append("<br>" + crear_btn_retorno());
+            $("#modal-footer").show();
+        });
+}
 
 function crear_btn_retorno(){
     return crear_dropdown("Regresar a...", ["<a href='javascript:irAPaginaDeDetalles();'>Detalles del roster</a>"]);

@@ -30,41 +30,7 @@ $(document).ready(function() {
                                     $("#btn_editar").remove();
                                 
                                 $("#modal-title").html("Cargando lista de jugadores...");
-                                $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : res["mb"], nb_c : "1", sx : "1", ed : "1", ft : "1"}, null, "json")
-                                    .done(function(res_j) {
-                                        var fila, celda;
-                                        $.each(res_j, function (index, i) {
-                                            fila = document.getElementById("miembros").insertRow(-1);
-                                            
-                                            if(i !== null){
-                                                //Celda de nombre
-                                                fila.insertCell(-1).innerHTML = i["nb_c"];
-                                                //Celda de género
-                                                fila.insertCell(-1).innerHTML = (i["sx"] == "M" ? "Masculino" : (i["sx"] == 'F' ? "Femenino" : "<No definido>"));
-                                                //Celda de edad
-                                                fila.insertCell(-1).innerHTML = (i["ed"] != null ? i["ed"] : "<No definido>");
-                                                //Celda de foto
-                                                if(i["ft"] === null)
-                                                    fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
-                                                else
-                                                    fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + i["ft"] +"\" width='100'/>";
-                                            } else {
-                                                fila.insertCell(-1).innerHTML = "<i>&#60Eliminado&#62</i>";
-                                                fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = "---";
-                                            }
-                                            
-                                            fila.insertCell(-1).innerHTML = res["nm"][index];
-                                        });
-
-                                        $('#modal').modal('hide');
-                                        $('#contenido').append(crear_btn_retorno());
-                                    })
-                                    .fail(function(xhr, status, error) {
-                                        $("#modal-title").html("Error al cargar la lista de jugadores");
-                                        $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. (" + xhr.status + " " + status + ")"));
-                                        $("#modal-body").append("<br><a href='javascript:recargar();'>Reintentar</a>");
-                                        $("#modal-body").append("<br>" + crear_btn_retorno());
-                                    });
+                                cargarJugadores(res["mb"], res["nm"], 0);
                             })
                             .fail(function(xhr, status, error) {
                                 $("#modal-title").html("Error al cargar la información del roster");
@@ -89,6 +55,53 @@ $(document).ready(function() {
             expulsar();
         });
 });
+
+/**
+ * Carga la información de los jugadores que participan en el roster.
+ * @param {Array} lista Un arreglo unidimensional de los ID's de los jugadores que participantes.
+ * @param {Array} numeros Un arreglo unidimensional con los números de los números de jugador (debe ser del mismo tamaño que el otro parámetro).
+ * @param {Number} index_jg El índice del jugador 
+ */
+function cargarJugadores(lista, numeros, index_jg){
+    if(index_jg === lista.length){
+        $('#modal').modal('hide');
+        $('#contenido').append(crear_btn_retorno());
+        return;
+    }
+    
+    $.post( "../controlador/SRV_CUENTAS.php", {fn : "get_info", id_c : [lista[index_jg]], nb_c : "1", sx : "1", ed : "1", ft : "1"}, null, "json")
+        .done(function(res) {
+            var fila = document.getElementById("miembros").insertRow(-1);
+            
+            if(res[0] !== null){
+                //Celda de nombre
+                fila.insertCell(-1).innerHTML = res[0]["nb_c"];
+                //Celda de género
+                fila.insertCell(-1).innerHTML = (res[0]["sx"] == "M" ? "Masculino" : (res[0]["sx"] == 'F' ? "Femenino" : "<No definido>"));
+                //Celda de edad
+                fila.insertCell(-1).innerHTML = (res[0]["ed"] != null ? res[0]["ed"] : "<No definido>");
+                //Celda de foto
+                if(res[0]["ft"] === null)
+                    fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
+                else
+                    fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + res[0]["ft"] +"\" width='100'/>";
+            } else {
+                fila.insertCell(-1).innerHTML = "<i>&#60Eliminado&#62</i>";
+                fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = fila.insertCell(-1).innerHTML = "---";
+            }
+
+            fila.insertCell(-1).innerHTML = numeros[index_jg];
+            
+            //Se carga al siguiente jugador.
+            cargarJugadores(lista, numeros, index_jg + 1);
+        })
+        .fail(function(xhr, status, error) {
+            $("#modal-title").html("Error al cargar la lista de jugadores");
+            $("#modal-body").html((xhr.status == 500 ? xhr.responseText : "Error de servidor. (" + xhr.status + " " + status + ")"));
+            $("#modal-body").append("<br><a href='javascript:recargar();'>Reintentar</a>");
+            $("#modal-body").append("<br>" + crear_btn_retorno());
+        });
+}
 
 function recargar(){
     sessionStorage.setItem("ROSTERS_DETALLES_id_e", id_e);
