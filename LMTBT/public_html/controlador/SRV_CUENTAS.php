@@ -8,34 +8,56 @@
     
     $conexion = (new SRV_CONEXION())->getConnection() or lanzar_error("Error de servidor (" . __LINE__ . ")");
     
-    function get_padecimientos($mysqli, $id_usr, $tipo_dato){
-        $indicaciones = array( array("en","enfermedades","ID_ENFERMEDAD"), array("al","alergias","ID_ALERGIA") );
-        $padecimientos = array($indicaciones[0][0] => array(), $indicaciones[1][0] => array());
+    /**
+     * Permite saber las enfermedades y alergias que padece cierto usuario.
+     * @param mysqli $mysqli Conexión a la base de datos.
+     * @param int $id_usr ID del usuario del que se desea obtener la información.
+     * @param boolean $ids_o_nombres Si es verdadero, se devuelven los ID's de las enf. y alg. según sus respectivas tablas;
+     *                               en caso contrario, solo los nombres.
+     * @return Array Un arreglo unidimensional que contiene dos subarreglos ("en" y "al"). Cada uno contiene (con claves numéricas) los nombres o ID's.
+     *               Si $ids_o_nombres es verdadero, cada subarreglo tendrá una clave extra 'otros', que corresponde a un arreglo que contiene las otras
+     *               enfermedades o alergias como cadenas, debido a que no tienen ID's.
+     *               "en" corresponde a enfermedades y "al" a alergias.
+     */
+    function get_padecimientos($mysqli, $id_usr, $ids_o_nombres){
+        /** Cada elemento de $indicaciones contiene la información de un tipo de padecimiento en especifico: "alergia" o "enfermedad".
+         * "subarreglo": El nombre del subarreglo correspondiente al tipo de padecimiento.
+         * "tabla_BD": Nombre de la tabla de la base de datos en donde se almacenan los padecimientos que el usuario tiene.
+         * "pkey_tabla_BD": Llave primaria de la tabla mencionada en la línea anterior.
+         */
+        $indicaciones = array(
+            array("subarreglo" => "en", "tabla_BD" => "enfermedades", "pkey_tabla_BD" => "ID_ENFERMEDAD"),
+            array("subarreglo" => "al", "tabla_BD" => "alergias", "pkey_tabla_BD" => "ID_ALERGIA") );
+        
+        //Respuesta de la función.
+        $padecimientos = array($indicaciones[0]["subarreglo"] => array(), $indicaciones[1]["subarreglo"] => array());
         
         foreach($indicaciones as $aux){
-            $query = "SELECT " . ($tipo_dato ? $aux[1] . "." . $aux[2] : "NOMBRE") . " FROM " . $aux[1] . "_usuarios INNER JOIN " . $aux[1] . " ON " . $aux[1] . "_usuarios." . $aux[2] . " = " . $aux[1] . "." . $aux[2] . " WHERE ID_USUARIO = ?";
+            $query = "SELECT " . ($ids_o_nombres ? $aux["tabla_BD"] . "." . $aux["pkey_tabla_BD"] : "NOMBRE") . " FROM " . $aux["tabla_BD"] . "_usuarios INNER JOIN " . $aux["tabla_BD"] . " ON " . $aux["tabla_BD"] . "_usuarios." . $aux["pkey_tabla_BD"] . " = " . $aux["tabla_BD"] . "." . $aux["pkey_tabla_BD"] . " WHERE ID_USUARIO = ?";
             
             if(($consulta = $mysqli->prepare($query)) && $consulta->bind_param("i", $id_usr) && $consulta->execute()){
                 $res = $consulta->get_result();
                 while ($fila = $res->fetch_row()) {
-                    array_push($padecimientos[$aux[0]], $fila[0]);
+                    //Se obtiene cada nombre o id de los padecimientos que el ususario sufre y se añaden al subarreglo correspondiente.
+                    array_push($padecimientos[$aux["subarreglo"]], $fila[0]);
                 }
             } else {
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
             
-            $query = "SELECT DATOS FROM otras_" . $aux[1] . " WHERE ID_USUARIO = ?";
+            $query = "SELECT DATOS FROM otras_" . $aux["tabla_BD"] . " WHERE ID_USUARIO = ?";
             if(($consulta = $mysqli->prepare($query)) && $consulta->bind_param("i", $id_usr) && $consulta->execute()){
                 $res = $consulta->get_result();
                 
-                if($tipo_dato){
-                    $padecimientos[$aux[0]]['otros'] = null;
+                //Se obtienen los otros padecimientos como cadenas y se añaden según $ids_o_nombres.
+                if($ids_o_nombres){
+                    $padecimientos[$aux["subarreglo"]]["otros"] = null;
                     if ($res->num_rows != 0){
-                        $padecimientos[$aux[0]]['otros'] = str_replace(",", ", ", $res->fetch_row()[0]);
+                        $padecimientos[$aux["subarreglo"]]["otros"] = str_replace(",", ", ", $res->fetch_row()[0]);
                     }
                 } else {
                     if ($res->num_rows != 0){
-                        array_push($padecimientos[$aux[0]], ...explode(",", $res->fetch_row()[0]));
+                        array_push($padecimientos[$aux["subarreglo"]], ...explode(",", $res->fetch_row()[0]));
                     }
                 }
             } else {
@@ -43,11 +65,48 @@
             }
         }
         
+        /** EJEMPLOS DE SALIDA:
+         * 
+         * - Si $ids_o_nombres es falso.
+         * [
+         *   "en" => [
+         *      0 => "Diabetes"
+         *      1 => "Tos crónica"
+         *      2 => "Psoriasis"
+         *   ]
+         *   "al" => [
+         *      0 => "Polvo"
+         *      1 => "Polen"
+         *      2 => "Metronidazol"
+         *   ]
+         * ]
+         * 
+         * - Si $ids_o_nombres es verdadero.
+         * [
+         *   "en" => [
+         *      0 => 2
+         *      1 => 4
+         *      "otros" => [0 => "Psoriasis"]
+         *   ]
+         *   "al" => [
+         *      0 => 1
+         *      1 => 3
+         *      "otros" => [0 => "Metronidazol"]
+         *   ]
+         * ]
+         */
+        
         return $padecimientos;
     }
     
     switch ($_POST['fn']){
-        case "get_info":            
+        case "get_info":
+            /**
+             * Permite obtener la información de una cuenta en específico.
+             * Requiere el parámetro "id_c", que corresponde al ID de la cuenta.
+             * 
+             * 
+             */
             validar_sesion_y_expulsar();
             
             if($_SESSION["TIPO_USUARIO"] == "COACH" || $_SESSION["TIPO_USUARIO"] == "ADMINISTRADOR"){

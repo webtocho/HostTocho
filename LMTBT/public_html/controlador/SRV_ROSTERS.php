@@ -20,8 +20,8 @@
             lanzar_error("Hay números de jugadores repetidos.");
         } else if ($mb_length < 5){
             lanzar_error("Hay muy pocos jugadores.");
-        } else if ($mb_length > 20){
-            lanzar_error("Hay demasiados jugadores (más de 20).");
+        } else if ($mb_length > 30){
+            lanzar_error("Hay demasiados jugadores (más de 30).");
         } else {
             unset($mb_length, $nm_length);
         }
