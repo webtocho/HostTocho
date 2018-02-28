@@ -17,7 +17,7 @@
     	echo "<center><h3><a>PUNTAJE EN EL PARTIDO</a></h3></center>";
     	echo "<table class='table'>";
     	echo '<thead><tr><th><center>JUGADOR</center></th> <th><center>NUMERO</center></th> <th><center>T</center></th> <th><center>S</center></th>'; 
-        echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th> <th><center>PT</center></th>'; 
+        echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th><th><center>C3</center></th> <th><center>PA</center></th> <th><center>SA</center></th> <th><center>I4</center></th> <th><center>PT</center></th>'; 
         echo '</tr></thead><tbody>';
     	
     	while ($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -32,7 +32,9 @@
     		echo "<tr>";
         	echo "<td>".$nombre."</td> <td>".$numero."</td> <td>".$row['T']."</td>";
         	echo "<td>".$row['S']."</td> <td>".$row['I']."</td> <td>".$row['A']."</td> <td>".$row['C1']."</td>";
-        	echo "<td>".$row['C2']."</td> <td>".$row['PT']."</td>";
+        	echo "<td>".$row['C2']."</td> <td>".$row['C3']."</td>";
+                echo "<td>".$row['PA']."</td> <td>".$row['SA']."</td>";
+                echo "<td>".$row['I4']."</td> <td>".$row['PT']."</td>";
         	echo "</tr>";
     	}
     	echo "</tbody></table>";

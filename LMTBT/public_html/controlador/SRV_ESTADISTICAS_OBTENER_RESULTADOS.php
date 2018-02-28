@@ -19,8 +19,9 @@
         echo "<center><h3><a>PUNTAJE TOTAL POR JUGADOR</a></h3></center>";
     	echo "<table class='table'>";
     	echo '<thead><tr><th><center>JUGADOR</center></th> <th><center>NUMERO</center></th> <th><center>T</center></th> <th><center>S</center></th>'; 
-        echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th> <th><center>PT</center></th>'; 
-        echo '</tr></thead><tbody>';
+        echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th>'; 
+        echo '<th><center>C3</center></th> <th><center>PA</center></th> <th><center>SA</center></th> <th><center>I4</center></th>';
+        echo '<th><center>PT</center></th></tr></thead><tbody>';
         while ($row=mysqli_fetch_array($jugadores)) {
         	$id = $row['ID_JUGADOR'];
         	$numero = $row['NUMERO'];
@@ -32,7 +33,7 @@
 
         	$datos = "SELECT * FROM cedulas WHERE ID_ROSTER=$roster AND ID_JUGADOR=$id";
         	$stats = $conn->query($datos);
-        	$t=0;$s=0;$i=0;$a=0;$c1=0;$c2=0;$pt=0;
+        	$t=0;$s=0;$i=0;$a=0;$c1=0;$c2=0;$c3=0;$pa=0;$sa=0;$i4=0;$pt=0;
         	while ($fila = mysqli_fetch_array($stats)) {
         		$t=$t+$fila['T'];
         		$s=$s+$fila['S'];
@@ -40,12 +41,17 @@
         		$a=$a+$fila['A'];
         		$c1=$c1+$fila['C1'];
         		$c2=$c2+$fila['C2'];
+                        $c3=$c3+$fila['C3'];
+                        $pa=$pa+$fila['PA'];
+                        $sa=$sa+$fila['SA'];
+                        $i4=$i4+$fila['I4'];
         		$pt=$pt+$fila['PT'];
         	}
         	echo "<tr>";
         	echo "<td>$nombre</td> <td>$numero</td> <td>$t</td>";
         	echo "<td>$s</td> <td>$i</td> <td>$a</td> <td>$c1</td>";
-        	echo "<td>$c2</td> <td>$pt</td>";
+        	echo "<td>$c2</td> <td>$c3</td> <td>$pa</td>";
+                echo "<td>$sa</td> <td>$i4</td> <td>$pt</td>";
         	echo "</tr>";
         }
         echo "</tbody></table>";
