@@ -49,7 +49,7 @@
                         }else{
                             echo "<center><img class='img-responsive lot img-rounded' src='data:image/png;base64,".$foto."' alt='' style='max-width:150px;max-height:150px;'/></center>";
                         }
-                        echo "<center><h4><a>".$jugador['NOMBRE']."</a></h4></center>";
+                        echo "<center><h4><a>".$jugador['NOMBRE']."</a><br><a>".$row['NUMERO']."</a></h4></center>";
 			echo "</div>";
 		}
                 
