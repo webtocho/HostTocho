@@ -41,7 +41,7 @@ switch ($_POST['tipo']){
         $numero_de_filas=$info2["count(*)"];
         if($numero_de_filas==0){
         foreach ($info as $info2) {
-	$sql = sprintf("insert into cedulas values(0,%s,%s,%s,0,0,0,0,0,0,0)",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
+	$sql = sprintf("insert into cedulas values(0,%s,%s,%s,0,0,0,0,0,0,0,0,0,0,0)",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
          $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         }
