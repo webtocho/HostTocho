@@ -20,7 +20,7 @@
         echo "<center><h2><a>".$equipo['NOMBRE_EQUIPO']."</a></h2></center>";
         echo "<center><h3><a>PUNTAJE TOTAL POR JUGADOR</a></h3></center>";
         //Generamos una tabla para los datos, con un header para cada campo registrado en la cedula
-    	echo "<table class='table'>";
+    	echo "<table class='table table-responsive'>";
     	echo '<thead><tr><th><center>JUGADOR</center></th> <th><center>NUMERO</center></th> <th><center>T</center></th> <th><center>S</center></th>'; 
         echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th>'; 
         echo '<th><center>C3</center></th> <th><center>PA</center></th> <th><center>SA</center></th> <th><center>I4</center></th>';
