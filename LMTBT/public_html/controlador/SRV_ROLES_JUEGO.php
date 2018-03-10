@@ -13,10 +13,10 @@ switch ($_POST['tipo']) {
 		// si se pudo ejecuar la consulta, entonces se recuperan los datos, de lo contrario se informa un error
 		if ($consulta->execute()) {
 			$resultado = $consulta->get_result();
-			$list_convocatoria = "<option value='-1' selected hidden>Seleccione el torneo</option>";
-			while ($fila = $resultado->fetch_assoc())
-				$list_convocatoria .= "<option value='" . $fila['ID_CONVOCATORIA'] . "'>" . $fila['NOMBRE_TORNEO'] . "</option>";
-			echo $list_convocatoria;
+			$lista_convocatoria = "<option value='-1' selected hidden>Seleccione el torneo</option>";
+			while ($arreglo_convocatoria = $resultado->fetch_assoc())
+				$lista_convocatoria .= "<option value='" . $arreglo_convocatoria['ID_CONVOCATORIA'] . "'>" . $arreglo_convocatoria['NOMBRE_TORNEO'] . "</option>";
+			echo $lista_convocatoria;
 		} else {
 			echo "Ha ocurrido un error al recuperar informacion para continuar con el registro de la convocatoria. Intente de nuevo mas tarde.";
 		}
@@ -29,10 +29,10 @@ switch ($_POST['tipo']) {
 				$consulta = $db->getConnection()->prepare("SELECT ID_USUARIO, TIPO_USUARIO FROM usuarios WHERE ID_USUARIO = ? ");
 				$consulta->bind_param("i", $_SESSION['ID_USUARIO']);
 				if ($consulta->execute()) {
-					$res = $consulta->get_result();
-					$info = $res->fetch_assoc();
+					$respuesta = $consulta->get_result();
+					$informacion_usuario = $respuesta->fetch_assoc();
 					// se le asigna permisos a los usuarios correspondientes para generar las cedulas, se son usuarios que no tienen permisos entonces solo se les permitira ver las cedulas.
-					if ($_SESSION['ID_USUARIO'] == $info['ID_USUARIO'] && $_SESSION['TIPO_USUARIO'] == $info['TIPO_USUARIO']) {
+					if ($_SESSION['ID_USUARIO'] == $informacion_usuario['ID_USUARIO'] && $_SESSION['TIPO_USUARIO'] == $informacion_usuario['TIPO_USUARIO']) {
 						$usuario_permitido = "Generar cedula";
 					} else {
 						$usuario_permitido = "Ver cedula";
@@ -53,39 +53,31 @@ switch ($_POST['tipo']) {
 		$consulta = $db->getConnection()->prepare("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.ESTADO = 'ACTIVO' AND convocatoria.ID_CONVOCATORIA = ?");
 		$consulta->bind_param("i",$_POST['id_convocatoria']);
 		if ($consulta->execute()) {
-			/*
-			$resultado = array();
-			$result = $consulta->get_result();
-			while ($row = $result->fetch_assoc()) {
-				$resultado[] = $row;
-			}
-			*/
-			//*
+
 			$consulta->close();
 			$db->setQuery(sprintf("SELECT * FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE convocatoria.ESTADO = 'ACTIVO' AND convocatoria.ID_CONVOCATORIA = %s", $_POST['id_convocatoria']));
 			$resultado = $db->GetResult();
-			//*/
 			// en la tabla de rol_juegos las filas contienen los ID´s de los equipos que se enfrentaran, interesa conocer el nombre de estos asi tambien la categoria en la que estan participando
 			// para ello realizo un ciclo para relacionar los nombre con los ID´s mediante consultas preparadas
 			foreach ($resultado as $key => $roles) {
 				$consulta = $db->getConnection()->prepare("SELECT NOMBRE_EQUIPO FROM equipos WHERE ID_EQUIPO = ?");
 				$consulta->bind_param("i", $roles['ID_EQUIPO_1']);
 				if ($consulta->execute()) {
-					$res = $consulta->get_result();
-					$r1 = $res->fetch_assoc();
-					$resultado[$key]['NOMBRE_EQUIPO_1'] = $r1['NOMBRE_EQUIPO'];
+					$resultado = $consulta->get_result();
+					$datos_equipo1 = $resultado->fetch_assoc();
+					$resultado[$key]['NOMBRE_EQUIPO_1'] = $datos_equipo1['NOMBRE_EQUIPO'];
 					$consulta = $db->getConnection()->prepare("SELECT NOMBRE_EQUIPO FROM equipos WHERE ID_EQUIPO = ?");
 					$consulta->bind_param("i", $roles['ID_EQUIPO_2']);
 					if ($consulta->execute()) {
-						$res = $consulta->get_result();
-						$r2 = $res->fetch_assoc();
-						$resultado[$key]['NOMBRE_EQUIPO_2'] = $r2['NOMBRE_EQUIPO'];
+						$resultado = $consulta->get_result();
+						$datos_equipo2 = $resultado->fetch_assoc();
+						$resultado[$key]['NOMBRE_EQUIPO_2'] = $datos_equipo2['NOMBRE_EQUIPO'];
 						$consulta = $db->getConnection()->prepare("SELECT NOMBRE_CATEGORIA FROM categorias WHERE ID_CATEGORIA= ?");
 						$consulta->bind_param("i", $roles['ID_CATEGORIA']);
 						if ($consulta->execute()) {
-							$res = $consulta->get_result();
-							$r3 = $res->fetch_assoc();
-							$resultado[$key]['CATEGORIA'] = $r3['NOMBRE_CATEGORIA'];
+							$resultado = $consulta->get_result();
+							$datos_categoria = $resultado->fetch_assoc();
+							$resultado[$key]['CATEGORIA'] = $datos_categoria['NOMBRE_CATEGORIA'];
 						} else {
 							echo "Ha ocurrido un error al recuperar la informacion. Intentelo mas tarde.";
 							return;

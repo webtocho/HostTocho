@@ -1,8 +1,9 @@
 $(document).ready(function () {
 	mostrar_convocatorias_activas();
 });
-// mostramos la lista de roles de juego de la convocatoria seleccionada.
+// Al seleccionar una convocatoria, mostramos la lista de roles de juego asociados a ella  
 function lista_convocatorias_inactivas() {
+	// Obtener la ID de la convocatoria o torneo del elemento select
 	var id_convocatoria = document.getElementById("lista_convocatorias_inactivas").value;
 	if (id_convocatoria != -1) {
 		$.ajax({
