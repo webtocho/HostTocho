@@ -6,7 +6,10 @@
 
 
 
- 
+/*
+ * se obtiene la sesion iniciada, en el caso de no tener una sesion activa, no se podra
+ * agregar comentarios, solo verlos
+ */
 $(document).ready(function(){
       $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","COACH","JUGADOR","FOTOGRAFO","CAPTURISTA"]}, null, "text")
         .done(function(res) {
@@ -20,10 +23,17 @@ $(document).ready(function(){
     cargarComentarios();
 });
 
+
+/*
+ * 
+ * si no hay una sesion iniciada no activara la caja de comentarios
+ */
 function noRegistrado(){
      $('#cajaDeComentarios').empty();
-    
 }
+/*
+ * se cargan todos los comentarios de la noticia seleccionada y se agregan a los div correspondientes
+ */
 function cargarComentarios(){
     id = sessionStorage.getItem("idNoticia");
      $.ajax({
@@ -48,7 +58,11 @@ function cargarComentarios(){
     
     
 }
-
+ /*
+  * si la cuenta que entro a la pagina es de tipo administrador, tendra la opcion de eliminar los comentarios
+  *este metodo recibe el id del comentario a eliminar
+ **/
+ 
 function eliminarComentario(id){
      $.ajax({
             url: "../controlador/SRV_VER_NOTICIA.php",
@@ -66,7 +80,14 @@ function eliminarComentario(id){
     
 }
 
+/*
+ * la variable caracteresTotal nos dice el maximo de caracteres que se permiten en un comentario
+ */
 var caracteresTotal =200;
+/*
+ * esta fancion valida que el comentario no se pase del numero de caracteres definido
+ * al llegar al maximo de caracteres, ya no se deja agregar uno mas
+ */
 function caracteres(){
      var texto =  $('#comment').val();
      var total = texto.length;
@@ -83,7 +104,10 @@ function caracteres(){
          
     }
 }
-
+/*
+ * este metodo valida cualquier tipo de inyeccion a la base de datos y que el comentario contenga texto
+ * una ves se valide todo, se manda a insertar con el id de la noticia
+ */
 function comentar(){
    
     id = sessionStorage.getItem("idNoticia");
@@ -108,6 +132,9 @@ function comentar(){
     }
     
 }
+/*
+ * esta funcion carga la noticia y su contenido multimedia en la pagina
+ */
 function cargarNoticia(){
     id = sessionStorage.getItem("idNoticia");
     if(id==null){

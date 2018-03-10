@@ -69,3 +69,38 @@ function iniciarSesion(){
         }
     });
 }
+function abrirPantallaParaIngresarCorreo(){
+    $('#tituloVentanaEmergente').empty();
+    $('#tituloVentanaEmergente').append("Recuperar cuenta");   
+    document.getElementById("formulario").onsubmit = function(){
+        recuperarPassword();
+        return false;
+    };
+    //Mostramos la ventana emergente
+    $('#ventanaEmergente').modal();
+}
+function recuperarPassword(){
+    $('#ventanaEmergente').modal('hide');
+    var correo_recuperar = document.getElementById("correo_recuperar").value;
+    $.ajax({
+        url: "../controlador/SRV_RECUPERAR_CUENTA.php",
+        data:{            
+            correo_recuperar:correo_recuperar
+        },
+        type: "POST",
+        datatype: "text",
+        beforeSend: function(xhr){            
+        },
+        success: function(resultado) {
+            if(resultado == "ok"){
+                mostrarAlerta("Te hemos enviado un correo con tu nueva contraseña generada aleatoriamente recuerda cambiarlas","correcto");
+            }else{
+                mostrarAlerta(resultado,"fallido");
+            }            
+        },
+        error: function(jqXHR, textStatus) {           
+           mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
+        }
+    });
+    document.getElementById("correo_recuperar").value = "";
+}

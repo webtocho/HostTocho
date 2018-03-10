@@ -3,11 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+/* este metodo se encarga de ejecutar los metodos recuperar_baner y recuperar_noticias
+ */
 function ejecutar_recuperar_noticias(){
     recuperar_baner();
-    recuperar_noticias(0);
-    
+    recuperar_noticias(0);    
 }
+
+/*obtenemos el banner que se muestra en el index, se obtiene la imagen de la noticia mas reciente
+ * y los titulos de las 3 noticias mas recientes
+ * si no existen mas de 3 noticias en la bd, se carga un banner predefinido y titulos predefinos
+ */
 function recuperar_baner(){
        $.ajax({
         url: "../controlador/SRV_RECUPERAR_BANNER.php",       
@@ -35,6 +43,10 @@ function recuperar_baner(){
     
    
 }
+/*
+ * recibe el valor de la paginacion que se cliquea en la pagina y se obtienen las noticias
+ * 
+ */
 function recuperar_noticias(linea){
     var fila= parseInt(linea) * 5;
     $.ajax({

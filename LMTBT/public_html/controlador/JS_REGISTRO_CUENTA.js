@@ -52,7 +52,7 @@ $(document).on('submit','#myForm',function(event){
         success: function(respuesta) {
             console.log(respuesta);
             if(respuesta == "ok") {               
-                mostrarAlerta("Registro realizado con exito.","correcto");
+                mostrarAlerta("Registro realizado con exito.","correcto");              
                 document.getElementById('btn-submitdos').disabled = false;                
                 document.getElementById('Correo').value = "";
                 document.getElementById('Password').value = "";

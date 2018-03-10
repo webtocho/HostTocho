@@ -1,5 +1,6 @@
 <?php
-    include("SRV_CONEXION.php");
+    include("SRV_CONEXION.php");   
+    include("SRV_FUNCIONES_CORREO.php");   
     $db = new SRV_CONEXION();
     $conexion = $db->getConnection();
     $cambios_hechos = true;
@@ -49,11 +50,13 @@
                         //$tipo_usuario = "COACH";
                         $consulta = $conexion->prepare('INSERT INTO usuarios VALUES (0,?,?,?,?,?,null,?,null,null,null,null,null,null,?)');
                         $consulta->bind_param("sssssss",$_POST['correo'], $_POST['password'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno'],$_POST['sexo'],$_POST['tipo_cuenta']);
-                        if($consulta->execute()){
-                            $cambios_hechos = true;
+                        if($consulta->execute()){                                                        
+                            if(enviarCorreoDeAceptacion($_POST['correo'],$_POST['nombre'],$_POST['password'])){
+                                $cambios_hechos = true;
+                            }
                         } else {
                             $cambios_hechos = false;
-                        }                                    
+                        }                        
                     }else{
                     //insert code here
                         echo "El correo ingresando ya esta ligado a un cuenta";

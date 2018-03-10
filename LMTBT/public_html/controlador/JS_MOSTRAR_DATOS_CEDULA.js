@@ -16,10 +16,10 @@
    var ID_CONVOCSTORIA;
    
 function llenar_tablas(){
-       //sessionStorage.setItem("id_equipo_1", 1);
-       // sessionStorage.setItem("id_equipo_2", 2);
-       // sessionStorage.setItem("id_rol_juego", 1);
-       // sessionStorage.setItem("id_convocatoria", 1);
+       /*sessionStorage.setItem("id_equipo_1", 1);
+        sessionStorage.setItem("id_equipo_2", 2);
+        sessionStorage.setItem("id_rol_juego", 1);
+        sessionStorage.setItem("id_convocatoria", 1);*/
         
        var team1 = sessionStorage.getItem("id_equipo_1");
        var team2 = sessionStorage.getItem("id_equipo_2");
@@ -277,6 +277,90 @@ function guardarC2(id,ID_USUARIO,ID_ROSTER){
         }
     });
 }
+function guardarC3(id,ID_USUARIO,ID_ROSTER){
+         var dato=document.getElementById(id).value;
+          $.ajax({ 
+        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        data:{
+            tipo:"guardarC3",
+            DATO:dato,
+            ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
+        },
+        type: "POST",
+        datatype: "text",
+          // // async:false,
+        success: function(resultado) {
+        },
+        error: function(jqXHR, textStatus) {
+         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
+        }
+    });
+}
+function guardarPA(id,ID_USUARIO,ID_ROSTER){
+         var dato=document.getElementById(id).value;
+          $.ajax({ 
+        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        data:{
+            tipo:"guardarPA",
+            DATO:dato,
+            ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
+        },
+        type: "POST",
+        datatype: "text",
+          // // async:false,
+        success: function(resultado) {
+        },
+        error: function(jqXHR, textStatus) {
+         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
+        }
+    });
+}
+function guardarSA(id,ID_USUARIO,ID_ROSTER){
+         var dato=document.getElementById(id).value;
+          $.ajax({ 
+        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        data:{
+            tipo:"guardarSA",
+            DATO:dato,
+            ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
+        },
+        type: "POST",
+        datatype: "text",
+          // // async:false,
+        success: function(resultado) {
+        },
+        error: function(jqXHR, textStatus) {
+         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
+        }
+    });
+}
+function guardarI4(id,ID_USUARIO,ID_ROSTER){
+         var dato=document.getElementById(id).value;
+          $.ajax({ 
+        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        data:{
+            tipo:"guardarI4",
+            DATO:dato,
+            ID_USUARIO:ID_USUARIO,
+             ROL_JUEGO:ROL_JUEGO,
+            ID_ROSTER:ID_ROSTER,
+        },
+        type: "POST",
+        datatype: "text",
+          // // async:false,
+        success: function(resultado) {
+        },
+        error: function(jqXHR, textStatus) {
+         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
+        }
+    });
+}
 function guardarPT(id,ID_USUARIO,ID_ROSTER){
         var dato=document.getElementById(id).value;
           $.ajax({ 
@@ -351,6 +435,18 @@ function add(tipo,id,idJugador,idRoster){
              case "C2":
                guardarC2(id,idJugador,idRoster);
             break;
+            case "C3":
+               guardarC3(id,idJugador,idRoster);
+            break;
+            case "PA":
+               guardarPA(id,idJugador,idRoster);
+            break;
+            case "SA":
+               guardarSA(id,idJugador,idRoster);
+            break;
+            case "I4":
+               guardarI4(id,idJugador,idRoster);
+            break;
              case "PT":
                 guardarPT(id,idJugador,idRoster);
             break;
@@ -381,6 +477,18 @@ function reduce(tipo,id,idJugador,idRoster){
             break;
              case "C2":
                guardarC2(id,idJugador,idRoster);
+            break;
+            case "C3":
+               guardarC3(id,idJugador,idRoster);
+            break;
+            case "PA":
+               guardarPA(id,idJugador,idRoster);
+            break;
+            case "SA":
+               guardarSA(id,idJugador,idRoster);
+            break;
+            case "I4":
+               guardarI4(id,idJugador,idRoster);
             break;
              case "PT":
                 guardarPT(id,idJugador,idRoster);

@@ -4,7 +4,7 @@
     $conn = $db->getConnection();    
     
     switch($_POST['tipo']){	
-        case "get":
+        case "get":// obtener las categorias
             $query = "SELECT * FROM categorias";
             $result = $conn->query($query);
                 /*** crear una tabla  ***/

@@ -41,7 +41,7 @@ switch ($_POST['tipo']){
         $numero_de_filas=$info2["count(*)"];
         if($numero_de_filas==0){
         foreach ($info as $info2) {
-	$sql = sprintf("insert into cedulas values(0,%s,%s,%s,0,0,0,0,0,0,0)",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
+	$sql = sprintf("insert into cedulas values(0,%s,%s,%s,0,0,0,0,0,0,0,0,0,0,0)",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
          $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         }
@@ -61,6 +61,10 @@ switch ($_POST['tipo']){
                  "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."A' maxlength='30' value='".$info3["A"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"A\"".",\"".$info2["ID_JUGADOR"]."A\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"A\"".",\"".$info2["ID_JUGADOR"]."A\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
                  "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."C1' maxlength='30' value='".$info3["C1"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"C1\"".",\"".$info2["ID_JUGADOR"]."C1\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"C1\"".",\"".$info2["ID_JUGADOR"]."C1\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
                  "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."C2' maxlength='30' value='".$info3["C2"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"C2\"".",\"".$info2["ID_JUGADOR"]."C2\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"C2\"".",\"".$info2["ID_JUGADOR"]."C2\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."C3' maxlength='30' value='".$info3["C3"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"C3\"".",\"".$info2["ID_JUGADOR"]."C3\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"C3\"".",\"".$info2["ID_JUGADOR"]."C3\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."PA' maxlength='30' value='".$info3["PA"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"PA\"".",\"".$info2["ID_JUGADOR"]."PA\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"PA\"".",\"".$info2["ID_JUGADOR"]."PA\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."SA' maxlength='30' value='".$info3["SA"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"SA\"".",\"".$info2["ID_JUGADOR"]."SA\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"SA\"".",\"".$info2["ID_JUGADOR"]."SA\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
+                 "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."I4' maxlength='30' value='".$info3["I4"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"I4\"".",\"".$info2["ID_JUGADOR"]."I4\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"I4\"".",\"".$info2["ID_JUGADOR"]."I4\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th>".
                  "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."PT' maxlength='30' value='".$info3["PT"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"PT\"".",\"".$info2["ID_JUGADOR"]."PT\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'><input type='submit' value='>' onclick='add(\"PT\"".",\"".$info2["ID_JUGADOR"]."PT\",".$info2["ID_JUGADOR"].",".$info2["ID_ROSTER"].")'></th></tr>"; 
 		}
          }else{
@@ -118,6 +122,30 @@ switch ($_POST['tipo']){
       $resultado3=$conexcion->query($sql);
       echo $resultado3;
     break;
+    case "guardarC3":
+      $sql = sprintf(" UPDATE cedulas SET  C3=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'],$_POST['ID_ROSTER']); 
+      $conexcion= $db->getConnection();
+      $resultado3=$conexcion->query($sql);
+      echo $resultado3;
+    break;
+case "guardarPA":
+      $sql = sprintf(" UPDATE cedulas SET  PA=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'],$_POST['ID_ROSTER']); 
+      $conexcion= $db->getConnection();
+      $resultado3=$conexcion->query($sql);
+      echo $resultado3;
+    break;
+case "guardarSA":
+      $sql = sprintf(" UPDATE cedulas SET  SA=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'],$_POST['ID_ROSTER']); 
+      $conexcion= $db->getConnection();
+      $resultado3=$conexcion->query($sql);
+      echo $resultado3;
+    break;
+case "guardarI4":
+      $sql = sprintf(" UPDATE cedulas SET  I4=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'],$_POST['ID_ROSTER']); 
+      $conexcion= $db->getConnection();
+      $resultado3=$conexcion->query($sql);
+      echo $resultado3;
+    break;
     case "guardarPT":
      $sql = sprintf(" UPDATE cedulas SET  PT=%s where ID_ROL_JUEGO=%s AND  ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST['DATO'],$_POST['ROL_JUEGO'],$_POST['ID_USUARIO'], $_POST['ID_ROSTER']); 
        $conexcion= $db->getConnection();
@@ -164,7 +192,7 @@ switch ($_POST['tipo']){
             $info3[] = $row;
         }
         foreach ($info3 as $infoX) {
-                   $PUNTOS_TEAM_1=$PUNTOS_TEAM_1+($infoX["S"]*2)+($infoX["I"]*2)+($infoX["A"]*6)+($infoX["C1"]*1)+($infoX["C2"]*2);
+                   $PUNTOS_TEAM_1=$PUNTOS_TEAM_1+($infoX["A"]*6)+($infoX["C1"]*1)+($infoX["C2"]*2)+($infoX["C3"]*3)+($infoX["SA"]*2)+($infoX["I4"]*4);
         }
         
         $sql = sprintf("SELECT * FROM cedulas WHERE ID_ROL_JUEGO =%s and ID_ROSTER=%s",$_POST['ID_ROL'],$ID_ROSTER_TEAM_2); 

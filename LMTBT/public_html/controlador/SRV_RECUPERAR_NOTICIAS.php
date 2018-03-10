@@ -5,9 +5,12 @@
     $bandera = true;
     $conexion = $db->getConnection();
     $linea = $_POST['fila'];
-    $limit=5;
+    $limit=4;
+    // cargamos las noticias con un maximo de 4 segun la fila que se haya seleccionado
+    $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS DESC LIMIT ".$linea.",4";
     
-    $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS DESC LIMIT ".$linea.",5";
+    
+    
     if($resultado = $conexion->query($sql)){
        
         $html="";     
@@ -15,7 +18,7 @@
             $numeroComent=0;
             $html="";  
             $id_noticia = $fila["ID_NOTICIAS"];
-            
+            //añadimo el numero de comentarios que posee la noticia 
             $sqlComent = "SELECT * FROM comentarios WHERE ID_NOTICIA =".$id_noticia;
             if($resultadoC = $conexion->query( $sqlComent)){
                 $numeroComent=mysqli_num_rows($resultadoC);
@@ -23,6 +26,7 @@
             
             
             //$noticia = "<li>";
+            // obtenemos la imagen que se mostrara en la vista de la noticia en el index
             $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id_noticia LIMIT 1";        
          
  
@@ -31,16 +35,25 @@
                    // $html.="<div class='container'>";
                         $html.="<a class='news' href='VER_NOTICIA.html'  onclick='enviarIdNoticia(".$id_noticia. ")'><h2>".$fila["TITULO"]."</h2></a>";      
                 $html.="</div>";
+                
+             $html.="<div class='panel-body'>";     
+             $html.="<div class='media'>";
+             $html.=" <div class='media-left'>";    
+                
+                
             if($resultado2 = $conexion->query($sql2)){
                 $fila2 = $resultado2->fetch_assoc(); 
                
                 $noticias["IMAGEN_NOTICIA"] = base64_encode($fila2["IMAGEN"]);
-                $html.="<div class='panel-body'>";     
-                    $html.="<div class='media'>";
-                        $html.=" <div class='media-left'>";
-                            $html.=  "<div class='blog-img'>"."<img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='media-object img-rounded img-responsive' style='height:150px; max-width:300px; ' alt=''/>"."</div>"; 
-                        $html.="</div>";
+               try{
+                            $html.=  "<div class='blog-img'><img src='data:image/png;base64," . $noticias["IMAGEN_NOTICIA"] . "'  class='media-object img-rounded img-responsive' style='height:150px; max-width:300px; ' alt=''/>"."</div>"; 
+                  }catch (Exception $e) {
+ $html.="<div>error</div>";
+}
+
+  
             }
+                $html.="</div>";
                     
                         $html.=" <div class='media-body'>";
                             $html.="<h4 class='media-heading'>".$fila["FECHA_PUBLICACION"]."</h4>";
@@ -58,7 +71,7 @@
             echo $html;
        
             }
-            //pagination
+            //pagination de la noticia
             
             $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS ";
             if($resultado = $conexion->query($sql)){
