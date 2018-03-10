@@ -1,7 +1,4 @@
 <?php
-    /*ESTE ARCHIVO ES DE JAVIER, Y LO USA EN TODOS SUS PHP.
-      SI USTEDES LO QUIEREN USAR, DEBEN ENTENDERLO PRIMERO Y RESOLVER SUS DUDAS CON ÉL.*/
-    
     date_default_timezone_set('America/Mexico_City');
     
     /**
@@ -74,7 +71,7 @@
     }
     
     /**
-     * Permite leer una imagen y obtener su contenido listo para subirlo a la base de datos.
+     * Permite leer una imagen y obtener su contenido, listo para subirlo a la base de datos.
      * Cuando ejecuta esto, se da por entendido que el archivo se subió.
      * En caso de error se retorna 'false' y se lanza un error (el #500).
      * 
@@ -243,10 +240,21 @@
         }
     }
     
+    /**
+     * Inicia una transacción en la base de datos.
+     * Todos los cambios que haga después de llamar a esta función, no serán permanentes hasta que cierre la transacción.
+     * @param mysqli $mysqli Conexión a la base de datos.
+     */
     function iniciar_transaccion($mysqli){
         $mysqli->autocommit(FALSE);
     }
     
+    /**
+     * Cierra la transacción en la base de datos.
+     * Hace efectivos o deshace los cambios hechos 
+     * @param type $mysqli
+     * @param type $guardar_cambios
+     */
     function cerrar_transaccion($mysqli, $guardar_cambios){
         if($guardar_cambios){
             if(!$mysqli->commit()){
