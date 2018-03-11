@@ -94,32 +94,34 @@ function irAPaginaDeDetallesDeRoster(id_roster){
     document.location.href = "ROSTERS_DETALLES.html";
 }
 
-// Para eliminar un equipo, puede ser que el equipo este participando en un torneo actualmente, de ser asi no se podra eliminar, de lo contrario si.
+// Al eliminar un equipo, puede ser que este esté participando en un torneo actualmente, de ser asi no se podra eliminar, de lo contrario si.
 function EliminarEquipo() {
-    if (confirm('¿Está seguro de que desea eliminar este equipo?')) {
-        $.ajax({
-            url: "../controlador/SRV_EQUIPOS_ELIMINACION.php",
-            data: {tipo: "eliminar_equipo",
-                id_equipo: id
-            },
-            type: "POST",
-            datatype: "text",
-            beforeSend: function (xhr) {},
-            success: function (respuesta) {
-                if (respuesta == "ok") {
-                    alert("El equipo fue eliminado con éxito.");
-                    document.location.href = "EQUIPOS_VER.html";
-                } else if (respuesta == "no") {
-                    alert("El equipo no puede ser eliminado ya que participa en un torneo actualmente");
-                    document.location.href = "EQUIPOS_VER.html";
-                } else {
-                    alert(respuesta);
-                    document.location.href = "index.php";
-                }
-            },
-            error: function (jqXHR, textStatus) {}
-        });
-    } else {
-        document.location.href = "EQUIPOS_VER.html";
-    }
+	// al seleccionar el boton de eliminar equipo, se mostrara una ventana de confirmación para el usuario
+	if (confirm('¿Está seguro de que desea eliminar este equipo?')) {
+		$.ajax({
+			url: "../controlador/SRV_EQUIPOS_ELIMINACION.php",
+			data: {tipo: "eliminar_equipo",
+				id_equipo: id
+			},
+			type: "POST",
+			datatype: "text",
+			beforeSend: function (xhr) {},
+			success: function (respuesta) {
+				// se notifica al usuario si el equipo pudo ser eliminado o no y se redirecciona a la página  correspondiente
+				if (respuesta == "ok") {
+					alert("El equipo fue eliminado con éxito.");
+					document.location.href = "EQUIPOS_VER.html";
+				} else if (respuesta == "no") {
+					alert("El equipo no puede ser eliminado ya que participa en un torneo actualmente");
+					document.location.href = "EQUIPOS_VER.html";
+				} else {
+					alert(respuesta);
+					document.location.href = "index.php";
+				}
+			},
+			error: function (jqXHR, textStatus) {}
+		});
+	} else {
+		document.location.href = "EQUIPOS_VER.html";
+	}
 }

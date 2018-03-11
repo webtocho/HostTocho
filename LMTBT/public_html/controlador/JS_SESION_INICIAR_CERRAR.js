@@ -1,7 +1,10 @@
 $(document).ready(function () {
 	iniciar_cerrar_session();
 });
-// Cuando el usuario inicia SESSION cambia la funcion del botón de ingresar por cerrar sesion y viceversa
+
+/**
+ * Cuando el usuario inicia SESSION cambia la funcion del botón de ingresar por cerrar sesion y viceversa
+ */
 function iniciar_cerrar_session(){
 	$.ajax({
 		url: "../controlador/SRV_CONSULTA_LOGIN_LOGOUT.php",

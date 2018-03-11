@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+// asignar la fecha correspondiente a nuestro pais
 date_default_timezone_set('America/Mexico_City');
 
 include("SRV_CONEXION.php");
@@ -157,7 +158,8 @@ switch ($_POST['tipo']) {
 			}
 			$color_jornada = 'style="background-color:' . $color . '"';
 			// Terminar de asignar color
-
+			
+			// si uno de los equipos resulta ser BAI entonces el boton de generar cedula será bloqueado.
 			$bloquear_funciones_equipo_bai = 'enabled';
 			if ($roles['ID_EQUIPO_1'] == 0) {
 				$bloquear_funciones_equipo_bai = 'disabled';
@@ -165,6 +167,7 @@ switch ($_POST['tipo']) {
 			if ($roles['ID_EQUIPO_2'] == 0) {
 				$bloquear_funciones_equipo_bai = 'disabled';
 			}
+			// concatenamos los datos en la variable que será retornada por el servidor
 			$roles_juego .= "<tr>"
 					. "<td " . $color_jornada . "><center><h6>" . $roles['JORNADA'] . "</h6></center></td>"
 					. "<td " . $color_jornada . "><center><h6>" . $roles['CATEGORIA'] . "</h6></center></td>"
