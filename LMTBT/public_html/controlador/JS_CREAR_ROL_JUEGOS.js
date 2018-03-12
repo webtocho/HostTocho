@@ -1,5 +1,6 @@
 var equipos=[];
 function Get_Teams(id_convocatoria){
+    //Funcion para obtener los equipos inscritos a una convocatoria
     var team;
     $.ajax({
         url: "../controlador/SRV_OBTENER_EQUIPOS_INSCRITOS_ROL.php",
@@ -25,11 +26,13 @@ function Get_Teams(id_convocatoria){
         }       
     });
 }
-function CREAR_ROL_JUEGOS(id_convocatoria){//es funcion es la que se debe llamar cuando cierre la convocatoria, recibe de parametro el id de la convocatoria
+function CREAR_ROL_JUEGOS(id_convocatoria){
+    //Funcion que se llama cuando cierre la convocatoria, recibe de parametro el id de la convocatoria
     Get_Teams(id_convocatoria);
     setTimeout(function(){Made_Round_Teams(id_convocatoria);},1000);
 }
 function Made_Round_Teams(id_convocatoria){
+    //Funcion que genera el round robin
    if(equipos!=null){
        var auxT=equipos.length;
        var impar=auxT%2;
@@ -68,6 +71,7 @@ function Made_Round_Teams(id_convocatoria){
 }
 
 function Insert_Round(locales,visita,tam,id_convocatoria){
+    //Funcion que guarda el round robin generado
     if(equipos!=null){
         var jsonLocal = JSON.stringify(locales);
         var jsonVisita = JSON.stringify(visita);

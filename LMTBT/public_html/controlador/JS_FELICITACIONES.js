@@ -4,6 +4,7 @@ $(document).ready(function() {
 });
 
 function felicitaciones(){
+    //Funcion para mostrar a los cumpleañeros del dia en la pagina principal
 	$.ajax({
         url: "../controlador/SRV_FELICITACIONES_OBTENER.php",
         success: function (info) {
@@ -46,6 +47,7 @@ function felicitaciones(){
 }
 
 function NextGames(){
+    //Funcion para cargar los siguientes 5 partidos (mas cercanos sin jugar aun) en la pagina principal
     $.ajax({
         url: "../controlador/SRV_PROXIMOS_PARTIDOS.php",
         success: function (res) {

@@ -1,9 +1,14 @@
+// Controlador de la página para que el administrador gestione las cuentas (haga búsquedas y pueda modificar las cuentas que desee).
+
 $(document).ready(function() {
-    
+    //Hacemos una petición para validar que el usuario que abra esta página sea un administrador.
     $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res) {
             switch(parseInt(res)){
                 case 0:
+                    //El usuario si es administrador.
+                    
+                    //Se carga en un iFrame la página "CUENTAS_BUSQUEDA" para buscar entre las cuentas.
                     var frame = document.getElementById("busqueda");
                     var onload = setInterval(function() {
                         var frameDoc = frame.contentDocument || frame.contentWindow.document;
@@ -28,6 +33,11 @@ $(document).ready(function() {
         });
 });
 
+/**
+ * Redirecciona a la página para editar una cuenta.
+ * Esta funcion se manda a llamar desde el iFrame.
+ * @param {int} idUsuario El ID de la cuenta que se desea editar.
+ */
 function irADetalles(idUsuario){
     sessionStorage.setItem("CUENTAS_DETALLES", idUsuario);
     var win = window.open("CUENTAS_DETALLES.html");

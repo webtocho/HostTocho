@@ -7,7 +7,9 @@
 idCategoria=0; 
 
 $( document ).ready(function() {
-      $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
+    // con este metodo recuperamos el tipo de sesion iniciada, si la sesion no es de tipo administrador
+    // expulsaremos al usuario que haya entrado a la pagina
+    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res) {
             switch(parseInt(res)){
                 case 0:
@@ -25,8 +27,9 @@ $( document ).ready(function() {
 }); 
  
  
- 
+ // esta funcion carga todas las categorias que existan en la base de datos
 function cargarCategorias(){
+    
        $.ajax({
             url: "../controlador/SRV_CATEGORIAS_OBTENER_ELIMINAR.php",
             data: {tipo: "get"},
@@ -41,6 +44,9 @@ function cargarCategorias(){
             }
         });
 }
+
+// esta funcion elimina la categoria que este guardada en la variable idCategoria,
+//esta variable tiene un set llamado seIdCategoria
 function eliminarCategoria(){
       $.ajax({
             url: "../controlador/SRV_CATEGORIAS_OBTENER_ELIMINAR.php",
@@ -64,6 +70,7 @@ function eliminarCategoria(){
       
 }
 
+// con este metodo se guarda el valor de la categoria seleccionada 
 function setIdCategoria(id, nombre){
     
     idCategoria =id;
@@ -71,6 +78,8 @@ function setIdCategoria(id, nombre){
     $('#categoriaNombre').append(nombre);
     
 }
+
+//esta funcion obtiene el nombre de la categoria desde el input nombreCategoria y lo inserta en la base de datos
 function agregarCategoria(){
     nombre = $('#nombreCategoria').val().trim();
     

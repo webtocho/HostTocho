@@ -14,21 +14,26 @@ switch ($_POST['tipo']) {
 		$resultado = $db->GetResult();
 
 		if (count($resultado) > 0) {
+			// si existen registros viejos del equipo entonces se prosigue a su eliminación 
 			$case = 0;
 		} else {
 			$case = 1;
+			// el equipo que se decea eliminar puede ser tanto equipo 1 como equipo 2, dependiendo de como se encuentren asignados en la tabla de roles de juego 
+			// para ello se verifica si el ID de ese equipo existe en una de las dos columnas de la tabla
 			$db->setQuery(sprintf("SELECT ID_EQUIPO_1, ID_EQUIPO_2 FROM roles_juego INNER JOIN convocatoria ON roles_juego.ID_CONVOCATORIA = convocatoria.ID_CONVOCATORIA WHERE ID_EQUIPO_1 = %s OR ID_EQUIPO_2 = %s ", $_POST['id_equipo'], $_POST['id_equipo']));
 			$resultado = $db->GetResult();
+			// si existen registros viejos del equipo entonces se prosigue a su eliminación 
 			if (count($resultado) == 0) {
 				$case = 2;
 			}
 		}
-
+		
 		if ($case == 0 || $case == 2) {
 			// creamos una transaccion y al tratarse de muchas cunsultas, en algun momento puede ocurrir algun fallo y gracias a la transaccion se podra revertir aquellas consultas que se habian ejecutado con exito
+			// evitando la perdida de datos y el desorden el la base datos.
 			$conexion = $db->getConnection();
 			$conexion->autocommit(FALSE);
-
+			// las consultas se preparan y se van ejecutando una tras otra si cada una de ellas de vuelve una ejecución exitosa, de lo contrario de detienen y se revierte todo
 			$consulta = $conexion->prepare('DELETE participantes_rosters FROM participantes_rosters INNER JOIN rosters ON participantes_rosters.ID_ROSTER = rosters.ID_ROSTER WHERE rosters.ID_EQUIPO =  ? ');
 			$consulta->bind_param("i", $_POST['id_equipo']);
 			if ($consulta->execute()) {

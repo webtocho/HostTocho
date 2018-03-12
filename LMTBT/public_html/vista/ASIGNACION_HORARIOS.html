@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+   To change this license header, choose License Headers in Project Properties.
+   To change this template file, choose Tools | Templates
+   and open the template in the editor.
 -->
 <html>
     <head>
         <title>Asignacion de Horarios</title>
         <meta charset="UTF-8">
-          <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
-          <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css" />
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-          <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
-          <link type="text/css" rel="stylesheet" href="css/materialize.css" />
-          <link href="css/style_asiganacion_de_horarios.css" rel='stylesheet' type='text/css'/>
-          <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
+        <link type="text/css" rel="stylesheet" href="css/materialize.css" />
+        <link href="css/style_asiganacion_de_horarios.css" rel='stylesheet' type='text/css'/>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_materialize.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_ASIGNACION_HORARIOS.js"></script>
         <script type="text/javascript" src="../controlador/JS_CARACTERISTICAS.js"></script>
@@ -26,16 +26,18 @@ and open the template in the editor.
         <br>
         <div class="container"  >
             <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-            <center><h4 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;" >Asignacion de Horarios</h4></center>
+            <center>
+                <h4 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;" >Asignacion de Horarios</h4>
+            </center>
             <br>
             <br>
             <p>Torneo :</p>
-             <div class="input-field col s12">                
+            <div class="input-field col s12">                
                 <select id="torneo"></select>  
               </div>
   		<br><br>          
             <div style="padding:0cm 0cm 0cm 0cm;">
-            <table  class="table table-bordered table-dark" id="roles">
+            <table  class="table table-bordered table-dark table-responsive" id="roles">
                 <thead>
                   <tr>
                       <th><center>EQUIPO</center></th>
@@ -53,9 +55,53 @@ and open the template in the editor.
                 </tbody>
             </table>
             </div>
+            <br><br>          
+            <div style="padding:0cm 0cm 0cm 0cm;">
+                <table  class="table table-bordered table-dark" id="roles">
+                    <thead>
+                        <tr>
+                            <th><center>EQUIPO</center></th>
+                            <th><center>VS</center></th>
+                            <th><center>EQUIPO</center></th>
+                            <th><center>FECHA</center></th>
+                            <th><center>HORA</center></th>
+                            <th><center>CAMPO</center></th>
+                            <th></th>
+                            <th><center>HORARIO</center></th>
+                        </tr>
+                    </thead>
+                    <tbody id="Rol">
+                    </tbody>
+                </table>
+            </div>
+            <!--////////////////////////////////////////////////////////////-->
+            <!-- Modal Trigger -->
+
+            <div id="Modal01" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <br><br><br><br><br>
+                        <center><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 150px;width: 150px;"/></center>
+                        <center><h4 class="modal-title">Asignar horarios</h4></center>
+                        <div class="modal-body">
+                            <label for="rol" class="posicion">ID Rol de Juego<br></label>
+                            <input  type="text" class="form-control" name="rol" id="rol" >
+                            <label for="fecha" class="posicion">Fecha:<br></label>
+                            <input  type="date" class="form-control" name="fecha" id="fecha" >
+                            <label for="hora" class="posicion">Hora:<br></label>
+                            <input  type="time" class="form-control" name="hora" id="hora" >
+                            <label for="campo" class="posicion">Campo:<br></label>
+                            <input  type="text" class="form-control" name="campo" id="campo" >
+                        </div>
+                        <div class="modal-footer">
+                            <button style="position:absolute;  top: 90%;left: 10%;" type="button" class="btn btn-primary" onclick="GuardarHorarioRolJuego()">Guardar</button>
+                            <button style="position:absolute;  top: 90%;left: 60%;" type="button" class="btn btn-primary" onclick="CloseModal()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--////////////////////////////////////////////////////////////-->
         </div>
         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
-         
-    
     </body>
 </html>

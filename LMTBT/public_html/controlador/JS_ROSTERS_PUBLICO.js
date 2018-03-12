@@ -2,6 +2,7 @@ $(document).ready(function() {
     CargarEquipos();
 });
 function CargarEquipos(){
+    //Funcion para cargar los equipos (para mostrar al publico)
     $.ajax({
         url: "../controlador/SRV_PUBLICO_EQUIPOS_CARGAR.php",
         beforeSend: function (xhr){
@@ -20,6 +21,7 @@ function CargarEquipos(){
     });
 }
 function CargarRoster(id){
+    //Funcion para cargar los rosters de un equipo
     $.ajax({
         data: {id_equipo:id},
         url: "../controlador/SRV_PUBLICO_ROSTER_CARGAR.php",
@@ -44,6 +46,7 @@ function CargarRoster(id){
     });
 }
 function CargarDatos(id){
+    //Funcion para cargar los datos de un roster
     $.ajax({
         data: {id_roster:id},
         url: "../controlador/SRV_PUBLICO_DATOS_CARGAR.php",

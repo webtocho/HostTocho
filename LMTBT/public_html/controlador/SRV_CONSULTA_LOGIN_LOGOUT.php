@@ -7,19 +7,21 @@ $db = new SRV_CONEXION();
 $tipo =$_POST['tipo'];
 
 switch ($tipo) {
+	/*
+	 * Al iniciar sesion se asignan los datos del usuario a las variables de SESSION**/
 	case "login":
-		// preparar una consilta para recuperar los datos del usuario para la SESSION
+		// preparar una consilta para recuperar los datos del usuario para las variables de SESSION
 		$consulta = $db->getConnection()->prepare("SELECT ID_USUARIO, CORREO, TIPO_USUARIO FROM usuarios WHERE CORREO = ?  AND PASSWORD = ?");
 		$consulta->bind_param("ss", $_POST['e_mail'], $_POST['password']);
-		//si al recuperar la informacion todo sale bien entonces asociamos los datos y le asignamos valores a las variables de SESSION
-		// de lo contrario el correo y la contraseña con la que inician sessionson invalidos.
+		//si la consulta se ejecuta correctamente entonces asociamos los datos y le asignamos valores a las variables de SESSION
+		// de lo contrario el correo y la contraseña con la que el usuario inicio session son invalidos.
 		if ($consulta->execute()){
-			$res = $consulta->get_result();
-			$info = $res->fetch_assoc();
-			if ($info['ID_USUARIO']){
-				$_SESSION['ID_USUARIO'] = $info['ID_USUARIO'];
-				$_SESSION['CORREO'] = $info['CORREO'];
-				$_SESSION['TIPO_USUARIO'] = $info['TIPO_USUARIO'];
+			$resultado = $consulta->get_result();
+			$informacion = $resultado->fetch_assoc();
+			if ($informacion['ID_USUARIO']){
+				$_SESSION['ID_USUARIO'] = $informacion['ID_USUARIO'];
+				$_SESSION['CORREO'] = $informacion['CORREO'];
+				$_SESSION['TIPO_USUARIO'] = $informacion['TIPO_USUARIO'];
 				echo "ok";
 			} else {
 				echo "Tus datos son inválidos";
@@ -41,6 +43,9 @@ switch ($tipo) {
 		echo "ok";
 		break;
 	case "iniciar_cerrar_session":
+		/*
+		 * validamos si existe la sesion, en caso de existir el servidor responde "ok", lo que significa que la funcionalidad del boton de iniciar sesion cambiaria a cerrar sesion
+		 * **/
 		if (isset($_SESSION['ID_USUARIO'])) {
 			echo "ok";
 		} else {

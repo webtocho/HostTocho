@@ -15,6 +15,7 @@ function mostrar_categorias_al_registrar_convocatoria() {
 		datatype: "text",
 		beforeSend: function (xhr) {},
 		success: function (respuesta){
+			// si ocurre un error se notifica al usuario
 			if (respuesta != "Ha ocurrido un error al recuperar la informacion solicitada. Intente mas tarde porfavor.") {
 				$('#categoria').html(respuesta);
 			} else {

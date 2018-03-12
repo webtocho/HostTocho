@@ -6,7 +6,7 @@
     $conexion = $db->getConnection();
     $linea = $_POST['fila'];
     $limit=4;
-    
+    // cargamos las noticias con un maximo de 4 segun la fila que se haya seleccionado
     $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS DESC LIMIT ".$linea.",4";
     
     
@@ -18,7 +18,7 @@
             $numeroComent=0;
             $html="";  
             $id_noticia = $fila["ID_NOTICIAS"];
-            
+            //añadimo el numero de comentarios que posee la noticia 
             $sqlComent = "SELECT * FROM comentarios WHERE ID_NOTICIA =".$id_noticia;
             if($resultadoC = $conexion->query( $sqlComent)){
                 $numeroComent=mysqli_num_rows($resultadoC);
@@ -26,6 +26,7 @@
             
             
             //$noticia = "<li>";
+            // obtenemos la imagen que se mostrara en la vista de la noticia en el index
             $sql2 = "SELECT * FROM multimedia WHERE ID_NOTICIAS = $id_noticia LIMIT 1";        
          
  
@@ -70,7 +71,7 @@
             echo $html;
        
             }
-            //pagination
+            //pagination de la noticia
             
             $sql = "SELECT * FROM noticias ORDER BY ID_NOTICIAS ";
             if($resultado = $conexion->query($sql)){

@@ -1,4 +1,5 @@
 function CargarConvocatorias(estado){
+    //Funcion para cargar las convocatorias
 	$.ajax({
 		url: "../controlador/SRV_OBTENER_CONVOCATORIAS_TABLA_POSICIONES.php",
 		data: {tipo : estado },
@@ -23,6 +24,7 @@ function CargarConvocatorias(estado){
 }
 
 function CargarEquipos(id_convocatoria){
+    //Funcion para cargar los rosters inscritos a una convocatoria
 	$.ajax({
 		url: "../controlador/SRV_ESTADISTICAS_OBTENER_EQUIPOS.php",
 		data: {convocatoria : id_convocatoria },
@@ -40,6 +42,7 @@ function CargarEquipos(id_convocatoria){
 }
 
 function CargarEstadisticas(id_roster){
+    //funcion para cargar las estadistcas de un roster
 	$.ajax({
 		url: "../controlador/SRV_ESTADISTICAS_OBTENER_RESULTADOS.php",
 		data: {roster : id_roster },
@@ -57,6 +60,7 @@ function CargarEstadisticas(id_roster){
 }
 
 function MostrarBotones(value){
+    //Funcion para mostrar botones para elegir por partido o general
 	$('#BotonGeneral').val(value);
 	$('#BotonGeneral').css("display","block");
 	$('#BotonPartidos').val(value);
@@ -66,6 +70,7 @@ function MostrarBotones(value){
 }
 
 function CargarPartidos(value){
+    //FUncion para cargar las estadisticas generales de un roster
 	var convoc=$('#Select_Torneos').val();
 	$.ajax({
 		url: "../controlador/SRV_ESTADISTICAS_OBTENER_PARTIDOS.php",
@@ -87,6 +92,7 @@ function CargarPartidos(value){
 }
 
 function ResultadoPartido(value){
+    //Funcion para cargar las estadisticas de un roster (de un solo partido)
 	var ros=$('#BotonPartidos').val();
 	$.ajax({
 		url: "../controlador/SRV_ESTADISTICAS_OBTENER_RESULTADOS_PARTIDO.php",

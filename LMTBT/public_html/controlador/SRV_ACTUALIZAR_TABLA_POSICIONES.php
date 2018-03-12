@@ -26,12 +26,12 @@ $result = $conn->query($stmt);
                     //si un equipo ya esta registrado en la tabla posiciones no hacemos nada mas
                 }
                 else{
-                    //si un equipo no esta en la tabla lo agregamos, el filtro en la tabal es por convocatoria
+                    //si un equipo no esta en la tabla lo agregamos, el filtro en la tabla es por convocatoria
 
                     $insertar="INSERT INTO tabla_posiciones VALUES(0,0,0,0,0,0,0,".$id_convocatoria.",".$row['ID_EQUIPO'].")";
                     $conn->query($insertar);
                 }
-                    //incrementamos el total de equipso registrados en la convocatoria
+                    //incrementamos el total de equipos registrados en la convocatoria
                     $total++;
                 
             }
@@ -55,7 +55,7 @@ $result = $conn->query($stmt);
                             $pc=0;
                             $dif=0;
                             $flag=0;
-                            //Sacamos todos los valores para Tabla Posiciones
+                            //Sacamos todos los valores para la Tabla Posiciones
                             while($row2 = mysqli_fetch_array($result2)){
                             $id_equipo_ganador=$row2['ID_EQUIPO_GANADOR'];
                             if($id_equipo_ganador==$equipos[$i]) {$pg++;}//partidos ganados
