@@ -3,62 +3,82 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//funcion que se ejecutar cuando se cargue la pagina
    $(document).ready(function() {
+       //funcion que obtendra los integrantes de cada equipo con sus respectivas anotaciones
        llenar_tablas();   
     });
     
+    
+    //variables que contendran las anotaciones de cada jugador
+    var TablaTeam1;
+    var TablaTeam2;
+   //variables que contendran el numero de integrantes de cada equipo
+    var NumeroDeIntegrasteDelEquipo1;
+    var NumeroDeIntegrasteDelEquipo2;
+    //variable que almacenara la id del rol del juego
     var ROL_JUEGO;
+    //variable que almacenara la id del rol del roster del equipo 1
     var ID_ROSTER_team1;
+    //variable que almacenara la id del rol del roster del equipo 2
     var ID_ROSTER_team2;
-   var ID_DEL_JUGADOR;
-   var bandera;
-   var bandera2=false;
-   var ID_CONVOCSTORIA;
-   
+    //variable que almacenara la id de la convocatoria
+    var ID_CONVOCSTORIA;
+   //funcion que obtendra los integrantes de cada equipo con sus respectivas anotaciones
 function llenar_tablas(){
-       /*sessionStorage.setItem("id_equipo_1", 1);
-        sessionStorage.setItem("id_equipo_2", 2);
-        sessionStorage.setItem("id_rol_juego", 1);
-        sessionStorage.setItem("id_convocatoria", 1);*/
-        
+        //Recupero la id de lequipo 1 de un variables de sessionStorage y la almacenoen la variable team1
        var team1 = sessionStorage.getItem("id_equipo_1");
+       //Recupero la id de lequipo 2 de un variables  de sessionStorage y la almacenoen la variable team2
        var team2 = sessionStorage.getItem("id_equipo_2");
-       var rolGame =sessionStorage.getItem("id_rol_juego");
+        //Recupero la id del rol del juego de un variables  de sessionStorage y la almacenoen la variable ROL_JUEGO
+        ROL_JUEGO =sessionStorage.getItem("id_rol_juego");
+         //Recupero la id del rol del juego de un variables  de sessionStorage y la almacenoen la variable ROL_JUEGO
        ID_CONVOCSTORIA=sessionStorage.getItem("id_convocatoria");
-      ROL_JUEGO=rolGame;
+       //ajax que hace la petion al php para recuperar el nombre del equipo 1
        $.ajax({
+           //url al php que donde se hace la peticioon
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
+          //aqui decimos a cual case ingresara del php
             tipo:"ComprobarLogin",
         },
+        //le decimos que los datos lo envie de tipo post y de tipo texto
         type: "POST",
         datatype: "text",
+        //esto se ejecutara si la peticion fue exitosa
         success: function(resultado) {
-             if(resultado==false){
-                 window.location.replace("index.php");
-             }
         },
+        //esto se ejecutara si hubo un error
         error: function(jqXHR, textStatus) {
            mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER EL NOMBRE DEL EQUIPO","incorrecto");
         }
     });
+         //ajax que hace la petion al php para recuperar el nombre del equipo 1
        $.ajax({
+             //url al php que donde se hace la peticioon 1
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
+              //aqui decimos a cual case ingresara del php
             tipo:"Obtener_nombre_equipo",
+              //le enviamos el id del equipo 1
             team:team1,
         },
+         //le decimos que los datos lo envie de tipo post y de tipo texto
         type: "POST",
         datatype: "text",
-        //  async:false,
+         //lo que se ejecutara antes de hacer la patiion 
         beforeSend: function (xhr) {
+             //ponemos una ventana mientras se hace la peticion
             $('#esperando').modal();
         },
+         //esto se ejecutara si la peticion fue exitosa 
         success: function(resultado) {
+            //vacias la tambla del equipo 1 y agregamos lo que nos respondio el php
             $('#label_equipo_1').empty(); //Vaciamos el contenido de la tabla
             $('#label_equipo_1').append(resultado);
              
         },
+         //esto se ejecutara si hubo un error
         error: function(jqXHR, textStatus) {
            mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER EL NOMBRE DEL EQUIPO","incorrecto");
         }
@@ -87,13 +107,18 @@ function llenar_tablas(){
         data:{
             tipo:"Obtener_jugador_equipo",
             team:team1,
-             ROL:rolGame,
+             ROL:ROL_JUEGO,
+             TIPO:"TEAM1",
              ID_CONVOCSTORIA:ID_CONVOCSTORIA,
         },
         type: "POST",
         datatype: "text",
         success: function(resultado) {
-            $('#formulario_equipo_1').append(resultado);
+             contenido = JSON.parse(resultado);
+            $('#formulario_equipo_1').empty(); //Vaciamos el contenido de la tabla
+            $('#formulario_equipo_1').append(contenido[0]);
+            NumeroDeIntegrasteDelEquipo1=contenido[2];
+            TablaTeam1=contenido[1];
         },
         error: function(jqXHR, textStatus) {
           mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER LOS JUGADORES DEL EQUIPO","incorrecto");
@@ -104,15 +129,20 @@ function llenar_tablas(){
         data:{
             tipo:"Obtener_jugador_equipo",
             team:team2,
-            ROL:rolGame,
+            TIPO:"TEAM2",
+            ROL:ROL_JUEGO,
              ID_CONVOCSTORIA:ID_CONVOCSTORIA,
         },
         type: "POST",
         datatype: "text",
           // // async:false,
         success: function(resultado) {
-           // $('#formulario_equipo_1').empty(); //Vaciamos el contenido de la tabla
-            $('#formulario_equipo_2').append(resultado);
+             contenido = JSON.parse(resultado);
+            $('#formulario_equipo_2').empty(); //Vaciamos el contenido de la tabla
+            $('#formulario_equipo_2').append(contenido[0]);
+            NumeroDeIntegrasteDelEquipo2=contenido[2];
+             TablaTeam2=contenido[1];
+            //console.log(contenido[1]);
              $('#esperando').modal('hide');
         },
         error: function(jqXHR, textStatus) {
@@ -143,249 +173,100 @@ function llenar_tablas(){
     });
     }
 
-
-
-
-
-function guardarT(id,ID_USUARIO,ID_ROSTER){
-    
-    var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarT",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-            ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          
-        success: function(resultado) {
-          
-        },
-        error: function(jqXHR, textStatus) {
-           mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarT(ID_USUARIO,team,bolean,id){
+    var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+     
+        TablaTeam1[x][1]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+       
+        TablaTeam2[x][1]=document.getElementById(id).value;
+    }
 }
-function guardarS(id,ID_USUARIO,ID_ROSTER){
-    
-    var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarS",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-          mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarS(ID_USUARIO,team,bolean,id){
+   var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][2]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][2]=document.getElementById(id).value;
+    }
 }
-
-function guardarI(id,ID_USUARIO,ID_ROSTER){
-       var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarI",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) { 
-        },
-        error: function(jqXHR, textStatus) {
-          mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarI(ID_USUARIO,team,bolean,id){
+  var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][3]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][3]=document.getElementById(id).value;
+    }
 }
-function guardarA(id,ID_USUARIO,ID_ROSTER){
-         var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarA",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-          mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarA(ID_USUARIO,team,bolean,id){
+     var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][4]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][4]=document.getElementById(id).value;
+    }
 }
-function guardarC1(id,ID_USUARIO,ID_ROSTER){
-         var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarC1",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarC1(ID_USUARIO,team,bolean,id){
+     var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][5]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][5]=document.getElementById(id).value;
+    }
 }
-function guardarC2(id,ID_USUARIO,ID_ROSTER){
-         var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarC2",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarC2(ID_USUARIO,team,bolean,id){
+  var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][6]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][6]=document.getElementById(id).value;
+    }
 }
-function guardarC3(id,ID_USUARIO,ID_ROSTER){
-         var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarC3",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarC3(ID_USUARIO,team,bolean,id){
+    var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][7]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][7]=document.getElementById(id).value;
+    }
 }
-function guardarPA(id,ID_USUARIO,ID_ROSTER){
-         var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarPA",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarPA(ID_USUARIO,team,bolean,id){
+     var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][8]=document.getElementById(id).value;
+      
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][8]=document.getElementById(id).value;
+    }
 }
-function guardarSA(id,ID_USUARIO,ID_ROSTER){
-         var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarSA",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarSA(ID_USUARIO,team,bolean,id){
+       var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][9]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][9]=document.getElementById(id).value;
+    }
 }
-function guardarI4(id,ID_USUARIO,ID_ROSTER){
-         var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarI4",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-         mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarI4(ID_USUARIO,team,bolean,id){
+     var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][10]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][10]=document.getElementById(id).value;
+    }
 }
-function guardarPT(id,ID_USUARIO,ID_ROSTER){
-        var dato=document.getElementById(id).value;
-          $.ajax({ 
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
-        data:{
-            tipo:"guardarPT",
-            DATO:dato,
-            ID_USUARIO:ID_USUARIO,
-             ROL_JUEGO:ROL_JUEGO,
-            ID_ROSTER:ID_ROSTER,
-        },
-        type: "POST",
-        datatype: "text",
-          // // async:false,
-        success: function(resultado) {
-        },
-        error: function(jqXHR, textStatus) {
-          mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, AL GUARDAR EL DATO","incorrecto");
-        }
-    });
+function guardarPT(ID_USUARIO,team,bolean,id){
+     var x=buscar(ID_USUARIO,team);
+    if(team=="TEAM1"){
+        TablaTeam1[x][11]=document.getElementById(id).value;
+    }else if(team=="TEAM2"){
+         TablaTeam2[x][11]=document.getElementById(id).value;
+    }
 }
 
 
 function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
-   // alert(ID_ROL+"\n"+ID_TEAM_1+"\n"+ID_TEAM_2);
       $.ajax({ 
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
@@ -393,15 +274,22 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
             ID_ROL:ID_ROL,
             TEAM1:ID_TEAM_1,
             TEAM2:ID_TEAM_2,
+            TablaTeam1:TablaTeam1,
+            TablaTeam2:TablaTeam2,
+            NumeroDeIntegrasteDelEquipo1:NumeroDeIntegrasteDelEquipo1,
+            NumeroDeIntegrasteDelEquipo2:NumeroDeIntegrasteDelEquipo2,
             ID_CONVOCSTORIA:ID_CONVOCSTORIA,
         },
         type: "POST",
         datatype: "text",
           // // async:false,
         success: function(resultado) {
-         
-          if(resultado=="ok"){
+           
+          if(resultado==true){
                mostrarAlerta("DATOS GUARDADOS CORRECTAMENTE.","correcto");
+               llenar_tablas();
+          }else{
+               mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO GUARDAR LOS DATOS.","incorrecto");
           }
         },
         error: function(jqXHR, textStatus) {
@@ -411,88 +299,112 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
     ActualizarEstadisticas(ID_CONVOCSTORIA);
 }
 
-function add(tipo,id,idJugador,idRoster){
-   // alert(tipo+"\n"+id+"\n"+idJugador+"\n"+idRoster);
+function add(tipo,id,idJugador,team){
+   // alert(tipo+"\n"+id+"\n"+idJugador+"\n"+team);
     var dato=document.getElementById(id).value;
 	dato++;
 	document.getElementById(id).value=dato;
         switch(tipo){
             case "T":
-                guardarT(id,idJugador,idRoster);
+                guardarT(idJugador,team,true,id);
             break;
             case "S":
-                guardarS(id,idJugador,idRoster);
+                guardarS(idJugador,team,true,id);
             break;
             case "I":
-              guardarI(id,idJugador,idRoster);
+              guardarI(idJugador,team,true,id);
             break;
             case "A":
-                guardarA(id,idJugador,idRoster);
+                guardarA(idJugador,team,true,id);
             break;
             case "C1":
-               guardarC1(id,idJugador,idRoster);
+               guardarC1(idJugador,team,true,id);
             break;
              case "C2":
-               guardarC2(id,idJugador,idRoster);
+               guardarC2(idJugador,team,true,id);
             break;
             case "C3":
-               guardarC3(id,idJugador,idRoster);
+               guardarC3(idJugador,team,true,id);
             break;
             case "PA":
-               guardarPA(id,idJugador,idRoster);
+               guardarPA(idJugador,team,true,id);
             break;
             case "SA":
-               guardarSA(id,idJugador,idRoster);
+               guardarSA(idJugador,team,true,id);
             break;
             case "I4":
-               guardarI4(id,idJugador,idRoster);
+               guardarI4(idJugador,team,true,id);
             break;
              case "PT":
-                guardarPT(id,idJugador,idRoster);
+                guardarPT(idJugador,team,true,id);
             break;
         }
 }
 
-function reduce(tipo,id,idJugador,idRoster){
-    //alert(tipo+"\n"+id+"\n"+idJugador+"\n"+idRoster);
+function reduce(tipo,id,idJugador,team){
+  //  alert(tipo+"\n"+id+"\n"+idJugador+"\n"+team);
     var dato=document.getElementById(id).value;
 	if(dato!=0){
 	dato--;
 	document.getElementById(id).value=dato;
          switch(tipo){
             case "T":
-                guardarT(id,idJugador,idRoster);
+                guardarT(idJugador,team,false,id);
             break;
             case "S":
-                guardarS(id,idJugador,idRoster);
+                guardarS(idJugador,team,false,id);
             break;
             case "I":
-              guardarI(id,idJugador,idRoster);
+              guardarI(idJugador,team,false,id);
             break;
             case "A":
-                guardarA(id,idJugador,idRoster);
+                guardarA(idJugador,team,false,id);
             break;
             case "C1":
-               guardarC1(id,idJugador,idRoster);
+               guardarC1(idJugador,team,false,id);
             break;
              case "C2":
-               guardarC2(id,idJugador,idRoster);
+               guardarC2(idJugador,team,false,id);
             break;
             case "C3":
-               guardarC3(id,idJugador,idRoster);
+               guardarC3(idJugador,team,false,id);
             break;
             case "PA":
-               guardarPA(id,idJugador,idRoster);
+               guardarPA(idJugador,team,false,id);
             break;
             case "SA":
-               guardarSA(id,idJugador,idRoster);
+               guardarSA(idJugador,team,false,id);
             break;
             case "I4":
-               guardarI4(id,idJugador,idRoster);
+               guardarI4(idJugador,team,false,id);
             break;
              case "PT":
-                guardarPT(id,idJugador,idRoster);
+                guardarPT(idJugador,team,false,id);
             break;
         }
     }
 }
+
+
+function buscar(idJugador,team){
+    var i,j;
+    if(team=="TEAM1"){
+        for(i=0;i<NumeroDeIntegrasteDelEquipo1;i++){
+         for(j=0;j<12;j++){
+             if(TablaTeam1[i][j]==idJugador){
+                 return i;
+             }
+         }   
+        }
+    }
+    if(team=="TEAM2"){
+        for(i=0;i<NumeroDeIntegrasteDelEquipo2;i++){
+         for(j=0;j<12;j++){
+             if(TablaTeam2[i][j]==idJugador){
+                 return i;
+             }
+         }   
+        }
+    }
+}
+
