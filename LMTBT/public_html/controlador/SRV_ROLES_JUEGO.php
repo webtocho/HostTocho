@@ -82,7 +82,7 @@ switch ($_POST['tipo']) {
 					// despues de ejecutarse la consulta se verifica el identificador correspondiente al equipo 1 ($bandera_bai1), si no es BAI se le asigna el dato recuperado de la consulta
 					if ($bandera_bai1) {
 						// se crean un nuevo campo en la consulta principal para el nombre del equipo 1
-						$resultado[$key]['NOMBRE_EQUIPO_1'] = "EQUIPO BAI";
+						$resultado[$key]['NOMBRE_EQUIPO_1'] = "BYE";
 					} else {
 						$resultado[$key]['NOMBRE_EQUIPO_1'] = $datos_equipo1['NOMBRE_EQUIPO'];
 					}
@@ -95,7 +95,7 @@ switch ($_POST['tipo']) {
 						// despues de ejecutarse la consulta se verifica el identificador correspondiente al equipo 2 ($bandera_bai2), si no es BAI se le asigna el dato recuperado de la consulta
 						if ($bandera_bai2) {
 							// se crean un nuevo campo en la consulta principal para el nombre del equipo 2
-							$resultado[$key]['NOMBRE_EQUIPO_2'] = "EQUIPO BAI";
+							$resultado[$key]['NOMBRE_EQUIPO_2'] = "BYE";
 						} else {
 							$resultado[$key]['NOMBRE_EQUIPO_2'] = $datos_equipo2['NOMBRE_EQUIPO'];
 						}
