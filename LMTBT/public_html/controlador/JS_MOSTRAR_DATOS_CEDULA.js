@@ -73,8 +73,8 @@ function llenar_tablas(){
         },
          //esto se ejecutara si la peticion fue exitosa 
         success: function(resultado) {
-            //vacias la tambla del equipo 1 y agregamos lo que nos respondio el php
-            $('#label_equipo_1').empty(); //Vaciamos el contenido de la tabla
+            //vacias la tambla del equipo 1 y agregamos lo que nos respondio el php con el metodo append
+            $('#label_equipo_1').empty(); 
             $('#label_equipo_1').append(resultado);
              
         },
@@ -83,91 +83,130 @@ function llenar_tablas(){
            mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER EL NOMBRE DEL EQUIPO","incorrecto");
         }
     });
+     //ajax que hace la petion al php para recuperar el nombre del equipo 2
       $.ajax({ 
+          //url al php que donde se hace la peticion
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
+              //aqui decimos a cual case ingresara del php
             tipo:"Obtener_nombre_equipo",
+              //le enviamos el id del equipo 2
             team:team2,
         },
+        //le decimos que los datos lo envie de tipo post y de tipo texto
         type: "POST",
         datatype: "text",
-          // // async:false,
+          // metodo ssuccess que se ejecutara 
         success: function(resultado) {
             $('#label_equipo_2').empty(); //Vaciamos el contenido de la tabla
-            $('#label_equipo_2').append(resultado);
+            $('#label_equipo_2').append(resultado);//agregamos el contenido con el metoso append
             
         },
+        //funcion que se ejecutar si ocurre un error
         error: function(jqXHR, textStatus) {
+            //metodo que mostrara un mensaje si ocurrio un error o no
            mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER EL NOMBRE DEL EQUIPO","incorrecto");
         }
     });
-  
+   //ajax que hace la petion al php para recuperar los jugadores del equipo 1
      $.ajax({ 
+          //url al php que donde se hace la peticion
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
+              //aqui decimos a cual case ingresara del php
             tipo:"Obtener_jugador_equipo",
+             //le enviamos el id del equipo 1, el rol de juego,
+             // un tipo de bandera que nos indicara si es del TEAM1 o del TEAM2 y la id de la convocatoria
             team:team1,
              ROL:ROL_JUEGO,
              TIPO:"TEAM1",
              ID_CONVOCSTORIA:ID_CONVOCSTORIA,
         },
+         //le decimos que los datos lo envie de tipo post y de tipo texto
         type: "POST",
         datatype: "text",
+        //funcion llama success, se ejecutar si la peticion se realizo con exito
         success: function(resultado) {
+            //deciframos el json que nos delvovio el php
              contenido = JSON.parse(resultado);
-            $('#formulario_equipo_1').empty(); //Vaciamos el contenido de la tabla
+             //Vaciamos el contenido de la tabla
+            $('#formulario_equipo_1').empty(); 
+            //llenamos la tabla con los datos que nos devolvio el json
             $('#formulario_equipo_1').append(contenido[0]);
+            //asignamos el numero de integrantes del equipo 1
             NumeroDeIntegrasteDelEquipo1=contenido[2];
+            //guardamos la tabla del equipo 1
             TablaTeam1=contenido[1];
         },
+        //funcion que se ejecutara cuando la peticion devuelva un eror
         error: function(jqXHR, textStatus) {
+              //metodo que mostrara un mensaje de error
           mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER LOS JUGADORES DEL EQUIPO","incorrecto");
         }
     });
+    //ajax que hace la petion al php para recuperar los jugadores del equipo 2
      $.ajax({ 
+          //url al php que donde se hace la peticion
            url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
+            //aqui decimos a cual case ingresara del php
             tipo:"Obtener_jugador_equipo",
+             //le enviamos el id del equipo 1, el rol de juego,
+             // un tipo de bandera que nos indicara si es del TEAM1 o del TEAM2 y la id de la convocatoria
             team:team2,
             TIPO:"TEAM2",
             ROL:ROL_JUEGO,
              ID_CONVOCSTORIA:ID_CONVOCSTORIA,
         },
+         //le decimos que los datos lo envie de tipo post y de tipo texto
         type: "POST",
         datatype: "text",
-          // // async:false,
+        //funcion llama success, se ejecutar si la peticion se realizo con exito
         success: function(resultado) {
+             //deciframos el json que nos delvovio el php
              contenido = JSON.parse(resultado);
-            $('#formulario_equipo_2').empty(); //Vaciamos el contenido de la tabla
+             //Vaciamos el contenido de la tabla
+            $('#formulario_equipo_2').empty(); 
+             //llenamos la tabla con los datos que nos devolvio el json
             $('#formulario_equipo_2').append(contenido[0]);
+            //asignamos el numero de integrantes del equipo 2
             NumeroDeIntegrasteDelEquipo2=contenido[2];
+             //guardamos la tabla del equipo 1
              TablaTeam2=contenido[1];
-            //console.log(contenido[1]);
+            //quitamos la ventana modal, para que el usuario ya pueda interactuar
              $('#esperando').modal('hide');
         },
+         //funcion que se ejecutara cuando la peticion devuelva un eror
         error: function(jqXHR, textStatus) {
+            //metodo que mostrara un mensaje de error
           mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO OBTENER LOS JUGADORES DEL EQUIPO","incorrecto");
         }
     });
- //  ocultar_cargando();
-  //alert("la pagina ya esta lista para usarse.");
+        //ajax que hace la petion al php para abilitar o desabilitar el boton guardar
        $.ajax({ 
+           //url al php que donde se hace la peticion
         url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
         data:{
+             //aqui decimos a cual case ingresara del php
             tipo:"GET_BOTON",
+             //le enviamos el id del rol del juego y las id's del equipo 1 y 2
             ROL:ROL_JUEGO,
             TEAM1:team1,
-            TEAM2:team2,
-           
+            TEAM2:team2, 
         },
+         //le decimos que los datos lo envie de tipo post y de tipo texto
         type: "POST",
         datatype: "text",
-          // // async:false,
+         //funcion llama success, se ejecutar si la peticion se realizo con exito
         success: function(resultado) {
-              $('#BOTON_GUARDAR').empty(); 
+            //vaciamos el div que contendra el boton
+            $('#BOTON_GUARDAR').empty(); 
+            //agregamos el boton
             $('#BOTON_GUARDAR').append(resultado);
         },
+        //funcion que se ejecutara cuando la peticion devuelva un eror
         error: function(jqXHR, textStatus) {
+              //metodo que mostrara un mensaje de error
           mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, PORFAVOR RECARGUE LA PAGINA.","incorrecto");
         }
     });
@@ -256,14 +295,7 @@ function guardarI4(ID_USUARIO,team,bolean,id){
          TablaTeam2[x][10]=document.getElementById(id).value;
     }
 }
-function guardarPT(ID_USUARIO,team,bolean,id){
-     var x=buscar(ID_USUARIO,team);
-    if(team=="TEAM1"){
-        TablaTeam1[x][11]=document.getElementById(id).value;
-    }else if(team=="TEAM2"){
-         TablaTeam2[x][11]=document.getElementById(id).value;
-    }
-}
+
 
 
 function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
@@ -284,7 +316,7 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
         datatype: "text",
           // // async:false,
         success: function(resultado) {
-           
+           console.log("El error prro: "+resultado);
           if(resultado==true){
                mostrarAlerta("DATOS GUARDADOS CORRECTAMENTE.","correcto");
                llenar_tablas();
@@ -293,7 +325,7 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
           }
         },
         error: function(jqXHR, textStatus) {
-          mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, NO SE PUDO GUARDAR LOS DATOS.","incorrecto");
+          mostrarAlerta("HUVO UN ERROR INTERNO DEL SERVIDOR, INTENTELO MAS TARDE.","incorrecto");
         }
     });
     ActualizarEstadisticas(ID_CONVOCSTORIA);
@@ -335,9 +367,6 @@ function add(tipo,id,idJugador,team){
             case "I4":
                guardarI4(idJugador,team,true,id);
             break;
-             case "PT":
-                guardarPT(idJugador,team,true,id);
-            break;
         }
 }
 
@@ -377,9 +406,6 @@ function reduce(tipo,id,idJugador,team){
             break;
             case "I4":
                guardarI4(idJugador,team,false,id);
-            break;
-             case "PT":
-                guardarPT(idJugador,team,false,id);
             break;
         }
     }
