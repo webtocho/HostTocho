@@ -50,3 +50,17 @@ and open the template in the editor.
 border: 1px solid black;
 
 }
+
+#logo{
+    text-decoration:none;
+}
+
+#logo_imagen{
+    height: 125px;width: 125px;
+}
+#Tittle_h1{
+    text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;
+}
+#Tittle_h3{
+   text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;
+}
