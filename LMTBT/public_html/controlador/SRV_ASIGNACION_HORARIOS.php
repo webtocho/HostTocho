@@ -23,9 +23,12 @@ switch ($accion) {
 					if ($_SESSION["TIPO_USUARIO"] == 'CAPTURISTA' || $_SESSION["TIPO_USUARIO"] == 'ADMINISTRADOR') {
 
 						while ($row = mysqli_fetch_array($result)) {
-							echo "<tr><td>" . $row['NOMBRE_EQUIPO'] . "</td><td></td><td>" . $row['NAME'] . "</td><td>" . $row['FECHA'] . "</td><td>" . $row['HORA'] . "</td><td>" . $row['CAMPO'] . "</td><td><a class='btn btn-floating  edit' onclick='editTable()' id='" . $row['ID_ROL_JUEGO'] . "'><i class='material-icons' >edit</i></a></td>"
-							. "<td><a class='waves-effect waves-light btn modal-trigger' onclick='OpenModal(" . $row['ID_ROL_JUEGO'] . ")'>Asignar</a></td></tr>";
+							echo "<tr><td>" . $row['NOMBRE_EQUIPO'] . "</td><td></td><td>" . $row['NAME'] . "</td><td>" . $row['FECHA'] . "</td><td>" . $row['HORA'] . "</td><td>" . $row['CAMPO'] . "</td><td><a class='btn btn-floating  edit' onclick='editTable()' id='" . $row['ID_ROL_JUEGO'] . "'><i class='material-icons' >edit</i></a></td></tr>";
 						}
+//						while ($row = mysqli_fetch_array($result)) {
+//							echo "<tr><td>" . $row['NOMBRE_EQUIPO'] . "</td><td></td><td>" . $row['NAME'] . "</td><td>" . $row['FECHA'] . "</td><td>" . $row['HORA'] . "</td><td>" . $row['CAMPO'] . "</td><td><a class='btn btn-floating  edit' onclick='editTable()' id='" . $row['ID_ROL_JUEGO'] . "'><i class='material-icons' >edit</i></a></td>"
+//							. "<td><a class='waves-effect waves-light btn modal-trigger' onclick='OpenModal(" . $row['ID_ROL_JUEGO'] . ")'>Asignar</a></td></tr>";
+//						}
 					} else {
 						while ($row = mysqli_fetch_array($result)) {
 							echo "<tr><td>" . $row['NOMBRE_EQUIPO'] . "</td><td></td><td>" . $row['NAME'] . "</td><td>" . $row['FECHA'] . "</td><td>" . $row['HORA'] . "</td><td>" . $row['CAMPO'] . "</tr>";

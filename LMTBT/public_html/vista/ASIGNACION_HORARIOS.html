@@ -34,10 +34,10 @@
             <p>Torneo :</p>
             <div class="input-field col s12">                
                 <select id="torneo"></select>  
-              </div>
-  		<br><br>          
-            <div style="padding:0cm 0cm 0cm 0cm;">
-            <table  class="table table-bordered table-dark table-responsive" id="roles">
+            </div>
+            <br><br>          
+           <div style="padding:0cm 0cm 0cm 0cm;">
+            <table  class="table table-bordered table-dark" id="roles">
                 <thead>
                   <tr>
                       <th><center>EQUIPO</center></th>
@@ -55,51 +55,51 @@
                 </tbody>
             </table>
             </div>
-            <br><br>          
-            <div style="padding:0cm 0cm 0cm 0cm;">
-                <table  class="table table-bordered table-dark" id="roles">
-                    <thead>
-                        <tr>
-                            <th><center>EQUIPO</center></th>
-                            <th><center>VS</center></th>
-                            <th><center>EQUIPO</center></th>
-                            <th><center>FECHA</center></th>
-                            <th><center>HORA</center></th>
-                            <th><center>CAMPO</center></th>
-                            <th></th>
-                            <th><center>HORARIO</center></th>
-                        </tr>
-                    </thead>
-                    <tbody id="Rol">
-                    </tbody>
-                </table>
-            </div>
+            <!--            <br><br>          
+                        <div style="padding:0cm 0cm 0cm 0cm;">
+                            <table  class="table table-bordered table-dark" id="roles">
+                                <thead>
+                                    <tr>
+                                        <th><center>EQUIPO</center></th>
+                                        <th><center>VS</center></th>
+                                        <th><center>EQUIPO</center></th>
+                                        <th><center>FECHA</center></th>
+                                        <th><center>HORA</center></th>
+                                        <th><center>CAMPO</center></th>
+                                        <th></th>
+                                        <th><center>HORARIO</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="Rol">
+                                </tbody>
+                            </table>
+                        </div>-->
             <!--////////////////////////////////////////////////////////////-->
             <!-- Modal Trigger -->
 
-            <div id="Modal01" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <br><br><br><br><br>
-                        <center><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 150px;width: 150px;"/></center>
-                        <center><h4 class="modal-title">Asignar horarios</h4></center>
-                        <div class="modal-body">
-                            <label for="rol" class="posicion">ID Rol de Juego<br></label>
-                            <input  type="text" class="form-control" name="rol" id="rol" >
-                            <label for="fecha" class="posicion">Fecha:<br></label>
-                            <input  type="date" class="form-control" name="fecha" id="fecha" >
-                            <label for="hora" class="posicion">Hora:<br></label>
-                            <input  type="time" class="form-control" name="hora" id="hora" >
-                            <label for="campo" class="posicion">Campo:<br></label>
-                            <input  type="text" class="form-control" name="campo" id="campo" >
-                        </div>
-                        <div class="modal-footer">
-                            <button style="position:absolute;  top: 90%;left: 10%;" type="button" class="btn btn-primary" onclick="GuardarHorarioRolJuego()">Guardar</button>
-                            <button style="position:absolute;  top: 90%;left: 60%;" type="button" class="btn btn-primary" onclick="CloseModal()">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--            <div id="Modal01" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <br><br><br><br><br>
+                                    <center><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 150px;width: 150px;"/></center>
+                                    <center><h4 class="modal-title">Asignar horarios</h4></center>
+                                    <div class="modal-body">
+                                        <label for="rol" class="posicion">ID Rol de Juego<br></label>
+                                        <input  type="text" class="form-control" name="rol" id="rol" >
+                                        <label for="fecha" class="posicion">Fecha:<br></label>
+                                        <input  type="date" class="form-control" name="fecha" id="fecha" >
+                                        <label for="hora" class="posicion">Hora:<br></label>
+                                        <input  type="time" class="form-control" name="hora" id="hora" >
+                                        <label for="campo" class="posicion">Campo:<br></label>
+                                        <input  type="text" class="form-control" name="campo" id="campo" >
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button style="position:absolute;  top: 90%;left: 10%;" type="button" class="btn btn-primary" onclick="GuardarHorarioRolJuego()">Guardar</button>
+                                        <button style="position:absolute;  top: 90%;left: 60%;" type="button" class="btn btn-primary" onclick="CloseModal()">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
             <!--////////////////////////////////////////////////////////////-->
         </div>
         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
