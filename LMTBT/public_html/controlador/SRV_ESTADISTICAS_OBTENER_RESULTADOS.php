@@ -37,7 +37,7 @@
                 //En esta parte obtenemos todos los resultados en las cedulas de cada jugador y realizamos una sumatoria para mostrar sus estadisticas generales de cada dato guardado
         	$datos = "SELECT * FROM cedulas WHERE ID_ROSTER=$roster AND ID_JUGADOR=$id";
         	$stats = $conn->query($datos);
-        	$t=0;$s=0;$i=0;$a=0;$c1=0;$c2=0;$c3=0;$pa=0;$sa=0;$i4=0;$pt=0;
+        	$t=0;$s=0;$i=0;$a=0;$c1=0;$c2=0;$c3=0;$pa=0;$sa=0;$i4=0;//$pt=0;
         	while ($fila = mysqli_fetch_array($stats)) {
         		$t=$t+$fila['T'];
         		$s=$s+$fila['S'];
@@ -49,14 +49,14 @@
                         $pa=$pa+$fila['PA'];
                         $sa=$sa+$fila['SA'];
                         $i4=$i4+$fila['I4'];
-        		$pt=$pt+$fila['PT'];
+        		//$pt=$pt+$fila['PT'];//campo repetido es el mismo que pa
         	}
                 //Regresamos la informacion en codigo html para una tabla
         	echo "<tr>";
         	echo "<td>$nombre</td> <td>$numero</td> <td>$t</td>";
         	echo "<td>$s</td> <td>$i</td> <td>$a</td> <td>$c1</td>";
         	echo "<td>$c2</td> <td>$c3</td> <td>$pa</td>";
-                echo "<td>$sa</td> <td>$i4</td> <td>$pt</td>";
+                echo "<td>$sa</td> <td>$i4</td> ";//<td>$pt</td>";
         	echo "</tr>";
         }
         echo "</tbody></table>";
