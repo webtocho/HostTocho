@@ -2,21 +2,21 @@ var equipos=[];
 function Get_Teams(id_convocatoria){
     //Funcion para obtener los equipos inscritos a una convocatoria
     var team;
-    $.ajax({
+    $.ajax({//hacemos la peticion mediante ajax
         url: "../controlador/SRV_OBTENER_EQUIPOS_INSCRITOS_ROL.php",
         data: {convocatoria :id_convocatoria },
         type: "POST",
         dataType: 'text',
         success: function (resultado) {
             if(resultado==-1) {
-                equipos=null;
+                equipos=null;//si nos retorna -1 es que en la convocatoria no se han inscrito equipos
                 alert("El rol de juegos ya existe o no hay equipos inscritos");
             }
             else  { 
-                team=new Array(resultado);
-                team=team[0].split(',');
+                team=new Array(resultado);//si nos regresa otra cosa generamos un arreglo con los equipos
+                team=team[0].split(',');//generamis bien el arreglo temporal
                 for(var i=0; i<team.length; i++){
-                    equipos[i]=(parseInt(team[i]));
+                    equipos[i]=(parseInt(team[i]));//vamos agregando el id de los equipos al arreglo de equipos
                 }
             }
         },
@@ -26,24 +26,24 @@ function Get_Teams(id_convocatoria){
         }       
     });
 }
-function CREAR_ROL_JUEGOS(id_convocatoria){
+function CREAR_ROL_JUEGOS(id_convocatoria,repeticion){
     //Funcion que se llama cuando cierre la convocatoria, recibe de parametro el id de la convocatoria
     Get_Teams(id_convocatoria);
-    setTimeout(function(){Made_Round_Teams(id_convocatoria);},1000);
+    setTimeout(function(){Made_Round_Teams(id_convocatoria,repeticion);},1000);
 }
-function Made_Round_Teams(id_convocatoria){
+function Made_Round_Teams(id_convocatoria,repeticion){
     //Funcion que genera el round robin
    if(equipos!=null){
-       var auxT=equipos.length;
-       var impar=auxT%2;
+       var auxT=equipos.length;//cantidad de equipos en la convocatoria
+       var impar=auxT%2;//comprobamos si es un numero par o impar de equipos
        if(impar!=0){
         equipos.push(0);// si el numero de equipos es impar aqui se agrega un equipo extra (cero) que es el BAY
         ++auxT;
        }
        var totalP=(auxT*(auxT-1))/2;//total de partidos del rol de juegos conforme el num de equipos
-       var local=[totalP];
-       var visita=[totalP];
-       var modIF=(auxT/2);
+       var local=[totalP];//creamos un arreglo con el tamaño necesario
+       var visita=[totalP];//tanto para local como para visita
+       var modIF=(auxT/2);//este algoritmo se puede encontrar de forma expliada en wikipedia, sin embargo esta es nuestra implementacion
        var indiceInverso=auxT-2;
        var i,j;
        for(i=0;i<totalP;i++){
@@ -66,21 +66,22 @@ function Made_Round_Teams(id_convocatoria){
                 }
             }
         }
-        Insert_Round(local,visita,auxT,id_convocatoria);
+        Insert_Round(local,visita,auxT,id_convocatoria,repeticion);
    }
 }
 
-function Insert_Round(locales,visita,tam,id_convocatoria){
-    //Funcion que guarda el round robin generado
+function Insert_Round(locales,visita,tam,id_convocatoria,repeticion){
+    //Funcion que guarda el round robin generado, y manda cuantas veces se repetira
     if(equipos!=null){
-        var jsonLocal = JSON.stringify(locales);
+        var jsonLocal = JSON.stringify(locales);//convertimos a json los arreglos
         var jsonVisita = JSON.stringify(visita);
-        $.ajax({
+        $.ajax({//enviamos la informacion mediante ajax
             url: "../controlador/SRV_INSERTAR_ROL_JUEGOS.php",
             data: {convocatoria:id_convocatoria,
                    local:jsonLocal,
                    visitante:jsonVisita,
-                   tam:tam },
+                   tam:tam,
+                   repeticion: repeticion},
             type: "POST",
             cache: false,
             success: function (resultado){            
@@ -93,7 +94,8 @@ function Insert_Round(locales,visita,tam,id_convocatoria){
     });
 }
 }
-function modificar_torneo_rol_generado(id_convocatoria){        
+function modificar_torneo_rol_generado(id_convocatoria){ 
+    //funcion para modificar que el torneo ya tiene rol de juego
     $.ajax({
         url: "../controlador/SRV_CONSULTAS.php",
         data:{
@@ -112,7 +114,8 @@ function modificar_torneo_rol_generado(id_convocatoria){
         }
     });
 }
-function modificar_torneo_activo(id_convocatoria){        
+function modificar_torneo_activo(id_convocatoria){   
+    //funcion para pasar a activo un torneo
     $.ajax({
         url: "../controlador/SRV_CONSULTAS.php",
         data:{

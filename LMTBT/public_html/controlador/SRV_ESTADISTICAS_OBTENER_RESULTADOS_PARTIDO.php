@@ -37,7 +37,7 @@
         	echo "<td>".$row['S']."</td> <td>".$row['I']."</td> <td>".$row['A']."</td> <td>".$row['C1']."</td>";
         	echo "<td>".$row['C2']."</td> <td>".$row['C3']."</td>";
                 echo "<td>".$row['PA']."</td> <td>".$row['SA']."</td>";
-                echo "<td>".$row['I4']."</td> <td>".$row['PT']."</td>";
+                echo "<td>".$row['I4']."</td>";// <td>".$row['PT']."</td>";
         	echo "</tr>";
     	}
     	echo "</tbody></table>";
