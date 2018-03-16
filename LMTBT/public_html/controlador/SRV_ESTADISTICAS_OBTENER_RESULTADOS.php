@@ -24,7 +24,7 @@
     	echo '<thead><tr><th><center>JUGADOR</center></th> <th><center>NUMERO</center></th> <th><center>T</center></th> <th><center>S</center></th>'; 
         echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th>'; 
         echo '<th><center>C3</center></th> <th><center>PA</center></th> <th><center>SA</center></th> <th><center>I4</center></th>';
-        echo '<th><center>PT</center></th></tr></thead><tbody>';
+        echo '</tr></thead><tbody>';
         while ($row=mysqli_fetch_array($jugadores)) {
             //En esta parte obtenemos los datos de cada jugador mediante su id
         	$id = $row['ID_JUGADOR'];
