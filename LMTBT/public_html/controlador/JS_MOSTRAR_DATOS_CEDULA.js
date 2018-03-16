@@ -127,7 +127,7 @@ function llenar_tablas(){
         datatype: "text",
         //funcion llama success, se ejecutar si la peticion se realizo con exito
         success: function(resultado) {
-            
+             console.log("El error prro, esto es del equipo 1: "+resultado);
             //deciframos el json que nos delvovio el php
              contenido = JSON.parse(resultado);
              //Vaciamos el contenido de la tabla
@@ -164,6 +164,7 @@ function llenar_tablas(){
         datatype: "text",
         //funcion llama success, se ejecutar si la peticion se realizo con exito
         success: function(resultado) {
+             console.log("El error prro, esto es del equipo 2: "+resultado);
              //deciframos el json que nos delvovio el php
              contenido = JSON.parse(resultado);
              //Vaciamos el contenido de la tabla
@@ -318,7 +319,7 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
         datatype: "text",
           // // async:false,
         success: function(resultado) {
-          // console.log("El error prro: "+resultado);
+         console.log("El error prro: "+resultado);
           if(resultado==true){
                mostrarAlerta("DATOS GUARDADOS CORRECTAMENTE.","correcto");
                llenar_tablas();
