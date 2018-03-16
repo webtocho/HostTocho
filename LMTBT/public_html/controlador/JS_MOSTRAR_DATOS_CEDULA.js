@@ -313,11 +313,12 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
             ID_CONVOCSTORIA:ID_CONVOCSTORIA,
         },
         type: "POST",
+        
         datatype: "text",
           // // async:false,
         success: function(resultado) {
-           console.log("El error prro: "+resultado);
-          if(resultado==true){
+         console.log("El error prro: "+resultado);
+          if(resultado=="si"){
                mostrarAlerta("DATOS GUARDADOS CORRECTAMENTE.","correcto");
                llenar_tablas();
           }else{

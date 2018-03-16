@@ -24,7 +24,7 @@ switch ($_POST['tipo']){
         $resultado=$conexcion->query($sql);
         $info=$resultado->fetch_assoc();
         $ID_ROSTER=$info["ID_ROSTER"];
-        $sql = sprintf("select * from rosters inner join participantes_rosters on rosters.ID_ROSTER = participantes_rosters.ID_ROSTER inner join usuarios on participantes_rosters.ID_JUGADOR = usuarios.ID_USUARIO where rosters.ID_EQUIPO=%s AND rosters.ID_ROSTER=%s",$_POST['team'],$ID_ROSTER);
+        $sql = sprintf("select * from rosters inner join participantes_rosters on rosters.ID_ROSTER = participantes_rosters.ID_ROSTER inner join usuarios on participantes_rosters.ID_JUGADOR = usuarios.ID_USUARIO where rosters.ID_EQUIPO=%s AND rosters.ID_ROSTER=%s ORDER BY participantes_rosters.NUMERO",$_POST['team'],$ID_ROSTER);
          $conexcion= $db->getConnection();
         $resultado=$conexcion->query($sql);
         
@@ -60,7 +60,7 @@ switch ($_POST['tipo']){
                  $resultado3=$conexcion->query($sql);
                 $info3=$resultado3->fetch_assoc();
                 $jugador= array("ID_JUGADOR","T","S","I","A","C1","C2","C3","PA","SA","I4");
-                $jugador[0]=$info2["ID_JUGADOR"];
+                $jugador[0]=$info3["ID_JUGADOR"];
                 $jugador[1]=$info3["T"];
                 $jugador[2]=$info3["S"];
                 $jugador[3]=$info3["I"];
@@ -175,7 +175,7 @@ switch ($_POST['tipo']){
           if($consulta->execute()){
                
             }else{                                                                                   
-           echo false;
+           echo "no";
            die();
             }
       }
@@ -198,7 +198,7 @@ switch ($_POST['tipo']){
           if($consulta->execute()){
               
             }else{                                                                                   
-           echo false;
+           echo "no";
           die();
             }
       }
@@ -245,11 +245,11 @@ switch ($_POST['tipo']){
     break;
     case "ComprobarLogin":
          if (!empty($_SESSION["ID_USUARIO"]) && !empty($_SESSION["TIPO_USUARIO"])){
-             echo true;
-             return;
+             echo"si";
+            
          }else{
-             echo false;
-             return;
+             echo "no";
+           
          }
     break;
 }
