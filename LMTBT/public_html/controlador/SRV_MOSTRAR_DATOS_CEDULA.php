@@ -175,7 +175,7 @@ switch ($_POST['tipo']){
           if($consulta->execute()){
                
             }else{                                                                                   
-           echo false;
+           echo "no";
            die();
             }
       }
@@ -198,7 +198,7 @@ switch ($_POST['tipo']){
           if($consulta->execute()){
               
             }else{                                                                                   
-           echo false;
+           echo "no";
           die();
             }
       }
@@ -245,11 +245,11 @@ switch ($_POST['tipo']){
     break;
     case "ComprobarLogin":
          if (!empty($_SESSION["ID_USUARIO"]) && !empty($_SESSION["TIPO_USUARIO"])){
-             echo true;
-             return;
+             echo"si";
+            
          }else{
-             echo false;
-             return;
+             echo "no";
+           
          }
     break;
 }
