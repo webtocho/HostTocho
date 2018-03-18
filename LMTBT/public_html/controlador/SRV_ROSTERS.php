@@ -86,7 +86,8 @@
              * - "eq": El nombre del equipo al que el roster pertenece.
              * - "cat": El nombre de la categoria del roster (varonil, femenil, etc.).
              * - "tor": El nombre del torneo en el que el roster participa, si es que está inscrito (si no, es nulo).
-             * - "es_ed": Un boleano que indica si el roster aún puede ser editado (si es editable).
+             * - "es_ed": Nos dice si un roster puede ser editado y en qué circunstancias. Puede valer true, false, null y string (de una fecha en formato AAAA-MM-DD).
+             *            Para saber cómo interpretarlo, lea los comentarios del switch donde se le asigna un valor.
              * - "mb": Un subarreglo unidimensional que contiene los ID's de las cuentas de los jugadores que participan en el roster.
              * - "nm": Un subarreglo unidimensional que contiene los números que los jugadores tienen en el roster. Es del mismo tamaño que "mb". 
              */
@@ -99,13 +100,21 @@
             $info_roster = array();
             
             $query = "SELECT ids.id_equipo, 
-                            ids.id_categoria, 
-                            nombre_equipo, 
-                            nombre_categoria, 
-                            nombre_torneo 
+                             ids.id_categoria, 
+                             nombre_equipo, 
+                             nombre_categoria, 
+                             nombre_torneo, 
+                             (fecha_lim_edicion IS NOT NULL AND curdate() > fecha_lim_edicion),
+                             case  
+                                when (fecha_fin_torneo IS NULL OR curdate() < date_sub(fecha_cierre_convocatoria, interval 7 day)) then '1' 
+                                when (fecha_lim_edicion IS NOT NULL AND fecha_lim_edicion <= fecha_fin_torneo AND curdate() <= fecha_lim_edicion) then fecha_lim_edicion
+                                when (curdate() <= fecha_fin_torneo) then '2'
+                                else '3'
+                             end
                      FROM   (SELECT id_equipo, 
                                     id_categoria, 
-                                    id_convocatoria 
+                                    id_convocatoria, 
+                                    fecha_lim_edicion
                              FROM   rosters 
                              WHERE  id_roster = ?) AS ids 
                             INNER JOIN equipos 
@@ -127,27 +136,38 @@
                     $info_roster['eq'] = $info_basica[2];
                     $info_roster['cat'] = $info_basica[3];
                     $info_roster['tor'] = $info_basica[4];
+                    
+                    //Eliminamos la fecha límite para ediciones especiales, si ya expiró.
+                    if(boolval($info_basica[5])){
+                        $query = "UPDATE rosters SET fecha_lim_edicion = NULL WHERE id_roster = ?";
+                        if(!(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute())){
+                            lanzar_error("Error de servidor (" . __LINE__ . ")");
+                        }
+                    }
+                    
+                    //Analizamos si el roster puede ser editado.
+                    switch ($info_basica[6]){
+                        case "1":
+                            /* Puede ser editado, porque no está inscrito en un torneo o porque no ha pasado el límite para poder editar
+                               (una semana antes del inicio del torneo).*/
+                            $info_roster['es_ed'] = true;
+                            break;
+                        case "2":
+                            // No puede ser editado, pero como el torneo sigue activo, el administrador puede dar un permiso especial para poder hacerlo.
+                            $info_roster['es_ed'] = false;
+                            break;
+                        case "3":
+                            // No puede ser editado, porque el torneo en el que participa ya ha terminado.
+                            $info_roster['es_ed'] = NULL;
+                            break;
+                        default:
+                            /* Se puede editar (en condiciones normales no se podría) porque el administrador ha dado un permiso especial
+                               (hasta cierta fecha). En este caso, mandamos la fecha límite. */
+                            $info_roster['es_ed'] = $info_basica[6];
+                    }
                 } else {
                     lanzar_error("El roster ya no existe.");
                 }
-            } else {
-                lanzar_error("Error de servidor (" . __LINE__ . ")");
-            }
-            
-            //Este query es similar al usado en la función "mod" de este mismo PHP.
-            $query ="SELECT ros.id_equipo 
-                     FROM   (SELECT id_equipo, 
-                                    id_categoria, 
-                                    id_convocatoria 
-                             FROM   rosters 
-                             WHERE  id_roster = ?) AS ros 
-                            LEFT JOIN convocatoria 
-                                   ON ros.id_convocatoria = convocatoria.id_convocatoria 
-                     WHERE  fecha_fin_torneo IS NULL 
-                             OR curdate() < date_sub(fecha_cierre_convocatoria, interval 7 day)";
-            if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
-                //Con el query recién ejecutado, podemos saber si el roster aún puede ser editado.
-                $info_roster['es_ed'] = ($consulta->get_result()->num_rows == 1);
             } else {
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
@@ -242,13 +262,20 @@
                             ros.id_categoria 
                      FROM   (SELECT id_equipo, 
                                     id_categoria, 
-                                    id_convocatoria 
+                                    id_convocatoria, 
+                                    fecha_lim_edicion
                              FROM   rosters 
                              WHERE  id_roster = ?) AS ros 
                             LEFT JOIN convocatoria 
                                    ON ros.id_convocatoria = convocatoria.id_convocatoria 
-                     WHERE  fecha_fin_torneo IS NULL 
-                             OR curdate() < date_sub(fecha_cierre_convocatoria, interval 7 day)";
+                     WHERE  fecha_fin_torneo IS NULL";
+            if($_SESSION["TIPO_USUARIO"] == "ADMINISTRADOR"){
+                $query .= "  OR curdate() <= fecha_fin_torneo";
+            } else {
+                $query .= "  OR curdate() < date_sub(fecha_cierre_convocatoria, interval 7 day)
+                             OR (fecha_lim_edicion IS NOT NULL AND fecha_lim_edicion <= fecha_fin_torneo AND curdate() <= fecha_lim_edicion)";
+            }
+            
             if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id_r']) && $consulta->execute()){
                 $res = $consulta->get_result();
                 if ($res->num_rows != 0){
@@ -260,7 +287,7 @@
                     validar_propiedad_equipo_coach($conexion, $tmp[0]);
                     validar_info_roster($conexion, $tmp[1], $_POST['mb'], $_POST['nm']);
                 } else {
-                    lanzar_error("El roster ya no puede ser editado. El límite era una semana antes del cierre de la convocatoria en la que participa.");
+                    lanzar_error("El roster ya no puede ser editado.");
                 }
             } else {
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
@@ -369,6 +396,80 @@
             //Efectuamos la eliminación en la base de datos.
             $query = "DELETE FROM rosters WHERE ID_ROSTER = ?";
             if(!($consulta = $conexion->prepare($query)) || !$consulta->bind_param("i", $_POST['id']) || !$consulta->execute()){
+                lanzar_error("Error de servidor (" . __LINE__ . ")");
+            }
+            break;
+        case "per":
+            /**
+             * Nota: Esta función sólo puede ser ejecutada mientras el torneo donde este roster esté inscrito, esté activo.
+             *       Y además, se haya pasado el límite para editar (una semana antes del inicio del torneo).
+             * 
+             * Añade, modifica o elimina el permiso especial para que el coach pueda modificar el roster fuera del tiempo normalmente permitido.
+             * 
+             * Parámetros:
+             * - "id" (obligatorio): El ID del roster sobre el que se aplicará la función. 
+             * - "tmp" (opcional): La cantidad de días límite (a partir del día en el que se ejecute la función) para que
+             *                     el coach edite el roster de forma especial. Es un string, puede valer entre 1 y 7.
+             *                     Nótese que el 1er día corresponde a 'hoy', por lo que, por ejemplo, un "2" significa
+             *                     "hoy y mañana". Si lo manda, el permiso se agrega o modifica.
+             *                     Si no lo manda, el permito actual (si es que existe) es revocado. "tmp" significa "tiempo".
+             * 
+             * En caso de que agregue un permiso, o lo modifique, se devolverá la fecha límite que el coach tiene para hacer los cambios.
+             */
+            validar_sesion_y_expulsar(["ADMINISTRADOR"]);
+            
+            if(!empty($_POST['tmp'])){
+                //Obtenemos la cantidad de días que el permiso va a durar, contando el día actual.
+                $_POST['tmp'] = intval($_POST['tmp']);
+                
+                if($_POST['tmp'] >= 1 && $_POST['tmp'] <= 7){
+                    //Este query nos permite saber cuándo acaba el torneo en que el roster está inscrito.
+                    $query =   "SELECT fecha_fin_torneo 
+                                FROM   (SELECT id_convocatoria 
+                                        FROM   rosters 
+                                        WHERE  id_roster = ?) AS ros 
+                                       LEFT JOIN convocatoria 
+                                              ON ros.id_convocatoria = convocatoria.id_convocatoria";
+                    
+                    if(($consulta = $conexion->prepare($query)) && $consulta->bind_param("i", $_POST['id']) && $consulta->execute()){
+                        $res = $consulta->get_result();
+                        if ($res->num_rows != 0){
+                            //Obtenemos la fecha en el que el torneo termina.
+                            $fecha_fin_torneo = $res->fetch_row()[0];
+                            
+                            if(is_null($fecha_fin_torneo)){
+                                lanzar_error("El roster no está inscrito en ningún torneo. Por lo que puede ser editado sin necesidad de dar permiso.");
+                            }
+                            
+                            //date("Y-m-d") devuelve la fecha actual.
+                            if(date("Y-m-d") > $fecha_fin_torneo){
+                                lanzar_error("El torneo en el que este roster participa ya se terminó, por lo que no puede ser editado, ni siquiera con permiso.");
+                            }
+                            
+                            //Convertimos el número de días límite en una fecha límite.
+                            $_POST['tmp'] = date("Y-m-d", strtotime(date("Y-m-d") . " + " . --$_POST['tmp'] . " days"));
+                            //Si la fecha límite es posterior al fin del torneo, la ajustamos.
+                            if($_POST['tmp'] > $fecha_fin_torneo){
+                                $_POST['tmp'] = $fecha_fin_torneo;
+                            }
+                            
+                            //Mandamos la fecha límite a JavaScript, para que la muestre en pantalla.
+                            echo $_POST['tmp'];
+                        } else {
+                            lanzar_error("El roster ya no existe.");
+                        }
+                    }
+                } else {
+                    //Se mandó un valor inválido en el parámetro "tmp".
+                    lanzar_error("Error de servidor (" . __LINE__ . ")");
+                }
+            } else {
+                $_POST['tmp'] = null;
+            }
+            
+            //Se aplican los cambios en la base de datos.
+            $query = "UPDATE rosters SET fecha_lim_edicion = ? WHERE id_roster = ?";
+            if(!(($consulta = $conexion->prepare($query)) && $consulta->bind_param("si", $_POST['tmp'], $_POST['id']) && $consulta->execute())){
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
             break;

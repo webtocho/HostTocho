@@ -12,9 +12,12 @@ $(document).ready(function() {
     id_r = sessionStorage.getItem("ROSTERS_DETALLES_id_r");
     if(id_r !== null) sessionStorage.removeItem("ROSTERS_DETALLES_id_r");
     
+    $("#panel_permisos").hide();
+    
     $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
-        .done(function(res) {
-            switch(parseInt(res)){
+        .done(function(tipoUsuario) {
+            tipoUsuario = parseInt(tipoUsuario);
+            switch(tipoUsuario){
                 case 0:
                 case 1:
                     //Creamos un modal de Bootstrap.
@@ -32,8 +35,48 @@ $(document).ready(function() {
                                 $("#categoria").html(infoRoster["cat"]);
                                 $("#nombre_equipo").html(infoRoster["eq"]);
                                 $("#torneo").html((infoRoster["tor"] != null ? infoRoster["tor"] : "No está participando en ninguno"));
-                                if(!infoRoster["es_ed"])
-                                    $("#btn_editar").remove();
+                                
+                                //Vemos si el roster puede ser editado, y se modifica la interfaz de acuerdo a ello.
+                                switch(infoRoster["es_ed"]){
+                                    case false:
+                                        // No puede ser editado, pero como el torneo sigue activo, el administrador puede dar un permiso especial para poder hacerlo.
+                                        if(tipoUsuario == 0){
+                                            // Si el usuario que abrió la página, es administrador, mostramos los controles para dar permisos.
+                                            $("#panel_permisos").show();
+                                            $("#panel_permiso_activo").hide();
+                                            $('#envoltura_btn_editar').tooltip({title: "De momento, el coach no puede realizar esta acción."});
+                                        } else {
+                                            $("#btn_editar").prop('disabled', true);
+                                            $('#envoltura_btn_editar').tooltip({title: "Necesita solicitar al director de la liga, permiso para realizar esta acción."});
+                                        }
+                                        break;
+                                    case null:
+                                        // No puede ser editado, porque el torneo en el que participa ya ha terminado.
+                                        $("#btn_editar").prop('disabled', true);
+                                        $('#envoltura_btn_editar').tooltip({title: "El torneo en el que este roster participa ha terminado."}); 
+                                        break;
+                                    case true:
+                                        /* Puede ser editado, porque no está inscrito en un torneo o porque no ha pasado el límite para poder editar
+                                            (una semana antes del inicio del torneo).*/
+                                        $('#envoltura_btn_editar').tooltip({title: (infoRoster["tor"] != null ? "Recuerde que " + (tipoUsuario == 0 ? "el coach no podrá": "no podrá") +
+                                                    " editar luego de que se cumpla una semana antes del inicio del torneo." : "Este roster no se ha inscrito en un torneo.")}); 
+                                        break;
+                                    default:
+                                        /* Se puede editar (en condiciones normales no se podría) porque el administrador ha dado un permiso especial
+                                           (hasta cierta fecha). En este caso, mandamos la fecha límite. */
+                                        //Se obtiene la fecha límite especial para que el coach edite el roster en el formato "día del mes" (por ejemplo: "1 de enero").
+                                        var fecha_lim = new Date((infoRoster["es_ed"]).replace(/-/g, '\/'));
+                                        fecha_lim = ((new Date( fecha_lim.getTime() + Math.abs(fecha_lim.getTimezoneOffset()*60000) )).toLocaleDateString("es-MX", { month: 'long', day: 'numeric' }));
+                                        
+                                        if(tipoUsuario == 0){
+                                            //Si el usuario que abrió la página, es administrador, mostramos los controles para revocar el permiso.
+                                            $("#panel_permisos").show();
+                                            $("#panel_permiso_inactivo").hide();
+                                            $("#fecha_limite_edicion").html(fecha_lim);
+                                        } else {
+                                            $('#envoltura_btn_editar').tooltip({title: "Tiene permiso hasta el " + fecha_lim + " para realizar esta acción."});
+                                        }
+                                }
                                 
                                 $("#modal-title").html("Cargando lista de jugadores...");
                                 cargarJugadores(infoRoster["mb"], infoRoster["nm"], 0);
@@ -171,6 +214,69 @@ function eliminar(){
         .done(function(res) {
             $("#modal-title").html("Terminado");
             $("#modal-body").html("Roster eliminado<br>" + crear_btn_retorno());
+        })
+        .fail(function(xhr, status) {
+            $("#modal-title").html("Error");
+            $("#modal-body").html("Error de servidor. " + (xhr.status == 500 ? xhr.responseText : "(" + xhr.status + " " + status + ")."));
+            $("#modal-footer").show();
+        });
+}
+
+/**
+ * En el caso de que el roster esté inscrito en un torneo activo, no puede ser editado por el coach,
+ * a menos de que el director de la liga (administrador) le de un permiso especial.
+ * Esta función concede dicho permiso.
+ */
+function darPermiso(){
+    $("#modal-footer").hide();
+    $("#modal-title").html("Concediendo permiso...");
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
+    
+    $.post( "../controlador/SRV_ROSTERS.php", {fn : "per", id : id_r, tmp : document.getElementById("seleccion_permiso").value})
+        .done(function(res) {
+            $("#modal-title").html("Terminado");
+            $("#modal-body").html("El coach podrá editar el equipo durante los días que has seleccionado.");
+            $("#modal-footer").show();
+            
+            // Mostramos los controles para revocar el permiso y la fecha límite del mismo.
+            $("#panel_permiso_inactivo").hide();
+            $("#panel_permiso_activo").show();
+            var fecha_lim = new Date(res.replace(/-/g, '\/'));
+            fecha_lim = ((new Date( fecha_lim.getTime() + Math.abs(fecha_lim.getTimezoneOffset()*60000) )).toLocaleDateString("es-MX", { month: 'long', day: 'numeric' }));
+            $("#fecha_limite_edicion").html(fecha_lim);
+            
+            //Actualizamos el tooltip del botón para editar.
+            $("#envoltura_btn_editar").attr("data-original-title", "El coach tiene permiso hasta el " + fecha_lim + " para realizar esta acción.");
+        })
+        .fail(function(xhr, status) {
+            $("#modal-title").html("Error");
+            $("#modal-body").html("Error de servidor. " + (xhr.status == 500 ? xhr.responseText : "(" + xhr.status + " " + status + ")."));
+            $("#modal-footer").show();
+        });
+}
+
+/**
+ * Revoca el permiso especial que el director de la liga (administrador) ha concedido a un coach,
+ * para que edite el roster, aunque el toneo esté activo (se haya pasado el límite de una semana antes de su inicio).
+ */
+function revocarPermiso(){
+    $("#modal-footer").hide();
+    $("#modal-title").html("Revocando permiso...");
+    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $('#modal').modal({backdrop: 'static', keyboard: false});
+    
+    $.post( "../controlador/SRV_ROSTERS.php", {fn : "per", id : id_r})
+        .done(function(res) {
+            $("#modal-title").html("Terminado");
+            $("#modal-body").html("El coach ya no podrá editar el equipo, a menos que conceda otro permiso.");
+            $("#modal-footer").show();
+            
+            //Mostramos los controles para dar un nuevo permiso.
+            $("#panel_permiso_activo").hide();
+            $("#panel_permiso_inactivo").show();
+            //Actualizamos el tooltip del botón para editar.
+            $("#envoltura_btn_editar").attr("data-original-title", "De momento, el coach no puede realizar esta acción.");
         })
         .fail(function(xhr, status) {
             $("#modal-title").html("Error");

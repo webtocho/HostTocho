@@ -37,10 +37,36 @@
                 </tr>
             </table>
             
-            <br><br>
+            <br>
+            <div class="well well-sm" id="panel_permisos">
+                <h4><strong>Permiso especial para el coach edite:</strong></h4>
+                
+                <div id="panel_permiso_inactivo">
+                    Dar permiso durante:
+                    <select id="seleccion_permiso">
+                        <option value="1">Un día (lo que queda de hoy)</option>
+                        <option value="2">2 días (hoy y mañana)</option>
+                        <option value="3">3 días</option>
+                        <option value="4">4 días</option>
+                        <option value="5">5 días</option>
+                        <option value="6">6 días</option>
+                        <option value="7">Una semana</option>
+                    </select>
+                    <button class="btn btn-success" onclick="darPermiso()">Guardar</button>
+                    <br>
+                    <i>Nota: Si el torneo termina y hay un permiso activo, este último dejará de ser válido.</i>
+                </div>
+                
+                <div id="panel_permiso_activo">
+                    Hay un permiso activo hasta el <strong id="fecha_limite_edicion"></strong>. <button class="btn btn-success" onclick="revocarPermiso()">Revocar</button>
+                </div>
+            </div>
+            <br>
             <div id="btns">
                 <button class="btn btn-danger" onclick="confirmar_eliminacion()">Eliminar</button>
-                <button id="btn_editar" class="btn btn-warning" onclick="irAPaginaDeEdicion()">Editar</button>
+                <div id="envoltura_btn_editar">
+                    <button id="btn_editar" class="btn btn-warning" onclick="irAPaginaDeEdicion()">Editar</button>
+                </div>
             </div>
         </div>
     </center>
