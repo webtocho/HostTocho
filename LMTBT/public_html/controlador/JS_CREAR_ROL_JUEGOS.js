@@ -27,6 +27,8 @@ function Get_Teams(id_convocatoria){
     });
 }
 function CREAR_ROL_JUEGOS(id_convocatoria,repeticion){
+    repeticion =parseInt( $( '#vueltas' ).val() );
+    console.log(repeticion, "repeticion");
     //Funcion que se llama cuando cierre la convocatoria, recibe de parametro el id de la convocatoria
     Get_Teams(id_convocatoria);
     setTimeout(function(){Made_Round_Teams(id_convocatoria,repeticion);},1000);

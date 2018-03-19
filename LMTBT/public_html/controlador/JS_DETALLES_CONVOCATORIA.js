@@ -21,6 +21,8 @@ $(document).ready(function() {
 });
 function detallesConvocatoria(){
    var id = sessionStorage.getItem("id_convocatoria");
+ var repeticion =1;
+   console.log(repeticion);
    $.ajax({
         url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
         data:{
@@ -35,7 +37,7 @@ function detallesConvocatoria(){
             $('#enventos').empty();
             $('#enventos').append('<a href="#body" id="gototop" class="desing">Ir Arriba</a>'+
                 '<a href="#body" class="desing" onclick="abrirPantallaParaEditarConsulta('+id+')">   Cambiar fechas</a>'+
-                '<a href="#body" class="desing" onclick="CREAR_ROL_JUEGOS('+id+')">   Generar rol</a>'+
+                '<a href="#body" class="desing" onclick="CREAR_ROL_JUEGOS('+id+','+repeticion+')">   Generar rol</a>'+
                 '<style type="text/css">'+
                     '@media(max-width: 550px){'+
                         '.desing{'+
