@@ -317,8 +317,8 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
         datatype: "text",
           // // async:false,
         success: function(resultado) {
-         console.log("El error prro: "+resultado);
-          if(resultado=="si"){
+        
+          if(resultado=="ok"){
                mostrarAlerta("DATOS GUARDADOS CORRECTAMENTE.","correcto");
                llenar_tablas();
           }else{

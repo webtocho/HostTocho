@@ -71,6 +71,31 @@ switch ($_POST['tipo']){
                 $jugador[8]=$info3["PA"];
                 $jugador[9]=$info3["SA"];
                 $jugador[10]=$info3["I4"];
+              if($info3["T"]==null || $info3["S"]==null || $info3["I"]==null || $info3["A"]==null || $info3["C1"]==null ||
+                  $info3["C2"]==null || $info3["C3"]==null ||$info3["PA"]==null || $info3["SA"]==null || $info3["I4"]==null){
+                   $conexciones= $db->getConnection();  
+                  $consulta=$conexciones->prepare("INSERT INTO cedulas values(0,?,?,?,0,0,0,0,0,0,0,0,0,0)");
+                    $consulta->bind_param("iii",$_POST['ROL'],$info2["ID_JUGADOR"],$info0["ID_ROSTER"]);
+                    if($consulta->execute()){
+                 $sql = sprintf("select * from cedulas where ID_ROL_JUEGO=%s AND ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST["ROL"],$info2["ID_JUGADOR"],$info0["ID_ROSTER"]);
+                 $conexcion= $db->getConnection();
+                 $resultado7=$conexcion->query($sql);
+                $info7=$resultado7->fetch_assoc();
+                $jugador[1]=$info7["T"];
+                $jugador[2]=$info7["S"];
+                $jugador[3]=$info7["I"];
+                $jugador[4]=$info7["A"];
+                $jugador[5]=$info7["C1"];
+                $jugador[6]=$info7["C2"];
+                $jugador[7]=$info7["C3"];
+                $jugador[8]=$info7["PA"];
+                $jugador[9]=$info7["SA"];
+                $jugador[10]=$info7["I4"];
+                    }else{                                                                                   
+                    echo "no";
+                    die();
+                    }
+                }
                 array_push($Tabla_Jugadores,$jugador);
                 $datos=$datos."<tr><th>"
                  .$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]."</th>".
@@ -158,20 +183,8 @@ switch ($_POST['tipo']){
       
       $conexciones= $db->getConnection();
       for($i=0;$i<$numero_de_jugadores_team1;$i++){
-          $ID_DEL_JUGADOR=(int)$Tabla_Jugadores_Team1[$i][0];
-          $T=(int)$Tabla_Jugadores_Team1[$i][1];
-          $S=(int)$Tabla_Jugadores_Team1[$i][2];
-          $I=(int)$Tabla_Jugadores_Team1[$i][3];
-          $A=(int)$Tabla_Jugadores_Team1[$i][4];
-          $C1=(int)$Tabla_Jugadores_Team1[$i][5];
-          $C2=(int)$Tabla_Jugadores_Team1[$i][6];
-          $C3=(int)$Tabla_Jugadores_Team1[$i][7];
-          $PA=(int)$Tabla_Jugadores_Team1[$i][8];
-          $SA=(int)$Tabla_Jugadores_Team1[$i][9]; 
-          $I4=(int)$Tabla_Jugadores_Team1[$i][10];
-        
           $consulta=$conexciones->prepare("UPDATE cedulas SET T=?,S=?,I=?,A=?,C1=?,C2=?,C3=?,PA=?,SA=?,I4=? WHERE  ID_ROL_JUEGO=? AND ID_JUGADOR=? AND ID_ROSTER=?");
-          $consulta->bind_param("iiiiiiiiiiiii",$T,$S,$I,$A,$C1,$C2,$C3,$PA,$SA,$I4,$_POST['ID_ROL'],$ID_DEL_JUGADOR,$ID_ROSTER_TEAM_1);
+          $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team1[$i][1],$Tabla_Jugadores_Team1[$i][2],$Tabla_Jugadores_Team1[$i][3],$Tabla_Jugadores_Team1[$i][4],$Tabla_Jugadores_Team1[$i][5],$Tabla_Jugadores_Team1[$i][6],$Tabla_Jugadores_Team1[$i][7],$Tabla_Jugadores_Team1[$i][8],$Tabla_Jugadores_Team1[$i][9],$Tabla_Jugadores_Team1[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team1[$i][1],$ID_ROSTER_TEAM_1);
           if($consulta->execute()){
                
             }else{                                                                                   
@@ -179,22 +192,9 @@ switch ($_POST['tipo']){
            die();
             }
       }
-        
        for($i=0;$i<$numero_de_jugadores_team2;$i++){
-          $ID_DEL_JUGADOR=(int)$Tabla_Jugadores_Team2[$i][0];
-          $T=(int)$Tabla_Jugadores_Team2[$i][1];
-          $S=(int)$Tabla_Jugadores_Team2[$i][2];
-          $I=(int)$Tabla_Jugadores_Team2[$i][3];
-          $A=(int)$Tabla_Jugadores_Team2[$i][4];
-          $C1=(int)$Tabla_Jugadores_Team2[$i][5];
-          $C2=(int)$Tabla_Jugadores_Team2[$i][6];
-          $C3=(int)$Tabla_Jugadores_Team2[$i][7];
-          $PA=(int)$Tabla_Jugadores_Team2[$i][8];
-          $SA=(int)$Tabla_Jugadores_Team2[$i][9]; 
-          $I4=(int)$Tabla_Jugadores_Team2[$i][10];
-         
           $consulta=$conexciones->prepare("UPDATE cedulas SET T=?,S=?,I=?,A=?,C1=?,C2=?,C3=?,PA=?,SA=?,I4=? WHERE  ID_ROL_JUEGO=? AND ID_JUGADOR=? AND ID_ROSTER=?");
-           $consulta->bind_param("iiiiiiiiiiiii",$T,$S,$I,$A,$C1,$C2,$C3,$PA,$SA,$I4,$_POST['ID_ROL'],$ID_DEL_JUGADOR,$ID_ROSTER_TEAM_2);
+           $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team2[$i][1],$Tabla_Jugadores_Team2[$i][2],$Tabla_Jugadores_Team2[$i][3],$Tabla_Jugadores_Team2[$i][4],$Tabla_Jugadores_Team2[$i][5],$Tabla_Jugadores_Team2[$i][6],$Tabla_Jugadores_Team2[$i][7],$Tabla_Jugadores_Team2[$i][8],$Tabla_Jugadores_Team2[$i][9],$Tabla_Jugadores_Team2[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team2[$i][0],$ID_ROSTER_TEAM_2);
           if($consulta->execute()){
               
             }else{                                                                                   
@@ -202,12 +202,6 @@ switch ($_POST['tipo']){
           die();
             }
       }
-      
-      
-      
-      
-      
-      
        $sql = sprintf("SELECT * FROM cedulas WHERE ID_ROL_JUEGO =%s and ID_ROSTER=%s",$_POST['ID_ROL'],$ID_ROSTER_TEAM_1); 
         $conexcion3= $db->getConnection();
         $resultado3=$conexcion3->query($sql);
@@ -241,7 +235,7 @@ switch ($_POST['tipo']){
       $sql = sprintf("UPDATE roles_juego SET ID_EQUIPO_1=%s, ID_EQUIPO_2=%s, ID_EQUIPO_GANADOR=%s, PUNTOS_EQUIPO_1=%s, PUNTOS_EQUIPO_2=%s WHERE ID_ROL_JUEGO=%s",$_POST['TEAM1'],$_POST['TEAM2'],$ID_TEAM_GANADOR,$PUNTOS_TEAM_1,$PUNTOS_TEAM_2,$_POST['ID_ROL']); 
       $conexcion5= $db->getConnection();  
       $resultado5=$conexcion5->query($sql);
-     echo true;
+     echo "ok";
     break;
     case "ComprobarLogin":
          if (!empty($_SESSION["ID_USUARIO"]) && !empty($_SESSION["TIPO_USUARIO"])){
@@ -253,5 +247,4 @@ switch ($_POST['tipo']){
          }
     break;
 }
-
 ?>
