@@ -1,65 +1,113 @@
 <?php
+//iniciamos la variable de session
 session_start();
+//incluimos el php donde se estable la conexion
 include("SRV_CONEXION.php");
+//instanciamos la clase SRV_CONEXION 
     $db = new SRV_CONEXION();
 
-
+//establecemos un switch para cada peticion del js_mostar_datos_cedulas
 switch ($_POST['tipo']){
+    //en el caso que el js desea obtener el nombre del equipo
     case "Obtener_nombre_equipo":
+        //preparamos una sentencia sql para la peticion
         $sql = sprintf("SELECT * FROM equipos WHERE ID_EQUIPO =". $_POST['team']);
+        //obtenemos la conexion de la clase SRV_CONEXION
         $conexcion= $db->getConnection();
+        //ponemos la sentencia y la ejecutamos
         $resultado=$conexcion->query($sql);
+        //recuperamos lo que nos devolvio la peticion
         $info=$resultado->fetch_assoc();
+        //evaluamos que la peticcion no sea vacia
         if ($info['NOMBRE_EQUIPO']) {
-			echo $info['NOMBRE_EQUIPO'];
+            //retornamos el nombre del equipo
+		echo $info['NOMBRE_EQUIPO'];
          }
     break;
-    
+    //en el caso que el js desea obtener los jugadores del equipo
     case "Obtener_jugador_equipo":
+        //variable que guardara la ID del roster
         $ID_ROSTER;
+        //vriable que gurdara el numero de jugadores
         $numero_jugador;
+        //array que hara la funcion de tabla, y guardara un array en casa posicion, dicho array guardara los datos de cada jugador
         $Tabla_Jugadores= array();
-            $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
-          $conexcion= $db->getConnection();
+        //preparamos la sentencia para solicitar el ID del roster del equipo
+        $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
+        //obtenemos la conexion de la clase SRV_CONEXION
+        $conexcion= $db->getConnection();
+        //ponemos y ejecutamos la sentencia y guardamos la respuesta en la variable $resultado
         $resultado=$conexcion->query($sql);
+        //obtemos la fila de la sentencia
         $info=$resultado->fetch_assoc();
+        //guardamos el ID del roster
         $ID_ROSTER=$info["ID_ROSTER"];
+        //preparamos la sentencia para obtener a los jugadores del equipo
         $sql = sprintf("select * from rosters inner join participantes_rosters on rosters.ID_ROSTER = participantes_rosters.ID_ROSTER inner join usuarios on participantes_rosters.ID_JUGADOR = usuarios.ID_USUARIO where rosters.ID_EQUIPO=%s AND rosters.ID_ROSTER=%s ORDER BY participantes_rosters.NUMERO",$_POST['team'],$ID_ROSTER);
-         $conexcion= $db->getConnection();
+         //obtenemos la conexion de la clase SRV_CONEXION 
+        $conexcion= $db->getConnection();
+         //ponemos y ejecutamos la sentencia y guardamos la respuesta en la variable $resultado
         $resultado=$conexcion->query($sql);
-        
+        //como la peticion nos delvovio varias columnas, las guardaremos en un array
         $info=array();
+        //recorremos las columnas de la peticion
          while ($row = $resultado->fetch_assoc()) {
+             //guardamos cada columna en el array
             $info[] = $row;
         }
-        
-            $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
+       //preparamos la sentencia para solicitar el ID del roster del equipo
+        $sql = sprintf("SELECT * FROM rosters WHERE ID_EQUIPO=%s AND ID_CONVOCATORIA =%s",$_POST['team'],$_POST['ID_CONVOCSTORIA']);
+        //obtenemos la conexion de la clase SRV_CONEXION 
         $conexcion0= $db->getConnection();
+         //ponemos y ejecutamos la sentencia y guardamos la respuesta en la variable $resultado0
         $resultado0=$conexcion0->query($sql);
+         //obtemos la fila de la sentencia
         $info0=$resultado0->fetch_assoc();
+        //preparamos la sentencia que nos indicara si el roster esta creado o no
          $sql = sprintf("select count(*) from cedulas where ID_ROL_JUEGO=%s AND ID_ROSTER=%s",$_POST['ROL'],$info0["ID_ROSTER"]);
+          //ponemos y ejecutamos la sentencia y guardamos la respuesta en la variable $resultado2
           $resultado2=$conexcion->query($sql);
-            $info2=$resultado2->fetch_assoc();
+          //obtemos la fila de la sentencia
+          $info2=$resultado2->fetch_assoc();
+          //recuperamos lo que contó la peticion, si nos devuelve o, no indica que la cedula no esta creada,de caso contrario esta creada
         $numero_de_filas=$info2["count(*)"];
+        //verificamos si la cedula no esta creada, si se obtuvo un conteo de 0, se creara la cedula
         if($numero_de_filas==0){
+         //recorremos la variable donde guardamos a los jugadores y creamos los datos de cada jugador
         foreach ($info as $info2) {
+        //preparamos la sentencia que creara los datos de cada jugagor
 	$sql = sprintf("insert into cedulas values(0,%s,%s,%s,0,0,0,0,0,0,0,0,0,0)",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
+        //obtenemos la conexion de la clase SRV_CONEXION 
          $conexcion= $db->getConnection();
+         //ponemos y ejecutamos la sentencia
         $resultado=$conexcion->query($sql);
         }
        
         }  
+        //verificamos si el usuario que esta accediendo a la cedula es un administrador_capturistas(solo ellos pueden modificar las cedulas)
+       // si el usuario no es capturista o administrador, inavilitamos la tabla para que no sea modificable
          if (isset($_SESSION["TIPO_USUARIO"]) == 'CAPTURISTA' || isset($_SESSION["TIPO_USUARIO"]) == 'ADMINISTRADOR'){
+             //variable que ontendra el numero de jugadores
              $numero_jugadores=0;
+             //esta variable nos servira para indicar en la tabla que datos corresponden los inputs
              $datos="<tr><th>JUGADOR</th><th> TACKLES </th><th> SACKS </th><th> INTERCEPCIONES </th><th>ANOTACIONES</th><th> CONVERSION 1 </th><th> CONVERSION 2 </th><th> CONVERSION 3 </th><th> PASE DE ANOTACION </th><th> SAFETY </th><th> INTERCEPCION </th></tr>";
+             //Creamos un array que delvolvera al js, la tabla de los judaores(visual), la tabla de los jugadores(datos), y el numero de jugadores
              $retorno=Array("Resultado","jugdores","numero de jugadores");
-            foreach ($info as $info2) {
+             //recorremos la variable donde guardamos a los jugadores
+             foreach ($info as $info2) {
+                 //aumentamos en uno a la variable que contendra el numero de jugadores del equipo
                  $numero_jugadores++;
+                 //sentencia que obtendra los datos de cada jugador
                 $sql = sprintf(" select * from cedulas where ID_ROL_JUEGO=%s AND ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST["ROL"],$info2["ID_JUGADOR"],$ID_ROSTER);
-                 $conexcion= $db->getConnection();
-                 $resultado3=$conexcion->query($sql);
+                //obtenemos la conexion de la clase SRV_CONEXION 
+                $conexcion= $db->getConnection();
+                //ponemos y ejecutamos la sentencia
+                $resultado3=$conexcion->query($sql);
+                //guardamos los datos en la variale $info3
                 $info3=$resultado3->fetch_assoc();
+                //creamos un array que contendra los datos del jugador
                 $jugador= array("ID_JUGADOR","T","S","I","A","C1","C2","C3","PA","SA","I4");
+                //almacenamos los datos que nos delvovio la paticion en cada espacion del arreglo que contendra los datos de los jugadores
                 $jugador[0]=$info3["ID_JUGADOR"];
                 $jugador[1]=$info3["T"];
                 $jugador[2]=$info3["S"];
@@ -71,16 +119,27 @@ switch ($_POST['tipo']){
                 $jugador[8]=$info3["PA"];
                 $jugador[9]=$info3["SA"];
                 $jugador[10]=$info3["I4"];
+                //verificamos que el jugador se incluyo despues de crear el roster, si el jugador se añadio despues de crear el roster
+                //aparecera en la cedula, pero tendra datos nulos, asi que le crearemos dicho datos
               if($info3["T"]==null || $info3["S"]==null || $info3["I"]==null || $info3["A"]==null || $info3["C1"]==null ||
                   $info3["C2"]==null || $info3["C3"]==null ||$info3["PA"]==null || $info3["SA"]==null || $info3["I4"]==null){
+                   //obtenemos la conexion de la clase SRV_CONEXION 
                    $conexciones= $db->getConnection();  
+                   //preparamos la consulta para crear los datos del nuevo jugador
                   $consulta=$conexciones->prepare("INSERT INTO cedulas values(0,?,?,?,0,0,0,0,0,0,0,0,0,0)");
+                  //indicamos los valores de la sentencia
                     $consulta->bind_param("iii",$_POST['ROL'],$info2["ID_JUGADOR"],$info0["ID_ROSTER"]);
+                    //comprobamos si se hizo la ejeccion
                     if($consulta->execute()){
-                 $sql = sprintf("select * from cedulas where ID_ROL_JUEGO=%s AND ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST["ROL"],$info2["ID_JUGADOR"],$info0["ID_ROSTER"]);
-                 $conexcion= $db->getConnection();
-                 $resultado7=$conexcion->query($sql);
-                $info7=$resultado7->fetch_assoc();
+                        //sentencia que recuperara los datos creados del nuevo jugador
+                    $sql = sprintf("select * from cedulas where ID_ROL_JUEGO=%s AND ID_JUGADOR=%s AND ID_ROSTER=%s",$_POST["ROL"],$info2["ID_JUGADOR"],$info0["ID_ROSTER"]);
+                   //obtenemos la conexion de la clase SRV_CONEXION 
+                    $conexcion= $db->getConnection();
+                    //ejecutamos la sentencia y guardamos el redultado en $resultado7
+                    $resultado7=$conexcion->query($sql);
+                    //recuperamos la fila de la respuesta
+                    $info7=$resultado7->fetch_assoc();
+                    //almacenamos los datos que nos delvovio la paticion en cada espacion del arreglo que contendra los datos de los jugadores
                 $jugador[1]=$info7["T"];
                 $jugador[2]=$info7["S"];
                 $jugador[3]=$info7["I"];
@@ -91,12 +150,15 @@ switch ($_POST['tipo']){
                 $jugador[8]=$info7["PA"];
                 $jugador[9]=$info7["SA"];
                 $jugador[10]=$info7["I4"];
-                    }else{                                                                                   
+                    }else{  
+                        //si no se pudo realizar la ejecion, enviamos un "no", y dejamos de ejecutar el php con la funcion "die()"
                     echo "no";
                     die();
                     }
                 }
+                //insertamos en la tabla el array del jugador con sus datos
                 array_push($Tabla_Jugadores,$jugador);
+                //preparamos el array de la tabla del jugador con sus datos(visual)
                 $datos=$datos."<tr><th>"
                  .$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]."</th>".
                  "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."T' maxlength='30' value='".$info3["T"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"T\"".",\"".$info2["ID_JUGADOR"]."T\",".$info2["ID_JUGADOR"].",\"".$_POST['TIPO']."\")'><input type='submit' value='>' onclick='add(\"T\"".",\"".$info2["ID_JUGADOR"]."T\",".$info2["ID_JUGADOR"].",\"".$_POST['TIPO']."\")'></th>"
@@ -110,20 +172,35 @@ switch ($_POST['tipo']){
                  "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."SA' maxlength='30' value='".$info3["SA"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"SA\"".",\"".$info2["ID_JUGADOR"]."SA\",".$info2["ID_JUGADOR"].",\"".$_POST['TIPO']."\")'><input type='submit' value='>' onclick='add(\"SA\"".",\"".$info2["ID_JUGADOR"]."SA\",".$info2["ID_JUGADOR"].",\"".$_POST['TIPO']."\")'></th>".
                  "<th><input type='text' class='form-control' id='".$info2["ID_JUGADOR"]."I4' maxlength='30' value='".$info3["I4"]."' required readonly='readonly'> <input type='submit' value='<' onclick='reduce(\"I4\"".",\"".$info2["ID_JUGADOR"]."I4\",".$info2["ID_JUGADOR"].",\"".$_POST['TIPO']."\")'><input type='submit' value='>' onclick='add(\"I4\"".",\"".$info2["ID_JUGADOR"]."I4\",".$info2["ID_JUGADOR"].",\"".$_POST['TIPO']."\")'></th></tr>"; 
 		}
+               //insertamos en el array que devolveremos al js la tabla de los jugadores(visual)
                 $retorno[0]=$datos;
+                //insertamos en el array que devolveremos al js la tabla de los jugadores(datos)
                $retorno[1]=$Tabla_Jugadores;
+               //insertamos en el array que devolveremos al js el numero de jugadores del equipo
                $retorno[2]=$numero_jugadores;
+               //encriptamos el array en un json para poderlo enviar al js
                 echo json_encode($retorno);
                  
          }else{
+             //en caso que el usuario no sea administrador ni capturista solo se enviara la tabla de los jugadores(visual) y el numero de jugadores
+             
+             //variable que contendra el numero de jugadores
               $numero_jugadores=0;
+               //esta variable nos servira para indicar en la tabla que datos corresponden los inputs
             $datos="<tr><th>JUGADOR</th><th> TACKLES </th><th> SACKS </th><th> INTERCEPCIONES </th><th> ANOTACIONES </th><th> CONVERSION 1 </th><th> CONVERSION 2 </th><th> CONVERSION 3 </th><th> PASE DE ANOTACION </th><th> SAFETY </th><th> INTERCEPCION </th></tr>";
-             $retorno=Array("Resultado","numero de jugadores");
-            foreach ($info as $info2) {  
+            //creamos el array que delvoremos al js 
+            $retorno=Array("Resultado","numero de jugadores");
+            //recorremos la variable donde guardamos a los jugadores
+            foreach ($info as $info2){
+                //sentencia que recuperara los datos de cada jugador
                  $sql = sprintf(" select * from cedulas where ID_JUGADOR=" .$info2["ID_JUGADOR"]);
+                  //obtenemos la conexion de la clase SRV_CONEXION 
                  $conexcion= $db->getConnection();
+                  //ejecutamos la sentencia y guardamos el redultado en $resultado3
                  $resultado3=$conexcion->query($sql);
+                 //recuperamos la fila de la respuesta
                 $info3=$resultado3->fetch_assoc();
+                 //preparamos el array de la tabla del jugador con sus datos(visual)
 		$datos=$datos."<tr><th>"
                 .$info2["NUMERO"]."-".$info2["NOMBRE"]." ".$info2["APELLIDO_PATERNO"]." "
                  ."</th><th><input type='number' class='form-control'  maxlength='30' value='". $info3["T"]."' required readonly='readonly'>"
@@ -138,35 +215,51 @@ switch ($_POST['tipo']){
                  ."</th><th><input type='number' class='form-control'  maxlength='30' value='".$info3["I4"]."' required readonly='readonly'>"
                  ."</tr>"; 
              }
+                //insertamos en el array que devolveremos al js la tabla de los jugadores(visual)
                 $retorno[0]=$datos;
+                 //insertamos en el array que devolveremos al js el numero de jugadores del equipo
                 $retorno[1]=$numero_jugadores;
+                 //encriptamos el array en un json para poderlo enviar al js
                 echo json_encode($retorno);
              
         } 
-       
         break;
-    case "GET_BOTON":
-        
+   //en el caso que el js desea hablitar el boton de guardar datos
+        case "GET_BOTON":
+           //verificamos si el usuario es de tipo adminitrador o capturists,ya que solo ellos puede modificar y/o guardar datos en las cedulas
          if (isset($_SESSION["TIPO_USUARIO"]) == 'CAPTURISTA' || isset($_SESSION["TIPO_USUARIO"]) == 'ADMINISTRADOR'){
+             //retornamos el boton habilitado
              echo " <center>"
                  ."<input type='submit' class='btn btn-primary' value='Guardar datos' onclick='llenar_rol_juego(".$_POST["ROL"].",".$_POST["TEAM1"].",".$_POST["TEAM2"].")'>"
                  ."</center><br>";
          }else{
+             //en caso que el usuario no sea administridador ni capturista enviaremos un boton inhabilitado
               echo " <center>"
                     ."<input type='submit' class='btn btn-primary' value='Guardar datos' class='btn btn-default' disabled>"
                     ."</center><br>";
          }
     break;
+    //en el caso que se desea guardar los datos
     case "GUARDAR_DATOS":
+      //variable que contendra la ID del equipo 1
       $ID_ROSTER_TEAM_1;
+        //variable que contendra la ID del equipo 1
       $ID_ROSTER_TEAM_2;
+      //variable que contendra la ID del equipo ganador
       $ID_TEAM_GANADOR;
+      //variable que almacenara los puntos echos en el partido por el equipo 1
       $PUNTOS_TEAM_1=0;
+      //variable que almacenara los puntos echos en el partido por el equipo 1
       $PUNTOS_TEAM_2=0;
+      //variable que nos ayudara a recorrer un ciclo for
       $i;
+      //recuperamos el numero de integrantes del equipo 1
       $numero_de_jugadores_team1=$_POST['NumeroDeIntegrasteDelEquipo1'];
-      $numero_de_jugadores_team2=$_POST['NumeroDeIntegrasteDelEquipo1'];
+       //recuperamos el numero de integrantes del equipo 1
+      $numero_de_jugadores_team2=$_POST['NumeroDeIntegrasteDelEquipo2'];
+      //recuperamos la tabla del equipo 1
       $Tabla_Jugadores_Team1=$_POST['TablaTeam1'];
+      //recuperamos la tabla del equipo 2
       $Tabla_Jugadores_Team2=$_POST['TablaTeam2'];
       
       $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM1'],$_POST['ID_CONVOCSTORIA']); 
@@ -237,11 +330,14 @@ switch ($_POST['tipo']){
       $resultado5=$conexcion5->query($sql);
      echo "ok";
     break;
+   //en el caso que el js desea conocer si se ha iniciado session
     case "ComprobarLogin":
+        //verificamos si la varible de session  se a creado
          if (!empty($_SESSION["ID_USUARIO"]) && !empty($_SESSION["TIPO_USUARIO"])){
+             //retorna "si", si se ha iniciado session
              echo"si";
-            
          }else{
+             //retorna "no", si no ha iniciado session
              echo "no";
            
          }
