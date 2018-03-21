@@ -53,7 +53,7 @@ function ActualizarEstadisticas(id_convocatoria){
          type: "POST",
          dataType: 'text',
 		 success: function(resultado){
-		 	alert(resultado);
+		 	//alert(resultado);
 		 }
 	});
 }
