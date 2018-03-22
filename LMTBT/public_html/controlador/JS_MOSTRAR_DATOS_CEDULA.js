@@ -373,7 +373,7 @@ function llenar_rol_juego(ID_ROL,ID_TEAM_1,ID_TEAM_2){
         datatype: "text",
           // Metodo que se ejecura si la peticion es correcta
         success: function(resultado) {
-            console.log(resultado);
+          
         //si no hubo problemas en php, este enviara un "ok"
           if(resultado=="ok"){//si lo que nos devuelve el php es "ok" 
               //mostramos un mensaje que la peticion se realizo con exito
