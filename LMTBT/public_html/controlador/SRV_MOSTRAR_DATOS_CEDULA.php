@@ -261,7 +261,7 @@ switch ($_POST['tipo']){
       $Tabla_Jugadores_Team1=$_POST['TablaTeam1'];
       //recuperamos la tabla del equipo 2
       $Tabla_Jugadores_Team2=$_POST['TablaTeam2'];
-      
+      //setencia que obtendra el ID del roster del equipo 1
       $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM1'],$_POST['ID_CONVOCSTORIA']); 
       $conexcion= $db->getConnection();  
       $resultado=$conexcion->query($sql);
@@ -277,9 +277,9 @@ switch ($_POST['tipo']){
       $conexciones= $db->getConnection();
       for($i=0;$i<$numero_de_jugadores_team1;$i++){
           $consulta=$conexciones->prepare("UPDATE cedulas SET T=?,S=?,I=?,A=?,C1=?,C2=?,C3=?,PA=?,SA=?,I4=? WHERE  ID_ROL_JUEGO=? AND ID_JUGADOR=? AND ID_ROSTER=?");
-          $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team1[$i][1],$Tabla_Jugadores_Team1[$i][2],$Tabla_Jugadores_Team1[$i][3],$Tabla_Jugadores_Team1[$i][4],$Tabla_Jugadores_Team1[$i][5],$Tabla_Jugadores_Team1[$i][6],$Tabla_Jugadores_Team1[$i][7],$Tabla_Jugadores_Team1[$i][8],$Tabla_Jugadores_Team1[$i][9],$Tabla_Jugadores_Team1[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team1[$i][1],$ID_ROSTER_TEAM_1);
+          $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team1[$i][1],$Tabla_Jugadores_Team1[$i][2],$Tabla_Jugadores_Team1[$i][3],$Tabla_Jugadores_Team1[$i][4],$Tabla_Jugadores_Team1[$i][5],$Tabla_Jugadores_Team1[$i][6],$Tabla_Jugadores_Team1[$i][7],$Tabla_Jugadores_Team1[$i][8],$Tabla_Jugadores_Team1[$i][9],$Tabla_Jugadores_Team1[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team1[$i][0],$ID_ROSTER_TEAM_1);
           if($consulta->execute()){
-               
+             
             }else{                                                                                   
            echo "no";
            die();
@@ -289,7 +289,6 @@ switch ($_POST['tipo']){
           $consulta=$conexciones->prepare("UPDATE cedulas SET T=?,S=?,I=?,A=?,C1=?,C2=?,C3=?,PA=?,SA=?,I4=? WHERE  ID_ROL_JUEGO=? AND ID_JUGADOR=? AND ID_ROSTER=?");
            $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team2[$i][1],$Tabla_Jugadores_Team2[$i][2],$Tabla_Jugadores_Team2[$i][3],$Tabla_Jugadores_Team2[$i][4],$Tabla_Jugadores_Team2[$i][5],$Tabla_Jugadores_Team2[$i][6],$Tabla_Jugadores_Team2[$i][7],$Tabla_Jugadores_Team2[$i][8],$Tabla_Jugadores_Team2[$i][9],$Tabla_Jugadores_Team2[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team2[$i][0],$ID_ROSTER_TEAM_2);
           if($consulta->execute()){
-              
             }else{                                                                                   
            echo "no";
           die();
