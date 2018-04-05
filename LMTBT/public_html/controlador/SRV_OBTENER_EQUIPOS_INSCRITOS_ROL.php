@@ -23,7 +23,7 @@ else{
     	$i=0;
         //Retornamos una cadena con los ids separados por comas
     	while($row = mysqli_fetch_array($result)){
-        	if($i==0) {$rawdata=$rawdata.$row['ID_EQUIPO']; $i=1;}
+        	if($i==0) {$rawdata=$row['ID_EQUIPO']; $i=1;}
         	else{$rawdata=$rawdata.','.$row['ID_EQUIPO'];}
     	}
     	echo $rawdata;

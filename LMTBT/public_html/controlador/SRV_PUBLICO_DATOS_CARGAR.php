@@ -33,7 +33,7 @@
         echo "<center><h4><a>JUGADORES</a></h4></center>";
 	echo "</div><br>";
                         
-        //Realizamos un select para recuperar el id y numero de todos los jugadores del roster
+        /*/Realizamos un select para recuperar el id y numero de todos los jugadores del roster
 	$pre = $conn->prepare("SELECT ID_JUGADOR,NUMERO FROM participantes_rosters WHERE ID_ROSTER=?");
 	$pre->bind_param("i",$id);
 	$pre->execute();
@@ -60,7 +60,7 @@
                 
 	}else{
 		echo "<h2><a> No se encontraron jugadores</a></h2>";
-	}
-	$pre->close();
+	}*/
+	//$pre->close();
 	$conn->close();
 ?>
