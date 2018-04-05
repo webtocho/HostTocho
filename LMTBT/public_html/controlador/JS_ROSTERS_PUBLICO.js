@@ -83,7 +83,6 @@ function Jugadores(id){
             else  { 
                 team=new Array(resultado);//si nos regresa otra cosa generamos un arreglo con los jugadores
                 team=team[0].split(',');//generamos bien el arreglo temporal
-                alert("team:"+team);
                 for(var i=0; i<team.length; i++){
                     equipo[i]=(parseInt(team[i]));//vamos agregando el id de los jugadores al arreglo
                 }
@@ -97,9 +96,7 @@ function Jugadores(id){
 }
 //Esta funcion recupera la informacion de los jugadores uno por uno
 function JugadoresCargar(id){
-    var ids="";
     for(var j=0;j<equipo.length;j++){
-        ids+=equipo[j]+",";
         $.ajax({//hacemos la peticion mediante ajax
             url: "../controlador/SRV_PUBLICO_JUGADOR_INFO.php",
             data: {id_roster :id, id_jugador:equipo[j] },//mandamos el id del roster asi como el del jugador
@@ -113,5 +110,4 @@ function JugadoresCargar(id){
             }       
         });
     }
-    alert(ids);
 }
