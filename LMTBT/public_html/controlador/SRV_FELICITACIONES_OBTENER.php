@@ -17,7 +17,7 @@
                 $foto = base64_encode($row['FOTO_PERFIL']);
                 echo "<center>";
                 if($foto==null){
-                    echo "<img class='img-responsive lot' src='img/CUMPLE_ICON.png' alt='' style='max-width:250px;max-height:250px;'/>";
+                    echo "<img class='img-responsive lot' src='img/RC_IF_CUMPLE.png' alt='' style='max-width:250px;max-height:250px;'/>";
                 }else{
                     echo "<img class='img-responsive lot' src='data:image/png;base64,".$foto."' alt='' style='max-width:250px;max-height:250px;'/>";
                 }
