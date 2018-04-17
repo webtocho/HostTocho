@@ -1,0 +1,91 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Noto Sans', sans-serif;*/
+}
+
+#body{
+    width: 99%;
+    height: 100%;
+    clear: both;
+    margin: auto;
+    background-image: url(../../modelo/RC_IF_TEAM3.jpg);
+    background-size: cover;
+}
+
+#contenido{
+    width: 90%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 40px;
+    box-shadow: 5px 5px 15px #333;
+}
+
+#btns{
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+table{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+th,tr,td{
+    border: 1px solid #333;
+    padding: 2px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#logo {
+    text-decoration:none;
+}
+
+#logoimg {
+    height: 125px;
+    width: 125px;
+}
+
+@media(max-width:550px){
+    #contenido{
+        width: 90%;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 10px;
+    }
+    table{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    th,tr,td{
+        border: 1px solid #333;
+        padding: 2px;
+        text-align: center;
+        font-size: 12px;
+    }
+}
+
+@media(max-width:850px){
+    #contenido{
+        width: 97%;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 10px;
+        float: left;
+    }
+    table{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    th,tr,td{
+        border: 1px solid #333;
+        padding: 2px;
+        text-align: center;
+        font-size: 12px;
+    }
+}

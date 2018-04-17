@@ -1,0 +1,49 @@
+#body{
+    width: 99%;
+    height: 100%;
+    clear: both;
+    margin: auto;
+    background-color: #333;
+    background-image: url(../../modelo/RC_IF_FONDO.png);
+    background-repeat: repeat;
+}
+
+#contenido{
+    width: 1000px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 3px;
+    margin-top: 40px;
+    box-shadow: 5px 5px 15px #333;
+}
+
+#nombre,#logotipo,#busqueda_coach,#seleccion_coach,#coach{
+    width: 90%;
+    height: 28px;
+    margin: 2%;
+    border-bottom: 1px solid darkorange;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-top: 20px;
+}
+
+#btn-submitdos{
+    background-color: transparent;
+    border: 1px solid darkorange;
+    border-radius: 3px;
+    background-color: #fff;
+    color: darkorange;
+    margin-top: 30px;
+    padding: 3px;
+}
+
+@media(max-width:550px){
+    #contenido{
+        width: 95%;
+        height: 450px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+}

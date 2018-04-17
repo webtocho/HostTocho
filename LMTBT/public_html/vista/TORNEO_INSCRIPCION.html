@@ -1,48 +1,44 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
-        <title> INSCRIPCIÓN </title>
-        <link type="text/css" rel="stylesheet" href="css/style_torneo_inscripcion.css" />
+        <title>INSCRIPCIÓN</title>
+        <link type="text/css" rel="stylesheet" href="css/HE_TORNEO_INSCRIPCION.css" />
         <link type="text/css" rel="stylesheet" href="css/bootstrap-3.1.1.min.css" />
         <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css" />
-        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
+        <link href='../modelo/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <script src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
         <script src="../controlador/JS_LIBRERIAS_bootstrap-3.1.1.min.js"></script>
         <script  src="../controlador/JS_TORNEO_INSCRIPCION.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<body id="body">
-     <div id="alert"></div>
-<center>
-    
-    <div class="form" id="form">
-        <a href="index.php" style="text-decoration:none;"><img id="logoimg" src="img/IF_LOGO.jpg" alt="TochoWeb"/></a>
-       
-      <form>
-            <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;"> Inscripción </h1>
-                   <select name="Categoria" id="Categoria">
-                       <option value="Seleccione" disabled selected>Seleccione Categoria</option>
-                      
-                   </select>
+    </head>
+    <body id="body">
+        <div id="alert"></div>
+    <center>
 
-                   <select name="Torneos" id="Torneos">
-                   <option value="Seleccione" disabled selected>Seleccione Torneo</option>
-                   </select>
+        <div class="form" id="form">
+            <a href="index.php" style="text-decoration:none;"><img id="logoimg" src="../modelo/IF_LOGO.jpg" alt="TochoWeb"/></a>
 
-                   <select name="Equipo" id="Equipo" >
-                   <option value="Seleccione" disabled selected>Seleccione Equipo</option>
-                   </select>
+            <form>
+                <h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;"> Inscripción </h1>
+                <select name="Categoria" id="Categoria">
+                    <option value="Seleccione" disabled selected>Seleccione categoría</option>
 
-                   <input type="button" value="Inscribir" onclick="InscribirEquipo()" class="posicion" id="btn-submitdos"><br><br><br>
-      </form>
-    </div>
-</center>
-    </body>
+                </select>
+
+                <select name="Torneos" id="Torneos">
+                    <option value="Seleccione" disabled selected>Seleccione torneo</option>
+                </select>
+
+                <select name="Equipo" id="Equipo" >
+                    <option value="Seleccione" disabled selected>Seleccione equipo</option>
+                </select>
+
+                <input type="button" value="Inscribir" onclick="InscribirEquipo()" class="posicion" id="btn-submitdos"><br><br><br>
+            </form>
+        </div>
+    </center>
+</body>
 </html>

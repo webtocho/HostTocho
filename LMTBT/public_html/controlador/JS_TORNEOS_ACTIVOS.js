@@ -1,12 +1,8 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 function cargar_tabla_torneos_activos(){
     actualizar_tabla_torneos_activos();
  //   var ejecutar = setInterval(function(){actualizar_tabla_torneos_activos()},5000);
 }
+
 function actualizar_tabla_torneos_activos(){
     $.ajax({
         url: "../controlador/SRV_CONSULTA_TORNEOS_ACTIVOS.php",
@@ -28,6 +24,7 @@ function actualizar_tabla_torneos_activos(){
         }
     });
 }
+
 function abrir_pantalla_para_terminar_torneo(id){
     document.getElementById("botonConfirmacion").onclick = function(){
         terminar_torneo(id);
@@ -48,7 +45,7 @@ function terminar_torneo(id){
         datatype: "text",
         beforeSend: function(xhr){        
             $('#alertaSucces').empty();
-            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+            $('#alertaSucces').append('<center><img src="../modelo/RC_IF_CARGANDO.gif" alt="Flowers in Chania"></center>');
         },
         success: function(resultado){
             if(resultado == "ok"){
@@ -63,8 +60,7 @@ function terminar_torneo(id){
         }
     });    
 }
+
 function quitarVentana(){
     $('#alertaSucces').modal('hide');
 }
-
-

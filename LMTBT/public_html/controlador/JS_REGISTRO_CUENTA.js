@@ -46,7 +46,7 @@ $(document).on('submit','#myForm',function(event){
         datatype: "text",
         beforeSend: function(xhr) {           
             $('#alertaSucces').empty();
-            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+            $('#alertaSucces').append('<center><img src="../modelo/RC_IF_CARGANDO.gif" alt="Flowers in Chania"></center>');
             document.getElementById('btn-submitdos').disabled = true;            
         },
         success: function(respuesta) {

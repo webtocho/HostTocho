@@ -23,7 +23,7 @@ $(document).ready(function() {
                     crearModal(false,true,true,true);
                     $("#modal-footer").hide();
                     $("#modal-title").html("Cargando información...");
-                    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+                    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
                     $('#modal').modal({backdrop: 'static', keyboard: false});
                     
                     if(id_e !== null && id_r !== null){
@@ -158,7 +158,7 @@ function agregarFilaMiembro(id, info, num = 0){
     fila.insertCell(-1).innerHTML = info["nb_c"];
     //Celda de fotografía
     if(info["ft"] === null)
-        fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
+        fila.insertCell(-1).innerHTML = "<img src=\"../modelo/RC_IF_ANONIMO.png\" width='100'/>";
     else
         fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + info["ft"] +"\" width='100'/>";
     //Celda de selección de número
@@ -176,7 +176,7 @@ function agregarMiembro(id){
     if(miembros.indexOf(id) === -1){
         $("#modal-footer").hide();
         $("#modal-title").html("Agregando jugador...");
-        $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+        $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
         $('#modal').modal({backdrop: 'static', keyboard: false});
         
         //Hacemos una petición para obtener los datos del nuevo jugador.
@@ -214,7 +214,7 @@ function descartarMiembro(boton){
 function guardar(){
     $("#modal-footer").hide();
     $("#modal-title").html("Aplicando cambios...");
-    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Comprobamos que se tenga la cantidad mínima de miembros.

@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
     font-family: 'Roboto-Regular';
     font-size: 100%;
-    background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
+    background: url(../../modelo/RC_IF_FONDO.png)repeat 0px 0px;
 
 }
 body a {
@@ -256,7 +256,7 @@ label{
     }
 }
 /*--slider-css--
- background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px; */
+ background: url(../../modelo/RC_IF_BANNER.jpg)no-repeat 0px 0px; */
 .banner{
    
     background-size:cover;
@@ -340,7 +340,7 @@ label{
     text-decoration: none;
     width: 52px;
     height: 52px;
-    background: transparent url("../img/RC_IF_FLECHA_3.png") no-repeat left top;
+    background: transparent url("../../modelo/RC_IF_FLECHA_3.png") no-repeat left top;
     margin-top:2%;
 }
 .callbacks_nav:hover{
@@ -760,11 +760,11 @@ h3.tittle i,h2.tittle i {
 }
 .nbs-flexisel-nav-left {
     right: -1%;
-    background: url(../img/RC_IF_FLECHA_2.png) no-repeat -38px -0px;
+    background: url(../../modelo/RC_IF_FLECHA_2.png) no-repeat -38px -0px;
 }
 .nbs-flexisel-nav-right {
     left: -1%;
-    background: url(../img/RC_IF_FLECHA_2.png) no-repeat 1px -0px;
+    background: url(../../modelo/RC_IF_FLECHA_2.png) no-repeat 1px -0px;
 }
 li.nbs-flexisel-item {
     width:370px;
@@ -929,7 +929,7 @@ a.pp-title {
 }
 /*--timer--*/
 .time-bg {
-    background: url(../img/RC_IF_CONTADOR.jpg)no-repeat 0px 0px;
+    background: url(../../modelo/RC_IF_CONTADOR.jpg)no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -951,7 +951,7 @@ p#demo {
 .time-bg h4 span {
     color: #ffcc00;
 }
-/** background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;*/
+/** background: url(../../modelo/RC_IF_BANNER.jpg)no-repeat 0px 0px;*/
 .banner {
    
     background-size: cover;
@@ -1075,7 +1075,7 @@ ul.social-share li{
     display:inline-block;
 }
 ul.social-share li i,i.arrow,p.reply {
-    background: url(../img/RC_IF_ICONS_2.png)no-repeat -4px -3px;
+    background: url(../../modelo/RC_IF_ICONS_2.png)no-repeat -4px -3px;
     width: 25px;
     height: 25px;
     display: inline-block;
@@ -1086,18 +1086,18 @@ ul.social-share li  i.tin:hover,ul.social-share li  i.message:hover,p.reply i:ho
     opacity:0.7;
 }
 ul.social-share li  i.tin{
-    background: url(../img/RC_IF_ICONS_2.png)no-repeat -30px -3px;
+    background: url(../../modelo/RC_IF_ICONS_2.png)no-repeat -30px -3px;
 }
 ul.social-share li  i.message{
-    background: url(../img/RC_IF_ICONS_2.png)no-repeat -55px -3px;
+    background: url(../../modelo/RC_IF_ICONS_2.png)no-repeat -55px -3px;
 }
 i.arrow{
-    background: url(../img/RC_IF_ICONS_2.png)no-repeat -79px -3px;
+    background: url(../../modelo/RC_IF_ICONS_2.png)no-repeat -79px -3px;
     display: inline-block;
     float: right;
 }
 p.reply i{
-    background: url(../img/RC_IF_ICONS_2.png)no-repeat -4px -3px;
+    background: url(../../modelo/RC_IF_ICONS_2.png)no-repeat -4px -3px;
     display: inline-block;
     vertical-align: middle;
     margin: 0 14px 0 0px;
@@ -1317,7 +1317,7 @@ ul.f-icons li {
     margin-right: 0.3em;
 }
 span.icon,span.icon1,span.icon3 {
-    background: url(../img/RC_IF_ICONS_RS.png) no-repeat 2px 2px;
+    background: url(../../modelo/RC_IF_ICONS_RS.png) no-repeat 2px 2px;
     display: inline-block;
     height: 24px;
     width: 24px;
@@ -1325,10 +1325,10 @@ span.icon,span.icon1,span.icon3 {
     margin-right: 0.5em;
 }
 span.icon1{
-    background: url(../img/RC_IF_ICONS_RS.png) no-repeat -24px 2px;
+    background: url(../../modelo/RC_IF_ICONS_RS.png) no-repeat -24px 2px;
 }
 span.icon2{
-    background: url(../img/RC_IF_ICONS_RS.png) no-repeat -74px 2px;
+    background: url(../../modelo/RC_IF_ICONS_RS.png) no-repeat -74px 2px;
 }
 .fa-youtube {
   background: #bb0000;
@@ -1568,7 +1568,7 @@ a.pp-title:hover {
 }
 /*--about--*/
 .banner.two {
-    background: url(../img/RC_IF_BANNER.jpg)no-repeat 0px 0px;
+    background: url(../../modelo/RC_IF_BANNER.jpg)no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -1968,7 +1968,7 @@ p.sign {
     height: 22px;
     border: none;
     text-indent: 100%;
-    background: url(../img/RC_IF_FLECHA_4.png) no-repeat 0px 0px;
+    background: url(../../modelo/RC_IF_FLECHA_4.png) no-repeat 0px 0px;
 }
 /*--Responsive--*/
 @media (max-width:1440px){
@@ -2092,7 +2092,7 @@ p.sign {
         top: 82%;
         left: 0;
         opacity: 0.6;
-        background: transparent url("../img/RC_IF_FLECHA_3.png") no-repeat left top;
+        background: transparent url("../../modelo/RC_IF_FLECHA_3.png") no-repeat left top;
         margin-top: 0%;
     }
     .post-img {
@@ -2234,7 +2234,7 @@ p.sign {
         top: 82%;
         left: 0;
         opacity: 0.6;
-        background: transparent url("../img/RC_IF_FLECHA_3.png") no-repeat left top;
+        background: transparent url("../../modelo/RC_IF_FLECHA_3.png") no-repeat left top;
         margin-top: 1%;
     }
     .blog-info {
@@ -2264,11 +2264,11 @@ p.sign {
     }
     .nbs-flexisel-nav-right {
         left: 0%;
-        background: url(../img/RC_IF_FLECHA_2.png) no-repeat 1px -0px;
+        background: url(../../modelo/RC_IF_FLECHA_2.png) no-repeat 1px -0px;
     }
     .nbs-flexisel-nav-left {
         right: 0.5%;
-        background: url(../img/RC_IF_FLECHA_2.png) no-repeat -38px -0px;
+        background: url(../../modelo/RC_IF_FLECHA_2.png) no-repeat -38px -0px;
     }
     .banner-info h3 {
         font-size: 1.8em;
@@ -2551,7 +2551,7 @@ p.sign {
         top: 82%;
         left: 0;
         opacity: 0.6;
-        background: transparent url("../img/RC_IF_FLECHA_3.png") no-repeat left top;
+        background: transparent url("../../modelo/RC_IF_FLECHA_3.png") no-repeat left top;
         margin-top: -36%;
     }
     .callbacks_nav.prev {
@@ -2632,7 +2632,7 @@ p.sign {
         top: 82%;
         left: 0;
         opacity: 0.6;
-        background: transparent url("../img/RC_IF_FLECHA_3.png") no-repeat left top;
+        background: transparent url("../../modelo/RC_IF_FLECHA_3.png") no-repeat left top;
         margin-top: -36%;
     }
     .g-left {
@@ -2855,7 +2855,7 @@ p.sign {
         top: 82%;
         left: 0;
         opacity: 0.6;
-        background: transparent url("../img/RC_IF_FLECHA_3.png") no-repeat left top;
+        background: transparent url("../../modelo/RC_IF_FLECHA_3.png") no-repeat left top;
         margin-top: 9%;
     }
     .time-bg h4 {
@@ -2924,7 +2924,7 @@ p.sign {
         top: 82%;
         left: 0;
         opacity: 0.6;
-        background: transparent url("../img/RC_IF_FLECHA_3.png") no-repeat left top;
+        background: transparent url("../../modelo/RC_IF_FLECHA_3.png") no-repeat left top;
         margin-top: 9%;
     }
     .time-bg h4 {

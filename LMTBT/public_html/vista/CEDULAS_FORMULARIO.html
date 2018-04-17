@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Cédula</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/HE_FC.css"/> 
+        <link href="css/HE_CEDULAS_FORMULARIO.css" rel='stylesheet' type='text/css'/> 
+        <link href='../modelo/IF_LOGO.png' rel='shortcut icon' type='image/png'> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../controlador/JS_LIBRERIAS_materialize.min.js"></script>
+        <script type="text/javascript" src="../controlador/JS_MOSTRAR_DATOS_CEDULA.js"></script>
+         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
+         <script type="text/javascript" src="../controlador/JS_TABLA_POSICIONES.js"></script>
+         <!--script type="text/javascript" src="../controlador/JS_CARACTERISTICAS.js"></script-->
+        <script src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
+    </head>
+    <body id="body">
+        <!--class="modal fade"-->
+        <div class="modal fade" id="esperando">
+        <center><img SRC="../modelo/RC_IF_PROCESANDO.gif"></center></div>
+        <div id="alertaSucces">     
+        </div><br><br>
+      <center><div id="cuerpo" >
+        <center><a href="index.php" id="logo" ><img src="../modelo/IF_LOGO.jpg" alt="TochoWeb" id="logo_imagen"/></a></center>
+        <center><h1 id="#Tittle_h1">Tabla de anotaciones</h1></center>  
+            <div id="equipo1" class="lefth_q" >
+                <br>
+                <center>
+                  <h3 style="#Tittle_h3" id="label_equipo_1">-----</h3>
+                    <div class="panel-body">
+               	      <table class="table table-bordered table-hover" id="formulario_equipo_1">
+				                <tr>
+                           <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>C1</th><th>C2</th><th>C3</th><th>PA</th><th>SA</th><th>I4</th> <th>PT</th>
+				                </tr>
+			                </table>
+			              </div>
+                </center>
+            </div>
+            <div id="equipo2" class="rigth_q" >
+                <br>
+                <center>
+                  <h3 style="#Tittle_h3" id="label_equipo_2">-----</h3>
+                    <div class="panel-body">
+               	      <table class="table table-bordered table-hover" id="formulario_equipo_2">
+				                <tr>
+                          <th>JUGADOR</th><th>T</th><th>S</th><th>I</th><th>A</th><th>C1</th><th>C2</th><th>C3</th><th>PA</th><th>SA</th><th>I4</th> <th>PT</th>      
+				                </tr>
+			                </table>
+			              </div>
+                </center>
+            </div>
+            <div id="BOTON_GUARDAR"></div> 
+        </div></center><br><br>       
+    </body>
+</html>

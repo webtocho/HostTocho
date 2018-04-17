@@ -11,7 +11,7 @@
         if(mysqli_num_rows($resultado)>=3)
             while( ($fila = $resultado->fetch_assoc()) &&  $index<3){
             $id_noticia = $fila["ID_NOTICIAS"];
-            $noticia[$index] ="<a class='h3' href='VER_NOTICIA.html'  onclick='enviarIdNoticia(".$id_noticia. ")'><h3>". $fila["TITULO"]."<h3></a>";
+            $noticia[$index] ="<a class='h3' href='NOTICIAS_VER.html'  onclick='enviarIdNoticia(".$id_noticia. ")'><h3>". $fila["TITULO"]."<h3></a>";
             
 
              if($index==0){// si es la primer noticia, obtenemos una de sus imagenes para mostrar como banner

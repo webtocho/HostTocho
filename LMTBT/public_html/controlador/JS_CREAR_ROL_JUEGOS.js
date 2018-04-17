@@ -1,4 +1,5 @@
 var equipos=[];
+
 function Get_Teams(id_convocatoria){
     //Funcion para obtener los equipos inscritos a una convocatoria
     var team;

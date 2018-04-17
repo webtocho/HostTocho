@@ -1,33 +1,35 @@
-$(function() {
-	$('#campo_correo').bind("keypress", function(event){
-		var key = event.which || event.keyCode;
-		if(key == 13) iniciarSesion();
-	})
+$(function () {
+    $('#campo_correo').bind("keypress", function (event) {
+        var key = event.which || event.keyCode;
+        if (key == 13)
+            iniciarSesion();
+    })
 
-	$('#campo_password').bind("keypress", function(event){
-		var key = event.which || event.keyCode;
-		if(key == 13) iniciarSesion();
-	})
+    $('#campo_password').bind("keypress", function (event) {
+        var key = event.which || event.keyCode;
+        if (key == 13)
+            iniciarSesion();
+    })
 
 });
 
-function iniciarSesion(){
+function iniciarSesion() {
     var e_mail, password;
-    e_mail = $.trim(  $('#campo_correo').val());
+    e_mail = $.trim($('#campo_correo').val());
     password = $.trim($('#campo_password').val());
 
-    if(e_mail.length === 0 && password.length === 0){
+    if (e_mail.length === 0 && password.length === 0) {
         alert("Datos inválidos.");
         return;
     }
 
     var patron_e_mail = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    if(e_mail.length === 0 || !patron_e_mail.test(e_mail)){
+    if (e_mail.length === 0 || !patron_e_mail.test(e_mail)) {
         alert("Email inválido.");
         return;
     }
 
-    if(password.length === 0){
+    if (password.length === 0) {
         alert("Contraseña inválida.");
         return;
     }
@@ -35,13 +37,13 @@ function iniciarSesion(){
     $.ajax({
         type: "POST",
         url: "../controlador/SRV_CONSULTA_LOGIN_LOGOUT.php",
-        data: {tipo : "login",
-                    e_mail : e_mail,
-                    password : password
-                },
+        data: {tipo: "login",
+            e_mail: e_mail,
+            password: password
+        },
         dataType: "text",
         async: true,
-       // async: false, //Esta operación es síncrona.
+        // async: false, //Esta operación es síncrona.
         beforeSend: function (xhr) {
             //Bloqueamos los controladores.
             document.getElementById("btn_iniciar_sesion").disabled = true;
@@ -50,11 +52,10 @@ function iniciarSesion(){
         },
         success: function (resultado) {
             //El servidor nos contesta con la cadena 'ok' si el inicio de sesión fue exitoso.
-            if(resultado == "ok"){
+            if (resultado == "ok") {
                 //Redireccionamos al usuario a la página de login.
                 window.location.replace("index.php");
-            }
-            else{
+            } else {
                 //Se recibió un mensaje de error que se muestra en pantalla.
                 alert(resultado);
             }
@@ -69,37 +70,39 @@ function iniciarSesion(){
         }
     });
 }
-function abrirPantallaParaIngresarCorreo(){
+
+function abrirPantallaParaIngresarCorreo() {
     $('#tituloVentanaEmergente').empty();
-    $('#tituloVentanaEmergente').append("Recuperar cuenta");   
-    document.getElementById("formulario").onsubmit = function(){
+    $('#tituloVentanaEmergente').append("Recuperar cuenta");
+    document.getElementById("formulario").onsubmit = function () {
         recuperarPassword();
         return false;
     };
     //Mostramos la ventana emergente
     $('#ventanaEmergente').modal();
 }
-function recuperarPassword(){
+
+function recuperarPassword() {
     $('#ventanaEmergente').modal('hide');
     var correo_recuperar = document.getElementById("correo_recuperar").value;
     $.ajax({
         url: "../controlador/SRV_RECUPERAR_CUENTA.php",
-        data:{            
-            correo_recuperar:correo_recuperar
+        data: {
+            correo_recuperar: correo_recuperar
         },
         type: "POST",
         datatype: "text",
-        beforeSend: function(xhr){            
+        beforeSend: function (xhr) {
         },
-        success: function(resultado) {
-            if(resultado == "ok"){
-                mostrarAlerta("Te hemos enviado un correo con tu nueva contraseña generada aleatoriamente recuerda cambiarlas","correcto");
-            }else{
-                mostrarAlerta(resultado,"fallido");
-            }            
+        success: function (resultado) {
+            if (resultado == "ok") {
+                mostrarAlerta("Te hemos enviado un correo con tu nueva contraseña generada aleatoriamente recuerda cambiarlas", "correcto");
+            } else {
+                mostrarAlerta(resultado, "fallido");
+            }
         },
-        error: function(jqXHR, textStatus) {           
-           mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
+        error: function (jqXHR, textStatus) {
+            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.", "fallido");
         }
     });
     document.getElementById("correo_recuperar").value = "";

@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
-        <title>Editar Categorias</title>
+        <title>Editar categorías</title>
         <meta charset="UTF-8">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-         <link href="css/style_categorias.css" rel='stylesheet' type='text/css' />
-        <link href='img/IF_LOGO.png' rel='shortcut icon' type='image/png'>
+         <link href="css/HE_CATEGORIAS.css" rel='stylesheet' type='text/css' />
+        <link href='../modelo/IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.2.1.js"></script>
@@ -25,7 +21,7 @@ and open the template in the editor.
     <br><br>
     <center><div class="cuerpo">
     <div id="alertaSucces" ></div>
-    <center><a href="index.php" style="text-decoration:none;"><img src="img/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>    
+    <center><a href="index.php" style="text-decoration:none;"><img src="../modelo/IF_LOGO.jpg" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>    
     
     <center><h1 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;">CATEGORIAS</h1> </center>
         <br/><br/>
@@ -41,7 +37,7 @@ and open the template in the editor.
        
         
         <div class="container">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregar_modal" >Agregar Nuevo</button>                 
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregar_modal" >Agregar nuevo</button>                 
         </div>
         
          <!--VENTANA MODAL AGREGAR -->
@@ -51,7 +47,7 @@ and open the template in the editor.
              <center>
                    <div class="modal-content">
                        <div class="modal-header">
-                            <label for="usr">Nombre de la Categoria:</label>
+                            <label for="usr">Nombre de la categoría:</label>
                        </div>
                        <div class="modal-body">
                        <input type="text" class="form-control"  id="nombreCategoria">
@@ -73,11 +69,11 @@ and open the template in the editor.
              <center>
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3>¿SEGURO QUE DESEA ELIMINAR LA CATEGORIA?</h3> 
+                            <h3>¿SEGURO QUE DESEA ELIMINAR LA CATEGORÍA?</h3> 
                         </div>
                         <div class="modal-body">
-                           <h3 id="categoriaNombre">CATEGORIA</h3>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"  onclick="eliminarCategoria()">SI</button>
+                           <h3 id="categoriaNombre">CATEGORÍA</h3>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"  onclick="eliminarCategoria()">SÍ</button>
                            <button type="button" class="btn btn-primary" data-dismiss="modal">NO</button>      
                        </div>
                         <div class="modal-footer"></div>

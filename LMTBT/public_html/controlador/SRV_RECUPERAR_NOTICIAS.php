@@ -33,7 +33,7 @@
             $html.="<div class='panel panel-default'>";
                 $html.="<div class='panel-heading' style='background-color: black;color: white;'>";
                    // $html.="<div class='container'>";
-                        $html.="<a class='news' href='VER_NOTICIA.html'  onclick='enviarIdNoticia(".$id_noticia. ")'><h2>".$fila["TITULO"]."</h2></a>";      
+                        $html.="<a class='news' href='NOTICIAS_VER.html'  onclick='enviarIdNoticia(".$id_noticia. ")'><h2>".$fila["TITULO"]."</h2></a>";      
                 $html.="</div>";
                 
              $html.="<div class='panel-body'>";     

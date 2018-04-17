@@ -1,11 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
 /*
  * se obtiene la sesion iniciada, en el caso de no tener una sesion activa, no se podra
  * agregar comentarios, solo verlos
@@ -43,7 +35,7 @@ function cargarComentarios(){
             datatype: "text",
              beforeSend: function (xhr){
                  $('#comentarios').empty();
-                  $('#comentarios').append("<img src='./images/cargando_naranja.gif' >");
+                  $('#comentarios').append("<img src='../modelo/RC_IF_CARGANDO.gif' >");
             },
             success: function (respuesta) {
                  $('#comentarios').empty();
@@ -149,7 +141,7 @@ function cargarNoticia(){
             datatype: "text",
             beforeSend: function (xhr){
                  $('#cuerpo').empty();
-                 $('#cuerpo').append("<img src='./images/cargando_naranja.gif' >");
+                 $('#cuerpo').append("<img src='../modelo/RC_IF_CARGANDO.gif' >");
             },
             success: function (respuesta) {
                  $('#titulo').empty();

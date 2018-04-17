@@ -25,7 +25,7 @@ $(document).ready(function() {
                     crearModal(false,true,true,true);
                     $("#modal-footer").hide();
                     $("#modal-title").html("Cargando información...");
-                    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+                    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
                     $('#modal').modal({backdrop: 'static', keyboard: false});
                     
                     if(idEquipo !== null){
@@ -138,7 +138,7 @@ function guardarCambios(){
     
     $("#modal-footer").hide();
     $("#modal-title").html("Guardando cambios...");
-    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Comprobamos que el nombre del equipo sea válido.

@@ -1,0 +1,34 @@
+html, body{
+    background: url(../../modelo/RC_IF_FONDO.png)repeat 0px 0px;
+}
+
+.contenido {
+    background-color: #FFFFFF;
+    display: inline-block;
+    padding:0.5em 0.5em;
+}
+
+#titulo {
+    display: inline-block;
+    padding:0.5em 0.5em;
+    color: #508EC7
+}
+
+#cuerpo  {
+    width: 960px;
+    height: auto;
+    text-align : justify;
+    padding:2em 1em;
+}
+
+.comentario {
+    display: inline-block;
+    padding:0.5em 0.5em;
+}
+
+#comentarios {
+    width: 960px;
+    padding:1em 1em;
+    display: inline-block;
+    text-align: left;
+}

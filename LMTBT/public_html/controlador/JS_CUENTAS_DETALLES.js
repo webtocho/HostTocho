@@ -14,7 +14,7 @@ $(document).ready(function() {/* ID de la cuenta cuyos detalles se consultan.
     crearModal(false,true,true,true);
     $("#modal-footer").hide();
     $("#modal-title").html("Cargando información...");
-    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Consultamos si el que está logueado es un administrador.
@@ -38,7 +38,7 @@ $(document).ready(function() {/* ID de la cuenta cuyos detalles se consultan.
                     if(res['ft'] !== null)
                         document.getElementById("foto").src = "data:image/png;base64," + res['ft'];
                     else
-                        document.getElementById("foto").src = "img/RC_IF_ANONIMO.png";
+                        document.getElementById("foto").src = "../modelo/RC_IF_ANONIMO.png";
                     
                     if(parseInt(usr) === 0){
                         //Si un administrador abrió la página, mostramos sus opciones exclusivas. 
@@ -162,13 +162,13 @@ function eliminarCuenta(){
 function hacerCambios(del_cuenta_o_foto){
     $("#modal-footer").hide();
     $("#modal-title").html((del_cuenta_o_foto ? "Eliminando foto de perfil..." : "Eliminando cuenta..."));
-    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     $.post( "../controlador/SRV_CUENTAS.php", {fn : "borrar" + (del_cuenta_o_foto === true ? "_ft" : ""), id : id})
         .done(function(res) {
             if(del_cuenta_o_foto){
-                document.getElementById("foto").src = "img/RC_IF_ANONIMO.png";
+                document.getElementById("foto").src = "../modelo/RC_IF_ANONIMO.png";
                 $("#btn_borrar_ft").remove();
                 $('#modal').modal('hide');
             } else {

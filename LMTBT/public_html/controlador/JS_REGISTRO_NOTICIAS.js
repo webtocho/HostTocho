@@ -1,8 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 $( document ).ready(function() {
       $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","FOTOGRAFO"]}, null, "text")
         .done(function(res){
@@ -20,6 +15,7 @@ $( document ).ready(function() {
             expulsar();
         });
 });
+
 $(document).on('submit','#form_noticias',function(event){
     event.preventDefault();
     var formData = new FormData($('#form_noticias')[0]);
@@ -32,7 +28,7 @@ $(document).on('submit','#form_noticias',function(event){
         processData: false,
         beforeSend: function(xhr){        
             $('#alertaSucces').empty();
-            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+            $('#alertaSucces').append('<center><img src="../modelo/RC_IF_CARGANDO.gif"></center>');
             document.getElementById('enviar').disabled = true;
         },
             success: function(resultado){

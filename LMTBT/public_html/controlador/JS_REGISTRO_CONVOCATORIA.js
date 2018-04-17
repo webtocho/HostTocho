@@ -1,8 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 $(document).ready(function(){
    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res){
@@ -18,6 +13,7 @@ $(document).ready(function(){
             expulsar();
         });
 });
+
 $(document).on('submit','#formlg',function(event){
     event.preventDefault();
     var formData = new FormData($('#formlg')[0]);    
@@ -30,7 +26,7 @@ $(document).on('submit','#formlg',function(event){
         processData: false,
         beforeSend: function(xhr){        
             $('#alertaSucces').empty();
-            $('#alertaSucces').append('<center><img src="images/cargando_naranja.gif" alt="Flowers in Chania"></center>');
+            $('#alertaSucces').append('<center><img src="../modelo/RC_IF_CARGANDO.gif" alt="Flowers in Chania"></center>');
             document.getElementById('btn-submitdos').disabled = true;           
         },
             success: function(resultado){              
@@ -63,9 +59,11 @@ $(document).on('submit','#formlg',function(event){
         mostrarAlerta("Debes llenar todos los campos","fallido");
     }
 });
+
 function mandarAinicio(){
     window.location.replace("index.php");
 }
+
 function registraNoticia(formData){
     formData.delete('nombre');
     formData.delete('fecha_cierre');
@@ -91,6 +89,7 @@ function registraNoticia(formData){
             }
     });    
 }
+
 function validarCampos(){
     if(document.getElementById("nombre_torneo").value.trim().length>0 && document.getElementById("fecha_cierre_convocatoria").value.trim().length>0 && 
        document.getElementById("fecha_inicio_torneo").value.trim().length>0 && document.getElementById("fecha_fin_torneo").value.trim().length>0 && 

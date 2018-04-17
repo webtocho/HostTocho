@@ -20,7 +20,7 @@ $(document).ready(function() {
                     crearModal(false,true,true,true);
                     $("#modal-footer").hide();
                     $("#modal-title").html("Cargando información...");
-                    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+                    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
                     $('#modal').modal({backdrop: 'static', keyboard: false});
                     
                     if(id !== null){
@@ -135,7 +135,7 @@ function agregarMiembro(id){
     if(miembros.indexOf(id) === -1){
         $("#modal-footer").hide();
         $("#modal-title").html("Agregando jugador...");
-        $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+        $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
         $('#modal').modal({backdrop: 'static', keyboard: false});
         
         //Hacemos una petición para obtener la información de la cuenta del nuevo miembro.
@@ -149,7 +149,7 @@ function agregarMiembro(id){
                 
                 //Celda de fotografía
                 if(infoMiembro["ft"] === null)
-                    fila.insertCell(-1).innerHTML = "<img src=\"img/RC_IF_ANONIMO.png\" width='100'/>";
+                    fila.insertCell(-1).innerHTML = "<img src=\"../modelo/RC_IF_ANONIMO.png\" width='100'/>";
                 else
                     fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + infoMiembro["ft"] +"\" width='100'/>";
                 
@@ -197,7 +197,7 @@ function irAPaginaDeDetalles(){
 function crear(){
     $("#modal-footer").hide();
     $("#modal-title").html("Creando roster...");
-    $("#modal-body").html("<center><img src='img/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Comprobamos que se tenga la cantidad mínima de miembros.

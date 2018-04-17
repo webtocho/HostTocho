@@ -1,0 +1,21 @@
+#body{
+    background-color: #fff;
+    background-image: url(../../modelo/RC_IF_FONDO.png);
+    background-size: repeat;
+}
+
+#contenido {
+    display: inline-block;
+    
+    border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+
+#busqueda{
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
