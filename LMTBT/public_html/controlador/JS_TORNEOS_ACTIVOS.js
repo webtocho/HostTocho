@@ -5,7 +5,7 @@ function cargar_tabla_torneos_activos(){
 
 function actualizar_tabla_torneos_activos(){
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_TORNEOS_ACTIVOS.php",
+        url: "../controlador/SRV_TORNEOS_ACTIVOS.php",
         data:{
             tipo:"consultar_torneos_activos"
         },
@@ -36,7 +36,7 @@ function terminar_torneo(id){
     $('#alertaSucces').modal();
     setTimeout(quitarVentana, 5000);
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_TORNEOS_ACTIVOS.php",
+        url: "../controlador/SRV_TORNEOS_ACTIVOS.php",
         data:{
             tipo:"terminar_torneo",
             id:id

@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-      $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","FOTOGRAFO"]}, null, "text")
+      $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR","FOTOGRAFO"]}, null, "text")
         .done(function(res){
             switch(parseInt(res)){
                 case 0:
@@ -21,7 +21,7 @@ $(document).on('submit','#form_noticias',function(event){
     var formData = new FormData($('#form_noticias')[0]);
     if(comprobar_datos() == true){
     $.ajax({
-        url: "../controlador/SRV_REGISTRO_NOTICIAS.php",
+        url: "../controlador/SRV_NOTICIAS_REGISTRO.php",
         type: "POST",
         data:formData,
         contentType: false,

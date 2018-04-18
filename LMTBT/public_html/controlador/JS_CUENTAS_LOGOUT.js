@@ -1,6 +1,6 @@
 function cerrarSesion(){
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_LOGIN_LOGOUT.php",
+        url: "../controlador/SRV_SESION.php",
         data: {tipo : "logout"},
         type: "POST",
         dataType: 'text',

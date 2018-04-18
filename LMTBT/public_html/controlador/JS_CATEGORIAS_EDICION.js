@@ -3,7 +3,7 @@ idCategoria=0;
 $( document ).ready(function() {
     // con este metodo recuperamos el tipo de sesion iniciada, si la sesion no es de tipo administrador
     // expulsaremos al usuario que haya entrado a la pagina
-    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
+    $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res) {
             switch(parseInt(res)){
                 case 0:

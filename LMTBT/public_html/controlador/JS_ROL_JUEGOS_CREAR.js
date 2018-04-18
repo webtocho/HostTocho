@@ -4,7 +4,7 @@ function Get_Teams(id_convocatoria){
     //Funcion para obtener los equipos inscritos a una convocatoria
     var team;
     $.ajax({//hacemos la peticion mediante ajax
-        url: "../controlador/SRV_OBTENER_EQUIPOS_INSCRITOS_ROL.php",
+        url: "../controlador/SRV_ROLES_JUEGO_OBTENER_EQUIPOS_INSCRITOS.php",
         data: {convocatoria :id_convocatoria },
         type: "POST",
         dataType: 'text',
@@ -79,7 +79,7 @@ function Insert_Round(locales,visita,tam,id_convocatoria,repeticion){
         var jsonLocal = JSON.stringify(locales);//convertimos a json los arreglos
         var jsonVisita = JSON.stringify(visita);
         $.ajax({//enviamos la informacion mediante ajax
-            url: "../controlador/SRV_INSERTAR_ROL_JUEGOS.php",
+            url: "../controlador/SRV_ROLES_JUEGO_INSERTAR.php",
             data: {convocatoria:id_convocatoria,
                    local:jsonLocal,
                    visitante:jsonVisita,

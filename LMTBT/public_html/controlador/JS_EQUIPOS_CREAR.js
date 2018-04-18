@@ -8,7 +8,7 @@ var usrEsCoach = null;
 
 $(document).ready(function() {
     //Comprobamos si el usuario logueado es administrador o coach.
-    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
+    $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
         .done(function(tipoDeUsr) {
             //"tipoDeUsr" (tipo de usuario) indica si el usuario logueado es de alguno de los tipos necesarios.
             switch(parseInt(tipoDeUsr)){

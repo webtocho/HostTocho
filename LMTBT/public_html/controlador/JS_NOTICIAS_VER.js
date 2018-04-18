@@ -3,7 +3,7 @@
  * agregar comentarios, solo verlos
  */
 $(document).ready(function(){
-      $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","COACH","JUGADOR","FOTOGRAFO","CAPTURISTA"]}, null, "text")
+      $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR","COACH","JUGADOR","FOTOGRAFO","CAPTURISTA"]}, null, "text")
         .done(function(res) {
         })
         .fail(function() {
@@ -29,7 +29,7 @@ function noRegistrado(){
 function cargarComentarios(){
     id = sessionStorage.getItem("idNoticia");
      $.ajax({
-            url: "../controlador/SRV_VER_NOTICIA.php",
+            url: "../controlador/SRV_NOTICIAS_VER.php",
             data: {tipo: "cargarComentarios",id:id},
             type: "POST",
             datatype: "text",
@@ -57,7 +57,7 @@ function cargarComentarios(){
  
 function eliminarComentario(id){
      $.ajax({
-            url: "../controlador/SRV_VER_NOTICIA.php",
+            url: "../controlador/SRV_NOTICIAS_VER.php",
             data: {tipo: "eliminarComent",id:id},
             type: "POST",
             datatype: "text",
@@ -107,7 +107,7 @@ function comentar(){
     texto = texto.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if(texto.trim().length>1){
         $.ajax({
-            url: "../controlador/SRV_VER_NOTICIA.php",
+            url: "../controlador/SRV_NOTICIAS_VER.php",
             data: {tipo: "comentar",id:id,texto:texto},
             type: "POST",
             datatype: "text",
@@ -135,7 +135,7 @@ function cargarNoticia(){
     
     var contenido;
      $.ajax({
-            url: "../controlador/SRV_VER_NOTICIA.php",
+            url: "../controlador/SRV_NOTICIAS_VER.php",
             data: {tipo: "get",id:id},
             type: "POST",
             datatype: "text",

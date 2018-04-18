@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     //Hacemos una petición para validar que el usuario que abra esta página sea un administrador.
-    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
+    $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res) {
             switch(parseInt(res)){
                 case 0:

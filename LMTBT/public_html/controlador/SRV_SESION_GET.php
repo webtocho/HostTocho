@@ -1,6 +1,6 @@
 <?php
     /*  CÓMO LLAMAR A ESTE PHP: 
-        $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
+        $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
         .done(function(res) {
             switch(parseInt(res)){
                 case 0:

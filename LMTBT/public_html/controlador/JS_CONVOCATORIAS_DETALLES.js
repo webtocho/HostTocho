@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.post("../controlador/SRV_GET_SESION.php", {tipos: ["ADMINISTRADOR"]}, null, "text")
+    $.post("../controlador/SRV_SESION_GET.php", {tipos: ["ADMINISTRADOR"]}, null, "text")
             .done(function (res) {
                 switch (parseInt(res)) {
                     case 0:
@@ -20,7 +20,7 @@ function detallesConvocatoria() {
     var repeticion = 1;
     console.log(repeticion);
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
+        url: "../controlador/SRV_CONVOCATORIAS.php",
         data: {
             tipo: "consulta_especifica",
             id: id
@@ -51,7 +51,7 @@ function detallesConvocatoria() {
 
 function llenarTablaEquipos(id) {
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
+        url: "../controlador/SRV_CONVOCATORIAS.php",
         data: {
             tipo: "recuperar_equipos_inscritos",
             id: id
@@ -83,7 +83,7 @@ function editarFecha(id) {
     $('#ventanaEmergente').modal('hide');
     var nueva_fecha = document.getElementById("nueva_fecha").value;
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
+        url: "../controlador/SRV_CONVOCATORIAS.php",
         data: {
             tipo: "modificar",
             nueva_fecha: nueva_fecha,
@@ -118,7 +118,7 @@ function abrir_pantalla_para_poner_pago(id) {
 function poner_pagado(id) {
     $('#ventanaConfirmacion').modal('hide');
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
+        url: "../controlador/SRV_CONVOCATORIAS.php",
         data: {
             tipo: "poner_pagado",
             id: id
@@ -154,7 +154,7 @@ function abrir_pantalla_para_expulsar(id) {
 function expulsar(id) {
     $('#ventanaConfirmacion').modal('hide');
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
+        url: "../controlador/SRV_CONVOCATORIAS.php",
         data: {
             tipo: "expulsar",
             id: id

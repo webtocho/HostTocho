@@ -18,7 +18,7 @@ $(document).ready(function() {/* ID de la cuenta cuyos detalles se consultan.
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Consultamos si el que está logueado es un administrador.
-    $.post( "../controlador/SRV_GET_SESION.php", {tipos : ["ADMINISTRADOR"]}, null, "text")
+    $.post( "../controlador/SRV_SESION_GET.php", {tipos : ["ADMINISTRADOR"]}, null, "text")
         .done(function(usr) {
             if(parseInt(usr) !== 0){
                 id = null;

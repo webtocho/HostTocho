@@ -1,6 +1,6 @@
 $( document ).ready(function(){
     $('#tipo_cuenta').empty();           
-      $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","COACH"]}, null, "text")
+      $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR","COACH"]}, null, "text")
         .done(function(res){
             switch(parseInt(res)){
                 case 0:
@@ -32,15 +32,16 @@ $(document).on('submit','#myForm',function(event){
 
     if(correo.trim().length>0 && password.trim().length>0 && nombre.trim().length>0 && apellido_paterno.trim().length>0 && apellido_materno.trim().length>0 && tipo_cuenta.trim().length>0 && sexo.trim().length>0){
         $.ajax({
-            url: "../controlador/SRV_REGISTRO_CUENTA.php",
+            url: "../controlador/SRV_CUENTAS.php",
             data: {
-            correo: correo,
-            password:password,            
-            nombre:nombre,
-            apellido_paterno:apellido_paterno,
-            apellido_materno:apellido_materno,
-            tipo_cuenta:tipo_cuenta,
-            sexo:sexo
+                fn : "registrar",
+                correo: correo,
+                password:password,            
+                nombre:nombre,
+                apellido_paterno:apellido_paterno,
+                apellido_materno:apellido_materno,
+                tipo_cuenta:tipo_cuenta,
+                sexo:sexo
             },
         type: "POST",
         datatype: "text",

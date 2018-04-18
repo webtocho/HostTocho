@@ -7,7 +7,7 @@ $(document).ready(function () {
  */
 function iniciar_cerrar_session() {
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_LOGIN_LOGOUT.php",
+        url: "../controlador/SRV_SESION.php",
         data: {"tipo": "iniciar_cerrar_session"},
         type: "POST",
         datatype: "text",

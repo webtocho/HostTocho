@@ -1,7 +1,7 @@
 function CargarConvocatorias(estado) {
     //Funcion para cargar las convocatorias
     $.ajax({
-        url: "../controlador/SRV_OBTENER_CONVOCATORIAS_TABLA_POSICIONES.php",
+        url: "../controlador/SRV_CONVOCATORIAS_OBTENER_TABLA_POSICIONES.php",
         data: {tipo: estado},
         type: "POST",
         dataType: 'text',

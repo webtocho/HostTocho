@@ -32,7 +32,7 @@ function llenar_tablas() {
     //ajax que hace la petion al php para recuperar el nombre del equipo 1
     $.ajax({
         //url al php que donde se hace la peticioon
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        url: "../controlador/SRV_CEDULAS_MOSTRAR.php",
         data: {
             //aqui decimos a cual case ingresara del php
             tipo: "ComprobarLogin",
@@ -51,7 +51,7 @@ function llenar_tablas() {
     //ajax que hace la petion al php para recuperar el nombre del equipo 1
     $.ajax({
         //url al php que donde se hace la peticioon 1
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        url: "../controlador/SRV_CEDULAS_MOSTRAR.php",
         data: {
             //aqui decimos a cual case ingresara del php
             tipo: "Obtener_nombre_equipo",
@@ -81,7 +81,7 @@ function llenar_tablas() {
     //ajax que hace la petion al php para recuperar el nombre del equipo 2
     $.ajax({
         //url al php que donde se hace la peticion
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        url: "../controlador/SRV_CEDULAS_MOSTRAR.php",
         data: {
             //aqui decimos a cual case ingresara del php
             tipo: "Obtener_nombre_equipo",
@@ -106,7 +106,7 @@ function llenar_tablas() {
     //ajax que hace la petion al php para recuperar los jugadores del equipo 1
     $.ajax({
         //url al php que donde se hace la peticion
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        url: "../controlador/SRV_CEDULAS_MOSTRAR.php",
         data: {
             //aqui decimos a cual case ingresara del php
             tipo: "Obtener_jugador_equipo",
@@ -142,7 +142,7 @@ function llenar_tablas() {
     //ajax que hace la petion al php para recuperar los jugadores del equipo 2
     $.ajax({
         //url al php que donde se hace la peticion
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        url: "../controlador/SRV_CEDULAS_MOSTRAR.php",
         data: {
             //aqui decimos a cual case ingresara del php
             tipo: "Obtener_jugador_equipo",
@@ -180,7 +180,7 @@ function llenar_tablas() {
     //ajax que hace la petion al php para abilitar o desabilitar el boton guardar
     $.ajax({
         //url al php que donde se hace la peticion
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        url: "../controlador/SRV_CEDULAS_MOSTRAR.php",
         data: {
             //aqui decimos a cual case ingresara del php
             tipo: "GET_BOTON",
@@ -344,7 +344,7 @@ function llenar_rol_juego(ID_ROL, ID_TEAM_1, ID_TEAM_2) {
     //la comunicacion lo hacemos por ajax
     $.ajax({
         //le indicamos  que php hara la peticion
-        url: "../controlador/SRV_MOSTRAR_DATOS_CEDULA.php",
+        url: "../controlador/SRV_CEDULAS_MOSTRAR.php",
         //enviamos los datos
         data: {
             //tipo indicara a que CASE del php entrara

@@ -10,7 +10,7 @@ function getData() {
     $("#id_rol").val(id_rol);
 
     $.ajax({
-        url: "../controlador/SRV_MODIFICAR_HORARIOS.php",
+        url: "../controlador/SRV_HORARIOS_EDICION.php",
         data: {accion: "getData", id: id_rol},
         type: "POST",
         datatype: "text",
@@ -47,7 +47,7 @@ function updateHorario() {
     var campo = document.getElementById("campo").value;
 
     $.ajax({
-        url: "../controlador/SRV_MODIFICAR_HORARIOS.php",
+        url: "../controlador/SRV_HORARIOS_EDICION.php",
         data: {accion: "update", fecha: fecha, hora: hora, campo: campo, id: id_rol},
         type: "POST",
         datatype: "text",

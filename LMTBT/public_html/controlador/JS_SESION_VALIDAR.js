@@ -1,6 +1,6 @@
 $(document).ready(function(){    
     ejecutar_recuperar_noticias();
-    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR","COACH","JUGADOR","FOTOGRAFO","CAPTURISTA"]}, null, "text")
+    $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR","COACH","JUGADOR","FOTOGRAFO","CAPTURISTA"]}, null, "text")
         .done(function(res){
             switch(parseInt(res)){
                 case 0:                    

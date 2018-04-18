@@ -9,7 +9,7 @@ function cargar_tabla_convocatorias_vencidas(){
 
 function actualizarTabla(){
     $.ajax({
-        url: "../controlador/SRV_CONSULTA_CONVOCATORIA.php",
+        url: "../controlador/SRV_CONVOCATORIAS.php",
         data:{
             tipo:"consultar"
         },

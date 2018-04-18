@@ -14,7 +14,7 @@ $(document).ready(function() {
     id_r = sessionStorage.getItem("ROSTERS_EDICION_id_r");
     if(id_r !== null) sessionStorage.removeItem("ROSTERS_EDICION_id_r");
     
-    $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
+    $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR", "COACH"]}, null, "text")
         .done(function(res) {
             switch(parseInt(res)){
                 case 0:

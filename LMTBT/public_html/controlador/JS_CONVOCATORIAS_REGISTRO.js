@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   $.post( "../controlador/SRV_GET_SESION.php", {tipos :["ADMINISTRADOR"]}, null, "text")
+   $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res){
             switch(parseInt(res)){
                 case 0:
@@ -19,7 +19,7 @@ $(document).on('submit','#formlg',function(event){
     var formData = new FormData($('#formlg')[0]);    
     if(validarCampos() === true){
      $.ajax({
-        url: "../controlador/SRV_REGISTRO_CONVOCATORIA.php",
+        url: "../controlador/SRV_CONVOCATORIAS_REGISTRO.php",
         type: "POST",
         data:formData,    
         contentType: false,
@@ -76,7 +76,7 @@ function registraNoticia(formData){
     formData.append('titulo_noticia',titulo);
     formData.append('descripcion',descripcion);
     $.ajax({
-        url: "../controlador/SRV_REGISTRO_NOTICIAS.php",       
+        url: "../controlador/SRV_NOTICIAS_REGISTRO.php",       
         data:formData,
         type: "POST",
         contentType: false,

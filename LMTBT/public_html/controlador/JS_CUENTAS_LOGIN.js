@@ -36,7 +36,7 @@ function iniciarSesion() {
 
     $.ajax({
         type: "POST",
-        url: "../controlador/SRV_CONSULTA_LOGIN_LOGOUT.php",
+        url: "../controlador/SRV_SESION.php",
         data: {tipo: "login",
             e_mail: e_mail,
             password: password
@@ -86,14 +86,13 @@ function recuperarPassword() {
     $('#ventanaEmergente').modal('hide');
     var correo_recuperar = document.getElementById("correo_recuperar").value;
     $.ajax({
-        url: "../controlador/SRV_RECUPERAR_CUENTA.php",
+        url: "../controlador/SRV_CUENTAS.php",
         data: {
+            fn : "recuperar",
             correo_recuperar: correo_recuperar
         },
         type: "POST",
         datatype: "text",
-        beforeSend: function (xhr) {
-        },
         success: function (resultado) {
             if (resultado == "ok") {
                 mostrarAlerta("Te hemos enviado un correo con tu nueva contraseña generada aleatoriamente recuerda cambiarlas", "correcto");

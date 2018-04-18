@@ -9,7 +9,7 @@ $(document).ready(function () {
 function getTorneo() {
     $('#torneo').html("<option value='Seleccione' disabled selected>Seleccione Torneo</option>");
     $.ajax({
-        url: "../controlador/SRV_ASIGNACION_HORARIOS.php",
+        url: "../controlador/SRV_HORARIOS_ASIGNACION.php",
         data: {accion: "getTorneo"},
         type: "POST",
         datatype: "text",
@@ -43,7 +43,7 @@ function getTable() {
     }
     var id = document.getElementById("torneo").value;
     $.ajax({
-        url: "../controlador/SRV_ASIGNACION_HORARIOS.php",
+        url: "../controlador/SRV_HORARIOS_ASIGNACION.php",
         data: {accion: "getTable", id: id},
         type: "POST",
         datatype: "text",
@@ -118,7 +118,7 @@ function GuardarHorarioRolJuego() {
     var hora = document.getElementById("hora").value;
     var campo = document.getElementById("campo").value;
     $.ajax({
-        url: "../controlador/SRV_MODIFICAR_HORARIOS.php",
+        url: "../controlador/SRV_HORARIOS_EDICION.php",
         data: {
             accion: "guardar_Horario",
             id: id,

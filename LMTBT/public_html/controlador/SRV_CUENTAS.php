@@ -943,6 +943,96 @@
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
             break;
+        case "recuperar":
+            require 'SRV_FUNCIONES_CORREO.php';
+            if(!empty($_POST['correo_recuperar'])){
+                if (filter_var($_POST['correo_recuperar'], FILTER_VALIDATE_EMAIL)){
+                    $consulta = $conexion->prepare("SELECT CORREO FROM usuarios WHERE CORREO = ?");
+                    $consulta->bind_param("s", $_POST['correo_recuperar']);
+                    if ($consulta->execute()){
+                        $res = $consulta->get_result();
+                        $info = $res->fetch_assoc();                                        
+                        if(empty($info['CORREO']) == false){
+                            $nueva_password = generaPass();
+                            $consulta = $conexion->prepare("UPDATE usuarios SET PASSWORD = ? WHERE CORREO = ?");
+                            $consulta->bind_param("ss",$nueva_password,$_POST['correo_recuperar']);
+                            if ($consulta->execute()){
+                                if(enviarCorreoRecuperacion($_POST['correo_recuperar'],$nueva_password)){
+                                    echo "ok";
+                                }else{
+                                    echo "Error al enviar el correo de recuperación";
+                                }
+                            }else{
+                                echo "Error al tratar de generar código";
+                            }
+                        }else{
+                            echo "El correo ingresado no está ligado a niguna cuenta";
+                        }
+                    }else{
+                        echo "Error al realizar la consulta";
+                    }
+                }else{
+                    echo "El correo ingresado es inválido";
+                }
+            }else{
+                echo "Debes de ingresar el correo que deseas recuperar";
+            }
+            break;
+        case "registrar":
+            include("SRV_FUNCIONES_CORREO.php");
+
+            if($_SESSION["TIPO_USUARIO"] == "ADMINISTRADOR"){
+                if ($_POST['tipo_cuenta'] != "ADMINISTRADOR" && $_POST['tipo_cuenta'] != "COACH" && $_POST['tipo_cuenta'] != "JUGADOR" &&
+                        $_POST['tipo_cuenta'] != "FOTOGRAFO" && $_POST['tipo_cuenta'] != "CAPTURISTA") {
+                    echo "El tipo de cuenta que intenta crear es inválido.";
+                    break;
+                }
+            } else {
+                if ($_POST['tipo_cuenta'] != "JUGADOR") {
+                    echo "No tienes permisos para crear este tipo de cuenta.";
+                    break;
+                }
+            }
+
+            if (empty($_POST['correo']) == false && empty($_POST['password']) == false && empty($_POST['nombre']) == false && empty($_POST['apellido_paterno']) == false && empty($_POST['apellido_materno']) == false && empty($_POST['tipo_cuenta']) == false && empty($_POST['sexo']) == false) {
+                if (strlen($_POST['password']) > 7) {
+                    if (filter_var($_POST['correo'], FILTER_VALIDATE_EMAIL)) {
+                        $sql = "SELECT count(*) FROM usuarios WHERE CORREO = '" . $_POST['correo'] . "'";
+                        if ($res = $conexion->query($sql)) {                            
+                            if ($res->fetch_row()[0] != 0) {
+                                //$tipo_usuario = "COACH";
+                                $consulta = $conexion->prepare('INSERT INTO usuarios VALUES (0,?,?,?,?,?,null,?,null,null,null,null,null,null,?)');
+                                $consulta->bind_param("sssssss", $_POST['correo'], $_POST['password'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno'], $_POST['sexo'], $_POST['tipo_cuenta']);
+                                iniciar_transaccion($conexion);
+
+                                if ($consulta->execute()) {
+                                    if (enviarCorreoDeAceptacion($_POST['correo'], $_POST['nombre'], $_POST['password'])) {
+                                        cerrar_transaccion($conexion, true);
+                                        echo "ok";
+                                    } else {
+                                        cerrar_transaccion($conexion, false);
+                                        echo "Error al enviar el correo.";
+                                    }
+                                } else {
+                                    cerrar_transaccion($conexion, false);
+                                    echo "Error";
+                                }
+                            } else {
+                                echo "El correo ingresando ya está ligado a una cuenta.";
+                            }
+                        } else {
+                            echo "Error";
+                        }
+                    } else {
+                        echo "El correo ingresado es inválido.";
+                    }
+                } else {
+                    echo "La contraseña debe tener al menos 7 caracteres.";
+                }
+            } else {
+                echo "Debes llenar todos los campos indicados";
+            }
+            break;
         default:
             lanzar_error("Error de servidor (" . __LINE__ . ")", false);
     }

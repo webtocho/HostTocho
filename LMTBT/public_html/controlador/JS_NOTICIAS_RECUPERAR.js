@@ -11,7 +11,7 @@ function ejecutar_recuperar_noticias() {
  */
 function recuperar_baner() {
     $.ajax({
-        url: "../controlador/SRV_RECUPERAR_BANNER.php",
+        url: "../controlador/SRV_BANNER_RECUPERAR.php",
         data: {},
         type: "POST",
         datatype: "text",
@@ -41,7 +41,7 @@ function recuperar_baner() {
 function recuperar_noticias(linea) {
     var fila = parseInt(linea) * 5;
     $.ajax({
-        url: "../controlador/SRV_RECUPERAR_NOTICIAS.php",
+        url: "../controlador/SRV_NOTICIAS_RECUPERAR.php",
         data: {fila: fila},
         type: "POST",
         datatype: "text",
