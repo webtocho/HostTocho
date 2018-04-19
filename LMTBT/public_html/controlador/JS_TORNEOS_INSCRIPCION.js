@@ -98,7 +98,7 @@ function getEquipos(){
             else if(info == '2'){
                    $('#body').empty();
                   $('#body').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Acceso denegado: Tipo de usuario no valido</strong> </div>");
-                  setTimeout(function(){ window.location.replace("index.php")},1000);
+                  setTimeout(function(){ window.location.replace("index.html")},1000);
             }
             else if(info == '3'){
                  $('#body').empty();

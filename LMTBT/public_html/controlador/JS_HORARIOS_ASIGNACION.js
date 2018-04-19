@@ -62,7 +62,7 @@ function getTable() {
                 window.location.href = "CUENTAS_LOGIN.html";
             } else if (info == "!Type") {
                 alert("Usted no Tiene Permisos");
-                window.location.href = "index.php";
+                window.location.href = "index.html";
             } else {
 
                 $('#Rol').append(info);

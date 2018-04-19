@@ -30,10 +30,10 @@ $(document).on('submit','#formlg',function(event){
             document.getElementById('btn-submitdos').disabled = true;           
         },
             success: function(resultado){              
-                //window.locaton.replace("index.php");
+                //window.locaton.replace("index.html");
                 if(resultado == "ok"){
                     //alert("Registro realizado con exito");
-                    //window.location.replace("index.php");
+                    //window.location.replace("index.html");
                     registraNoticia(formData);
                     mostrarAlerta("Registro realizado con exito","correcto");
                     document.getElementById('btn-submitdos').disabled = false;
@@ -61,7 +61,7 @@ $(document).on('submit','#formlg',function(event){
 });
 
 function mandarAinicio(){
-    window.location.replace("index.php");
+    window.location.replace("index.html");
 }
 
 function registraNoticia(formData){

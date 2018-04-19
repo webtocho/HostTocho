@@ -17,7 +17,7 @@ function mostrar_convocatorias_activas() {
                 $('#lista_convocatorias_inactivas').empty();
                 $('#lista_convocatorias_inactivas').html(respuesta);
             } else if (respuesta === "no") {
-                document.location.href = "index.php";
+                document.location.href = "index.html";
             }
         },
         error: function (jqXHR, textStatus) {
@@ -46,11 +46,11 @@ function lista_convocatorias_inactivas() {
                 // si ocurre un error se notifica al usuario, de lo contrario se muestran los roles de juego recuperada de la consulta.
                 if (respuesta === "Ha ocurrido un error al recuperar la informacion. Intentelo mas tarde.") {
                     alert(respuesta);
-                    document.location.href = "index.php";
+                    document.location.href = "index.html";
                 } else if (respuesta != "no") {
                     $('#roles_juegos_convocatoria_seleccionada').html(respuesta);
                 } else {
-                    document.location.href = "index.php";
+                    document.location.href = "index.html";
                 }
             },
             error: function (jqXHR, textStatus) {}

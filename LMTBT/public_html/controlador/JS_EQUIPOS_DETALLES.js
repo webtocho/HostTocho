@@ -116,7 +116,7 @@ function EliminarEquipo() {
 					document.location.href = "EQUIPOS_VER.html";
 				} else {
 					alert(respuesta);
-					document.location.href = "index.php";
+					document.location.href = "index.html";
 				}
 			},
 			error: function (jqXHR, textStatus) {}

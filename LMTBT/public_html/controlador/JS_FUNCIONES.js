@@ -9,7 +9,7 @@
  * ┴    ├── [Frame - 2o nivel]
  */
 function expulsar(){
-    window.location.replace("index.php");
+    window.location.replace("index.html");
 }
 
 /**

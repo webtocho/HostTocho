@@ -85,6 +85,7 @@ $(document).on('submit','#myForm',function(event){
         mostrarAlerta(mensaje,"fallido");
     }
 });
+
 function mandarAinicio(){
-    window.location.replace("index.php");
+    window.location.replace("index.html");
 }

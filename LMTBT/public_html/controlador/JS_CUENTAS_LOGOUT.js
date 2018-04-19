@@ -10,7 +10,7 @@ function cerrarSesion(){
             //El servidor nos contesta con la cadena 'ok' si el cierre de sesión fue exitoso.
             if(resultado == "ok"){
                 //Redireccionamos al usuario a la página de login.
-                window.location.replace("index.php");
+                window.location.replace("index.html");
             }
             else{
                 //Se recibió un mensaje de error que se muestra en pantalla.

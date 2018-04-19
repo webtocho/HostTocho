@@ -32,7 +32,7 @@ $(document).on('submit','#form_noticias',function(event){
             document.getElementById('enviar').disabled = true;
         },
             success: function(resultado){
-                //window.locaton.replace("index.php");
+                //window.locaton.replace("index.html");
                 if(resultado == "ok"){
                     mostrarAlerta("Registro realizado con exito","correcto");
                     document.getElementById('enviar').disabled = false;
@@ -40,7 +40,7 @@ $(document).on('submit','#form_noticias',function(event){
                     document.getElementById('descripcion_noticias').value = "";                    
                     document.getElementById('imagen').value = "";                      
                     setTimeout(mandarAinicio, 5000);
-                    //window.location.replace("index.php");
+                    //window.location.replace("index.html");
                 }else{                    
                     mostrarAlerta(resultado,"fallido");
                     document.getElementById('enviar').disabled = false;
@@ -56,7 +56,7 @@ $(document).on('submit','#form_noticias',function(event){
     }
 });
 function mandarAinicio(){
-    window.location.replace("index.php");
+    window.location.replace("index.html");
 }
 function comprobar_datos(){
     if(document.getElementById("titulo").value.trim().length>0 && document.getElementById("descripcion_noticias").value.trim().length>0 &&
