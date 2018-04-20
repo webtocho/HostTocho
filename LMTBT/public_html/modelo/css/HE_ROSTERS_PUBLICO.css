@@ -1,44 +1,10 @@
-html, body{
-    font-family: 'Roboto-Regular';
-    font-size: 100%;
-}
-
-body a {
-    transition:0.5s all;
-    -webkit-transition:0.5s all;
-    -moz-transition:0.5s all;
-    -o-transition:0.5s all;
-    -ms-transition:0.5s all;
-    font-family: 'Roboto-Regular';
-}
-
-body a:hover,h5.top a:hover,.b-text h5 a:hover,.b-bottom-text h5 a:hover,.b-text h6 a:hover,.b-bottom-text h6 a:hover{
-    color:#ffcc00;
-}
-
 #body{
     width: 99%;
     height: 100%;
     clear: both;
     margin: auto;
     background-color: #fff;
-    background: url(../../modelo/RC_IF_FONDO.png)repeat 0px 0px;
-}
-
-.striped{
-    background-color: darkorange;
-    color: #ffffff;
-    width: 100%;
-}
-
-@font-face {
-    font-family: 'Roboto-Regular';
-    src: url(../fonts/Roboto-Regular.ttf)format('truetype');
-}
-
-@font-face {
-    font-family: 'Bitter-Regular';
-    src: url(../fonts/Bitter-Regular.ttf)format('truetype');
+    background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
 }
 
 .container {
@@ -50,9 +16,13 @@ body a:hover,h5.top a:hover,.b-text h5 a:hover,.b-bottom-text h5 a:hover,.b-text
     border-radius: 5px;
 }
 
-table{
-    width: 100%;
+.container2 {
     background-color: #fff;
+    width: 60%;
+    height: auto;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 #myBtn {
@@ -78,7 +48,7 @@ table{
     .container {
         background-color: #fff;
         width: 100%;
-        height: auto;
+        height: 850px;
         padding: 40px;
         margin-top: -30px;
         margin-bottom: 0px;

@@ -28,7 +28,7 @@ $(document).on('submit','#form_noticias',function(event){
         processData: false,
         beforeSend: function(xhr){        
             $('#alertaSucces').empty();
-            $('#alertaSucces').append('<center><img src="../modelo/RC_IF_CARGANDO.gif"></center>');
+            $('#alertaSucces').append('<center><img src="../modelo/img/RC_IF_CARGANDO.gif"></center>');
             document.getElementById('enviar').disabled = true;
         },
             success: function(resultado){

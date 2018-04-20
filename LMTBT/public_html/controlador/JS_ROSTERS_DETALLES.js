@@ -24,7 +24,7 @@ $(document).ready(function() {
                     crearModal(false,true,true,true);
                     $("#modal-footer").hide();
                     $("#modal-title").html("Cargando información del roster...");
-                    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+                    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
                     $('#modal').modal({backdrop: 'static', keyboard: false});
 
                     if(id_e !== null && id_r !== null){                        
@@ -134,7 +134,7 @@ function cargarJugadores(lista, numeros, index_jg){
                 fila.insertCell(-1).innerHTML = (infoJugador[0]["ed"] != null ? infoJugador[0]["ed"] : "<No definido>");
                 //Celda de foto
                 if(infoJugador[0]["ft"] === null)
-                    fila.insertCell(-1).innerHTML = "<img src=\"../modelo/RC_IF_ANONIMO.png\" width='100'/>";
+                    fila.insertCell(-1).innerHTML = "<img src=\"../modelo/img/RC_IF_ANONIMO.png\" width='100'/>";
                 else
                     fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + infoJugador[0]["ft"] +"\" width='100'/>";
             } else {
@@ -207,7 +207,7 @@ function confirmar_eliminacion(){
  */
 function eliminar(){
     $("#modal-title").html("Eliminando roster...");
-    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
     
     //Hace la petición al servidor para efectuar la eliminación.
     $.post( "../controlador/SRV_ROSTERS.php", {fn : "eli", id : id_r})
@@ -230,7 +230,7 @@ function eliminar(){
 function darPermiso(){
     $("#modal-footer").hide();
     $("#modal-title").html("Concediendo permiso...");
-    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     $.post( "../controlador/SRV_ROSTERS.php", {fn : "per", id : id_r, tmp : document.getElementById("seleccion_permiso").value})
@@ -263,7 +263,7 @@ function darPermiso(){
 function revocarPermiso(){
     $("#modal-footer").hide();
     $("#modal-title").html("Revocando permiso...");
-    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     $.post( "../controlador/SRV_ROSTERS.php", {fn : "per", id : id_r})

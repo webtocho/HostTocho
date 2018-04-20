@@ -1,6 +1,7 @@
 body{
-    font-family: 'Roboto', sans-serif;
-    /*font-family: 'Noto Sans', sans-serif;*/
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Noto Sans', sans-serif;
+    background: gray;
 }
 
 #body{
@@ -8,9 +9,17 @@ body{
     height: 100%;
     clear: both;
     margin: auto;
-    background-color: #fff;
-    background-image: url(../../modelo/RC_IF_FONDO.png);
-    background-size: repeat;
+    background-image: url(../img/RC_IF_TEAM3.jpg);
+    background-size: cover;
+}
+
+.label{
+    position:relative;
+    font-size:20px;
+}
+
+.posicion{
+    position:relative;
 }
 
 .form{
@@ -18,12 +27,20 @@ body{
     height: auto;
     background-color: #fff;
     border-radius: 10px;
-    padding: 10px;
-    margin-top: 70px;
+    padding: 3px;
+    margin-top: 40px;
     box-shadow: 5px 5px 15px #333;
 }
 
-#nombre,#ApellidoPaterno,#campo_password,#ApellidoMaterno,#campo_correo{
+#tipo_cuenta {
+    width: auto;
+}
+
+#sexo {
+    width: auto;
+}
+
+#nombre,#ApellidoPaterno,#Password,#ApellidoMaterno,#Correo{
     width: 90%;
     height: 28px;
     margin: 2%;
@@ -36,13 +53,12 @@ body{
 
 @media(max-width:550px){
     .form{
-        width: 93%;
-        height: 350px;
-        margin-top: 20px;
+        width: 100%;
+        height: auto;
+        margin-top: 0px;
         margin-bottom: 30px;
-        background-color: #fff;
+        float: left;
         border-radius: 0px;
-        padding: 10px;
         box-shadow: none;
     }
     #body{
@@ -50,8 +66,8 @@ body{
         height: 100%;
         clear: both;
         margin: auto;
-        background-color: #fff;
         background-image: none;
-        background-size: none;
+        background-size: cover;
+        background-color: #fff;
     }
 }

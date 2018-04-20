@@ -103,7 +103,7 @@
                                     echo "<div class='media-left'><img  class='img-rounded' style='width:60px' src='data:image/png;base64," . $imagen["IMAGEN"] . "'  ></div>";
                                 
                                 }else{
-                                    echo "<div class='media-left'> <img src='../modelo/RC_IF_ANONIMO.png'  class='img-rounded' style='width:60px'></div>";
+                                    echo "<div class='media-left'> <img src='../modelo/img/RC_IF_ANONIMO.png'  class='img-rounded' style='width:60px'></div>";
                                 }
                                 // comentario
                                 echo "<div class='media-body'>";

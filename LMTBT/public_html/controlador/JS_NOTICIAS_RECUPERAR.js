@@ -19,7 +19,7 @@ function recuperar_baner() {
             $('#titulo1').empty();
             $('#titulo2').empty();
             $('#titulo3').empty();
-            $('.banner').css('background-image', 'url(../modelo/RC_IF_BANNER.gif)');
+            $('.banner').css('background-image', 'url(../modelo/img/RC_IF_BANNER.gif)');
         },
         success: function (respuesta) {
             contenido = JSON.parse(respuesta);
@@ -47,7 +47,7 @@ function recuperar_noticias(linea) {
         datatype: "text",
         beforeSend: function (xhr) {
             $('#apartadoNoticia').empty();
-            $('#apartadoNoticia').append("<center><img src='../modelo/RC_IF_CARGANDO.gif' ></center>");
+            $('#apartadoNoticia').append("<center><img src='../modelo/img/RC_IF_CARGANDO.gif' ></center>");
         },
         success: function (respuesta) {
             // $('#slider3').empty();

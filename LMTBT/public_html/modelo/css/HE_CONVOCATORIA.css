@@ -1,19 +1,16 @@
-body{
-    font-family: 'Roboto', sans-serif;
-    /*font-family: 'Noto Sans', sans-serif;*/
-}
-
+body{font-family: 'Roboto', sans-serif;
+     /*font-family: 'Noto Sans', sans-serif;*/}
 #body{
     width: 99%;
     height: 100%;
     clear: both;
     margin: auto;
-    background-image: url(../../modelo/RC_IF_FONDO.png);
+    background-color: #fff;
+    background-image: url(../img/RC_IF_FONDO.png);
     background-size: repeat;
 }
-
 .form{
-    width: 1000px;
+    width: 500px;
     height: auto;
     background-color: #fff;
     border-radius: 10px;
@@ -21,8 +18,7 @@ body{
     margin-top: 40px;
     box-shadow: 5px 5px 15px #333;
 }
-
-#nombre,#logotipo,#busqueda_coach,#seleccion_coach,#coach{
+#nombre_torneo,#fecha_cierre_convocatoria,#fecha_inicio_torneo,#fecha_fin_torneo,#categoria,#imagen{
     width: 90%;
     height: 28px;
     margin: 2%;
@@ -32,13 +28,22 @@ body{
     border-right: 0px;
     margin-top: 20px;
 }
-
-#btn-submitdos{
-    background-color: transparent;
-    border: 2px solid;
-    border-radius: 4px;
-    margin-top: 35px;
-    padding: 4px;
+#imagen{
+    border: 0px;
+}
+#convo {
+    text-align: center;
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
+}
+#logo {
+    text-decoration:none;
+}
+#logoimg {
+    height: 125px;
+    width: 125px;
 }
 
 @media(max-width:550px){

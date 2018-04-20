@@ -1,0 +1,95 @@
+html, body{
+    font-family: 'Roboto-Regular';
+    font-size: 100%;
+}
+
+body a {
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;
+    font-family: 'Roboto-Regular';
+}
+
+body a:hover,h5.top a:hover,.b-text h5 a:hover,.b-bottom-text h5 a:hover,.b-text h6 a:hover,.b-bottom-text h6 a:hover{
+    color:#ffcc00;
+}
+
+#body{
+    width: 99%;
+    height: 100%;
+    clear: both;
+    margin: auto;
+    background-color: #fff;
+    background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
+}
+
+.striped{
+    background-color: darkorange;
+    color: #ffffff;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url(../fonts/Roboto-Regular.ttf)format('truetype');
+}
+
+@font-face {
+    font-family: 'Bitter-Regular';
+    src: url(../fonts/Bitter-Regular.ttf)format('truetype');
+}
+
+.container {
+    background-color: #fff;
+    width: 80%;
+    height: auto;
+    padding: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+table{
+    width: 100%;
+    background-color: #fff;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: orangered;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
+
+@media(max-width: 550px){
+    .container {
+        background-color: #fff;
+        width: 100%;
+        height: auto;
+        padding: 40px;
+        margin-top: -30px;
+        margin-bottom: 0px;
+        border-radius: 0px;
+    }
+    #body{
+        width: 99%;
+        height: 100%;
+        clear: both;
+        margin: auto;
+        background-color: #fff;
+        background: none;
+    }
+}

@@ -124,7 +124,7 @@ function buscar(){
         dataType: 'text',
         beforeSend: function() {
             $("#filtros :input").prop("disabled", true);
-            $("#resultados").html("<img src='../modelo/RC_IF_CARGANDO.gif'>");
+            $("#resultados").html("<img src='../modelo/img/RC_IF_CARGANDO.gif'>");
         },
         success: function (cantidadTotalDeResultados) {
             //Preparamos la paginación (con el plugin pagination.js), para que el usuario vea los resultados de la búsqueda por página.
@@ -138,7 +138,7 @@ function buscar(){
                     data: parametros,
                     beforeSend: function() {
                         $("#filtros :input").prop("disabled", true);
-                        $("#resultados").html("<img src='../modelo/RC_IF_CARGANDO.gif'>");
+                        $("#resultados").html("<img src='../modelo/img/RC_IF_CARGANDO.gif'>");
                     }
                 },
                 formatAjaxError: function (xhr, status, errorThrown) {
@@ -211,7 +211,7 @@ function buscar(){
                                 var foto = i[j++];
                                 
                                 if(foto === null)
-                                    fila.insertCell(-1).innerHTML = "<img src=\"../modelo/RC_IF_ANONIMO.png\" width='75'/>";
+                                    fila.insertCell(-1).innerHTML = "<img src=\"../modelo/img/RC_IF_ANONIMO.png\" width='75'/>";
                                 else
                                     fila.insertCell(-1).innerHTML = "<img src=\"data:image/png;base64," + foto +"\" width='75'/>";
                             }

@@ -23,7 +23,7 @@
         echo "<div class='item'  style='display: inline-block; margin:10px;width: 160px;height: 160px;'>";
 	$foto = base64_encode($jugador['FOTO_PERFIL']);
         if($foto==null){
-            echo "<center><img class='img-responsive lot img-rounded' src='img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
+            echo "<center><img class='img-responsive lot img-rounded' src='../modelo/img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
         }else{
             echo "<center><img class='img-responsive lot img-rounded' src='data:image/png;base64,".$foto."' alt='' style='max-width:150px;max-height:150px;'/></center>";
         }

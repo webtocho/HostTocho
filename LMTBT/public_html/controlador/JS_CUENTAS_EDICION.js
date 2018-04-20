@@ -13,7 +13,7 @@ $(document).ready(function() {
     crearModal(false,true,true,true);
     $("#modal-footer").hide();
     $("#modal-title").html("Cargando información...");
-    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Consultamos si el que está logueado es un administrador.
@@ -291,7 +291,7 @@ function editar(){
     //Mostramos el modal mientras se guardan los cambios.
     $("#modal-footer").hide();
     $("#modal-title").html("Aplicando cambios...");
-    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Se hace la petición para guardar los cambios y el resultado se muestra en pantalla.

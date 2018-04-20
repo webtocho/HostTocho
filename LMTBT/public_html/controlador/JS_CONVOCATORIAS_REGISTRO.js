@@ -26,7 +26,7 @@ $(document).on('submit','#formlg',function(event){
         processData: false,
         beforeSend: function(xhr){        
             $('#alertaSucces').empty();
-            $('#alertaSucces').append('<center><img src="../modelo/RC_IF_CARGANDO.gif" alt="Flowers in Chania"></center>');
+            $('#alertaSucces').append('<center><img src="../modelo/img/RC_IF_CARGANDO.gif" ></center>');
             document.getElementById('btn-submitdos').disabled = true;           
         },
             success: function(resultado){              

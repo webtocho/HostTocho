@@ -31,14 +31,14 @@ body{
 
 #Choco_left_arrow{
 	float:left;
-	background-image:url(../../modelo/RC_IF_FLE_IZQ.gif)!important;
+	background-image:url(../img/RC_IF_FLE_IZQ.gif)!important;
 	background-position:12%;
 	left:-2%;
 }
 
 #Choco_right_arrow{
 	float:right;
-	background-image:url(../../modelo/RC_IF_FLE_DER.gif)!important;
+	background-image:url(../img/RC_IF_FLE_DER.gif)!important;
 	background-position:88%;
 	left:2%;
 }
@@ -97,7 +97,7 @@ body{
 #Choco_close{
 	width:30px;
 	height:25px;
-	background-image:url(../../modelo/RC_IF_CERRAR.gif)!important;
+	background-image:url(../img/RC_IF_CERRAR.gif)!important;
 	background-repeat:no-repeat;
 	z-index:1002;
 	cursor:pointer;
@@ -109,7 +109,7 @@ body{
 	width:9px;
 	height:11px;
         /* Archivo inexistente */
-	background-image:url(../../modelo/loading.gif);
+	background-image:url(../img/loading.gif);
 	background-repeat:no-repeat;
 	z-index:1002;
 	cursor:pointer;

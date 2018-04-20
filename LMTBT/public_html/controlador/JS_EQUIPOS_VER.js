@@ -38,7 +38,7 @@ function buscar(){
     
     //Desabilitamos todos los botones mientras se hace la petición al servidor.
     $("#filtros :input").prop("disabled", true);
-    $("#equipos").html("<img src='../modelo/RC_IF_CARGANDO.gif'>");
+    $("#equipos").html("<img src='../modelo/img/RC_IF_CARGANDO.gif'>");
     
     //Primero obtenemos cuántos resultados en total arroja la búsqueda.
     $.post( "../controlador/SRV_EQUIPOS.php", {fn : "num", sr: document.getElementById("sr").value}, null, "text")
@@ -55,7 +55,7 @@ function buscar(){
                     data: {fn: 'bus', sr: document.getElementById("sr").value},
                     beforeSend: function() {
                         $("#filtros :input").prop("disabled", true);
-                        $("#equipos").html("<img src='../modelo/RC_IF_CARGANDO.gif'>");
+                        $("#equipos").html("<img src='../modelo/img/RC_IF_CARGANDO.gif'>");
                     }
                 },
                 formatAjaxError: function (jqXHR, textStatus, errorThrown) {

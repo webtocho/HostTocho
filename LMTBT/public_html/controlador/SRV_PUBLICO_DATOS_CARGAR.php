@@ -24,7 +24,7 @@
         echo "<center><h4><a>COACH</a></h4></center>";
         $foto = base64_encode($datos['FOTO_PERFIL']);
         if($foto==null){
-            echo "<center><img class='img-responsive lot img-rounded' src='img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
+            echo "<center><img class='img-responsive lot img-rounded' src='../modelo/img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
         }else{
             echo "<center><img class='img-responsive lot img-rounded' src='data:image/png;base64,".$foto."' alt='' style='max-width:150px;max-height:150px;'/></center>";
         }
@@ -50,7 +50,7 @@
 			$foto = base64_encode($jugador['FOTO_PERFIL']);
                         if($foto==null){
                             //style='max-width:50px;max-height:50px;'
-                            echo "<center><img class='img-responsive lot img-rounded' src='img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
+                            echo "<center><img class='img-responsive lot img-rounded' src='../modelo/img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
                         }else{
                             echo "<center><img class='img-responsive lot img-rounded' src='data:image/png;base64,".$foto."' alt='' style='max-width:150px;max-height:150px;'/></center>";
                         }

@@ -25,10 +25,7 @@
              }
              $index++;        
             }else{//si no existen mas de 3 noticias se asigna el banner predefinido
-                $noticia[3]="../modelo/RC_IF_BANNER.jpg";
-                
-               
-                
+                $noticia[3]="../modelo/img/RC_IF_BANNER.jpg";
             }
     
     }

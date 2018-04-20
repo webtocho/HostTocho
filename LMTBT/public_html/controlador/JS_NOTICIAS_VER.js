@@ -35,7 +35,7 @@ function cargarComentarios(){
             datatype: "text",
              beforeSend: function (xhr){
                  $('#comentarios').empty();
-                  $('#comentarios').append("<img src='../modelo/RC_IF_CARGANDO.gif' >");
+                  $('#comentarios').append("<img src='../modelo/img/RC_IF_CARGANDO.gif' >");
             },
             success: function (respuesta) {
                  $('#comentarios').empty();
@@ -141,7 +141,7 @@ function cargarNoticia(){
             datatype: "text",
             beforeSend: function (xhr){
                  $('#cuerpo').empty();
-                 $('#cuerpo').append("<img src='../modelo/RC_IF_CARGANDO.gif' >");
+                 $('#cuerpo').append("<img src='../modelo/img/RC_IF_CARGANDO.gif' >");
             },
             success: function (respuesta) {
                  $('#titulo').empty();

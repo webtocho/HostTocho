@@ -68,7 +68,7 @@ function elegirCoach(id = null){
     document.getElementById("coach").value = "Cargando...";
     $("#modal-footer").hide();
     $("#modal-title").html("Cargando coach...");
-    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Hacemos una petición para obtener el ID (en caso de que no se mande ningún parámetro) y el nombre del nuevo coach.
@@ -102,7 +102,7 @@ function crearEquipo(){
     
     $("#modal-footer").hide();
     $("#modal-title").html("Creando equipo...");
-    $("#modal-body").html("<center><img src='../modelo/RC_IF_CARGANDO.gif'></center>");
+    $("#modal-body").html("<center><img src='../modelo/img/RC_IF_CARGANDO.gif'></center>");
     $('#modal').modal({backdrop: 'static', keyboard: false});
     
     //Comprobamos que el nombre del equipo sea válido.
