@@ -11,7 +11,33 @@ body{
     background-color: #fff;
     background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
 }
-
+#BotonPartidos{
+    display:none;
+}
+#PorPartidos{
+    display: none;
+}
+#BotonGeneral{
+    display: none;
+}
+#Estadisticas{
+    padding-left:5px;
+    padding-right: 5px;
+}
+.statsIcon{
+    text-decoration:none;
+}
+.statsImageIcon{
+    height: 125px;
+    width: 125px;
+}
+.titleEdoTorneo{
+    text-align: center;
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
+}
 .bs-example {
     width: 1000px;
     padding: 20px;

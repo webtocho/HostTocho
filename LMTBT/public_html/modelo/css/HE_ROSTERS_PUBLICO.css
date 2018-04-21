@@ -6,7 +6,39 @@
     background-color: #fff;
     background: url(../img/RC_IF_FONDO.png)repeat 0px 0px;
 }
-
+.aIconImage{
+    text-decoration:none;
+}
+.iconImage{
+    height: 125px;width: 125px;
+}
+.titleRosterPublico{
+    text-align: center;
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
+}
+#Roster{
+    display:none;
+}
+#Datos{
+    padding-left:1%;
+    padding-right:1%;
+}
+#imgLogoEquipo {
+    width:300px
+}
+.item {
+    display: inline-block; 
+    margin:10px;
+    width: 160px;
+    height: 160px;
+}
+#fotoPlayer{
+    max-width:150px;
+    max-height:150px;
+}
 .container {
     background-color: #fff;
     width: 80%;

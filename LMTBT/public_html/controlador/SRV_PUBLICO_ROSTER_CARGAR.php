@@ -17,7 +17,7 @@
          if($equipo && $equipo->num_rows>0){
              //Si se obtuvo la foto la añadimos al arreglo de html que regresaremos
               $imagen["LOGOTIPO_EQUIPO"] = base64_encode($LOGO["LOGOTIPO_EQUIPO"]);
-              $html[0]= "<div ><img class='img-rounded img-responsive' style='width:300px' src='data:image/png;base64," .  $imagen["LOGOTIPO_EQUIPO"]. "'  ></div>";
+              $html[0]= "<div ><img id='imgLogoEquipo' class='img-rounded img-responsive' src='data:image/png;base64," .  $imagen["LOGOTIPO_EQUIPO"]. "'  ></div>";
           }
         //Seleccionamos todas las categorias que hayan en el sistema
         $categorias = "SELECT NOMBRE_CATEGORIA,ID_CATEGORIA FROM categorias";

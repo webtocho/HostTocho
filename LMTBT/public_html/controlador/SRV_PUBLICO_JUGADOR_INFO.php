@@ -20,12 +20,12 @@
 	$resultadoSelect = $pre->get_result();
         $jugador = $resultadoSelect->fetch_array(MYSQLI_ASSOC);
         //De cada jugador regresamos un div con la foto y nombre del jugador
-        echo "<div class='item'  style='display: inline-block; margin:10px;width: 160px;height: 160px;'>";
+        echo "<div class='item'>";
 	$foto = base64_encode($jugador['FOTO_PERFIL']);
         if($foto==null){
-            echo "<center><img class='img-responsive lot img-rounded' src='../modelo/img/RC_IF_ANONIMO.png' alt='' style='max-width:150px;max-height:150px;'/></center>";
+            echo "<center><img id='fotoPlayer' class='img-responsive lot img-rounded' src='../modelo/img/RC_IF_ANONIMO.png'/></center>";
         }else{
-            echo "<center><img class='img-responsive lot img-rounded' src='data:image/png;base64,".$foto."' alt='' style='max-width:150px;max-height:150px;'/></center>";
+            echo "<center><img id='fotoPlayer' class='img-responsive lot img-rounded' src='data:image/png;base64,".$foto."'/></center>";
         }
             echo "<center><h4><a>".$jugador['NOMBRE']."</a><br><a>NUMERO ".$numeroJugador."</a></h4></center>";
             echo "</div>";

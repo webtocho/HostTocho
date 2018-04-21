@@ -20,20 +20,20 @@ and open the template in the editor.
     <body id="body">
         <br><br>
         <div class="container"><center>
-        <center><a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-        <center><h2 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Equipos de la Liga</h2></center>
+        <center><a href="index.html" class="aIconImage"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" class="iconImage"/></a></center>
+        <center><h2 class="titleRosterPublico">Equipos de la Liga</h2></center>
         <div class="container2">
         <!--label >Equipo</label-->
         <select id="Equipos" class="form-control" onchange="CargarRoster(this.value)"></select><br>
         <!--label placeholder>Categoria</label-->
        
-        <select id="Roster" class="form-control" onchange="CargarDatos(this.value)" style="display:none;"></select></div>
+        <select id="Roster" class="form-control" onchange="CargarDatos(this.value)"></select></div>
         <br>
        
         
         <div id="logo"></div> 
         <br> <br>
-        <div id="Datos" style="padding-left:1%;padding-right:1%;"></div>
+        <div id="Datos"></div>
          
     </center> </div><br>
              <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
