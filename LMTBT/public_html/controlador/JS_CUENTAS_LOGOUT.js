@@ -1,3 +1,6 @@
+/**
+ * Realiza una peticion al servidor para que se cierre la sesion de usuario con la que se inicio.
+ */
 function cerrarSesion(){
     $.ajax({
         url: "../controlador/SRV_SESION.php",

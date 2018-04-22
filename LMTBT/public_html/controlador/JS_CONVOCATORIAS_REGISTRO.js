@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    /*
+     * Hacemos una petición para obtener la información de la cuenta y asi saber si tiene
+     * los permisos necesarios para acceder de lo contrario sera expulsado de la pagina.
+     */
    $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res){
             switch(parseInt(res)){
@@ -13,9 +17,13 @@ $(document).ready(function(){
             expulsar();
         });
 });
-
+/**
+ * Recupera los datos del formulario con la informacion de la convocatoria a registrarse y los
+ * envia al servidor para ser almacenados y lanzar una nueva convocatoria.
+ */
 $(document).on('submit','#formlg',function(event){
     event.preventDefault();
+    //obtenemos los datos del formulario por medio del objeto FormData
     var formData = new FormData($('#formlg')[0]);    
     if(validarCampos() === true){
      $.ajax({
@@ -29,11 +37,9 @@ $(document).on('submit','#formlg',function(event){
             $('#alertaSucces').append('<center><img src="../modelo/img/RC_IF_CARGANDO.gif" ></center>');
             document.getElementById('btn-submitdos').disabled = true;           
         },
-            success: function(resultado){              
-                //window.locaton.replace("index.html");
-                if(resultado == "ok"){
-                    //alert("Registro realizado con exito");
-                    //window.location.replace("index.html");
+        //si la respuesta es correcta se notifica y vacia los campos del formulario para un nuevo registro.
+            success: function(resultado){                             
+                if(resultado == "ok"){                    
                     registraNoticia(formData);
                     mostrarAlerta("Registro realizado con exito","correcto");
                     document.getElementById('btn-submitdos').disabled = false;
@@ -59,11 +65,17 @@ $(document).on('submit','#formlg',function(event){
         mostrarAlerta("Debes llenar todos los campos","fallido");
     }
 });
-
+/**
+ * Reedirecciona a la pagina de incio
+ */
 function mandarAinicio(){
     window.location.replace("index.html");
 }
-
+/**
+ * Realiza una peticion al servidor y envia los datos de la convocatoria creada para poder
+ * registrar una noticia y que puede verse en el inicio
+ * @param {FormData} formData Objeto que contiene los datos con la informacion obtenida de la convocatoria creada.
+ */
 function registraNoticia(formData){
     formData.delete('nombre');
     formData.delete('fecha_cierre');
@@ -89,7 +101,10 @@ function registraNoticia(formData){
             }
     });    
 }
-
+/**
+ * Recupera los datos del formulario y valida que los datos obtenidos no esten vacios y sean correctos
+ * @return {boolean} nos retorna true si los datos ontenidos son correctos y no estan vacios de lo contrario no retorna false.
+ */
 function validarCampos(){
     if(document.getElementById("nombre_torneo").value.trim().length>0 && document.getElementById("fecha_cierre_convocatoria").value.trim().length>0 && 
        document.getElementById("fecha_inicio_torneo").value.trim().length>0 && document.getElementById("fecha_fin_torneo").value.trim().length>0 && 

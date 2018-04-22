@@ -2,8 +2,7 @@
     /**
      * Este PHP contiene todas las funciones relacionadas con la gestión de las cuentas.
      * Cuando lo mande a llamar, incluya el parámetro "fn", cuyo valor sea el nombre de la función a ejecutar.
-     */
-    
+     */    
     if(empty($_POST['fn'])){
         $_POST['fn'] = " ";
     }

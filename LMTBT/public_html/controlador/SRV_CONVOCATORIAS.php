@@ -1,8 +1,16 @@
 <?php
+    //Agregamos la region y lugar para obtener correctamente las fechas
     date_default_timezone_set('America/Mexico_City');
+    //Incluimos a la clase SRV_CONEXION(); para poder usar sus metodos
     include("SRV_CONEXION.php");
+    //Instanciamos a la clase SRV_CONEXION();
     $db = new SRV_CONEXION();
+    //Recuperamos la conexion
     $conexion = $db->getConnection();
+    /*
+     * Comprobamos si la sesion con la que se esta queriendo realizar una accion es la correcta
+     * de lo contrario se expulsa sin poder realizar ninguna de las demas acciones
+     */
     session_start();
     if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
         if ($_SESSION["TIPO_USUARIO"] != "ADMINISTRADOR") {
@@ -15,8 +23,9 @@
         $conexion->close();
         return;
     }
-    /////////////////////////////////////////////////////////////                       
+    //Declaramos un switch con todos los casos y los eventos con las cuenta una convocatoria
     switch ($_POST['tipo']) {
+        //Se realiza un consulta a la base de datos y se regresa la informacion de una convocatoria en especifico, dependiendo de cual se haya seleccionado
         case "consulta_especifica":
             $consulta = $conexion->prepare("SELECT NOMBRE_TORNEO,FECHA_CIERRE_CONVOCATORIA FROM convocatoria WHERE ID_CONVOCATORIA = ?");
             $consulta->bind_param("i", $_POST['id']);
@@ -29,7 +38,9 @@
                 echo "error";
             }
             break;
+        //Realiza una consulta a la BD y regresa los equipos que se encuentran inscritos a una convocatoria en especifico la cual se haya seleccionado
         case "recuperar_equipos_inscritos":
+            //Realizamos una consulta preparada por seguridad, ya que necesitamos pasar parametros
             $consulta = $conexion->prepare("SELECT NOMBRE_EQUIPO,CUOTA,ID_ROSTER FROM rosters r INNER JOIN equipos e WHERE r.ID_CONVOCATORIA = ? AND r.ID_EQUIPO = e.ID_EQUIPO");
             $consulta->bind_param("i", $_POST['id']);
             if ($consulta->execute()) {
@@ -46,8 +57,10 @@
                 }
             }
             break;
+        //Se modifica el estatus de un roster en la BD a "PAGADO" para indicar que tal equipo a pagado su inscripcion
         case "poner_pagado":
             $cuota = "PAGADO";
+            //Relizamos una consulta preparada para mayor seguridad ya que se requiere enviar datos
             $consulta = $conexion->prepare("UPDATE rosters SET CUOTA = ? WHERE ID_ROSTER = ?");
             $consulta->bind_param("si", $cuota, $_POST['id']);
             if ($consulta->execute()) {
@@ -56,6 +69,7 @@
                 echo "Error del servidor intente mas tarde";
             }
             break;
+        //Se pasa a null la relacion entre la convocatoria lanzada y el roster inscrito, para asi expulsar a los que aun no han pagado su inscripcion
         case "expulsar":
             $consulta = $conexion->prepare("UPDATE rosters SET ID_CONVOCATORIA = NULL WHERE ID_ROSTER = ?");
             $consulta->bind_param("i", $_POST['id']);
@@ -65,30 +79,29 @@
                 echo "Error del servidor intente mas tarde";
             }
             break;
+        //Realiza una consulta a la BD y regresa todas la convocatorias lanzadas para cargarlas en una tabla en el inicio
         case "consultar":
-            $fecha_actual = date('Y-m-d');
-            //$sql = "SELECT * FROM convocatoria WHERE FECHA_CIERRE_CONVOCATORIA <= '$fecha_actual' AND ID_CONVOCATORIA NOT IN (SELECT ID_CONVOCATORIA FROM roles_juego)";
+            $fecha_actual = date('Y-m-d');           
             $sql = "SELECT * FROM convocatoria WHERE ID_CONVOCATORIA NOT IN (SELECT ID_CONVOCATORIA FROM roles_juego)";
             $resultado = $conexion->query($sql);
-            while ($fila = $resultado->fetch_assoc()) {
-                /* echo "<tr id='" . $fila["ID_CONVOCATORIA"] . "'><td>" . $fila["NOMBRE_TORNEO"] . "</td><td>".$fila["FECHA_CIERRE_CONVOCATORIA"]."</td><td>".    
-                  "<button class='btn-warning' onclick='abrirPantallaParaEditarConsulta(" . $fila["ID_CONVOCATORIA"] . ")'>Editar fecha</button>" .
-                  "<button class='btn-info' onclick='CREAR_ROL_JUEGOS(" .$fila["ID_CONVOCATORIA"] . ")'>Generar rol.</button>"."</td></tr>"; */
+            while ($fila = $resultado->fetch_assoc()) {                
                 echo "<tr id='" . $fila["ID_CONVOCATORIA"] . "'><td>" . $fila["NOMBRE_TORNEO"] . "</td><td>" .
-                "<a class='news' href='DETALLES_CONVOCATORIA.html' onclick='eviar_id_convocatoria(" . $fila["ID_CONVOCATORIA"] . ")'><h5>ver mas</h5></a></td></tr>";
-                //"<button class='btn-info' href='DETALLES_CONVOCATORIA.html' onclick='detallesConvocatoria(" . $fila["ID_CONVOCATORIA"] . ")'>ver mas</button>"."</td></tr>";
+                "<a class='news' href='DETALLES_CONVOCATORIA.html' onclick='eviar_id_convocatoria(" . $fila["ID_CONVOCATORIA"] . ")'><h5>ver mas</h5></a></td></tr>";                
             }
             break;
+        //Realiza una modificacion en la base de datos para cambiar la fecha de cierre de la convocatoria lanzada
         case "modificar":
             $nueva_fecha = $_POST['nueva_fecha'];
             $id = $_POST['id'];
-            //////////////////////////////////////
+            //Convierte el string ingresado al formato de fecha de php y la BD
             $nueva_fecha = strtotime($nueva_fecha);
             $nueva_fecha = date("Y-m-d", $nueva_fecha);
+            //se valida la fecha para comprobar si es correcta y si existe
             $validar_nueva_fecha = explode('/', $_POST['nueva_fecha']);
             if (count($validar_nueva_fecha) == 3) {
                 if ($validar_nueva_fecha[0] != "" && $validar_nueva_fecha[1] != "" && $validar_nueva_fecha[2] != "") {
                     if (checkdate($validar_nueva_fecha[0], $validar_nueva_fecha[1], $validar_nueva_fecha[2]) == true) {
+                        //Se realiza una consulta preparada por seguridad, puesto que se necesitan eviar datos a la BD
                         $consulta = $conexion->prepare("UPDATE convocatoria SET FECHA_CIERRE_CONVOCATORIA = ? WHERE ID_CONVOCATORIA = ?");
                         $consulta->bind_param("si", $nueva_fecha, $id);
                         if ($consulta->execute()) {

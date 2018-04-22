@@ -70,7 +70,10 @@ function iniciarSesion() {
         }
     });
 }
-
+/**
+ * Despliega un ventana modal o pantalla emergente para poder ingresar una direccion de correo de alguna cuenta,
+ * registrada en el sistema para poder recuperla, por si se olvido la contraseña
+ */
 function abrirPantallaParaIngresarCorreo() {
     $('#tituloVentanaEmergente').empty();
     $('#tituloVentanaEmergente').append("Recuperar cuenta");
@@ -81,7 +84,10 @@ function abrirPantallaParaIngresarCorreo() {
     //Mostramos la ventana emergente
     $('#ventanaEmergente').modal();
 }
-
+/**
+ * Recupera la direccion del correo del formulario y realiza una peticion al servidor, envia
+ * la direccion de correo al servidor para poder recuperar la cuenta asosiada a el
+ */
 function recuperarPassword() {
     $('#ventanaEmergente').modal('hide');
     var correo_recuperar = document.getElementById("correo_recuperar").value;

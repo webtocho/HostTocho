@@ -49,10 +49,7 @@ function recuperar_noticias(linea) {
             $('#apartadoNoticia').empty();
             $('#apartadoNoticia').append("<center><img src='../modelo/img/RC_IF_CARGANDO.gif' ></center>");
         },
-        success: function (respuesta) {
-            // $('#slider3').empty();
-            // $('#slider3').append(respuesta);
-
+        success: function (respuesta) {            
             $('#apartadoNoticia').empty();
             $('#apartadoNoticia').append(respuesta);
 

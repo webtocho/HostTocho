@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    /*
+     * Hacemos una petición para obtener la información de la cuenta y asi saber si tiene
+     * los permisos necesarios para acceder de lo contrario sera expulsado de la pagina.
+     */
     $.post("../controlador/SRV_SESION_GET.php", {tipos: ["ADMINISTRADOR"]}, null, "text")
             .done(function (res) {
                 switch (parseInt(res)) {
@@ -15,6 +19,10 @@ $(document).ready(function () {
             });
 });
 
+/**
+ * Realiza una peticion al servidor para obtener los datos pertenecientes a un convocatoria
+ * la cual ha sido seleccionada por el administrador y asi poder ver la lista de los equipos inscritos
+ */
 function detallesConvocatoria() {
     var id = sessionStorage.getItem("id_convocatoria");
     var repeticion = 1;
@@ -48,7 +56,11 @@ function detallesConvocatoria() {
         }
     });
 }
-
+/**
+ * Realiza un peticion al servidor para obtener la lista de equipos inscritos a una convocatoria
+ * la cual ha sido previamente seleccionada por el administrador
+ * @param {string} id es el identificador de la convocatoria, para saber cual se ha seleccionado.
+ */
 function llenarTablaEquipos(id) {
     $.ajax({
         url: "../controlador/SRV_CONVOCATORIAS.php",
@@ -67,7 +79,10 @@ function llenarTablaEquipos(id) {
         }
     });
 }
-
+/**
+ * Despliega un ventana modal o pantalla emergente para poder modificar la fecha de cierre de una convocatoria
+ * @param {string} id es el identificador de la convocatoria que se ha seleccionado
+ */
 function abrirPantallaParaEditarConsulta(id) {
     $('#tituloVentanaEmergente').empty();
     $('#tituloVentanaEmergente').append("Modificar fecha de cierre");
@@ -78,7 +93,11 @@ function abrirPantallaParaEditarConsulta(id) {
     //Mostramos la ventana emergente
     $('#ventanaEmergente').modal();
 }
-
+/**
+ * Realiza petición al servidor y envía datos los cuales permiten al administrador
+ * poder editar la fecha de cierre de una convocatoria
+ * @param {string} id es el identificador de la convocatoria que se ha seleccionado
+ */
 function editarFecha(id) {
     $('#ventanaEmergente').modal('hide');
     var nueva_fecha = document.getElementById("nueva_fecha").value;
@@ -107,14 +126,22 @@ function editarFecha(id) {
         }
     });
 }
-
+/**
+ * Despliega un ventana modal o pantalla emergente para poder cambiar el status de un roster inscrito
+ * a pagado para indicar que dicho equipo ya ha pagado su inscripcion
+ * @param {string} id es el identificador del roster de un equipo inscrito a una convocatoria.
+ */
 function abrir_pantalla_para_poner_pago(id) {
     document.getElementById("botonConfirmacion").onclick = function () {
         poner_pagado(id);
     };
     $('#ventanaConfirmacion').modal();
 }
-
+/**
+ * Realiza petición al servidor y envía datos los cuales permiten al administrador poder editar el estatus
+ * de un roster perteneciente a un equipo, para indicar que ha pagado su inscripción
+ * @param {string} id es el identificador del roster de un equipo inscrito a una convocatoria.
+ */
 function poner_pagado(id) {
     $('#ventanaConfirmacion').modal('hide');
     $.ajax({
@@ -143,14 +170,22 @@ function poner_pagado(id) {
         }
     });
 }
-
+/**
+ * Despliega un ventana modal o pantalla emergente para poder expulsar a un roster inscrito
+ * si el equipo no ha pagado su incripcion.
+ * @param {string} id es el identificador del roster de un equipo inscrito a una convocatoria.
+ */
 function abrir_pantalla_para_expulsar(id) {
     document.getElementById("botonConfirmacion").onclick = function () {
         expulsar(id);
     };
     $('#ventanaConfirmacion').modal();
 }
-
+/**
+ * Realiza petición al servidor y envía datos los cuales permiten al administrador expulsar
+ * al roster de un equipo, el cual se encuentra inscrito a una convocatoria.
+ * @param {string} id es el identificador del roster de un equipo inscrito a una convocatoria.
+ */
 function expulsar(id) {
     $('#ventanaConfirmacion').modal('hide');
     $.ajax({

@@ -1,4 +1,8 @@
 <?php
+    /*
+     * Esta funcion envia un correo de aceptacion a la cuenta de correo
+     * para informale del registro correcto al usuario
+     */
     function enviarCorreoDeAceptacion($correo,$usuario,$contrasena){
         $mensaje = "Registro en http://lmtbtuxtla.com\n\n";
         $mensaje .= "Estos son tus datos de registro:\n";
@@ -10,6 +14,9 @@
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
         return mail($correo,$asunto,$mensaje,$headers);
     }
+    /*
+     * Se envia un correo de recuperacion para pode recuperar una cuenta que este registrada en el sistema
+     */
     function enviarCorreoRecuperacion($correo,$contrasena){
         $mensaje = "Registro en http://lmtbtuxtla.com\n\n";
         $mensaje .= "Contraseña nueva de recuperacion recuerda modificar los datos nuevamente:\n";       
@@ -20,6 +27,7 @@
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
         return mail($correo,$asunto,$mensaje,$headers);
     }
+    //Se genera una contrasela aleatoria
     function generaPass(){
         //Se define una cadena de caractares. Te recomiendo que uses esta.
         $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";

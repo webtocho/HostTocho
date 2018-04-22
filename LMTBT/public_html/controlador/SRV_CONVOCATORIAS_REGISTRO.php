@@ -26,8 +26,7 @@
     $fecha_cierre_convocatoria = $_POST['fecha_cierre'];
     $fecha_inicio_torneo = $_POST['fecha_inicio'];
     $fecha_fin_torneo = $_POST['fecha_fin'];
-    $categoria = $_POST['categoria'];
-    //$imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+    $categoria = $_POST['categoria'];    
     $estado = "INACTIVO";                        
     //cambiar a formato fecha
     $fecha_inicio_torneo = strtotime($fecha_inicio_torneo);

@@ -1,5 +1,4 @@
 // Controlador de la página para que el administrador gestione las cuentas (haga búsquedas y pueda modificar las cuentas que desee).
-
 $(document).ready(function() {
     //Hacemos una petición para validar que el usuario que abra esta página sea un administrador.
     $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR"]}, null, "text")
