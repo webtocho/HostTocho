@@ -300,7 +300,7 @@ switch ($_POST['tipo']){
             }
       }
        //Creamos un ciclo for para recorrer a cada jugador  actualizar sus datos del equipo 2
-       for($//En un ejecutamos la sentncia sql preparadai=0;$i<$numero_de_jugadores_team2;$i++){
+       for($i=0;$i<$numero_de_jugadores_team2;$i++){
            //preparamos la Sentencia sql que actualizara
           $consulta=$conexciones->prepare("UPDATE cedulas SET T=?,S=?,I=?,A=?,C1=?,C2=?,C3=?,PA=?,SA=?,I4=? WHERE  ID_ROL_JUEGO=? AND ID_JUGADOR=? AND ID_ROSTER=?");
            //asignamos los valores de la sentencia prepara
