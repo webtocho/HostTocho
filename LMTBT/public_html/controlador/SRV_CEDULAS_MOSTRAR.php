@@ -263,59 +263,90 @@ switch ($_POST['tipo']){
       $Tabla_Jugadores_Team2=$_POST['TablaTeam2'];
       //setencia que obtendra el ID del roster del equipo 1
       $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM1'],$_POST['ID_CONVOCSTORIA']); 
+     //obtenemos la conexion de la clase SRV_CONEXION 
       $conexcion= $db->getConnection();  
+      //ejecutamos la peticion y guardamos el resultado en la variable resultado
       $resultado=$conexcion->query($sql);
+      //obtenemos  la infomacion del resultado
       $info=$resultado->fetch_assoc();
+      //recuperamos el ID_ROSTER
       $ID_ROSTER_TEAM_1=$info["ID_ROSTER"];
+      //preparamos peticion sql para obtener el ID_ROSTER del equipo 2
       $sql = sprintf("SELECT * FROM rosters where ID_EQUIPO=%s AND ID_CONVOCATORIA=%s",$_POST['TEAM2'],$_POST['ID_CONVOCSTORIA']); 
+      //obtenemos la conexion de la clase SR_CONEXION 
       $conexcion2= $db->getConnection();  
+      //ejecutamos la peticion y guardamos el resultado en la variable resultado
       $resultado2=$conexcion2->query($sql);
+      //obtenemos  la infomacion del resultado
       $info2=$resultado2->fetch_assoc();
+       //recuperamos el ID_ROSTER
       $ID_ROSTER_TEAM_2=$info2["ID_ROSTER"];
       
-      
+      //obtenemos la conexion de la clase SR_CONEXION 
       $conexciones= $db->getConnection();
+      //Creamos un ciclo for para recorrer a cada jugador  actualizar sus datos del equipo 2
       for($i=0;$i<$numero_de_jugadores_team1;$i++){
+          //preparamos la Sentencia sql que actualizara 
           $consulta=$conexciones->prepare("UPDATE cedulas SET T=?,S=?,I=?,A=?,C1=?,C2=?,C3=?,PA=?,SA=?,I4=? WHERE  ID_ROL_JUEGO=? AND ID_JUGADOR=? AND ID_ROSTER=?");
+          //asignamos los valores de la sentencia prepara
           $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team1[$i][1],$Tabla_Jugadores_Team1[$i][2],$Tabla_Jugadores_Team1[$i][3],$Tabla_Jugadores_Team1[$i][4],$Tabla_Jugadores_Team1[$i][5],$Tabla_Jugadores_Team1[$i][6],$Tabla_Jugadores_Team1[$i][7],$Tabla_Jugadores_Team1[$i][8],$Tabla_Jugadores_Team1[$i][9],$Tabla_Jugadores_Team1[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team1[$i][0],$ID_ROSTER_TEAM_1);
+         //En un ejecutamos la sentncia sql preparada
           if($consulta->execute()){
-             
-            }else{                                                                                   
+             //en caso de ser exitosa
+            }else{                   
+            //en caso de ser fallida regresa un "no" y matamos el php para que no se siga ejecutando.
            echo "no";
            die();
             }
       }
-       for($i=0;$i<$numero_de_jugadores_team2;$i++){
+       //Creamos un ciclo for para recorrer a cada jugador  actualizar sus datos del equipo 2
+       for($//En un ejecutamos la sentncia sql preparadai=0;$i<$numero_de_jugadores_team2;$i++){
+           //preparamos la Sentencia sql que actualizara
           $consulta=$conexciones->prepare("UPDATE cedulas SET T=?,S=?,I=?,A=?,C1=?,C2=?,C3=?,PA=?,SA=?,I4=? WHERE  ID_ROL_JUEGO=? AND ID_JUGADOR=? AND ID_ROSTER=?");
-           $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team2[$i][1],$Tabla_Jugadores_Team2[$i][2],$Tabla_Jugadores_Team2[$i][3],$Tabla_Jugadores_Team2[$i][4],$Tabla_Jugadores_Team2[$i][5],$Tabla_Jugadores_Team2[$i][6],$Tabla_Jugadores_Team2[$i][7],$Tabla_Jugadores_Team2[$i][8],$Tabla_Jugadores_Team2[$i][9],$Tabla_Jugadores_Team2[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team2[$i][0],$ID_ROSTER_TEAM_2);
+           //asignamos los valores de la sentencia prepara
+          $consulta->bind_param("iiiiiiiiiiiii",$Tabla_Jugadores_Team2[$i][1],$Tabla_Jugadores_Team2[$i][2],$Tabla_Jugadores_Team2[$i][3],$Tabla_Jugadores_Team2[$i][4],$Tabla_Jugadores_Team2[$i][5],$Tabla_Jugadores_Team2[$i][6],$Tabla_Jugadores_Team2[$i][7],$Tabla_Jugadores_Team2[$i][8],$Tabla_Jugadores_Team2[$i][9],$Tabla_Jugadores_Team2[$i][10],$_POST['ID_ROL'],$Tabla_Jugadores_Team2[$i][0],$ID_ROSTER_TEAM_2);
+          //En un ejecutamos la sentncia sql preparada
           if($consulta->execute()){
-            }else{                                                                                   
+               //en caso de ser exitosa
+            }else{      
+                //en caso de ser fallida regresa un "no" y matamos el php para que no se siga ejecutando.
            echo "no";
           die();
             }
       }
+      //sentencia que recupera los puntos de cada jugador del equipo 1
        $sql = sprintf("SELECT * FROM cedulas WHERE ID_ROL_JUEGO =%s and ID_ROSTER=%s",$_POST['ID_ROL'],$ID_ROSTER_TEAM_1); 
-        $conexcion3= $db->getConnection();
+        //obtenemos la conexion de la clase SR_CONEXION 
+       $conexcion3= $db->getConnection();
+       //obtenemos  la infomacion del resultado
         $resultado3=$conexcion3->query($sql);
+        //Creamos un array para obtener cada fila del resutado
         $info3=array();
+        //Con el Ciclo while assignamos cada fila del resultado al array que creamos previamente
          while ($row = $resultado3->fetch_assoc()) {
             $info3[] = $row;
         }
+        //Ciclo for par obtener el total de puntos echos por elequipo 1
         foreach ($info3 as $infoX) {
                    $PUNTOS_TEAM_1=$PUNTOS_TEAM_1+($infoX["A"]*6)+($infoX["C1"]*1)+($infoX["C2"]*2)+($infoX["C3"]*3)+($infoX["SA"]*2)+($infoX["I4"]*4);
         }
-        
+      //sentencia que recupera los puntos de cada jugador del equipo 1  
         $sql = sprintf("SELECT * FROM cedulas WHERE ID_ROL_JUEGO =%s and ID_ROSTER=%s",$_POST['ID_ROL'],$ID_ROSTER_TEAM_2); 
+        //obtenemos la conexion de la clase SR_CONEXION
         $conexcion4= $db->getConnection();
+        //obtenemos  la infomacion del resultado
         $resultado4=$conexcion4->query($sql);
+        //Creamos un array para obtener cada fila del resutado
         $info4=array();
+        //Con el Ciclo while assignamos cada fila del resultado al array que creamos previamente
          while ($row = $resultado4->fetch_assoc()){
             $info4[] = $row;
         }
+        //Ciclo for par obtener el total de puntos echos por elequipo 2
         foreach ($info4 as $infoY) {                
                    $PUNTOS_TEAM_2=$PUNTOS_TEAM_2+($infoY["A"]*6)+($infoY["C1"]*1)+($infoY["C2"]*2)+($infoY["C3"]*3)+($infoY["SA"]*2)+($infoY["I4"]*4);
         }
-        
+        //if anidados que determinan que equipo tiene mas puntos
         if($PUNTOS_TEAM_1>$PUNTOS_TEAM_2){
             $ID_TEAM_GANADOR=$_POST["TEAM1"];
         }else if($PUNTOS_TEAM_1<$PUNTOS_TEAM_2){
@@ -323,10 +354,13 @@ switch ($_POST['tipo']){
         }else if($PUNTOS_TEAM_1==$PUNTOS_TEAM_2){
            $ID_TEAM_GANADOR=0; 
         }
-        
+       //Sentencia que acutalizara los datos con el equipo ganador
       $sql = sprintf("UPDATE roles_juego SET ID_EQUIPO_1=%s, ID_EQUIPO_2=%s, ID_EQUIPO_GANADOR=%s, PUNTOS_EQUIPO_1=%s, PUNTOS_EQUIPO_2=%s WHERE ID_ROL_JUEGO=%s",$_POST['TEAM1'],$_POST['TEAM2'],$ID_TEAM_GANADOR,$PUNTOS_TEAM_1,$PUNTOS_TEAM_2,$_POST['ID_ROL']); 
+      //obtenemos la conexion de la clase SR_CONEXION
       $conexcion5= $db->getConnection();  
-      $resultado5=$conexcion5->query($sql);
+      //obtenemos  la infomacion del resultado
+      $resultado5=$conexcion5->query($sql); 
+      //si no ocurrio algun error regresamos un ok
      echo "ok";
     break;
    //en el caso que el js desea conocer si se ha iniciado session
