@@ -942,44 +942,77 @@
                 lanzar_error("Error de servidor (" . __LINE__ . ")");
             }
             break;
+        /**       
+         * Permite recuperar una cuenta si el usuario ha perdido u olvidado su contraseña
+         */
         case "recuperar":
+            //Incluimos el archivo SRV_FUNCIONES_CORREO.php para poder usar sus funciones
             require 'SRV_FUNCIONES_CORREO.php';
+            //Comprobamos que la direccion de correo que estamos reciviendo como parametro no este vacia de lo contrario se regresa un error.            
             if(!empty($_POST['correo_recuperar'])){
+                //Comprobamos que la direccion de correo ingresada tenga un formato valido y permitido
                 if (filter_var($_POST['correo_recuperar'], FILTER_VALIDATE_EMAIL)){
+                    //Relizamos una consulta a la BD para comprobar que la direccion de correo esta ligada a una cuenta del sistema
                     $consulta = $conexion->prepare("SELECT CORREO FROM usuarios WHERE CORREO = ?");
                     $consulta->bind_param("s", $_POST['correo_recuperar']);
                     if ($consulta->execute()){
                         $res = $consulta->get_result();
-                        $info = $res->fetch_assoc();                                        
+                        $info = $res->fetch_assoc();        
+                        //Se valida que la direccion de correo ingresada este ligada un cuenta
                         if(empty($info['CORREO']) == false){
+                            //Se llama a una funcion generaPass() que se encuentra en el archivo SRV_FUNCIONES_CORREO.php para que nos genere una nueva contraseña aleatoria
                             $nueva_password = generaPass();
+                            //Se realiza un consulta a la BD para sustituir la contraseña anteorior con la nueva que se genero
                             $consulta = $conexion->prepare("UPDATE usuarios SET PASSWORD = ? WHERE CORREO = ?");
                             $consulta->bind_param("ss",$nueva_password,$_POST['correo_recuperar']);
                             if ($consulta->execute()){
-                                if(enviarCorreoRecuperacion($_POST['correo_recuperar'],$nueva_password)){
+                                
+                                /**       
+                                 * En caso de que se haya ejecutado correctamente la modificacion en la BD
+                                 * se hace uso de la funcion enviarCorreoRecuperacion() que se encuentra en
+                                 * el archivo SRV_FUNCIONES_CORREO.php para que nos envie un correo
+                                 * de recuperacion con la nueva contraseña generada
+                                 */
+                                if(enviarCorreoRecuperacion($_POST['correo_recuperar'],$nueva_password)){                                    
+                                    //Si toda sale correctamente se regresa "ok"
                                     echo "ok";
                                 }else{
+                                    //Se regresa un error en caso de el envio de correo falle
                                     echo "Error al enviar el correo de recuperación";
                                 }
                             }else{
+                                //Se regresa una error en caso de que no se haya generado correctamente la nueva contraseña
                                 echo "Error al tratar de generar código";
                             }
                         }else{
+                            //Se regresa un error en caso de que la direccion de correo ingresada no este ligada a ninguna cuenta
                             echo "El correo ingresado no está ligado a niguna cuenta";
                         }
                     }else{
+                        //Se regresa un error en caso de que no se pueda recuperar las cuentas almacenadas en la BD
                         echo "Error al realizar la consulta";
                     }
                 }else{
+                    //Se regresa un error en caso de que la direccion de correo ingresado tenga un formato invalido
                     echo "El correo ingresado es inválido";
                 }
             }else{
+                //Se regresa un error en caso de que la direccion de correo este vacia
                 echo "Debes de ingresar el correo que deseas recuperar";
             }
             break;
+        /**       
+         * Permite registrar a un nuevo usuario a la BD con ciertas validaciones
+         */
         case "registrar":
-            include("SRV_FUNCIONES_CORREO.php");
-
+            //Incluimos el archivo SRV_FUNCIONES_CORREO.php para poder usar sus funciones
+            include("SRV_FUNCIONES_CORREO.php");            
+            /**       
+             * Se verifica si el usuario ya esta logueado con una cuenta de ser asi
+             * se le asigna ciertos permisos para poder registrar a diferentes tipos
+             * de usario, si no se encuentra logueado con ninguna cuenta solo se le
+             * permitira registrar usuarios de tipo jugador
+             */
             if($_SESSION["TIPO_USUARIO"] == "ADMINISTRADOR"){
                 if ($_POST['tipo_cuenta'] != "ADMINISTRADOR" && $_POST['tipo_cuenta'] != "COACH" && $_POST['tipo_cuenta'] != "JUGADOR" &&
                         $_POST['tipo_cuenta'] != "FOTOGRAFO" && $_POST['tipo_cuenta'] != "CAPTURISTA") {
@@ -992,43 +1025,59 @@
                     break;
                 }
             }
-
+            //Se evalua que los parametros enviado por tipo POST no esten vacios de lo contrario se regresa un error
             if (empty($_POST['correo']) == false && empty($_POST['password']) == false && empty($_POST['nombre']) == false && empty($_POST['apellido_paterno']) == false && empty($_POST['apellido_materno']) == false && empty($_POST['tipo_cuenta']) == false && empty($_POST['sexo']) == false) {
+                //Se evalua que la contraseña tenga mas de 7 caracteres de lo contrario se regresa un error
                 if (strlen($_POST['password']) > 7) {
+                    //Se verifica que la direccion de correo ingresada sea de formato valido
                     if (filter_var($_POST['correo'], FILTER_VALIDATE_EMAIL)) {
+                        //Se realiza una consulta para verificar si la direccion de correo no se encuentra ligada a una cuenta
+                        //de ser asi se notifica el error
                         $sql = "SELECT count(*) FROM usuarios WHERE CORREO = '" . $_POST['correo'] . "'";
-                        if ($res = $conexion->query($sql)) {                            
-                            if ($res->fetch_row()[0] != 0) {
-                                //$tipo_usuario = "COACH";
+                        if ($res = $conexion->query($sql)){                            
+                            if ($res->fetch_row()[0] == 0) {
+                                //Se realiza el registro del nuevo usuario a la BD
                                 $consulta = $conexion->prepare('INSERT INTO usuarios VALUES (0,?,?,?,?,?,null,?,null,null,null,null,null,null,?)');
                                 $consulta->bind_param("sssssss", $_POST['correo'], $_POST['password'], $_POST['nombre'], $_POST['apellido_paterno'], $_POST['apellido_materno'], $_POST['sexo'], $_POST['tipo_cuenta']);
-                                iniciar_transaccion($conexion);
-
-                                if ($consulta->execute()) {
+                                iniciar_transaccion($conexion);                                
+                                if ($consulta->execute()) {                                                                        
+                                    /**       
+                                     * Si la consulta se ejecuta correctamente se hace uso de la funcion enviarCorreoDeAceptacion()
+                                     * la cual se encuentra en el archivo SRV_FUNCIONES_CORREO.php y la cual nos enviara un correo
+                                     * de aceptacion con nuestros datos
+                                     */
                                     if (enviarCorreoDeAceptacion($_POST['correo'], $_POST['nombre'], $_POST['password'])) {
                                         cerrar_transaccion($conexion, true);
+                                        //Se retorna "ok" en caso de que todo se ejecute correctamente
                                         echo "ok";
                                     } else {
+                                        //Se regresa un error en caso de que no se pueda enviar correctamente el correo
                                         cerrar_transaccion($conexion, false);
                                         echo "Error al enviar el correo.";
                                     }
                                 } else {
+                                    //Se regresa un error en caso de que el registro del nuevo usuario en la BD no se ejecute correctemente
                                     cerrar_transaccion($conexion, false);
                                     echo "Error";
                                 }
                             } else {
+                                //Se regresa un error en caso de que la direccion de correo que se desea registrar ya este ligada a un cuenta
                                 echo "El correo ingresando ya está ligado a una cuenta.";
                             }
                         } else {
+                            //Se regresa un error en caso de que la consulta falle
                             echo "Error";
                         }
                     } else {
+                        //Se regresa un error en caso de que la direccion de correo tenga un formato invalido
                         echo "El correo ingresado es inválido.";
                     }
                 } else {
+                    //Se regresa un error en caso de que la contraseña ingresada tenga menos de 7 caracteres
                     echo "La contraseña debe tener al menos 7 caracteres.";
                 }
             } else {
+                //Se regresa un error en caso de que algun parametro este vacio
                 echo "Debes llenar todos los campos indicados";
             }
             break;

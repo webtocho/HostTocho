@@ -1,7 +1,7 @@
 <?php
     //Agregamos la region y lugar para obtener correctamente las fechas
     date_default_timezone_set('America/Mexico_City');
-    //Incluimos a la clase SRV_CONEXION(); para poder usar sus metodos
+    //Incluimos a la clase SRV_CONEXION(); para poder instanciarla
     include("SRV_CONEXION.php");
     //Instanciamos a la clase SRV_CONEXION();
     $db = new SRV_CONEXION();
@@ -9,7 +9,8 @@
     $conexion = $db->getConnection();
     /*
      * Comprobamos si la sesion con la que se esta queriendo realizar una accion es la correcta
-     * de lo contrario se expulsa sin poder realizar ninguna de las demas acciones
+     * en este caso solo el administrador, de lo contrario se expulsa sin poder realizar 
+     * ninguna de las demas acciones
      */
     session_start();
     if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
@@ -64,6 +65,7 @@
             $consulta = $conexion->prepare("UPDATE rosters SET CUOTA = ? WHERE ID_ROSTER = ?");
             $consulta->bind_param("si", $cuota, $_POST['id']);
             if ($consulta->execute()) {
+                //Si las consultas y todo lo demas se ejecuta correctamente re regresa un "ok" para indicar que no hubo ningun problema.
                 echo "ok";
             } else {
                 echo "Error del servidor intente mas tarde";
@@ -74,6 +76,7 @@
             $consulta = $conexion->prepare("UPDATE rosters SET ID_CONVOCATORIA = NULL WHERE ID_ROSTER = ?");
             $consulta->bind_param("i", $_POST['id']);
             if ($consulta->execute()) {
+                //Si las consultas y todo lo demas se ejecuta correctamente re regresa un "ok" para indicar que no hubo ningun problema.
                 echo "ok";
             } else {
                 echo "Error del servidor intente mas tarde";
@@ -105,17 +108,21 @@
                         $consulta = $conexion->prepare("UPDATE convocatoria SET FECHA_CIERRE_CONVOCATORIA = ? WHERE ID_CONVOCATORIA = ?");
                         $consulta->bind_param("si", $nueva_fecha, $id);
                         if ($consulta->execute()) {
+                            //Si las consultas y todo lo demas se ejecuta correctamente re regresa un "ok" para indicar que no hubo ningun problema.
                             echo "ok";
                         } else {
                             echo "error";
                         }
                     } else {
+                        //Se regresa un error en caso de que la fecha no tenga un formato valido                      
                         echo "Ingresa una fecha valida";
                     }
                 } else {
+                    //Se regresa un error en caso de que la fecha no tenga un formato valido                 
                     echo "Ingresa un formato de fecha valido";
                 }
             } else {
+                //Se regresa un error en caso de que la fecha no tenga un formato valido                
                 echo "Ingresa un formato de fecha valido";
             }
             break;
