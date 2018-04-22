@@ -15,7 +15,7 @@
         return mail($correo,$asunto,$mensaje,$headers);
     }
     /*
-     * Se envia un correo de recuperacion para pode recuperar una cuenta que este registrada en el sistema
+     * Se envia un correo de recuperacion para poder recuperar una cuenta que este registrada en el sistema
      */
     function enviarCorreoRecuperacion($correo,$contrasena){
         $mensaje = "Registro en http://lmtbtuxtla.com\n\n";
