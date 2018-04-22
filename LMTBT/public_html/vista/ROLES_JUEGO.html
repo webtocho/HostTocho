@@ -16,17 +16,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body id="body">
-        <br><br>
+        <br>
+        <br>
         <div class="container">
-
-            <center><a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-            <center><h4 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Roles de juego </h5></center>
-            <div class="row"  style="padding:  0cm   5cm 0cm 5cm;">
+            <center><a href="index.html" class="etiquetaLogo"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" class="estiloLogo"/></a></center>
+            <center><h4 class="etiquetaRolesJuego">Roles de juego </h5></center>
+            <div class="row convocatoria">
                 <h5>Seleccione una convocatoria:</h5>       
                 <select  class='browser-default' id='lista_convocatorias_inactivas' onchange="lista_convocatorias_inactivas()"></select>
-
             </div>
-            <div class="row" style="padding:0cm   2cm 0cm 2cm;">
+            <div class="row tabla">
                 <h3 id = "nombre_torneo" ></h3>
                 <br>
                 <table class="table table-bordered table-dark">
@@ -41,7 +40,7 @@
                             <th><center>PUNTAJE EQUIPO 2</center></th>
                             <th><center>EQUIPO GANADOR</center></th>
                             <th><center>CÉDULAS DEL ROL</center></th>
-                    </tr>
+                        </tr>
                     </thead>
                     <tbody id="roles_juegos_convocatoria_seleccionada">
                         <!-- trabajo de ajax -->
@@ -50,6 +49,5 @@
             </div>
         </div>
         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
-
     </body>
 </html>
