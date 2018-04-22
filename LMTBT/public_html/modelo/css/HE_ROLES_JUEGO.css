@@ -59,3 +59,23 @@ body{
         background: none;
     }
 }
+.etiquetaLogo{
+    text-decoration:none;
+}
+.estiloLogo{
+    height: 125px;
+    width: 125px;
+}
+.etiquetaRolesJuego{
+    text-align: center;
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
+}
+.convocatoria{
+    padding:  0cm   5cm 0cm 5cm;
+}
+.tabla{
+    padding:  0cm   2cm 0cm 2cm;
+}
