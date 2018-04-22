@@ -4,7 +4,7 @@
         <title>Ver Noticias</title>
         <link type="text/css" rel="stylesheet" href="../modelo/css/bootstrap-3.1.1.min.css"/>
         <link rel="stylesheet" href="../modelo/css/bootstrap-3.1.1.min.css">
-        <link href="../modelo/css/HE_NOTICIAS_VER.css" rel="stylesheet" type="text/css"/> 
+        <link href="../modelo/css/NOTICIAS_VER.css" rel="stylesheet" type="text/css"/> 
         <link href='../modelo/img/RC_IF_LOGO.png' rel='shortcut icon' type='image/png'>
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
         <script src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>           
@@ -16,7 +16,7 @@
         <br>
     <center><div class="contenido">
             <div id="alertaSucces" ></div> 
-            <center><a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
+            <center><a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a></center>
             <br>   
 
             <div class="panel panel-default">
@@ -60,8 +60,8 @@
 
             <div id="cajaDeComentarios">   
                 <div class="form-group">
-                    <label style="color: #337AB7" for="comment">Comentario:</label>
-                    <textarea class="form-control" style="resize: none" rows="5" id="comment"  oninput="caracteres()"></textarea>
+                    <label id="titulo_comentario" for="comment">Comentario:</label>
+                    <textarea class="form-control" rows="5" id="comment"  oninput="caracteres()"></textarea>
                 </div>
                 <label>Caracteres: </label> <div id="caracteres"><p>200</p></div>
                 <center><button type="button" class="btn btn-primary" onclick="comentar()">Enviar</button></center><br>

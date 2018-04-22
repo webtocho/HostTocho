@@ -1,5 +1,4 @@
 <html>
-
     <head>
         <title>Iniciar sesión</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,14 +11,11 @@
         <script type="text/javascript" src="../controlador/JS_LIBRERIAS_bootstrap.min.js"></script>
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGIN.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!--    <script type="text/javascript">
-      var WEB_ROOT = "http://" + document.location.hostname + "/Web_Tocho";</script> 
-    -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
     </head>
     <body id="body">
         <div id="alertaSucces" ></div>
-        <!--Ventana emergente para modificar la fecha de la convocatoria-->
+        <!--Ventana emergente para ingresa la direccion de correo a recuperar-->
         <div id="ventanaEmergente" class="modal fade" role="dialog">
             <div class="modal-dialog">
               <!--Contenido de la ventana emergente-->
@@ -41,7 +37,7 @@
               </div>
             </div>
         </div>
-        <!--Ventana emergente para modificar la fecha de la convocatoria-->                                                
+        <!--Ventana emergente para ingresa la direccion de correo a recuperar-->                                                
         <center>
             <div class="form">
             <center><a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
@@ -51,7 +47,7 @@
             <input placeholder="Contraseña" type="password" name="campo_password" id="campo_password"><br><br>
             <center><input class="btn btn-primary" type="button" value="Iniciar Sesion" onClick="iniciarSesion();" id='btn_iniciar_sesion' name='btn_iniciar_sesion'></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
             </form>
-            <a style="color:#333;font-size:14px;" class='pink-text' href='#body' onClick="abrirPantallaParaIngresarCorreo()"><b>¿Olvidaste tu contraseña?</b></a>
+            <a id="dezplegar_ventana" class='pink-text' href='#body' onClick="abrirPantallaParaIngresarCorreo()"><b>¿Olvidaste tu contraseña?</b></a>
             </div>
         </center>
     </body>

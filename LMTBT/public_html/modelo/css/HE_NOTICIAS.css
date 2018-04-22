@@ -69,3 +69,10 @@ html, body{
     padding: 10px 10px 10px 10px;
     background-color: #428BCA;
 }
+#a1{
+    color: #ffffff;
+}
+#i1{
+    padding-right: 5px;
+    font-size:30px;
+}

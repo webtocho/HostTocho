@@ -71,3 +71,13 @@ body{
         background-color: #fff;
     }
 }
+#logo{
+    height: 125px;
+    width: 125px;
+}
+#titulo{
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
+}
