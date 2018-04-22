@@ -70,14 +70,11 @@ body{
         background-color: #fff;
     }
 }
-.a{
-    text-decoration:none;
-}
-.stiloImagen{
+#logo{
     height: 125px;
     width: 125px;
 }
-.etiquetaRegistrarCuenta{
+#titulo{
     background-color:#333;
     color:#ffffff;
     width:93%;

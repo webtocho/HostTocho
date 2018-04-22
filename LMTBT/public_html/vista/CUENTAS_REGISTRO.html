@@ -14,17 +14,17 @@
     </head>
     <body id="body">
         <div id="alertaSucces" ></div>
-        <center>
-            <div class="form">
-                <center><a href="index.html" class="a"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" class="stiloImagen"/></a></center>
-                <h1 class="etiquetaRegistrarCuenta">Registrar cuenta</h1>
-                <form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
-                    <input type="email" placeholder="Correo" name="Correo" id="Correo" required>
-                    <input placeholder="Contraseña" type="password" name="Pass" id="Password" pattern=".{7,}" title="7 o más caracteres" required>
-                    <input placeholder="Nombre" type="text" name="nombre" id="nombre" required>
-                    <input placeholder="Apellido Paterno" type="text" name="ApellidoPaterno" id="ApellidoPaterno" required>
-                    <input placeholder="Apellido Materno" type="text" name="ApellidoMaterno" id="ApellidoMaterno" required>
-                    <select class="form-control" id="sexo" required>
+		<center>
+			<div class="form">
+                        <center><a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a></center>
+                        <h1 id="titulo">Registrar cuenta</h1>
+			<form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
+                        <input type="email" placeholder="Correo" name="Correo" id="Correo" required>
+                        <input placeholder="Contraseña" type="password" name="Pass" id="Password" pattern=".{7,}" title="7 o más caracteres" required>
+                        <input placeholder="Nombre" type="text" name="nombre" id="nombre" required>
+                        <input placeholder="Apellido Paterno" type="text" name="ApellidoPaterno" id="ApellidoPaterno" required>
+                        <input placeholder="Apellido Materno" type="text" name="ApellidoMaterno" id="ApellidoMaterno" required>
+                        <select class="form-control" id="sexo" required>
                         <option value="">Sexo</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>

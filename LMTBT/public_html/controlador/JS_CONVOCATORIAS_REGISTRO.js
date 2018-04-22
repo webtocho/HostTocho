@@ -15,7 +15,17 @@ $(document).ready(function(){
         })
         .fail(function() {
             expulsar();
-        });
+        });             
+    //Se carga los datapicker en los inputs correspondientes para poder registrar una fecha
+    $(function () {
+      $("#fecha_cierre_convocatoria").datepicker();
+    });
+    $(function () {
+      $("#fecha_inicio_torneo").datepicker();
+    });
+    $(function () {
+      $("#fecha_fin_torneo").datepicker();
+    });
 });
 /**
  * Recupera los datos del formulario con la informacion de la convocatoria a registrarse y los

@@ -24,12 +24,7 @@
     </head>
     <body id="body">
         <div id="alertaSucces" role="dialog">            
-        </div>  
-        <script>
-        $(function () {
-            $("#nueva_fecha").datepicker();
-        });
-        </script>
+        </div>          
         <!--Ventana emergente para modificar la fecha de la convocatoria-->
         <div id="ventanaEmergente" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -74,10 +69,10 @@
         <!--Ventana emergente de confirmacion para terminar un torneo-->                        
     <center>
         <div id="contenido">
-            <center><a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
+            <center><a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a></center>
             <div id="info_convocatoria">
-                <h3 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;" id="nombre_convocatoria">Detalles convocatoria</h3>
-                <h3 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;" id="fecha_cierre">12/16/2017</h3>
+                <h3 id="nombre_convocatoria">Detalles convocatoria</h3>
+                <h3 id="fecha_cierre">12/16/2017</h3>
             </div>
             <div>               
                 <div id="paginas"></div>
@@ -114,17 +109,7 @@
             <div id="enventos">
                 <a href="#body" id="gototop" class="desing">Ir Arriba</a>
                 <a href="#body" class="desing">Cambiar fechas</a>
-                <a href="#body" class="desing">Generar rol</a>            
-                <style type="text/css">
-                    @media(max-width: 550px){
-                        .desing{
-                            width: 100%;
-                            background-color: gray;
-                            color: #ffffff;
-                            padding: 10px;
-                        }
-                    }
-                </style>
+                <a href="#body" class="desing">Generar rol</a>                
             </div>
         </div>
     </center>
