@@ -1,10 +1,14 @@
-#body{
+body{
     width: 99%;
     height: 100%;
     clear: both;
     margin: auto;
     background-image: url(../img/RC_IF_FONDO.png);
     background-size: repeat;
+}
+
+#logo {
+    width: 125px;
 }
 
 #contenido{
@@ -15,6 +19,14 @@
     padding: 40px;
     margin: 50px auto;
     border: 2px solid #d9d9d9;
+}
+
+#contenido h2{
+    text-align: center;
+    background-color:#333;
+    color: #ffffff;
+    width: 93%;
+    border-radius:3px;
 }
 
 #nombre,#apellido_paterno,#apellido_materno,#contrasena,#contrasena_confirmacion,#correo{

@@ -1,15 +1,22 @@
 body{
     font-family: 'Roboto', sans-serif;
-    /*font-family: 'Noto Sans', sans-serif;*/
-}
-
-#body{
     width: 99%;
     height: 100%;
     clear: both;
     margin: auto;
     background-image: url(../img/RC_IF_FONDO.png);
     background-size: repeat;
+}
+
+#logo {
+    width: 125px;
+}
+
+#contenido h1{
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
 }
 
 .form{

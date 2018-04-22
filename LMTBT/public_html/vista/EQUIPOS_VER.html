@@ -17,13 +17,13 @@
         <script type="text/javascript" src="../controlador/JS_EQUIPOS_VER.js"></script>
         <script type="text/javascript" src="../controlador/JS_CARACTERISTICAS.js"></script>
     </head>
-    <body id="body">
+    <body>
     <center>
         
         <div id="contenido">
              <br>
-            <a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a>
-            <h2 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;">EQUIPOS</h2>
+            <a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a>
+            <h2>EQUIPOS</h2>
             
             <div>
                 <div id="filtros" class="form-group">
@@ -33,14 +33,14 @@
                     <label for="sr">Buscar sílaba o palabra:</label>
                     <input type="text" id="sr" name="sr" class="form-control" placeholder="<Todos>">
                     
-                    <input type="button" class="btn btn-default" onclick="buscar()" value="Buscar" style="margin-top: 5px;">
+                    <input type="button" class="btn btn-default" onclick="buscar()" value="Buscar" id="btnBuscar">
                 </div>
                 
                 <div id="paginas"></div>
                 <br>
             </div>
             <div id="equipos">
-                <div style="width: 100%;height: auto;background-color: #fff; border: 2px solid #d9d9d9;border-radius: 7px;padding: 10px;">
+                <div id="contenedorEquipos">
                     <div><a href="EQUIPOS_CREAR.html"><img src="../modelo/img/RC_IF_NUEVO.png"></a></div>
                     <center><p>Agregar Equipo</p></center>
                 </div>

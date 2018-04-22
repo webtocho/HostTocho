@@ -1,15 +1,15 @@
 body{
     font-family: 'Roboto', sans-serif;
-    /*font-family: 'Noto Sans', sans-serif;*/
-}
-
-#body{
     width: 99%;
     height: 100%;
     clear: both;
     margin: auto;
     background-image: url(../img/RC_IF_FONDO.png);
     background-size: repeat;
+}
+
+#logoimg {
+    width: 125px;
 }
 
 #contenido{
@@ -55,11 +55,6 @@ th,tr,td{
 
 #logo {
     text-decoration:none;
-}
-
-#logoimg {
-    height: 125px;
-    width: 125px;
 }
 
 @media(max-width:550px){

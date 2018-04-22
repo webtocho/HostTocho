@@ -1,4 +1,4 @@
-#body{
+body{
     width: 99%;
     height: 100%;
     clear: both;
@@ -6,6 +6,10 @@
     background-color: #333;
     background-image: url(../img/RC_IF_FONDO.png);
     background-repeat: repeat;
+}
+
+#logo {
+    width: 125px;
 }
 
 #contenido{
@@ -16,6 +20,13 @@
     padding: 3px;
     margin-top: 40px;
     box-shadow: 5px 5px 15px #333;
+}
+
+#contenido h2{
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
 }
 
 #nombre,#logotipo,#busqueda_coach,#seleccion_coach,#coach{
