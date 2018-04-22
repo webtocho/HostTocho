@@ -13,45 +13,45 @@
         <script type="text/javascript" src="../controlador/JS_FUNCIONES.js"></script>
         <script type="text/javascript" src="../controlador/JS_CUENTAS_LOGIN.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!--    <script type="text/javascript">
-      var WEB_ROOT = "http://" + document.location.hostname + "/Web_Tocho";</script> 
-    -->
     </head>
     <body id="body">
         <div id="alertaSucces" ></div>
         <!--Ventana emergente para modificar la fecha de la convocatoria-->
         <div id="ventanaEmergente" class="modal fade" role="dialog">
             <div class="modal-dialog">
-              <!--Contenido de la ventana emergente-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 id="tituloVentanaEmergente" class="modal-title">Titulo</h4>
+                <!--Contenido de la ventana emergente-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 id="tituloVentanaEmergente" class="modal-title">Titulo</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group" id="formulario">
+                            <label for="correo_recuperar">Ingresa el correo a recuperar:</label>
+                            <input type="email" class="form-control" id="correo_recuperar" maxlength="30" required>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" form="formulario" class="btn btn-default" value="Guardar">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form class="form-group" id="formulario">
-                        <label for="correo_recuperar">Ingresa el correo a recuperar:</label>
-                        <input type="email" class="form-control" id="correo_recuperar" maxlength="30" required>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" form="formulario" class="btn btn-default" value="Guardar">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
             </div>
         </div>
         <!--Ventana emergente para modificar la fecha de la convocatoria-->                                                
         <center>
             <div class="form">
-            <center><a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-            <center><h1 style="text-align: center;background-color:#333;color:#ffffff;width:93%;border-radius:3px;" >Login</h1></center>
-            <form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
-            <input placeholder="Correo" type="email" name="campo_correo" id="campo_correo">
-            <input placeholder="Contraseña" type="password" name="campo_password" id="campo_password"><br><br>
-            <center><input class="btn btn-primary" type="button" value="Iniciar Sesion" onClick="iniciarSesion();" id='btn_iniciar_sesion' name='btn_iniciar_sesion'></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
-            </form>
-            <a style="color:#333;font-size:14px;" class='pink-text' href='#body' onClick="abrirPantallaParaIngresarCorreo()"><b>¿Olvidaste tu contraseña?</b></a>
+                <center><a href="index.html" class="etiquetaLogo"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" class="logo"/></a></center>
+                <center><h1 class="etiquetaLogin">Login</h1></center>
+                <form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
+                    <input placeholder="Correo" type="email" name="campo_correo" id="campo_correo">
+                    <input placeholder="Contraseña" type="password" name="campo_password" id="campo_password"><br><br>
+                    <center>
+                        <!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
+                        <input class="btn btn-primary" type="button" value="Iniciar Sesion" onClick="iniciarSesion();" id='btn_iniciar_sesion' name='btn_iniciar_sesion'>
+                    </center>
+                </form>
+                <a class='pink-text etiquetaOLvidarPassword' href='#body' onClick="abrirPantallaParaIngresarCorreo()"><b>¿Olvidaste tu contraseña?</b></a>
             </div>
         </center>
     </body>
