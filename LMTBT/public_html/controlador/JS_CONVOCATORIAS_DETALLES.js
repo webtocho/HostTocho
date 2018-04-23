@@ -16,7 +16,10 @@ $(document).ready(function () {
             })
             .fail(function () {
                 expulsar();
-            });
+            });  
+        $(function () {
+            $("#nueva_fecha").datepicker();
+        });                 
 });
 
 /**

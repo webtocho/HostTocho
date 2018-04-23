@@ -61,3 +61,13 @@
         background-color: #fff;
     }
 }
+#nombre_convocatoria,#fechar_cierre{
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
+}
+#logo{
+    height: 125px;
+    width: 125px;
+}

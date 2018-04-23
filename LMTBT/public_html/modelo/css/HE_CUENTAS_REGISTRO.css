@@ -50,7 +50,6 @@ body{
     border-right: 0px;
     margin-top: 20px;
 }
-
 @media(max-width:550px){
     .form{
         width: 100%;
@@ -70,4 +69,14 @@ body{
         background-size: cover;
         background-color: #fff;
     }
+}
+#logo{
+    height: 125px;
+    width: 125px;
+}
+#titulo{
+    background-color:#333;
+    color:#ffffff;
+    width:93%;
+    border-radius:3px;
 }

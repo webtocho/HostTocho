@@ -32,3 +32,13 @@ html, body{
     display: inline-block;
     text-align: left;
 }
+#logo{
+    height: 125px;
+    width: 125px;
+}
+#titulo_comentario{
+    color: #337AB7;
+}
+#comment{
+    resize: none
+}

@@ -18,13 +18,9 @@ function getTorneo() {
             info = info.trim()
             if (info == 'Failx') {
                 alert("No se Encontro Ningun Torneo");
-
             } else {
-
-
                 $('#torneo').append(info);
                 $('select').material_select();
-
             }
         },
         error: function (jqXHR, textStatus) {
@@ -78,7 +74,6 @@ function getTable() {
 }
 
 function editTable() {
-//console.log( $('td.edit').parent());var oIDvar oIDint i=0;
     var i = 0;
     var id_rol;
     $('a.edit').on('click', function () {

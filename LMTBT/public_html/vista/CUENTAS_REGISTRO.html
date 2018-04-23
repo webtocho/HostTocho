@@ -3,21 +3,21 @@
     <head>
         <title>Registro de cuenta</title>
         <meta charset="UTF-8">
-            <link type="text/css" rel="stylesheet" href="../modelo/css/HE_CUENTAS_REGISTRO.css" />
-            <link type="text/css" href="../modelo/css/bootstrap.min.css" rel="stylesheet">
-            <link type="text/css" href="../modelo/css/bootstrap-theme.css" rel="stylesheet">
-            <link href='../modelo/img/RC_IF_LOGO.png' rel='shortcut icon' type='image/png'>
-            <script src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
-            <script  src="../controlador/JS_CUENTAS_REGISTRO.js"></script>
-            <script  src="../controlador/JS_FUNCIONES.js"></script>
+        <link type="text/css" rel="stylesheet" href="../modelo/css/HE_CUENTAS_REGISTRO.css" />
+        <link type="text/css" href="../modelo/css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="../modelo/css/bootstrap-theme.css" rel="stylesheet">
+        <link href='../modelo/img/RC_IF_LOGO.png' rel='shortcut icon' type='image/png'>
+        <script src="../controlador/JS_LIBRERIAS_jquery-3.1.1.min.js"></script>
+        <script  src="../controlador/JS_CUENTAS_REGISTRO.js"></script>
+        <script  src="../controlador/JS_FUNCIONES.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     </head>
     <body id="body">
         <div id="alertaSucces" ></div>
 		<center>
 			<div class="form">
-                        <center><a href="index.html" style="text-decoration:none;"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" style="height: 125px;width: 125px;"/></a></center>
-			<h1 style="background-color:#333;color:#ffffff;width:93%;border-radius:3px;">Registrar cuenta</h1>
+                        <center><a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a></center>
+                        <h1 id="titulo">Registrar cuenta</h1>
 			<form method="post" id="myForm"><!-- No he incluido el submit para evitar el enter y que el modal se cierre-->
                         <input type="email" placeholder="Correo" name="Correo" id="Correo" required>
                         <input placeholder="Contraseña" type="password" name="Pass" id="Password" pattern=".{7,}" title="7 o más caracteres" required>
@@ -28,12 +28,18 @@
                         <option value="">Sexo</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
-                        </select><br>
-                        <select class="form-control" name="Tipo de cuenta" id="tipo_cuenta" required>                           
-                        </select><br>
-			<center><input class="btn btn-primary" type="submit" value="Registrar" id="btn-submitdos"></center><!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
-                        </form><br>
-			</div>
-		</center><br><br>
+                    </select><br>
+                    <select class="form-control" name="Tipo de cuenta" id="tipo_cuenta" required>                           
+                    </select><br>
+                    <center>
+                        <!-- El type se cambia mediante js al momento de dar click al input para evitar el Enter y que el modal se ceirre-->
+                        <input class="btn btn-primary" type="submit" value="Registrar" id="btn-submitdos">
+                    </center>
+                </form>
+                <br>
+            </div>
+        </center>
+        <br>
+        <br>
     </body>
 </html>
