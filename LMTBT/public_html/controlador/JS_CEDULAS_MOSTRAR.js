@@ -1,12 +1,10 @@
+//fucion que guarda las variables recibidos del boton
 function guardar_cedula(id_equipo_1, id_equipo_2, id_rol_juego, id_convocatoria) {
-    /*Guardando los datos en el LocalStorage*/
-    //  id_equipo_1=1;
-    // id_equipo_2=2;
-    // id_rol_juego=3;
+    //se utiliza sessionstorage para almacenar las variables y pasarlas a otro javascript
     sessionStorage.setItem("id_equipo_1", id_equipo_1);
     sessionStorage.setItem("id_equipo_2", id_equipo_2);
     sessionStorage.setItem("id_rol_juego", id_rol_juego);
     sessionStorage.setItem("id_convocatoria", id_convocatoria);
-
+//redireccionamos a la pagina donde se utilizaran las variables que guarsaron los sessionstorage
     location.href = "../vista/CEDULAS_FORMULARIO.html";
 }
