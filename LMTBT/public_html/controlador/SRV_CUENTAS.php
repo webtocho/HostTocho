@@ -1013,16 +1013,23 @@
              * de usario, si no se encuentra logueado con ninguna cuenta solo se le
              * permitira registrar usuarios de tipo jugador
              */
-            if($_SESSION["TIPO_USUARIO"] == "ADMINISTRADOR"){
-                if ($_POST['tipo_cuenta'] != "ADMINISTRADOR" && $_POST['tipo_cuenta'] != "COACH" && $_POST['tipo_cuenta'] != "JUGADOR" &&
+            if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
+                if($_SESSION["TIPO_USUARIO"] == "ADMINISTRADOR"){
+                    if ($_POST['tipo_cuenta'] != "ADMINISTRADOR" && $_POST['tipo_cuenta'] != "COACH" && $_POST['tipo_cuenta'] != "JUGADOR" &&
                         $_POST['tipo_cuenta'] != "FOTOGRAFO" && $_POST['tipo_cuenta'] != "CAPTURISTA") {
-                    echo "El tipo de cuenta que intenta crear es inválido.";
-                    break;
-                }
-            } else {
-                if ($_POST['tipo_cuenta'] != "JUGADOR") {
-                    echo "No tienes permisos para crear este tipo de cuenta.";
-                    break;
+                        echo "El tipo de cuenta que intenta crear es inválido.";
+                        break;
+                    }
+                } else {
+                    if ($_POST['tipo_cuenta'] != "JUGADOR") {
+                        echo "No tienes permisos para crear este tipo de cuenta.";
+                        break;
+                    }
+                }   
+            }else{
+                if($_POST['tipo_cuenta'] != "JUGADOR"){
+                    echo "No tienes permios para crear este tipo de cuenta";                   
+                    return;
                 }
             }
             //Se evalua que los parametros enviado por tipo POST no esten vacios de lo contrario se regresa un error
