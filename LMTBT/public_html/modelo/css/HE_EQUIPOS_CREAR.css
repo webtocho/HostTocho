@@ -12,7 +12,7 @@ body{
     width: 125px;
 }
 
-#contenido h1{
+#contenido h2{
     background-color:#333;
     color:#ffffff;
     width:93%;
@@ -38,14 +38,6 @@ body{
     border-left: 0px;
     border-right: 0px;
     margin-top: 20px;
-}
-
-#btn-submitdos{
-    background-color: transparent;
-    border: 2px solid;
-    border-radius: 4px;
-    margin-top: 35px;
-    padding: 4px;
 }
 
 @media(max-width:550px){

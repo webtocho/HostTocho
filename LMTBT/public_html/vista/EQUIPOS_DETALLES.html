@@ -18,7 +18,7 @@
     <center>
         <div id="contenido">
             <a href="EQUIPOS_VER.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a>
-            <h2>Detalles del equipo: </h2>
+            <h2>Detalles del equipo </h2>
             <br>
             <div id="detalles">
                 <img id="logotipo">
@@ -28,14 +28,16 @@
                 </div>
             </div>
             <br>
-            <b>Rosters: </b>
+            <b>Rosters: </b> <span class="glyphicon glyphicon-question-sign" data-placement="bottom"
+               data-toggle="tooltip" title="Se listan los rosters activos, aquellos que aún no participan
+               en un torneo; o que participan en un torneo que no ha finalizado."></span>
             <ul id="lista_rosters">
                 <li><i>&lt;Ninguno&gt;</i></li>
             </ul>
             <br>
             <button onclick="irAPaginaDeCrearRoster()" id="btn_crear_roster">Crear roster</button>
             <button onclick="irAPaginaDeEdicion()" id="btn_edit_equipo">Editar equipo</button>
-            <button onclick="EliminarEquipo()" id="btn_eliminar_equipo">Eliminar equipos</button>
+            <button onclick="EliminarEquipo()" id="btn_eliminar_equipo">Eliminar equipos</button> 
         </div>
     </center>
     <br>
