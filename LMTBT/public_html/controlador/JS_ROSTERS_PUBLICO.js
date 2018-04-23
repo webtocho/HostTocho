@@ -2,7 +2,7 @@ $(document).ready(function() {
     CargarEquipos();
 });
 function CargarEquipos(){
-    //Funcion para cargar los equipos en un select que se mostrara al publico
+    //Función para cargar los equipos en un select que se mostrara al publico
     $.ajax({
         url: "../controlador/SRV_PUBLICO_EQUIPOS_CARGAR.php",
         beforeSend: function (xhr){
@@ -16,12 +16,12 @@ function CargarEquipos(){
             $('#Datos').empty();
         },
         error: function (jqXHR, textStatus) {
-           alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");
+           alert("Ha ocurrido un error al obtener la información solicitada.\n Inténtelo de nuevo más tarde.");
         }
     });
 }
 function CargarRoster(id){
-    //Funcion para cargar los rosters de un equipo seleccionado en el select anterior
+    //Función para cargar los rosters de un equipo seleccionado en el select anterior
     $.ajax({
         data: {id_equipo:id},
         url: "../controlador/SRV_PUBLICO_ROSTER_CARGAR.php",
@@ -41,12 +41,12 @@ function CargarRoster(id){
             $('#Datos').empty();
         },
         error: function (jqXHR, textStatus) {
-           alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");
+           alert("Ha ocurrido un error al obtener la información solicitada.\n Inténtelo de nuevo más tarde.");
         }
     });
 }
 function CargarDatos(id){
-    //Funcion para cargar los datos de un roster (jugadores,fotos)
+    //Función para cargar los datos de un roster (jugadores,fotos)
     $.ajax({
         data: {id_roster:id},
         url: "../controlador/SRV_PUBLICO_DATOS_CARGAR.php",
@@ -62,7 +62,7 @@ function CargarDatos(id){
             setTimeout(Jugadores(id), 1000);
         },
         error: function (jqXHR, textStatus) {
-           alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");
+           alert("Ha ocurrido un error al obtener la información solicitada.\n Inténtelo de nuevo más tarde.");
         }
     });
 }
@@ -90,11 +90,11 @@ function Jugadores(id){
             }
         },
         error: function (jqXHR, textStatus) {
-            alert("Ha ocurrido un error al conectarse con el servidor.\nIntentelo de nuevo mas tarde.")
+            alert("Ha ocurrido un error al conectarse con el servidor.\nInténtelo de nuevo más tarde.")
         }       
     });
 }
-//Esta funcion recupera la informacion de los jugadores uno por uno
+//Esta funcion recupera la información de los jugadores uno por uno
 function JugadoresCargar(id){
     for(var j=0;j<equipo.length;j++){
         $.ajax({//hacemos la peticion mediante ajax
@@ -106,7 +106,7 @@ function JugadoresCargar(id){
                 $('#Datos').append(resultado);
             },
             error: function (jqXHR, textStatus) {
-                //alert("Ha ocurrido un error al conectarse con el servidor.\nIntentelo de nuevo mas tarde.")
+                //alert("Ha ocurrido un error al conectarse con el servidor.\nInténtelo de nuevo más tarde.")
             }       
         });
     }

@@ -220,7 +220,7 @@
     }
     
     /**
-     * Permite saber qué restricciones tiene una categoria.
+     * Permite saber qué restricciones tiene una categoría.
      * @param MySQLi $mysqli Conexión con la base de datos.
      * @param int $id_categoria El id de la categoría, de la cual se quiere obtener la información.
      * @return string Las restricciones en el lenguaje SQL.

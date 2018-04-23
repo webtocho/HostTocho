@@ -4,7 +4,7 @@ $(document).ready(function () {
 });
 
 function felicitaciones() {
-    //Funcion para mostrar a los cumpleañeros del dia en la pagina principal
+    //Función para mostrar a los cumpleañeros del dia en la página principal
     $.ajax({
         url: "../controlador/SRV_FELICITACIONES_OBTENER.php",
         success: function (info) {
@@ -40,13 +40,13 @@ function felicitaciones() {
             }
         },
         error: function (jqXHR, textStatus) {
-            alert("Error del servidor. Cumpleaños");
+            alert("Error del servidor al consultar los cumpleaños.");
         }
     });
 }
 
 function NextGames() {
-    //Funcion para cargar los siguientes 5 partidos (mas cercanos sin jugar aun) en la pagina principal
+    //Función para cargar los siguientes 5 partidos (mas cercanos sin jugar aun) en la pagina principal
     $.ajax({
         url: "../controlador/SRV_PROXIMOS_PARTIDOS.php",
         success: function (res) {
@@ -54,7 +54,7 @@ function NextGames() {
             $('#ProximosPartidos').append(res);
         },
         error: function (jqXHR, textStatus) {
-            alert("Ha ocurrido un error al obtener la informacion solicitada.\n Intentelo de nuevo mas tarde");
+            alert("Ha ocurrido un error al obtener la información solicitada.\n Inténtelo de nuevo más tarde.");
         }
     });
 }

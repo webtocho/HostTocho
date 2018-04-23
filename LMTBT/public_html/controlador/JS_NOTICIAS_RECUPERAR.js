@@ -1,4 +1,4 @@
-/* este metodo se encarga de ejecutar los metodos recuperar_baner y recuperar_noticias
+/* Esta función se encarga de ejecutar los metodos recuperar_baner y recuperar_noticias
  */
 function ejecutar_recuperar_noticias() {
     recuperar_baner();

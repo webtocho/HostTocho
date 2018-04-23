@@ -4,7 +4,7 @@ $db = new SRV_CONEXION();
 $conn = $db->getConnection();
 //Este php retorna todos id de los equipos inscritos a una convocatoria
 $id_convocatoria=$_POST['convocatoria'];
-//Comprobamos si ya genero el rol de juegos de la convocatoria, para no duplicar la informacion
+//Comprobamos si ya genero el rol de juegos de la convocatoria, para no duplicar la información
 $stmt="SELECT * FROM roles_juego WHERE ID_CONVOCATORIA=".$id_convocatoria;
 
 $result = $conn->query($stmt);

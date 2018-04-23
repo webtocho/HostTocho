@@ -82,7 +82,7 @@ $result = $conn->query($stmt);
 	}
 	else{
             //es que no hay equipos registrados en una convocatorias
-            echo "Error no se ha podido actualizar la Tabla de Posiciones";
+            echo "Error no se ha podido actualizar la tabla de posiciones.";
 	}	
 $conn->close();
 ?>

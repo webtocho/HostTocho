@@ -20,7 +20,7 @@ $( document ).ready(function() {
         });
 });
 /**
- * Recupera los datos del formulario con la informacion de la noticia a registrarse y los
+ * Recupera los datos del formulario con la información de la noticia a registrarse y los
  * envia al servidor para ser almacenados y asi lanzar una nueva noticia en el inicio.
  */
 $(document).on('submit','#form_noticias',function(event){
@@ -43,7 +43,7 @@ $(document).on('submit','#form_noticias',function(event){
         //Si el resultado es correcto se notifica y limpia el formulario para un nuevo registro
             success: function(resultado){                
                 if(resultado == "ok"){
-                    mostrarAlerta("Registro realizado con exito","correcto");
+                    mostrarAlerta("Registro realizado con éxito","correcto");
                     document.getElementById('enviar').disabled = false;
                     document.getElementById('titulo').value = "";
                     document.getElementById('descripcion_noticias').value = "";                    
@@ -55,7 +55,7 @@ $(document).on('submit','#form_noticias',function(event){
                 }
             },
             error: function(jqXHR, textStatus) {
-               mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
+               mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.","fallido");
                document.getElementById('enviar').disabled = false;
             }
     });

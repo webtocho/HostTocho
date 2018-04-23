@@ -62,7 +62,7 @@ function terminar_torneo(id){
         },
         success: function(resultado){
             if(resultado == "ok"){                
-                mostrarAlerta("El torneo se termino con exito","correcto");
+                mostrarAlerta("El torneo se termino con éxito","correcto");
             }else{     
                 mostrarAlerta(resultado,"fallido");                
             }       

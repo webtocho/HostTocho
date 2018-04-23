@@ -1,5 +1,5 @@
 function CargarTablaPosiciones(id_convocatoria) {
-    //Funcion para cargar la tabla de posiciones
+    //Función para cargar la tabla de posiciones
     $.ajax({
         url: "../controlador/SRV_TABLA_POSICIONES_OBTENER.php",
         data: {convocatoria: id_convocatoria},
@@ -25,7 +25,7 @@ function CargarTablaPosiciones(id_convocatoria) {
 }
 
 function CargarConvocatorias(estado) {
-    //Funcion para cargar las convocatorias segun su estado
+    //Función para cargar las convocatorias segun su estado
     $.ajax({
         url: "../controlador/SRV_CONVOCATORIAS_OBTENER_TABLA_POSICIONES.php",
         data: {tipo: estado},

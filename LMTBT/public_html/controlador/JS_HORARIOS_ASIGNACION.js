@@ -15,14 +15,14 @@ function getTorneo() {
 
             info = info.trim()
             if (info == 'Failx') {
-                alert("No se Encontro Ningun Torneo");
+                alert("No se encontró ningún torneo.");
             } else {
                 $('#torneo').append(info);
                 $('select').material_select();
             }
         },
         error: function (jqXHR, textStatus) {
-            console.log("Error en el Servidor");
+            console.log("Error al obtener el torneo.");
         }
     });
     $('select').material_select();
@@ -46,16 +46,16 @@ function getTable() {
 
 
             if (info == 'Fail') {
-                alert("No se Obtuvieron Registros");
+                alert("No se obtuvieron registros");
 
             } else if (info == 'Failx') {
                 alert("No hay datos en la tabla ");
 
             } else if (info == '!Session') {
-                alert("Inicie Sesion Para continuar");
+                alert("Inicie sesión para continuar");
                 window.location.href = "CUENTAS_LOGIN.html";
             } else if (info == "!Type") {
-                alert("Usted no Tiene Permisos");
+                alert("Usted no tiene permisos");
                 window.location.href = "index.html";
             } else {
 
@@ -65,7 +65,7 @@ function getTable() {
 
         },
         error: function (jqXHR, textStatus) {
-            console.log("Error en el Servidor");
+            console.log("Error en el servidor");
         }
     });
 
@@ -129,7 +129,7 @@ function GuardarHorarioRolJuego() {
             }
         },
         error: function (jqXHR, textStatus) {
-            console.log("Error en el Servidor");
+            console.log("Error en el servidor");
         }
     });
 

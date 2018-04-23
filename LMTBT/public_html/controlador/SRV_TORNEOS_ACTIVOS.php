@@ -71,7 +71,7 @@ if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
                         }
 			$nombres_equipos = array();
 			$contador = 0;
-                        //Recuperamos la informacion de los equipos ganadores
+                        //Recuperamos la información de los equipos ganadores
                         foreach($id_equipo_ganador_torneo as $valor){
                             $sql = "SELECT *FROM equipos WHERE ID_EQUIPO = $valor";
                             if ($resultado = $conexion->query($sql)){
@@ -120,7 +120,7 @@ if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
 			} else {
                             //Se regresa un error en el caso de que no haya suficientes equipos inscritos en un torneo
                             $cambios_hechos = false;
-                            echo "El numero de equipos no es valido -> ";
+                            echo "El número de equipos no es valido -> ";
 			}
                     }else {
                         //Se toma como fallo al realizar una consulta
@@ -144,7 +144,7 @@ if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
     } else {
         //Se retorna un error y se deshacen los cambios ya realizados en la BD
         $conexion->rollback();
-	echo "Error en la transaccion";
+	echo "Error en la transacción.";
     }
     $conexion->autocommit(TRUE);
     break;  

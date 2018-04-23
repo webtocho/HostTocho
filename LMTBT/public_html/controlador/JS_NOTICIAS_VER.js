@@ -52,7 +52,7 @@ function cargarComentarios(){
 }
  /*
   * si la cuenta que entro a la pagina es de tipo administrador, tendra la opcion de eliminar los comentarios
-  *este metodo recibe el id del comentario a eliminar
+  *Esta función recibe el id del comentario a eliminar
  **/
  
 function eliminarComentario(id){
@@ -97,7 +97,7 @@ function caracteres(){
     }
 }
 /*
- * este metodo valida cualquier tipo de inyeccion a la base de datos y que el comentario contenga texto
+ * Esta función valida cualquier tipo de inyeccion a la base de datos y que el comentario contenga texto
  * una ves se valide todo, se manda a insertar con el id de la noticia
  */
 function comentar(){
@@ -155,7 +155,7 @@ function cargarNoticia(){
                  $('#imagenes').append(contenido[2]);
             },
             error: function (jqXHR, textStatus) {
-                alert("error obtener");
+                alert("Error al cargar la noticia.");
             }
         });
       

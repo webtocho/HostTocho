@@ -51,7 +51,7 @@
                         $i4=$i4+$fila['I4'];
         		//$pt=$pt+$fila['PT'];//campo repetido es el mismo que pa
         	}
-                //Regresamos la informacion en codigo html para una tabla
+                //Regresamos la información en codigo html para una tabla
         	echo "<tr>";
         	echo "<td>$nombre</td> <td>$numero</td> <td>$t</td>";
         	echo "<td>$s</td> <td>$i</td> <td>$a</td> <td>$c1</td>";

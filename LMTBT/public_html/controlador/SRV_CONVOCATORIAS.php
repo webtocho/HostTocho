@@ -1,16 +1,16 @@
 <?php
-    //Agregamos la region y lugar para obtener correctamente las fechas
+    //Agregamos la región y lugar para obtener correctamente las fechas
     date_default_timezone_set('America/Mexico_City');
     //Incluimos a la clase SRV_CONEXION(); para poder instanciarla
     include("SRV_CONEXION.php");
     //Instanciamos a la clase SRV_CONEXION();
     $db = new SRV_CONEXION();
-    //Recuperamos la conexion
+    //Recuperamos la conexión.
     $conexion = $db->getConnection();
     /*
-     * Comprobamos si la sesion con la que se esta queriendo realizar una accion es la correcta
+     * Comprobamos si la sesión con la que se está queriendo realizar una accion es la correcta
      * en este caso solo el administrador, de lo contrario se expulsa sin poder realizar 
-     * ninguna de las demas acciones
+     * ninguna de las demás acciones.
      */
     session_start();
     if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
@@ -26,7 +26,7 @@
     }
     //Declaramos un switch con todos los casos y los eventos con las cuenta una convocatoria
     switch ($_POST['tipo']) {
-        //Se realiza un consulta a la base de datos y se regresa la informacion de una convocatoria en especifico, dependiendo de cual se haya seleccionado
+        //Se realiza un consulta a la base de datos y se regresa la información de una convocatoria en especifico, dependiendo de cual se haya seleccionado
         case "consulta_especifica":
             $consulta = $conexion->prepare("SELECT NOMBRE_TORNEO,FECHA_CIERRE_CONVOCATORIA FROM convocatoria WHERE ID_CONVOCATORIA = ?");
             $consulta->bind_param("i", $_POST['id']);
@@ -49,7 +49,7 @@
                 while ($fila = $res->fetch_assoc()) {
                     if ($fila["CUOTA"] == "NO PAGADO") {
                         echo "<tr id='" . $fila["ID_ROSTER"] . "'><td>" . $fila["NOMBRE_EQUIPO"] . "</td><td id='eventos" . $fila["ID_ROSTER"] . "'>" .
-                        "<a class='news' href='#body' id='pago' onclick='abrir_pantalla_para_poner_pago(" . $fila["ID_ROSTER"] . ")'><h5>¿Ya pago?</h5></a>" .
+                        "<a class='news' href='#body' id='pago' onclick='abrir_pantalla_para_poner_pago(" . $fila["ID_ROSTER"] . ")'><h5>¿Ya pagó?</h5></a>" .
                         "<a class='news' href='#body' id='expulsar' onclick='abrir_pantalla_para_expulsar(" . $fila["ID_ROSTER"] . ")'><h5>Expulsar</h5></a></td></tr>";
                     } else {
                         echo "<tr id='" . $fila["ID_ROSTER"] . "'><td>" . $fila["NOMBRE_EQUIPO"] . "</td><td>" .
@@ -68,7 +68,7 @@
                 //Si las consultas y todo lo demas se ejecuta correctamente re regresa un "ok" para indicar que no hubo ningun problema.
                 echo "ok";
             } else {
-                echo "Error del servidor intente mas tarde";
+                echo "Error del servidor, intente más tarde";
             }
             break;
         //Se pasa a null la relacion entre la convocatoria lanzada y el roster inscrito, para asi expulsar a los que aun no han pagado su inscripcion
@@ -79,7 +79,7 @@
                 //Si las consultas y todo lo demas se ejecuta correctamente re regresa un "ok" para indicar que no hubo ningun problema.
                 echo "ok";
             } else {
-                echo "Error del servidor intente mas tarde";
+                echo "Error del servidor, intente más tarde";
             }
             break;
         //Realiza una consulta a la BD y regresa todas la convocatorias lanzadas para cargarlas en una tabla en el inicio
@@ -115,15 +115,15 @@
                         }
                     } else {
                         //Se regresa un error en caso de que la fecha no tenga un formato valido                      
-                        echo "Ingresa una fecha valida";
+                        echo "Ingresa una fecha válida";
                     }
                 } else {
                     //Se regresa un error en caso de que la fecha no tenga un formato valido                 
-                    echo "Ingresa un formato de fecha valido";
+                    echo "Ingresa un formato de fecha válido";
                 }
             } else {
                 //Se regresa un error en caso de que la fecha no tenga un formato valido                
-                echo "Ingresa un formato de fecha valido";
+                echo "Ingresa un formato de fecha válido";
             }
             break;
     }

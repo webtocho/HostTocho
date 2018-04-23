@@ -44,7 +44,7 @@ function lista_convocatorias_inactivas() {
             beforeSend: function (xhr) {},
             success: function (respuesta) {
                 // si ocurre un error se notifica al usuario, de lo contrario se muestran los roles de juego recuperada de la consulta.
-                if (respuesta === "Ha ocurrido un error al recuperar la informacion. Intentelo mas tarde.") {
+                if (respuesta === "Ha ocurrido un error al recuperar la información. Intentelo mas tarde.") {
                     alert(respuesta);
                     document.location.href = "index.html";
                 } else if (respuesta != "no") {

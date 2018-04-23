@@ -25,7 +25,7 @@
 	if($result && $result->num_rows>0){
             //Cuando tenemos las categorias, seleccionamos el roster mas reciente del equipo, dado que se guardan los rosters anteriores
                 $pre = $conn->prepare("SELECT ID_ROSTER FROM rosters WHERE ID_EQUIPO=? AND ID_CATEGORIA=? ORDER BY ID_ROSTER DESC LIMIT 1");
-		 $html[1].= "<option value='' disabled selected hidden>Selecciona un Roster</option>";
+		 $html[1].= "<option value='' disabled selected hidden>Selecciona un roster</option>";
 		while($row = $result->fetch_array(MYSQLI_ASSOC)){
                     //Realizamos un ciclo para buscar que haya un roster (para cada categoria)
                     $pre->bind_param("ii", $id,$row['ID_CATEGORIA']);

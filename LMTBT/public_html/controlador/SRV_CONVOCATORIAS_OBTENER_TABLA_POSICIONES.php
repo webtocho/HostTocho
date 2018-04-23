@@ -12,7 +12,7 @@
 
     $result = $conn->query($query);
     //Se hace una consulta a la base de datos y se comprueba si al menos se obtuvo un resultado
-    //Si la condicion se cumple se retornan las convocatorias como codigo html para un select donde el value es el id de la convocatoria y el texto mostrado es el nombre de la convocatoria
+    //Si la condición se cumple se retornan las convocatorias como codigo html para un select donde el value es el id de la convocatoria y el texto mostrado es el nombre de la convocatoria
     if($result&&mysqli_num_rows($result)>0){
         echo "<option value='' disabled selected hidden>Selecciona una convocatoria...</option>";
     	while($row =  mysqli_fetch_array($result)){

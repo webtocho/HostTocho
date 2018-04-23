@@ -13,7 +13,7 @@
     $stmt->bind_result($id_equipo);
     $stmt->fetch();
     $stmt->close();
-    //Si el equipo existe recuperamos la informacion pertinente
+    //Si el equipo existe recuperamos la información pertinente
     if($id_equipo>0){
         //Recuperamos todos los partidos ya jugados (en los que participo el equipo)
     	$stmt=$conn->prepare("SELECT * FROM roles_juego WHERE ID_CONVOCATORIA=? AND (ID_EQUIPO_1=? OR ID_EQUIPO_2=?) AND ID_EQUIPO_GANADOR>-1");
@@ -21,7 +21,7 @@
     	$stmt->execute();
     	$result = $stmt->get_result();
         //Comprobamos si almenos ya hay un partido jugado
-    	//Si se cumple la condicion regresamos los partidos como codigo html para un select con el estilo de NombreEquipo1(Puntaje) vs NombreEquipo2(Puntaje) y con value del id del rol de juego
+    	//Si se cumple la condición regresamos los partidos como codigo html para un select con el estilo de NombreEquipo1(Puntaje) vs NombreEquipo2(Puntaje) y con value del id del rol de juego
     	if($stmt->num_rows>-1){
             echo "<option value='' disabled selected hidden>Selecciona un partido</option>";
     		while ($row = $result->fetch_array(MYSQLI_ASSOC)) {

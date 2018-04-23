@@ -19,7 +19,7 @@ function actualizarTabla(){
         success: function(resultado) {            
             if(resultado == "error"){
                 $('#convocatorias_lanzadas').empty();    
-                $('#convocatorias_lanzadas').append("<div class='item'><a>No tienes permisos para ver esto</a></div>");
+                $('#convocatorias_lanzadas').append("<div class='item'><a>No tienes permisos para ver esto.</a></div>");
             }else{
                 $('#contenidoTabla').empty();
                 $('#contenidoTabla').append(resultado);

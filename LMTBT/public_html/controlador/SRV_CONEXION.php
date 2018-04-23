@@ -20,10 +20,10 @@ class SRV_CONEXION {
         $this->sqlHost = "localhost";
         $this->sqlDatabase = "lmtbt";
         $this->sqlUser = "root";
-        $this->sqlPassword = "456123";
+        $this->sqlPassword = "12345";
     }
 
-    // Realiza la conexion a la basee de datos
+    // Realiza la conexión a la basee de datos.
     public function DatabaseConnect() {
         $this->conexion = new mysqli($this->sqlHost, $this->sqlUser, $this->sqlPassword, $this->sqlDatabase);
         mysqli_set_charset($this->conexion, "utf8");
@@ -43,7 +43,7 @@ class SRV_CONEXION {
         return $this->resultado != false;
     }
 
-    // Retorna un arreglo con los datos, retorna un arreglo de filas asociadas a la consulta
+    // Retorna un arreglo con los datos, retorna un arreglo de filas asociadas a la consulta.
     public function GetResult() {
         $res = array();
         $this->ExecuteQuery();
@@ -61,7 +61,7 @@ class SRV_CONEXION {
         return $res;
     }
 
-    // Metodo que retorna la conexion a la base de datos, se auxilia del metodo DatabaseConnect() que es el encargado de realizar la conexion a la base de datos
+    // Método que retorna la conexión a la base de datos, se auxilia del metodo DatabaseConnect() que es el encargado de realizar la conexión a la base de datos
     public function getConnection() {
         if (!$this->conexion)
             $this->DatabaseConnect();
@@ -69,7 +69,7 @@ class SRV_CONEXION {
         return $this->conexion;
     }
 
-    // Metodo para cerrar la conexión a la base de datos
+    // Método para cerrar la conexión a la base de datos.
     public function close() {
         if ($this->conexion)
             $this->conexion->close();

@@ -33,7 +33,7 @@ function getData() {
             }
         },
         error: function (jqXHR, textStatus) {
-            console.log("Error en el Servidor");
+            console.log("Error en el servidor");
         }
     });
 }
@@ -62,7 +62,7 @@ function updateHorario() {
             }
         },
         error: function (jqXHR, textStatus) {
-            console.log("Error en el Servidor");
+            console.log("Error en el servidor");
         }
     });
 

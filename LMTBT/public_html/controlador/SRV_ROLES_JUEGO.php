@@ -108,20 +108,20 @@ switch ($_POST['tipo']) {
 							// se crean un nuevo campo en la consulta principal para el nombre de la categoria
 							$resultado[$key]['CATEGORIA'] = $datos_categoria['NOMBRE_CATEGORIA'];
 						} else {
-							echo "Ha ocurrido un error al recuperar la informacion. Intentelo mas tarde.";
+							echo "Ha ocurrido un error al recuperar la información. Intentelo mas tarde.";
 							return;
 						}
 					} else {
-						echo "Ha ocurrido un error al recuperar la informacion. Intentelo mas tarde.";
+						echo "Ha ocurrido un error al recuperar la información. Intentelo mas tarde.";
 						return;
 					}
 				} else {
-					echo "Ha ocurrido un error al recuperar la informacion. Intentelo mas tarde.";
+					echo "Ha ocurrido un error al recuperar la información. Intentelo mas tarde.";
 					return;
 				}
 			}
 		} else {
-			echo "Ha ocurrido un error al recuperar la informacion. Intentelo mas tarde.";
+			echo "Ha ocurrido un error al recuperar la información. Intentelo mas tarde.";
 			return;
 		}
 

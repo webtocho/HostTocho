@@ -93,7 +93,7 @@
         }else{              
             //Se regresa un error en caso de que alguna consulta a la BD haya fallado
             $conexion->rollback();
-            echo "Error en la transaccion";
+            echo "Error en la transacción.";
         }    
     $conexion->autocommit(TRUE);
     $conexion->close();

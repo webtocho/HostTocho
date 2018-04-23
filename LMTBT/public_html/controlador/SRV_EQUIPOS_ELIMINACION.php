@@ -29,7 +29,7 @@ switch ($_POST['tipo']) {
 		}
 		
 		if ($case == 0 || $case == 2) {
-			// creamos una transaccion y al tratarse de muchas cunsultas, en algun momento puede ocurrir algun fallo y gracias a la transaccion se podra revertir aquellas consultas que se habian ejecutado con exito
+			// creamos una transaccion y al tratarse de muchas cunsultas, en algun momento puede ocurrir algun fallo y gracias a la transaccion se podra revertir aquellas consultas que se habian ejecutado con éxito
 			// evitando la perdida de datos y el desorden el la base datos.
 			$conexion = $db->getConnection();
 			$conexion->autocommit(FALSE);

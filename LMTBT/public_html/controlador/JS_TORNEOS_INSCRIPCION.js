@@ -15,7 +15,7 @@ function getCategorias(){
         success: function (info) {
             info.trim();
             if(info == '0'){
-                $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la informacion solicitada. Intentelo de nuevo mas tarde </strong> </div>");
+                $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la información solicitada. Inténtelo de nuevo más tarde. </strong> </div>");
             }
             else if(info == '1'){
                  $('#Categoria').empty();
@@ -26,7 +26,7 @@ function getCategorias(){
             }
         },
         error: function (jqXHR, textStatus) {
-             $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde</strong></div>");
+             $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.</strong></div>");
         }
     });    
 }
@@ -43,7 +43,7 @@ function getTorneo(){
         success: function (info) {
             info.trim();
             if(info == '0'){
-                 $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la informacion solicitada. Intentelo de nuevo mas tarde </strong> </div>");
+                 $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la información solicitada. Inténtelo de nuevo más tarde. </strong> </div>");
             }
             else if(info == '1'){
                 $('#Torneos').empty();
@@ -70,7 +70,7 @@ function getEquipos(){
             info.trim();
             
             if(info == '0'){
-                 $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la informacion solicitada. Intentelo de nuevo mas tarde </strong> </div>");
+                 $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la información solicitada. Inténtelo de nuevo más tarde. </strong> </div>");
             }
             else if(info == '1'){
                  $('#Equipo').empty();
@@ -121,7 +121,7 @@ function InscribirEquipo(){
         success: function (info) {
              
             if(info == '0'){
-               $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la informacion solicitada. Intentelo de nuevo mas tarde </strong> </div>");
+               $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al recuperar la información solicitada. Inténtelo de nuevo más tarde. </strong> </div>");
 
             }
             else if(info == '1'){

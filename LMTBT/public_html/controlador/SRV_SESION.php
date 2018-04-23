@@ -27,7 +27,7 @@ switch ($tipo) {
 				echo "Tus datos son inválidos";
 			}
 		} else {
-			echo "Ocurrio un error en el servidor, vuelva a intentarlo por favor";
+			echo "Ocurrió un error en el servidor, vuelva a intentarlo, por favor.";
 		}
 		break;
 	case "logout":
@@ -44,7 +44,7 @@ switch ($tipo) {
 		break;
 	case "iniciar_cerrar_session":
 		/*
-		 * validamos si existe la sesion, en caso de existir el servidor responde "ok", lo que significa que la funcionalidad del boton de iniciar sesion cambiaria a cerrar sesion
+		 * validamos si existe la sesión, en caso de existir el servidor responde "ok", lo que significa que la funcionalidad del boton de iniciar sesion cambiaria a cerrar sesion
 		 * **/
 		if (isset($_SESSION['ID_USUARIO'])) {
 			echo "ok";

@@ -4,12 +4,12 @@
     $conn = $db->getConnection();
     $id_rol = $_POST['rol'];
     $roster = $_POST['roster'];
-    //En este php recuperamos la informacion de un solo partido mediante la id del roster y del rol de juegos
+    //En este php recuperamos la información de un solo partido mediante la id del roster y del rol de juegos
     $stmt = $conn->prepare("SELECT * FROM cedulas WHERE ID_ROL_JUEGO=? AND ID_ROSTER=?");
     $stmt->bind_param("ii",$id_rol,$roster);
     $stmt->execute();
     $result = $stmt->get_result();
-    //Si hay informacion del partido procedemos a retornar la informacion pertinente 
+    //Si hay informacion del partido procedemos a retornar la información pertinente 
     if($stmt->num_rows>-1){
         //Primero retornamos el nombre del equipo
     	$nameEquipo = "SELECT NOMBRE_EQUIPO FROM equipos INNER JOIN rosters ON equipos.ID_EQUIPO=rosters.ID_EQUIPO WHERE ID_ROSTER=".$roster;
@@ -22,7 +22,7 @@
     	echo '<thead><tr><th><center>JUGADOR</center></th> <th><center>NUMERO</center></th> <th><center>T</center></th> <th><center>S</center></th>'; 
         echo '<th><center>I</center></th> <th><center>A</center></th> <th><center>C1</center></th> <th><center>C2</center></th><th><center>C3</center></th> <th><center>PA</center></th> <th><center>SA</center></th> <th><center>I4</center></th>'; 
         echo '</tr></thead><tbody>';
-    	//Despues retornamos la informacion de cada jugador del equipo (su nombre y sus resultados del partido)
+    	//Despues retornamos la información de cada jugador del equipo (su nombre y sus resultados del partido)
     	while ($row = $result->fetch_array(MYSQLI_ASSOC)){
             $query="SELECT NUMERO FROM participantes_rosters WHERE ID_JUGADOR=".$row['ID_JUGADOR']." and ID_ROSTER=".$row['ID_ROSTER'];
             $numero = $conn->query($query);

@@ -14,14 +14,14 @@ switch ($_POST['tipo']) {
 		// creamos una consulta preparada
 		$consulta = $db->getConnection()->prepare("SELECT * FROM categorias");
 		if ($consulta->execute()) {
-			// si se ejecuta con exito, asignamos los datos a la variable $categorias
+			// si se ejecuta con éxito, asignamos los datos a la variable $categorias
 			$resultado = $consulta->get_result();
-			$categorias = "<option value=''>Seleccione una categoria</option>";
+			$categorias = "<option value=''>Seleccione una categoría</option>";
 			while ($lista_categorias = $resultado->fetch_assoc())
 				$categorias .= "<option value='" . $lista_categorias['NOMBRE_CATEGORIA'] . "'>" . $lista_categorias['NOMBRE_CATEGORIA'] . "</option>";
 			echo $categorias;
 		} else {
-			echo "Ha ocurrido un error al recuperar la informacion solicitada. Intente mas tarde porfavor.";
+			echo "Ha ocurrido un error al recuperar la información solicitada. Intente mas tarde, por favor.";
 		}
 		break;
 	default:

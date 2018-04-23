@@ -1,3 +1,8 @@
+/**
+ * Este archivo contiene el código necesario para que aparezca un botón en la página, que el permite
+ * al usuario volver a la parte superior de la misma.
+ */
+
 //Realiza el llamado a la funcion scrollFunction() si el scroll se hay presionado
 window.onscroll = function() {scrollFunction()};
 //Cuando el usuario despliega 20px desde la parte superior del documento, muestre el botón

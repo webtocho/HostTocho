@@ -1,8 +1,8 @@
 idCategoria=0; 
 
 $( document ).ready(function() {
-    // con este metodo recuperamos el tipo de sesion iniciada, si la sesion no es de tipo administrador
-    // expulsaremos al usuario que haya entrado a la pagina
+    /* Con este método recuperamos el tipo de sesion iniciada, si la sesion no es de tipo administrador
+       expulsaremos al usuario que haya entrado a la pagina. */
     $.post( "../controlador/SRV_SESION_GET.php", {tipos :["ADMINISTRADOR"]}, null, "text")
         .done(function(res) {
             switch(parseInt(res)){
@@ -21,7 +21,7 @@ $( document ).ready(function() {
 }); 
  
  
- // esta funcion carga todas las categorias que existan en la base de datos
+// Esta función carga todas las categorías que existan en la base de datos.
 function cargarCategorias(){
     
        $.ajax({
@@ -39,8 +39,8 @@ function cargarCategorias(){
         });
 }
 
-// esta funcion elimina la categoria que este guardada en la variable idCategoria,
-//esta variable tiene un set llamado seIdCategoria
+/* Esta función elimina la categoría que esté guardada en la variable idCategoria,
+   esta variable tiene un set llamado seIdCategoria */
 function eliminarCategoria(){
       $.ajax({
             url: "../controlador/SRV_CATEGORIAS_OBTENER_ELIMINAR.php",
@@ -64,7 +64,7 @@ function eliminarCategoria(){
       
 }
 
-// con este metodo se guarda el valor de la categoria seleccionada 
+// Con este función se guarda el valor de la categoría seleccionada. 
 function setIdCategoria(id, nombre){
     
     idCategoria =id;
@@ -73,7 +73,7 @@ function setIdCategoria(id, nombre){
     
 }
 
-//esta funcion obtiene el nombre de la categoria desde el input nombreCategoria y lo inserta en la base de datos
+// Esta función obtiene el nombre de la categoria desde el input nombreCategoria y lo inserta en la base de datos.
 function agregarCategoria(){
     nombre = $('#nombreCategoria').val().trim();
     
@@ -85,18 +85,18 @@ function agregarCategoria(){
              datatype: "text",
              success: function (respuesta) {
                 if (respuesta.toString()=="1"){
-                    mostrarAlerta("Se ha agregado correctamente","correcto");
+                    mostrarAlerta("Se ha agregado correctamente.","correcto");
                     cargarCategorias();
                 }else{
-                     mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
+                     mostrarAlerta("Ha ocurrido un error, inténtelo de nuevo.","error");
                 }//error
              },
              error: function (jqXHR, textStatus) {
-                 mostrarAlerta("Ha ocurrido un error, intentelo de nuevo","error");
+                 mostrarAlerta("Ha ocurrido un error, inténtelo de nuevo.","error");
 
              }
          });
     }
         
-          $('#nombreCategoria').val("");
+    $('#nombreCategoria').val("");
 }

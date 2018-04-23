@@ -25,7 +25,7 @@ $( document ).ready(function(){
         });
 });
 /**
- * Recupera los datos del formulario con la informacion del usuario que desea registrarse,
+ * Recupera los datos del formulario con la información del usuario que desea registrarse,
  * envia los datos al servidor para poder almacenerlos y crear una cuenta nueva.
  */
 $(document).on('submit','#myForm',function(event){  
@@ -40,7 +40,7 @@ $(document).on('submit','#myForm',function(event){
     var apellido_materno = document.getElementById("ApellidoMaterno").value;
     var tipo_cuenta = document.getElementById("tipo_cuenta").value;
     var sexo = document.getElementById("sexo").value;
-    //comprueba que la informacion otenida del formulario no este vacia
+    //comprueba que la información otenida del formulario no este vacia
     if(correo.trim().length>0 && password.trim().length>0 && nombre.trim().length>0 && apellido_paterno.trim().length>0 && apellido_materno.trim().length>0 && tipo_cuenta.trim().length>0 && sexo.trim().length>0){
         $.ajax({
             url: "../controlador/SRV_CUENTAS.php",
@@ -65,7 +65,7 @@ $(document).on('submit','#myForm',function(event){
         success: function(respuesta) {
             console.log(respuesta);
             if(respuesta == "ok") {               
-                mostrarAlerta("Registro realizado con exito.","correcto");
+                mostrarAlerta("Registro realizado con éxito.","correcto");
                 document.getElementById('btn-submitdos').disabled = false;                
                 document.getElementById('Correo').value = "";
                 document.getElementById('Password').value = "";
@@ -81,7 +81,7 @@ $(document).on('submit','#myForm',function(event){
             }
         },
         error: function(jqXHR, textStatus){
-            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
+            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.","fallido");
             document.getElementById('btn-submitdos').disabled = false;
         }
     });

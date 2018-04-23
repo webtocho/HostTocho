@@ -1,4 +1,6 @@
 $(function () {
+    //Eventos del teclado: Cuando se pulse ENTER, se inicia sesión automáticamente.
+    
     $('#campo_correo').bind("keypress", function (event) {
         var key = event.which || event.keyCode;
         if (key == 13)
@@ -13,6 +15,9 @@ $(function () {
 
 });
 
+/**
+ * Efectúa un inicio de sesión, con los datos puestos en los inputs.
+ */
 function iniciarSesion() {
     var e_mail, password;
     e_mail = $.trim($('#campo_correo').val());
@@ -107,7 +112,7 @@ function recuperarPassword() {
             }
         },
         error: function (jqXHR, textStatus) {
-            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.", "fallido");
+            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.", "fallido");
         }
     });
     document.getElementById("correo_recuperar").value = "";

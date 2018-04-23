@@ -28,7 +28,7 @@ $(document).ready(function(){
     });
 });
 /**
- * Recupera los datos del formulario con la informacion de la convocatoria a registrarse y los
+ * Recupera los datos del formulario con la información de la convocatoria a registrarse y los
  * envia al servidor para ser almacenados y lanzar una nueva convocatoria.
  */
 $(document).on('submit','#formlg',function(event){
@@ -51,7 +51,7 @@ $(document).on('submit','#formlg',function(event){
             success: function(resultado){                             
                 if(resultado == "ok"){                    
                     registraNoticia(formData);
-                    mostrarAlerta("Registro realizado con exito","correcto");
+                    mostrarAlerta("Registro realizado con éxito","correcto");
                     document.getElementById('btn-submitdos').disabled = false;
                     document.getElementById('nombre_torneo').value = "";
                     document.getElementById('fecha_cierre_convocatoria').value = "";
@@ -67,7 +67,7 @@ $(document).on('submit','#formlg',function(event){
                 }
             },
             error: function(jqXHR, textStatus) {
-                mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
+                mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.","fallido");
                 document.getElementById('btn-submitdos').disabled = false;
             }
      });
@@ -84,7 +84,7 @@ function mandarAinicio(){
 /**
  * Realiza una peticion al servidor y envia los datos de la convocatoria creada para poder
  * registrar una noticia y que puede verse en el inicio
- * @param {FormData} formData Objeto que contiene los datos con la informacion obtenida de la convocatoria creada.
+ * @param {FormData} formData Objeto que contiene los datos con la información obtenida de la convocatoria creada.
  */
 function registraNoticia(formData){
     formData.delete('nombre');
@@ -94,7 +94,7 @@ function registraNoticia(formData){
     formData.delete('fecha_fin');
     formData.delete('categoria');
     var titulo = document.getElementById('nombre_torneo').value;
-    var descripcion = "Nuevo torneo de la liga municipal tocho bandera ya puedes inscribirte";
+    var descripcion = "Nuevo torneo de la Liga Municipal de Tocho Bandera. Ya puedes inscribirte.";
     formData.append('titulo_noticia',titulo);
     formData.append('descripcion',descripcion);
     $.ajax({

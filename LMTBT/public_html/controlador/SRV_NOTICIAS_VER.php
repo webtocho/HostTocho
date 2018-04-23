@@ -101,7 +101,7 @@
                             $result2 = $conexion->query($query2);
                             if($result2){
                                 $usuario =mysqli_fetch_array($result2);
-                                //Cargamos la informacion del usuario como su nombre y tipo de cuenta
+                                //Cargamos la información del usuario como su nombre y tipo de cuenta
                                 echo "<div class='panel panel-default'>";
                                 echo"<div class='panel-heading' style='background-color: black;color: white;'>";                                           
                                 echo "<h4 class='media-heading'><p>".$usuario['NOMBRE']." ".$usuario['APELLIDO_PATERNO']." &nbsp &nbsp &nbsp &nbsp".$usuario['TIPO_USUARIO']."</p></h4>";                                    

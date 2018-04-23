@@ -136,7 +136,7 @@
             }else{
                 //Se regresa un error en caso de que la categoria con la que se desea registrar no exista
                 //y se marca la transaccion como fallada
-                echo "Ingresa una categoria existente";
+                echo "Ingresa una categoría existente";
                 $conexion->autocommit(TRUE);
                 $conexion->close();
                 return;

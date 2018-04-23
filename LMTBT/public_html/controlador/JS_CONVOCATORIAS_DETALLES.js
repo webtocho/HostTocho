@@ -120,13 +120,13 @@ function editarFecha(id) {
         },
         success: function (resultado) {
             if (resultado == "ok") {
-                mostrarAlerta("Cambio realizado con exito", "correcto");
+                mostrarAlerta("Cambio realizado con éxito", "correcto");
             } else {
                 mostrarAlerta(resultado, "fallido");
             }
         },
         error: function (jqXHR, textStatus) {
-            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.", "fallido");
+            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.", "fallido");
         }
     });
 }
@@ -162,7 +162,7 @@ function poner_pagado(id) {
         },
         success: function (resultado) {
             if (resultado == "ok") {
-                mostrarAlerta("Cambio realizado con exito", "correcto");
+                mostrarAlerta("Cambio realizado con éxito", "correcto");
                 $('#eventos' + id).empty();
                 $('#eventos' + id).append("<a class='news' href='#body'><h5>PAGADO</h5></a>");
             } else {
@@ -170,7 +170,7 @@ function poner_pagado(id) {
             }
         },
         error: function (jqXHR, textStatus) {
-            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.", "fallido");
+            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.", "fallido");
         }
     });
 }
@@ -206,7 +206,7 @@ function expulsar(id) {
         },
         success: function (resultado) {
             if (resultado == "ok") {
-                mostrarAlerta("Cambio realizado con exito", "correcto");
+                mostrarAlerta("Cambio realizado con éxito", "correcto");
                 fila = document.getElementById(id);
                 padre = fila.parentNode;
                 padre.removeChild(fila);
@@ -215,7 +215,7 @@ function expulsar(id) {
             }
         },
         error: function (jqXHR, textStatus) {
-            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.", "fallido");
+            mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Inténtelo de nuevo más tarde.", "fallido");
         }
     });
 }

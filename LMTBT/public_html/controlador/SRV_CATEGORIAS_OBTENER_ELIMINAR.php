@@ -28,7 +28,7 @@
                 }else{ }//eror
                 echo  "</tbody>";
         break;
-        case "delete":// eliminar una categoria
+        case "delete":// eliminar una categoría
              $id = $_POST['id'];
             $result = $conn->prepare("DELETE FROM categorias WHERE ID_CATEGORIA = ? ");
             $result->bind_param("i", $id);
@@ -38,7 +38,7 @@
 		echo "0";//$result->error;
             }            
         break;
-        case "add":// eliminar una categoria
+        case "add":// eliminar una categoría
             $nombre = $_POST['nombre'];
             $result = $conn->prepare("INSERT INTO categorias(NOMBRE_CATEGORIA) VALUES (?)");
             $result->bind_param("s",$nombre);
