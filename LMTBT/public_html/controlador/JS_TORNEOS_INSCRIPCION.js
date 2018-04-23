@@ -1,23 +1,16 @@
 
-$( document ).ready(function() {
-   
-     getCategorias();
-     
-     (document).getElementById("Categoria").onchange = getTorneo;
-    
+$( document ).ready(function() {   
+    getCategorias();     
+    (document).getElementById("Categoria").onchange = getTorneo;    
 });
 
-function getCategorias(){
-    
-    
+function getCategorias(){        
       $.ajax({
         url: "../controlador/SRV_TORNEO_INSCRIPCION.php",
         data: {accion : "getCategorias"},
         type: "POST",
         datatype: "text",
-        beforeSend: function (xhr) {
-            
-
+        beforeSend: function (xhr) {            
         },
         success: function (info) {
             info.trim();
@@ -35,20 +28,13 @@ function getCategorias(){
         error: function (jqXHR, textStatus) {
              $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde</strong></div>");
         }
-    });
-    
+    });    
 }
 
-function getTorneo(){
-    
+function getTorneo(){    
     $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione Torneo</option>");
-    getEquipos();
-    
-
-    var categoria =  document.getElementById("Categoria").value;
-   
-    
-    
+    getEquipos();    
+    var categoria =  document.getElementById("Categoria").value;           
     $.ajax({
         url: "../controlador/SRV_TORNEO_INSCRIPCION.php",
         data: {accion : "getTorneo",categoria: categoria},
@@ -72,14 +58,9 @@ function getTorneo(){
         }
     });
 }
-
-function getEquipos(){
-    
-    $('#Equipo').html("<option value='Seleccione'>Seleccione Equipo</option>");
-    
-     var categoria =  document.getElementById("Categoria").value;
-    
-    
+function getEquipos(){    
+    $('#Equipo').html("<option value='Seleccione'>Seleccione Equipo</option>");    
+    var categoria =  document.getElementById("Categoria").value;        
     $.ajax({
         url: "../controlador/SRV_TORNEO_INSCRIPCION.php",
         data: {accion : "getEquipos",categoria: categoria},
@@ -113,34 +94,25 @@ function getEquipos(){
         error: function (jqXHR, textStatus) {
             console.log("Error en el Servidor");
         }
-    });
-    
-   
-    
+    });           
 }
-
 function InscribirEquipo(){
     /*if(document.getElementById("Categoria").value === "Seleccione" || document.getElementById("Torneos").value === "Seleccione" || document.getElementById("Equipo").value === "Seleccione"){
         alert("Faltan Seleccionar Campos");
         
         return;
     }*/
-        var id_convocatoria = document.getElementById("Torneos").value;
-        var data_categoria = document.getElementById("Categoria").value;
-        var data_equipo = document.getElementById("Equipo").value;
-       
+     var id_convocatoria = document.getElementById("Torneos").value;
+     var data_categoria = document.getElementById("Categoria").value;
+     var data_equipo = document.getElementById("Equipo").value;       
      if(id_convocatoria== "Seleccione" || id_convocatoria== "none" || data_categoria== "Seleccione" || data_categoria== "none" || data_equipo== "Seleccione" || data_equipo== "none"){
          $('#alert').append("<div class='alert alert-danger alert-dismissable fade in'><a class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Error! Introduzca los datos correctos</strong> </div>");
         $('#Torneos').html("<option value='Seleccione' disabled selected>Seleccione Torneo</option>");
         $('#Categoria').html("<option value='Seleccione' disabled selected>Seleccione Categoria</option>");
        $('#Equipo').html("<option value='Seleccione' disabled selected>Seleccione Equipo</option>");
-       getCategorias();
-       
-        
+       getCategorias();               
         return;
-     }else{   
-        
-        
+     }else{                   
         $.ajax({
         url: "../controlador/SRV_TORNEO_INSCRIPCION.php",
         data: {accion : "setTorneo",id_conv: id_convocatoria,id_equi:data_equipo,categoria: data_categoria },
@@ -169,14 +141,8 @@ function InscribirEquipo(){
         error: function (jqXHR, textStatus) {
             console.log("Error en el Servidor");
         }
-        });
-        
-        
-    
-     }
-    
-    
-    
+        });                   
+     }            
 }
 
 

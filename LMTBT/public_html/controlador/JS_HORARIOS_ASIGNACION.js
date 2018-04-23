@@ -2,8 +2,6 @@ $(document).ready(function () {
     $('select').material_select();
     getTorneo();
     (document).getElementById("torneo").onchange = getTable;
-
-
 });
 
 function getTorneo() {

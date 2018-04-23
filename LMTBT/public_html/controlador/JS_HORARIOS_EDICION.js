@@ -22,8 +22,7 @@ function getData() {
 
                 var content = JSON.parse(info);
 
-                jQuery.each(content, function (i, val) {
-                    // $("#equipo").val(val.NOMBRE_EQUIPO);
+                jQuery.each(content, function (i, val) {                    
                     $('#equipo1').html("<option value='" + val.NOMBRE_EQUIPO + "' >" + val.NOMBRE_EQUIPO + "</option>");
                     $('#equipo2').html("<option value='" + val.NAME + "' >" + val.NAME + "</option>");
                     $('#fecha').val(val.FECHA);
