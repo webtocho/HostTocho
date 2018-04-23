@@ -19,8 +19,8 @@ class SRV_CONEXION {
     function __construct() {
         $this->sqlHost = "localhost";
         $this->sqlDatabase = "lmtbt";
-        $this->sqlUser = "root";
-        $this->sqlPassword = "12345";
+        $this->sqlUser = "tochomaster";
+        $this->sqlPassword = "tochoweb2017";
     }
 
     // Realiza la conexión a la basee de datos.
