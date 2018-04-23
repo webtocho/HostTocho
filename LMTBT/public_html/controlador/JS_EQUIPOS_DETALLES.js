@@ -34,6 +34,8 @@ $(document).ready(function() {
                                 }
                                 
                                 $('#modal').modal('hide');
+                                $('[data-toggle="tooltip"]').tooltip();
+                                $("#btn_eliminar_equipo").after("<br>" + crear_dropdown("Regresar a...", ["<a href='EQUIPOS_VER.html'>Gestión de equipos</a>"]));
                             })
                             .fail(function(xhr, status, error) {
                                 $("#modal-title").html("Error");

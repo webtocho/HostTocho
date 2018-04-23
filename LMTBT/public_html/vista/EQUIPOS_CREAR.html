@@ -20,15 +20,23 @@
         <center>
             <div class="form" id="contenido">
                 <center><a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a></center>
-                <h1>Crear un equipo</h1>
+                <h2>Crear un equipo <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip" title="Si su equipo
+                    tiene más de un roster, no es necesario que vuelva a pasar por esta página. No debe crear, por ejemplo, dos equipos llamados 'Alces varonil'
+                    y 'Alces femenil'; basta con uno llamado 'Alces'. En la página de detalles del equipo tiene la opción de crear rosters."></span></h2>
+                
                 <form id="campos" enctype="multipart/form-data">
-                    <input type="text" name="nombre" id="nombre" onchange="eliminar_espacios_input(this);" placeholder="Nombre del equipo">                
-                    <label for="logotipo">Elija la imagen de su logotipo</label>
+                    <label for="nombre">Nombre del equipo: <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                        title="No puede contener símbolos, a excepción del guión medio y la comilla simple."></span></label>
+                    <input type="text" name="nombre" id="nombre" onchange="eliminar_espacios_input(this);" placeholder="Escriba aquí">                
+                    
+                    <label for="logotipo">Elija la imagen de su logotipo: <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                        title="La imagen se achicará antes de ser guardada en la página. Evite usar una imagen con transparencia."></span></label>
                     <input type="file" accept="image/*" name="logotipo" id="logotipo">
-                    <label for="coach">Coach</label>
-                    <input type="text" name="coach" id="coach" value="<Seleccione un coach>" disabled>
+                    
+                    <label for="coach">Coach:</label>
+                    <input type="text" name="coach" id="coach" value="<Busque y seleccione un coach>" disabled>
                 </form>
-                <button class="btn btn-primary" onclick="crearEquipo()" id="btn-submitdos">Crear ahora</button><br>
+                <button class="btn btn-success" onclick="crearEquipo()" id="btn-submitdos">Crear ahora</button><br>
             </div>
         </center><br><br>
     </body>

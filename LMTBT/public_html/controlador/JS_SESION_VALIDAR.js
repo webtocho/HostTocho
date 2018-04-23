@@ -27,11 +27,11 @@ $(document).ready(function(){
                      
                     ///////Luego cargamos los contenedores con los apartados que debe ver este usuario
                     $('#acceso_asignacion_horarios').append("<a href='HORARIOS_ASIGNACION.html'>Horarios</a>");
-                    $('#acceso_categorias_edicion').append("<a href='CATEGORIAS_EDICION.html'>Ver Categorías</a>");                    
+                    $('#acceso_categorias_edicion').append("<a href='CATEGORIAS_EDICION.html'>Ver categorías</a>");                    
                     $('#acceso_convocatoria').append("<a href='CONVOCATORIA.html'>Nuevo torneo</a>");
                     $('#acceso_roster_publico').append("<a href='ROSTERS_PUBLICO.html'>Equipos de la liga</a>");
-                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Perfil</a>");
-                    $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Ver equipos</a>");
+                    $('#acceso_cuentas_detalles').append("<a href='CUENTAS_DETALLES.html'>Mi perfil</a>");
+                    $('#acceso_equipos_ver').append("<a href='EQUIPOS_VER.html'>Gestión de equipos</a>");
                     $('#acceso_estadisticas').append("<a href='ESTADISTICAS.html'>Estadísticas</a>");
                     $('#acceso_crear_noticias').append("<a href='NOTICIAS.html'>Nueva noticia</a>");
                     $('#acceso_registro_cuenta').append("<a href='CUENTAS_REGISTRO.html'>Registrar cuenta</a>");

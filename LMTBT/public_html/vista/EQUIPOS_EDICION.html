@@ -20,22 +20,24 @@
         <br>
         <center><div id="contenido">
             <center><a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a></center>
-            <center><h2>EDITAR AL EQUIPO</h2></center>
+            <center><h2>Editar equipo</h2></center>
             <form id="campos" enctype="multipart/form-data">
-                <label for="nombre">Nombre:</label><br>
+                <label for="nombre">Nombre: <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                        title="No puede contener símbolos, a excepción del guión medio y la comilla simple."></span></label><br>
                 <input type="text" name="nombre" id="nombre" onchange="onchange_input_edicion_txt(this)" oninput="oninput_input_edicion(this);">                
                 <br><br>                
-                <label for="logotipo">Cambiar la imagen del logotipo:</label><br>
+                <label for="logotipo">Cambiar la imagen del logotipo: <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                        title="La imagen se achicará antes de ser guardada en la página. Evite usar una imagen con transparencia."></span></label><br>
                 <input type="file" accept="image/*" name="logotipo" id="logotipo">             
                 <br>      
                 <label for="coach">Coach:</label><br>
                 <input type="text" name="coach" id="coach" oninput="oninput_input_edicion(this);" disabled>
                 <br><br>
-                <label>Transferir propiedad a otro coach:</label><br>
-                <!--<input type="submit" value="Crear ahora" name="submit">-->
+                <label>Transferir propiedad a otro coach: <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                        title="Si el coach cambia, el anterior ya no podrá ver al equipo en la página de gestión."></span></label><br>
             </form>
             <br>
-            <button class="btn btn-primary" onclick="guardarCambios()">Guardar cambios.</button>
+            <button class="btn btn-primary" onclick="guardarCambios()" id="btn_guardar">Guardar cambios</button>
         </div></center>
         <br>
     </body>
