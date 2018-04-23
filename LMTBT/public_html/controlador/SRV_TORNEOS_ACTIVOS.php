@@ -64,7 +64,7 @@ if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
             $resultado = $conexion->query($sql);
             if ($resultado){      
                     //Obtenemos las primeras tres posiciones de la tabla ordenada las cuales pertenecen a los equipos ganadores
-                    $sql = "SELECT *FROM tabla_posiciones WHERE ID_CONVOCATORIA = $id ORDER BY PUNTOS_FAVOR DESC LIMIT 0,3";
+                    $sql = "SELECT *FROM tabla_posiciones WHERE ID_CONVOCATORIA = $id ORDER BY PUNTOS_FAVOR DESC LIMIT 0,3";                   
                     if ($resultado = $conexion->query($sql)){                       
                         while ($fila = $resultado->fetch_assoc()) {                         				
 				$id_equipo_ganador_torneo[] = $fila["ID_EQUIPO"];                                				                          
@@ -81,7 +81,7 @@ if (isset($_SESSION['ID_USUARIO']) && isset($_SESSION["TIPO_USUARIO"])) {
                             } else {
 				$cambios_hechos = false;				
                             }
-			}                        
+			}                                    
 			if ($contador == 3) {
                             //Recuperamos la categoria a la que pertenece el torneo que se ha concluido
                             $sql = "SELECT *FROM categorias WHERE ID_CATEGORIA = $categoria_torneo";

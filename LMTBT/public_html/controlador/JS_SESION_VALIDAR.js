@@ -37,7 +37,7 @@ $(document).ready(function(){
                     $('#acceso_registro_cuenta').append("<a href='CUENTAS_REGISTRO.html'>Registrar cuenta</a>");
                     $('#acceso_roles_juego').append("<a href='ROLES_JUEGO.html'>Roles de juego</a>");
                     $('#gestion_cuentas').append("<a href='CUENTAS_GESTION.html'>Gestión de cuentas</a>");  
-                    
+                    $('[data-toggle="tooltip"]').tooltip();
                     mostrar_apartado_convocatorias_vencidas();
                     mostrar_apartado_torneos_activos();
                     cargar_tabla_convocatorias_vencidas();
@@ -152,6 +152,6 @@ function mostrar_apartado_convocatorias_vencidas(){
  * Carga el apartado y la tabla en donde se visualizaran los torneos activos al inicio
  */
 function mostrar_apartado_torneos_activos(){
-    $('#apartado_torneos_activos').append("<div class='top-news'>"+"<h4 class='side'>Torneos activos</h4><div style='height: 140px;overflow: auto' id='torneos_activos'><table class='table table-bordered table-hover'>"+
-    "<thead><tr><th>Nombre torneo</th><th>Acciones</th></tr></thead><tbody id='contenido_tabla_torneos'></tbody></table></div></div>");
+    $('#apartado_torneos_activos').append("<div class='top-news'>"+"<h4 class='side'>Torneos activos    <span class='glyphicon glyphicon-question-sign' data-placement='bottom' data-toggle='tooltip' title='Esta es una lista con los torneos activos con la opcion de poder terminarlos'></span></h4><div style='height: 140px;overflow: auto' id='torneos_activos'><table class='table table-bordered table-hover'>"+
+    "<thead><tr><th>Nombre torneo</th><th>Acciones</th></tr></thead><tbody id='contenido_tabla_torneos'></tbody></table></div></div>");    
 }

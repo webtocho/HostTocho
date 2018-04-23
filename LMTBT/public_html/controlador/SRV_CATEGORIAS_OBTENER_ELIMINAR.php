@@ -1,6 +1,9 @@
 <?php
+    //Incluimos a la clase SRV_CONEXION(); para poder instanciarla
     require 'SRV_CONEXION.php';
+    //Instanciamos a la clase SRV_CONEXION();
     $db = new SRV_CONEXION();
+    //Recuperamos la conexion
     $conn = $db->getConnection();    
     
     switch($_POST['tipo']){	

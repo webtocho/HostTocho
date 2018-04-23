@@ -965,8 +965,7 @@
                             //Se realiza un consulta a la BD para sustituir la contraseña anteorior con la nueva que se genero
                             $consulta = $conexion->prepare("UPDATE usuarios SET PASSWORD = ? WHERE CORREO = ?");
                             $consulta->bind_param("ss",$nueva_password,$_POST['correo_recuperar']);
-                            if ($consulta->execute()){
-                                
+                            if ($consulta->execute()){                                
                                 /**       
                                  * En caso de que se haya ejecutado correctamente la modificacion en la BD
                                  * se hace uso de la funcion enviarCorreoRecuperacion() que se encuentra en
@@ -1053,7 +1052,7 @@
                                      * la cual se encuentra en el archivo SRV_FUNCIONES_CORREO.php y la cual nos enviara un correo
                                      * de aceptacion con nuestros datos
                                      */
-                                    if (enviarCorreoDeAceptacion($_POST['correo'], $_POST['nombre'], $_POST['password'])) {
+                                    if (enviarCorreoDeAceptacion($_POST['correo'], $_POST['nombre'], $_POST['passworechd'])) {
                                         cerrar_transaccion($conexion, true);
                                         //Se retorna "ok" en caso de que todo se ejecute correctamente
                                         echo "ok";

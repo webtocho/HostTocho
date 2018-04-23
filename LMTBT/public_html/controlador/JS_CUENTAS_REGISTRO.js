@@ -65,7 +65,7 @@ $(document).on('submit','#myForm',function(event){
         success: function(respuesta) {
             console.log(respuesta);
             if(respuesta == "ok") {               
-                mostrarAlerta("Registro realizado con exito.","correcto");                             
+                mostrarAlerta("Registro realizado con exito.","correcto");
                 document.getElementById('btn-submitdos').disabled = false;                
                 document.getElementById('Correo').value = "";
                 document.getElementById('Password').value = "";
@@ -80,7 +80,7 @@ $(document).on('submit','#myForm',function(event){
                 document.getElementById('btn-submitdos').disabled = false;
             }
         },
-        error: function(jqXHR, textStatus) {
+        error: function(jqXHR, textStatus){
             mostrarAlerta("Ha ocurrido un error al conectarse con el servidor. Intentelo de nuevo mas tarde.","fallido");
             document.getElementById('btn-submitdos').disabled = false;
         }

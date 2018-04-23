@@ -20,6 +20,7 @@ $(document).ready(function () {
         $(function () {
             $("#nueva_fecha").datepicker();
         });                 
+        $('[data-toggle="tooltip"]').tooltip();
 });
 
 /**
