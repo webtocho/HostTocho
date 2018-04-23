@@ -3,7 +3,7 @@ $(document).ready(function () {
     //funcion que obtendra los integrantes de cada equipo con sus respectivas anotaciones
     llenar_tablas();
 });
-
+$('[data-toggle="tooltip"]').tooltip();
 //variables que contendran las anotaciones de cada jugador
 var TablaTeam1;
 var TablaTeam2;

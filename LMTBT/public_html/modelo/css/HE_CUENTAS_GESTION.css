@@ -1,5 +1,4 @@
 body{
-    background-color: #fff;
     background-image: url(../img/RC_IF_FONDO.png);
     background-size: repeat;
 }
@@ -9,6 +8,7 @@ body{
 }
 
 #contenido {
+    background-color: #fff;
     display: inline-block;
     
     border-radius: 10px 10px 10px 10px;

@@ -21,18 +21,19 @@
     <center>
         
         <div id="contenido">
-             <br>
+            <br>
             <a href="index.html"><img src="../modelo/img/RC_IF_LOGO.png" alt="TochoWeb" id="logo"/></a>
-            <h2>EQUIPOS</h2>
+            <h2>Gestión de equipos <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Esta página le permite administrar sus equipos
+                y los roster activos ligados a ellos: verlos, modificarlos y eliminarlos. Para empezar, seleccione un equipo; si tiene varios, realice una búsqueda."></span></h2>
             
             <div>
-                <div id="filtros" class="form-group">
+                <div id="filtros" class="form-inline">
                     <label for="rp">Resultados por página:</label>
-                    <input type="number" id="rp" name="rp" min="5" max="30" step="5" value="10" onchange="validarNum(this)">
-                    
+                    <input type="number" id="rp" name="rp" class="form-control" min="5" max="30" step="5" value="10" onchange="validarNum(this)">
+                    <br>
                     <label for="sr">Buscar sílaba o palabra:</label>
                     <input type="text" id="sr" name="sr" class="form-control" placeholder="<Todos>">
-                    
+                    <br>
                     <input type="button" class="btn btn-default" onclick="buscar()" value="Buscar" id="btnBuscar">
                 </div>
                 
@@ -40,9 +41,9 @@
                 <br>
             </div>
             <div id="equipos">
-                <div id="contenedorEquipos">
-                    <div><a href="EQUIPOS_CREAR.html"><img src="../modelo/img/RC_IF_NUEVO.png"></a></div>
-                    <center><p>Agregar Equipo</p></center>
+                <div class='equipo'>
+                    <a href="EQUIPOS_CREAR.html"><img class='img-equipo' src="../modelo/img/RC_IF_NUEVO.png">
+                    <span class='btn-vde'>Agregar equipo</span></a>
                 </div>
             </div>
             <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>

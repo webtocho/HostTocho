@@ -1,7 +1,7 @@
 $(document).ready(function () {
     mostrar_convocatorias_activas();
 });
-
+$('[data-toggle="tooltip"]').tooltip();
 /**
  * Este método muestra la lista de las convocatorias inactivas, es decir, que ya se han cerrado y se espera la ejecucion del torneo (encuentros de equipos(roles de juego))
  */

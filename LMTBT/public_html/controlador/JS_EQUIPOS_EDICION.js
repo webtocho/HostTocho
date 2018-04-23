@@ -52,6 +52,9 @@ $(document).ready(function() {
                                 $(frame).css("width","100%");
                                 $(frame).css("height", "400px");
                                 
+                                $('[data-toggle="tooltip"]').tooltip();
+                                $("#btn_guardar").after(crear_dropdown("Regresar a...",
+                                    ["<a href='javascript:irAPaginaDeDetalles()'>Detalles del equipo</a>", "<a href='EQUIPOS_VER.html'>Gestión de equipos</a>"]));
                                 $('#modal').modal('hide');
                             })
                             .fail(function(xhr, status, error) {

@@ -33,6 +33,10 @@ body{
     border-radius:3px;
 }
 
+#filtros {
+    background-color: #b2dfdb;
+}
+
 #cargando{
     width: 100%;
 }
@@ -52,12 +56,12 @@ body{
 }
 
 #contenedorEquipos{
-    width: 100%;
+    display: inline-block;
     height: auto;
     background-color: #fff;
     border: 2px solid #d9d9d9;
     border-radius: 7px;
-    padding: 10px;
+    padding: 2px;
 }
 
 .btn-vde{
@@ -109,6 +113,12 @@ body{
 
 #myBtn:hover {
     background-color: #555;
+}
+
+span {
+    font-size: 25px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 @media(max-width:650px){

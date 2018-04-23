@@ -51,6 +51,8 @@ $(document).ready(function() {
         });
     
     crearModal(false, true, true, true);
+    $('[data-toggle="tooltip"]').tooltip();
+    $("#btn-submitdos").after(crear_dropdown("Regresar a...", ["<a href='EQUIPOS_VER.html'>Gestión de equipos</a>"]));
 });
 
 /**

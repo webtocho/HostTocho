@@ -89,6 +89,7 @@ $(document).ready(function() {
                         $("#datos_jugador").remove();
                     }
                     
+                    $('[data-toggle="tooltip"]').tooltip();
                     $('#modal').modal('hide');
                 })
                 .fail(function(xhr, status, error) {

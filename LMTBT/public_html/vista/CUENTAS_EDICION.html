@@ -38,13 +38,15 @@
                 
                 <br><br>
                 
-                <label for="contrasena">Contraseña:</label><br>
+                <label for="contrasena">Contraseña:</label> <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                    title="Debe tener entre 5 y 15 caracteres. Debe estar formado por letras (no acentuadas, excluyendo la Ñ) y/o números."></span><br>
                 <input type="password" name="contrasena" id="contrasena" placeholder="*****" oninput="aplicar_cambio_contrasena();"><br>
                 <label for="contrasena_confirmacion">Confirmar contraseña:</label><br>
                 <input type="password" name="contrasena_confirmacion" id="contrasena_confirmacion" placeholder="*****" oninput="aplicar_cambio_contrasena();">
                 
                 <br><br>
-                <label for="foto">Cambiar foto de perfil:</label><br>
+                <label for="foto">Cambiar foto de perfil:</label> <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                    title="La página guardará una versión pequeña de la foto que elija, así que evite elegir una de cuerpo completo."></span><br>
                 <input type="file" accept="image/*" name="foto" id="foto">
 
                 <div id="datos_jugador">
@@ -55,7 +57,8 @@
                     
                     <br><br>
                     
-                    <label for="telefono">Número de teléfono:</label><br>
+                    <label for="telefono">Número de teléfono:</label> <span class="glyphicon glyphicon-question-sign" data-placement="bottom" data-toggle="tooltip"
+                        title="Escriba los 10 dígitos de su número sin espacios, por ejemplo: 9611234567"></span><br>
                     <input type="tel" name="telefono" id="telefono" oninput="oninput_input_edicion(this);">
                     
                     <br><br>
@@ -77,7 +80,8 @@
                     
                     <label>Enfermedades:</label><br>
                     <div id="enfermedades">
-                        <input id="ch_otras_enf" type="checkbox"> Otras (especifique)<br>
+                        <input id="ch_otras_enf" type="checkbox"> Otras (especifique) <span class="glyphicon glyphicon-question-sign" data-placement="bottom"
+                            data-toggle="tooltip" title="Si va a especificar varias, sepárelas por comas."></span><br>
                         <input type="text" id="tx_otras_enf" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
                     </div>
                     
@@ -85,7 +89,8 @@
                     
                     <label>Alergias:</label><br>
                     <div id="alergias">
-                        <input id="ch_otras_alg" type="checkbox"> Otras (especifique)<br>
+                        <input id="ch_otras_alg" type="checkbox"> Otras (especifique)  <span class="glyphicon glyphicon-question-sign" data-placement="bottom"
+                            data-toggle="tooltip" title="Si va a especificar varias, sepárelas por comas."><br>
                         <input type="text" id="tx_otras_alg" onchange="onchange_input_edicion_txt(this);" oninput="oninput_input_edicion(this);">
                     </div>
                     
@@ -102,8 +107,9 @@
                 
                 <br><br>
             </form>
-            <button onclick="reiniciarDatos()">Restablecer información</button>
-            <button onclick="editar()">Guardar cambios</button>
+            <button class="btn btn-info" onclick="reiniciarDatos()">Restablecer información</button>
+            <button class="btn btn-primary" onclick="editar()">Guardar cambios</button>
+            <button class="btn btn-warning" onclick="irAPaginaDeDetalles()">Volver a detalles</button>
         </div></center>
         <br>
     </body>

@@ -8,6 +8,7 @@ $(document).ready(function() {
                 case 1:
                     //Se realiza una primera búsqueda automáticamente.
                     buscar();
+                    $('[data-toggle="tooltip"]').tooltip();
                     break;
                 default:
                     $('#contenido').html("<div class='alert alert-danger'>\n\
