@@ -82,6 +82,27 @@
                        }
                     }
                 
+                else if ($_SESSION["TIPO_USUARIO"]=='ADMINISTRADOR'){
+                        $categ2 = $_POST["categoria"];
+                    
+                        $sql= "SELECT e.NOMBRE_EQUIPO,e.ID_EQUIPO FROM equipos e join rosters r on e.ID_EQUIPO = r.ID_EQUIPO WHERE ID_CATEGORIA= '$categ2' AND ID_CONVOCATORIA IS NULL";
+                        $result=$db->query($sql);
+                        if($result == null){
+                             echo  "0";
+                        }else{
+                           if(mysqli_num_rows($result)<=0 ){
+                               echo "1";
+                           }
+                           else{
+                                while($row = mysqli_fetch_array($result) ){
+
+                                     echo "<option value='".$row['ID_EQUIPO']."'>".$row['NOMBRE_EQUIPO']."</option>";
+
+                                }
+                               }
+                           }
+                    }
+                
                 else{
                     echo "2";
                 }
